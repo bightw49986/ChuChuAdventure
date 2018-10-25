@@ -1,0 +1,1944 @@
+fileFormatVersion: 2
+guid: b6862529a0657d64590489f4853d3eb4
+timeCreated: 1479830287
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: StoneGolem
+    100004: StoneGolem(Body)
+    100006: StoneGolem(BodyStones)
+    100008: StoneGolem(Branch)
+    100010: StoneGolem(HandStones)
+    100012: StoneGolem(Head)
+    100014: StoneGolem(Jaw)
+    100016: StoneGolem(LegStones)
+    100018: StoneGolem(ShoulderStone)
+    100020: StoneRig
+    100022: StoneRigChest
+    100024: StoneRigHead
+    100026: StoneRigHub
+    100028: StoneRigJaw
+    100030: StoneRigLArmCollarbone
+    100032: StoneRigLArmDigit11
+    100034: StoneRigLArmDigit12
+    100036: StoneRigLArmDigit21
+    100038: StoneRigLArmDigit22
+    100040: StoneRigLArmDigit23
+    100042: StoneRigLArmDigit31
+    100044: StoneRigLArmDigit32
+    100046: StoneRigLArmDigit33
+    100048: StoneRigLArmDigit41
+    100050: StoneRigLArmDigit42
+    100052: StoneRigLArmDigit43
+    100054: StoneRigLArmForearm1
+    100056: StoneRigLArmForearm2
+    100058: StoneRigLArmPalm
+    100060: StoneRigLArmShoulder
+    100062: StoneRigLLegFoot
+    100064: StoneRigLLegPlatform
+    100066: StoneRigLLegShin
+    100068: StoneRigLLegThigh
+    100070: StoneRigNeck
+    100072: StoneRigRArmCollarbone
+    100074: StoneRigRArmDigit11
+    100076: StoneRigRArmDigit12
+    100078: StoneRigRArmDigit21
+    100080: StoneRigRArmDigit22
+    100082: StoneRigRArmDigit23
+    100084: StoneRigRArmDigit31
+    100086: StoneRigRArmDigit32
+    100088: StoneRigRArmDigit33
+    100090: StoneRigRArmDigit41
+    100092: StoneRigRArmDigit42
+    100094: StoneRigRArmDigit43
+    100096: StoneRigRArmForearm1
+    100098: StoneRigRArmForearm2
+    100100: StoneRigRArmPalm
+    100102: StoneRigRArmShoulder
+    100104: StoneRigRLegFoot
+    100106: StoneRigRLegPlatform
+    100108: StoneRigRLegShin
+    100110: StoneRigRLegThigh
+    100112: StoneRigSpine
+    100114: StoneRigXbone
+    400000: StoneGolem
+    400002: //RootNode
+    400004: StoneGolem(Body)
+    400006: StoneGolem(BodyStones)
+    400008: StoneGolem(Branch)
+    400010: StoneGolem(HandStones)
+    400012: StoneGolem(Head)
+    400014: StoneGolem(Jaw)
+    400016: StoneGolem(LegStones)
+    400018: StoneGolem(ShoulderStone)
+    400020: StoneRig
+    400022: StoneRigChest
+    400024: StoneRigHead
+    400026: StoneRigHub
+    400028: StoneRigJaw
+    400030: StoneRigLArmCollarbone
+    400032: StoneRigLArmDigit11
+    400034: StoneRigLArmDigit12
+    400036: StoneRigLArmDigit21
+    400038: StoneRigLArmDigit22
+    400040: StoneRigLArmDigit23
+    400042: StoneRigLArmDigit31
+    400044: StoneRigLArmDigit32
+    400046: StoneRigLArmDigit33
+    400048: StoneRigLArmDigit41
+    400050: StoneRigLArmDigit42
+    400052: StoneRigLArmDigit43
+    400054: StoneRigLArmForearm1
+    400056: StoneRigLArmForearm2
+    400058: StoneRigLArmPalm
+    400060: StoneRigLArmShoulder
+    400062: StoneRigLLegFoot
+    400064: StoneRigLLegPlatform
+    400066: StoneRigLLegShin
+    400068: StoneRigLLegThigh
+    400070: StoneRigNeck
+    400072: StoneRigRArmCollarbone
+    400074: StoneRigRArmDigit11
+    400076: StoneRigRArmDigit12
+    400078: StoneRigRArmDigit21
+    400080: StoneRigRArmDigit22
+    400082: StoneRigRArmDigit23
+    400084: StoneRigRArmDigit31
+    400086: StoneRigRArmDigit32
+    400088: StoneRigRArmDigit33
+    400090: StoneRigRArmDigit41
+    400092: StoneRigRArmDigit42
+    400094: StoneRigRArmDigit43
+    400096: StoneRigRArmForearm1
+    400098: StoneRigRArmForearm2
+    400100: StoneRigRArmPalm
+    400102: StoneRigRArmShoulder
+    400104: StoneRigRLegFoot
+    400106: StoneRigRLegPlatform
+    400108: StoneRigRLegShin
+    400110: StoneRigRLegThigh
+    400112: StoneRigSpine
+    400114: StoneRigXbone
+    4300000: StoneGolem(Body)
+    4300002: StoneGolem(Branch)
+    4300004: StoneGolem(Head)
+    4300006: StoneGolem(Jaw)
+    4300008: StoneGolem(LegStones)
+    4300010: StoneGolem(HandStones)
+    4300012: StoneGolem(ShoulderStone)
+    4300014: StoneGolem(BodyStones)
+    7400000: Idle2
+    7400002: Idle1
+    7400004: Idle3
+    7400006: Walk
+    7400008: Attack1
+    7400010: Attack2
+    7400012: Attack3
+    7400014: Jump
+    7400016: GetHit1
+    7400018: GetHit2
+    7400020: Death1
+    7400022: Death2
+    9500000: //RootNode
+    13700000: StoneGolem(Body)
+    13700002: StoneGolem(BodyStones)
+    13700004: StoneGolem(Branch)
+    13700006: StoneGolem(HandStones)
+    13700008: StoneGolem(Head)
+    13700010: StoneGolem(Jaw)
+    13700012: StoneGolem(LegStones)
+    13700014: StoneGolem(ShoulderStone)
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle1
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 81
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: StoneGolem
+        weight: 1
+      - path: StoneGolem/StoneGolem(Body)
+        weight: 1
+      - path: StoneGolem/StoneGolem(BodyStones)
+        weight: 1
+      - path: StoneGolem/StoneGolem(Branch)
+        weight: 1
+      - path: StoneGolem/StoneGolem(HandStones)
+        weight: 1
+      - path: StoneGolem/StoneGolem(Head)
+        weight: 1
+      - path: StoneGolem/StoneGolem(Jaw)
+        weight: 1
+      - path: StoneGolem/StoneGolem(LegStones)
+        weight: 1
+      - path: StoneGolem/StoneGolem(ShoulderStone)
+        weight: 1
+      - path: StoneRig
+        weight: 1
+      - path: StoneRigHub
+        weight: 1
+      - path: StoneRigHub/StoneRigLLegThigh
+        weight: 1
+      - path: StoneRigHub/StoneRigLLegThigh/StoneRigLLegShin
+        weight: 1
+      - path: StoneRigHub/StoneRigLLegThigh/StoneRigLLegShin/StoneRigLLegFoot
+        weight: 1
+      - path: StoneRigHub/StoneRigRLegThigh
+        weight: 1
+      - path: StoneRigHub/StoneRigRLegThigh/StoneRigRLegShin
+        weight: 1
+      - path: StoneRigHub/StoneRigRLegThigh/StoneRigRLegShin/StoneRigRLegFoot
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit11
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit11/StoneRigLArmDigit12
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit21
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit21/StoneRigLArmDigit22
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit21/StoneRigLArmDigit22/StoneRigLArmDigit23
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit31
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit31/StoneRigLArmDigit32
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit31/StoneRigLArmDigit32/StoneRigLArmDigit33
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit41
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit41/StoneRigLArmDigit42
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit41/StoneRigLArmDigit42/StoneRigLArmDigit43
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigNeck
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigNeck/StoneRigHead
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigNeck/StoneRigHead/StoneRigJaw
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit11
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit11/StoneRigRArmDigit12
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit21
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit21/StoneRigRArmDigit22
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit21/StoneRigRArmDigit22/StoneRigRArmDigit23
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit31
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit31/StoneRigRArmDigit32
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit31/StoneRigRArmDigit32/StoneRigRArmDigit33
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit41
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit41/StoneRigRArmDigit42
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit41/StoneRigRArmDigit42/StoneRigRArmDigit43
+        weight: 1
+      - path: StoneRigLLegPlatform
+        weight: 1
+      - path: StoneRigRLegPlatform
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: Idle2
+      takeName: Take 001
+      firstFrame: 82
+      lastFrame: 200
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: StoneGolem
+        weight: 1
+      - path: StoneGolem/StoneGolem(Body)
+        weight: 1
+      - path: StoneGolem/StoneGolem(BodyStones)
+        weight: 1
+      - path: StoneGolem/StoneGolem(Branch)
+        weight: 1
+      - path: StoneGolem/StoneGolem(HandStones)
+        weight: 1
+      - path: StoneGolem/StoneGolem(Head)
+        weight: 1
+      - path: StoneGolem/StoneGolem(Jaw)
+        weight: 1
+      - path: StoneGolem/StoneGolem(LegStones)
+        weight: 1
+      - path: StoneGolem/StoneGolem(ShoulderStone)
+        weight: 1
+      - path: StoneRig
+        weight: 1
+      - path: StoneRigHub
+        weight: 1
+      - path: StoneRigHub/StoneRigLLegThigh
+        weight: 1
+      - path: StoneRigHub/StoneRigLLegThigh/StoneRigLLegShin
+        weight: 1
+      - path: StoneRigHub/StoneRigLLegThigh/StoneRigLLegShin/StoneRigLLegFoot
+        weight: 1
+      - path: StoneRigHub/StoneRigRLegThigh
+        weight: 1
+      - path: StoneRigHub/StoneRigRLegThigh/StoneRigRLegShin
+        weight: 1
+      - path: StoneRigHub/StoneRigRLegThigh/StoneRigRLegShin/StoneRigRLegFoot
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit11
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit11/StoneRigLArmDigit12
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit21
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit21/StoneRigLArmDigit22
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit21/StoneRigLArmDigit22/StoneRigLArmDigit23
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit31
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit31/StoneRigLArmDigit32
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit31/StoneRigLArmDigit32/StoneRigLArmDigit33
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit41
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit41/StoneRigLArmDigit42
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit41/StoneRigLArmDigit42/StoneRigLArmDigit43
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigNeck
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigNeck/StoneRigHead
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigNeck/StoneRigHead/StoneRigJaw
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit11
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit11/StoneRigRArmDigit12
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit21
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit21/StoneRigRArmDigit22
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit21/StoneRigRArmDigit22/StoneRigRArmDigit23
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit31
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit31/StoneRigRArmDigit32
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit31/StoneRigRArmDigit32/StoneRigRArmDigit33
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit41
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit41/StoneRigRArmDigit42
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit41/StoneRigRArmDigit42/StoneRigRArmDigit43
+        weight: 1
+      - path: StoneRigLLegPlatform
+        weight: 1
+      - path: StoneRigRLegPlatform
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: Idle3
+      takeName: Take 001
+      firstFrame: 201
+      lastFrame: 310
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: StoneGolem
+        weight: 1
+      - path: StoneGolem/StoneGolem(Body)
+        weight: 1
+      - path: StoneGolem/StoneGolem(BodyStones)
+        weight: 1
+      - path: StoneGolem/StoneGolem(Branch)
+        weight: 1
+      - path: StoneGolem/StoneGolem(HandStones)
+        weight: 1
+      - path: StoneGolem/StoneGolem(Head)
+        weight: 1
+      - path: StoneGolem/StoneGolem(Jaw)
+        weight: 1
+      - path: StoneGolem/StoneGolem(LegStones)
+        weight: 1
+      - path: StoneGolem/StoneGolem(ShoulderStone)
+        weight: 1
+      - path: StoneRig
+        weight: 1
+      - path: StoneRigHub
+        weight: 1
+      - path: StoneRigHub/StoneRigLLegThigh
+        weight: 1
+      - path: StoneRigHub/StoneRigLLegThigh/StoneRigLLegShin
+        weight: 1
+      - path: StoneRigHub/StoneRigLLegThigh/StoneRigLLegShin/StoneRigLLegFoot
+        weight: 1
+      - path: StoneRigHub/StoneRigRLegThigh
+        weight: 1
+      - path: StoneRigHub/StoneRigRLegThigh/StoneRigRLegShin
+        weight: 1
+      - path: StoneRigHub/StoneRigRLegThigh/StoneRigRLegShin/StoneRigRLegFoot
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit11
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit11/StoneRigLArmDigit12
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit21
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit21/StoneRigLArmDigit22
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit21/StoneRigLArmDigit22/StoneRigLArmDigit23
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit31
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit31/StoneRigLArmDigit32
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit31/StoneRigLArmDigit32/StoneRigLArmDigit33
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit41
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit41/StoneRigLArmDigit42
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit41/StoneRigLArmDigit42/StoneRigLArmDigit43
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigNeck
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigNeck/StoneRigHead
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigNeck/StoneRigHead/StoneRigJaw
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit11
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit11/StoneRigRArmDigit12
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit21
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit21/StoneRigRArmDigit22
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit21/StoneRigRArmDigit22/StoneRigRArmDigit23
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit31
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit31/StoneRigRArmDigit32
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit31/StoneRigRArmDigit32/StoneRigRArmDigit33
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit41
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit41/StoneRigRArmDigit42
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit41/StoneRigRArmDigit42/StoneRigRArmDigit43
+        weight: 1
+      - path: StoneRigLLegPlatform
+        weight: 1
+      - path: StoneRigRLegPlatform
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: Walk
+      takeName: Take 001
+      firstFrame: 311
+      lastFrame: 350
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: StoneGolem
+        weight: 1
+      - path: StoneGolem/StoneGolem(Body)
+        weight: 1
+      - path: StoneGolem/StoneGolem(BodyStones)
+        weight: 1
+      - path: StoneGolem/StoneGolem(Branch)
+        weight: 1
+      - path: StoneGolem/StoneGolem(HandStones)
+        weight: 1
+      - path: StoneGolem/StoneGolem(Head)
+        weight: 1
+      - path: StoneGolem/StoneGolem(Jaw)
+        weight: 1
+      - path: StoneGolem/StoneGolem(LegStones)
+        weight: 1
+      - path: StoneGolem/StoneGolem(ShoulderStone)
+        weight: 1
+      - path: StoneRig
+        weight: 1
+      - path: StoneRigHub
+        weight: 1
+      - path: StoneRigHub/StoneRigLLegThigh
+        weight: 1
+      - path: StoneRigHub/StoneRigLLegThigh/StoneRigLLegShin
+        weight: 1
+      - path: StoneRigHub/StoneRigLLegThigh/StoneRigLLegShin/StoneRigLLegFoot
+        weight: 1
+      - path: StoneRigHub/StoneRigRLegThigh
+        weight: 1
+      - path: StoneRigHub/StoneRigRLegThigh/StoneRigRLegShin
+        weight: 1
+      - path: StoneRigHub/StoneRigRLegThigh/StoneRigRLegShin/StoneRigRLegFoot
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit11
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit11/StoneRigLArmDigit12
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit21
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit21/StoneRigLArmDigit22
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit21/StoneRigLArmDigit22/StoneRigLArmDigit23
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit31
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit31/StoneRigLArmDigit32
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit31/StoneRigLArmDigit32/StoneRigLArmDigit33
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit41
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit41/StoneRigLArmDigit42
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit41/StoneRigLArmDigit42/StoneRigLArmDigit43
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigNeck
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigNeck/StoneRigHead
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigNeck/StoneRigHead/StoneRigJaw
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit11
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit11/StoneRigRArmDigit12
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit21
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit21/StoneRigRArmDigit22
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit21/StoneRigRArmDigit22/StoneRigRArmDigit23
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit31
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit31/StoneRigRArmDigit32
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit31/StoneRigRArmDigit32/StoneRigRArmDigit33
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit41
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit41/StoneRigRArmDigit42
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit41/StoneRigRArmDigit42/StoneRigRArmDigit43
+        weight: 1
+      - path: StoneRigLLegPlatform
+        weight: 1
+      - path: StoneRigRLegPlatform
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: Attack1
+      takeName: Take 001
+      firstFrame: 352
+      lastFrame: 420
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: StoneGolem
+        weight: 1
+      - path: StoneGolem/StoneGolem(Body)
+        weight: 1
+      - path: StoneGolem/StoneGolem(BodyStones)
+        weight: 1
+      - path: StoneGolem/StoneGolem(Branch)
+        weight: 1
+      - path: StoneGolem/StoneGolem(HandStones)
+        weight: 1
+      - path: StoneGolem/StoneGolem(Head)
+        weight: 1
+      - path: StoneGolem/StoneGolem(Jaw)
+        weight: 1
+      - path: StoneGolem/StoneGolem(LegStones)
+        weight: 1
+      - path: StoneGolem/StoneGolem(ShoulderStone)
+        weight: 1
+      - path: StoneRig
+        weight: 1
+      - path: StoneRigHub
+        weight: 1
+      - path: StoneRigHub/StoneRigLLegThigh
+        weight: 1
+      - path: StoneRigHub/StoneRigLLegThigh/StoneRigLLegShin
+        weight: 1
+      - path: StoneRigHub/StoneRigLLegThigh/StoneRigLLegShin/StoneRigLLegFoot
+        weight: 1
+      - path: StoneRigHub/StoneRigRLegThigh
+        weight: 1
+      - path: StoneRigHub/StoneRigRLegThigh/StoneRigRLegShin
+        weight: 1
+      - path: StoneRigHub/StoneRigRLegThigh/StoneRigRLegShin/StoneRigRLegFoot
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit11
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit11/StoneRigLArmDigit12
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit21
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit21/StoneRigLArmDigit22
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit21/StoneRigLArmDigit22/StoneRigLArmDigit23
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit31
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit31/StoneRigLArmDigit32
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit31/StoneRigLArmDigit32/StoneRigLArmDigit33
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit41
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit41/StoneRigLArmDigit42
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit41/StoneRigLArmDigit42/StoneRigLArmDigit43
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigNeck
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigNeck/StoneRigHead
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigNeck/StoneRigHead/StoneRigJaw
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit11
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit11/StoneRigRArmDigit12
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit21
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit21/StoneRigRArmDigit22
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit21/StoneRigRArmDigit22/StoneRigRArmDigit23
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit31
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit31/StoneRigRArmDigit32
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit31/StoneRigRArmDigit32/StoneRigRArmDigit33
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit41
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit41/StoneRigRArmDigit42
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit41/StoneRigRArmDigit42/StoneRigRArmDigit43
+        weight: 1
+      - path: StoneRigLLegPlatform
+        weight: 1
+      - path: StoneRigRLegPlatform
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: Attack2
+      takeName: Take 001
+      firstFrame: 421
+      lastFrame: 494
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: StoneGolem
+        weight: 1
+      - path: StoneGolem/StoneGolem(Body)
+        weight: 1
+      - path: StoneGolem/StoneGolem(BodyStones)
+        weight: 1
+      - path: StoneGolem/StoneGolem(Branch)
+        weight: 1
+      - path: StoneGolem/StoneGolem(HandStones)
+        weight: 1
+      - path: StoneGolem/StoneGolem(Head)
+        weight: 1
+      - path: StoneGolem/StoneGolem(Jaw)
+        weight: 1
+      - path: StoneGolem/StoneGolem(LegStones)
+        weight: 1
+      - path: StoneGolem/StoneGolem(ShoulderStone)
+        weight: 1
+      - path: StoneRig
+        weight: 1
+      - path: StoneRigHub
+        weight: 1
+      - path: StoneRigHub/StoneRigLLegThigh
+        weight: 1
+      - path: StoneRigHub/StoneRigLLegThigh/StoneRigLLegShin
+        weight: 1
+      - path: StoneRigHub/StoneRigLLegThigh/StoneRigLLegShin/StoneRigLLegFoot
+        weight: 1
+      - path: StoneRigHub/StoneRigRLegThigh
+        weight: 1
+      - path: StoneRigHub/StoneRigRLegThigh/StoneRigRLegShin
+        weight: 1
+      - path: StoneRigHub/StoneRigRLegThigh/StoneRigRLegShin/StoneRigRLegFoot
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit11
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit11/StoneRigLArmDigit12
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit21
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit21/StoneRigLArmDigit22
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit21/StoneRigLArmDigit22/StoneRigLArmDigit23
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit31
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit31/StoneRigLArmDigit32
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit31/StoneRigLArmDigit32/StoneRigLArmDigit33
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit41
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit41/StoneRigLArmDigit42
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit41/StoneRigLArmDigit42/StoneRigLArmDigit43
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigNeck
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigNeck/StoneRigHead
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigNeck/StoneRigHead/StoneRigJaw
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit11
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit11/StoneRigRArmDigit12
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit21
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit21/StoneRigRArmDigit22
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit21/StoneRigRArmDigit22/StoneRigRArmDigit23
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit31
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit31/StoneRigRArmDigit32
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit31/StoneRigRArmDigit32/StoneRigRArmDigit33
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit41
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit41/StoneRigRArmDigit42
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit41/StoneRigRArmDigit42/StoneRigRArmDigit43
+        weight: 1
+      - path: StoneRigLLegPlatform
+        weight: 1
+      - path: StoneRigRLegPlatform
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: Attack3
+      takeName: Take 001
+      firstFrame: 495
+      lastFrame: 548
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: StoneGolem
+        weight: 1
+      - path: StoneGolem/StoneGolem(Body)
+        weight: 1
+      - path: StoneGolem/StoneGolem(BodyStones)
+        weight: 1
+      - path: StoneGolem/StoneGolem(Branch)
+        weight: 1
+      - path: StoneGolem/StoneGolem(HandStones)
+        weight: 1
+      - path: StoneGolem/StoneGolem(Head)
+        weight: 1
+      - path: StoneGolem/StoneGolem(Jaw)
+        weight: 1
+      - path: StoneGolem/StoneGolem(LegStones)
+        weight: 1
+      - path: StoneGolem/StoneGolem(ShoulderStone)
+        weight: 1
+      - path: StoneRig
+        weight: 1
+      - path: StoneRigHub
+        weight: 1
+      - path: StoneRigHub/StoneRigLLegThigh
+        weight: 1
+      - path: StoneRigHub/StoneRigLLegThigh/StoneRigLLegShin
+        weight: 1
+      - path: StoneRigHub/StoneRigLLegThigh/StoneRigLLegShin/StoneRigLLegFoot
+        weight: 1
+      - path: StoneRigHub/StoneRigRLegThigh
+        weight: 1
+      - path: StoneRigHub/StoneRigRLegThigh/StoneRigRLegShin
+        weight: 1
+      - path: StoneRigHub/StoneRigRLegThigh/StoneRigRLegShin/StoneRigRLegFoot
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit11
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit11/StoneRigLArmDigit12
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit21
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit21/StoneRigLArmDigit22
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit21/StoneRigLArmDigit22/StoneRigLArmDigit23
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit31
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit31/StoneRigLArmDigit32
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit31/StoneRigLArmDigit32/StoneRigLArmDigit33
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit41
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit41/StoneRigLArmDigit42
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit41/StoneRigLArmDigit42/StoneRigLArmDigit43
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigNeck
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigNeck/StoneRigHead
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigNeck/StoneRigHead/StoneRigJaw
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit11
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit11/StoneRigRArmDigit12
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit21
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit21/StoneRigRArmDigit22
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit21/StoneRigRArmDigit22/StoneRigRArmDigit23
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit31
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit31/StoneRigRArmDigit32
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit31/StoneRigRArmDigit32/StoneRigRArmDigit33
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit41
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit41/StoneRigRArmDigit42
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit41/StoneRigRArmDigit42/StoneRigRArmDigit43
+        weight: 1
+      - path: StoneRigLLegPlatform
+        weight: 1
+      - path: StoneRigRLegPlatform
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: Jump
+      takeName: Take 001
+      firstFrame: 549
+      lastFrame: 600
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: StoneGolem
+        weight: 1
+      - path: StoneGolem/StoneGolem(Body)
+        weight: 1
+      - path: StoneGolem/StoneGolem(BodyStones)
+        weight: 1
+      - path: StoneGolem/StoneGolem(Branch)
+        weight: 1
+      - path: StoneGolem/StoneGolem(HandStones)
+        weight: 1
+      - path: StoneGolem/StoneGolem(Head)
+        weight: 1
+      - path: StoneGolem/StoneGolem(Jaw)
+        weight: 1
+      - path: StoneGolem/StoneGolem(LegStones)
+        weight: 1
+      - path: StoneGolem/StoneGolem(ShoulderStone)
+        weight: 1
+      - path: StoneRig
+        weight: 1
+      - path: StoneRigHub
+        weight: 1
+      - path: StoneRigHub/StoneRigLLegThigh
+        weight: 1
+      - path: StoneRigHub/StoneRigLLegThigh/StoneRigLLegShin
+        weight: 1
+      - path: StoneRigHub/StoneRigLLegThigh/StoneRigLLegShin/StoneRigLLegFoot
+        weight: 1
+      - path: StoneRigHub/StoneRigRLegThigh
+        weight: 1
+      - path: StoneRigHub/StoneRigRLegThigh/StoneRigRLegShin
+        weight: 1
+      - path: StoneRigHub/StoneRigRLegThigh/StoneRigRLegShin/StoneRigRLegFoot
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit11
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit11/StoneRigLArmDigit12
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit21
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit21/StoneRigLArmDigit22
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit21/StoneRigLArmDigit22/StoneRigLArmDigit23
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit31
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit31/StoneRigLArmDigit32
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit31/StoneRigLArmDigit32/StoneRigLArmDigit33
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit41
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit41/StoneRigLArmDigit42
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit41/StoneRigLArmDigit42/StoneRigLArmDigit43
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigNeck
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigNeck/StoneRigHead
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigNeck/StoneRigHead/StoneRigJaw
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit11
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit11/StoneRigRArmDigit12
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit21
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit21/StoneRigRArmDigit22
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit21/StoneRigRArmDigit22/StoneRigRArmDigit23
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit31
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit31/StoneRigRArmDigit32
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit31/StoneRigRArmDigit32/StoneRigRArmDigit33
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit41
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit41/StoneRigRArmDigit42
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit41/StoneRigRArmDigit42/StoneRigRArmDigit43
+        weight: 1
+      - path: StoneRigLLegPlatform
+        weight: 1
+      - path: StoneRigRLegPlatform
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: GetHit1
+      takeName: Take 001
+      firstFrame: 601
+      lastFrame: 622
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: StoneGolem
+        weight: 1
+      - path: StoneGolem/StoneGolem(Body)
+        weight: 1
+      - path: StoneGolem/StoneGolem(BodyStones)
+        weight: 1
+      - path: StoneGolem/StoneGolem(Branch)
+        weight: 1
+      - path: StoneGolem/StoneGolem(HandStones)
+        weight: 1
+      - path: StoneGolem/StoneGolem(Head)
+        weight: 1
+      - path: StoneGolem/StoneGolem(Jaw)
+        weight: 1
+      - path: StoneGolem/StoneGolem(LegStones)
+        weight: 1
+      - path: StoneGolem/StoneGolem(ShoulderStone)
+        weight: 1
+      - path: StoneRig
+        weight: 1
+      - path: StoneRigHub
+        weight: 1
+      - path: StoneRigHub/StoneRigLLegThigh
+        weight: 1
+      - path: StoneRigHub/StoneRigLLegThigh/StoneRigLLegShin
+        weight: 1
+      - path: StoneRigHub/StoneRigLLegThigh/StoneRigLLegShin/StoneRigLLegFoot
+        weight: 1
+      - path: StoneRigHub/StoneRigRLegThigh
+        weight: 1
+      - path: StoneRigHub/StoneRigRLegThigh/StoneRigRLegShin
+        weight: 1
+      - path: StoneRigHub/StoneRigRLegThigh/StoneRigRLegShin/StoneRigRLegFoot
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit11
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit11/StoneRigLArmDigit12
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit21
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit21/StoneRigLArmDigit22
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit21/StoneRigLArmDigit22/StoneRigLArmDigit23
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit31
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit31/StoneRigLArmDigit32
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit31/StoneRigLArmDigit32/StoneRigLArmDigit33
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit41
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit41/StoneRigLArmDigit42
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit41/StoneRigLArmDigit42/StoneRigLArmDigit43
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigNeck
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigNeck/StoneRigHead
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigNeck/StoneRigHead/StoneRigJaw
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit11
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit11/StoneRigRArmDigit12
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit21
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit21/StoneRigRArmDigit22
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit21/StoneRigRArmDigit22/StoneRigRArmDigit23
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit31
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit31/StoneRigRArmDigit32
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit31/StoneRigRArmDigit32/StoneRigRArmDigit33
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit41
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit41/StoneRigRArmDigit42
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit41/StoneRigRArmDigit42/StoneRigRArmDigit43
+        weight: 1
+      - path: StoneRigLLegPlatform
+        weight: 1
+      - path: StoneRigRLegPlatform
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: GetHit2
+      takeName: Take 001
+      firstFrame: 623
+      lastFrame: 657
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: StoneGolem
+        weight: 1
+      - path: StoneGolem/StoneGolem(Body)
+        weight: 1
+      - path: StoneGolem/StoneGolem(BodyStones)
+        weight: 1
+      - path: StoneGolem/StoneGolem(Branch)
+        weight: 1
+      - path: StoneGolem/StoneGolem(HandStones)
+        weight: 1
+      - path: StoneGolem/StoneGolem(Head)
+        weight: 1
+      - path: StoneGolem/StoneGolem(Jaw)
+        weight: 1
+      - path: StoneGolem/StoneGolem(LegStones)
+        weight: 1
+      - path: StoneGolem/StoneGolem(ShoulderStone)
+        weight: 1
+      - path: StoneRig
+        weight: 1
+      - path: StoneRigHub
+        weight: 1
+      - path: StoneRigHub/StoneRigLLegThigh
+        weight: 1
+      - path: StoneRigHub/StoneRigLLegThigh/StoneRigLLegShin
+        weight: 1
+      - path: StoneRigHub/StoneRigLLegThigh/StoneRigLLegShin/StoneRigLLegFoot
+        weight: 1
+      - path: StoneRigHub/StoneRigRLegThigh
+        weight: 1
+      - path: StoneRigHub/StoneRigRLegThigh/StoneRigRLegShin
+        weight: 1
+      - path: StoneRigHub/StoneRigRLegThigh/StoneRigRLegShin/StoneRigRLegFoot
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit11
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit11/StoneRigLArmDigit12
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit21
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit21/StoneRigLArmDigit22
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit21/StoneRigLArmDigit22/StoneRigLArmDigit23
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit31
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit31/StoneRigLArmDigit32
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit31/StoneRigLArmDigit32/StoneRigLArmDigit33
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit41
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit41/StoneRigLArmDigit42
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit41/StoneRigLArmDigit42/StoneRigLArmDigit43
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigNeck
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigNeck/StoneRigHead
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigNeck/StoneRigHead/StoneRigJaw
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit11
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit11/StoneRigRArmDigit12
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit21
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit21/StoneRigRArmDigit22
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit21/StoneRigRArmDigit22/StoneRigRArmDigit23
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit31
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit31/StoneRigRArmDigit32
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit31/StoneRigRArmDigit32/StoneRigRArmDigit33
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit41
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit41/StoneRigRArmDigit42
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit41/StoneRigRArmDigit42/StoneRigRArmDigit43
+        weight: 1
+      - path: StoneRigLLegPlatform
+        weight: 1
+      - path: StoneRigRLegPlatform
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: Death1
+      takeName: Take 001
+      firstFrame: 658
+      lastFrame: 694
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: StoneGolem
+        weight: 1
+      - path: StoneGolem/StoneGolem(Body)
+        weight: 1
+      - path: StoneGolem/StoneGolem(BodyStones)
+        weight: 1
+      - path: StoneGolem/StoneGolem(Branch)
+        weight: 1
+      - path: StoneGolem/StoneGolem(HandStones)
+        weight: 1
+      - path: StoneGolem/StoneGolem(Head)
+        weight: 1
+      - path: StoneGolem/StoneGolem(Jaw)
+        weight: 1
+      - path: StoneGolem/StoneGolem(LegStones)
+        weight: 1
+      - path: StoneGolem/StoneGolem(ShoulderStone)
+        weight: 1
+      - path: StoneRig
+        weight: 1
+      - path: StoneRigHub
+        weight: 1
+      - path: StoneRigHub/StoneRigLLegThigh
+        weight: 1
+      - path: StoneRigHub/StoneRigLLegThigh/StoneRigLLegShin
+        weight: 1
+      - path: StoneRigHub/StoneRigLLegThigh/StoneRigLLegShin/StoneRigLLegFoot
+        weight: 1
+      - path: StoneRigHub/StoneRigRLegThigh
+        weight: 1
+      - path: StoneRigHub/StoneRigRLegThigh/StoneRigRLegShin
+        weight: 1
+      - path: StoneRigHub/StoneRigRLegThigh/StoneRigRLegShin/StoneRigRLegFoot
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit11
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit11/StoneRigLArmDigit12
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit21
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit21/StoneRigLArmDigit22
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit21/StoneRigLArmDigit22/StoneRigLArmDigit23
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit31
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit31/StoneRigLArmDigit32
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit31/StoneRigLArmDigit32/StoneRigLArmDigit33
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit41
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit41/StoneRigLArmDigit42
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit41/StoneRigLArmDigit42/StoneRigLArmDigit43
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigNeck
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigNeck/StoneRigHead
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigNeck/StoneRigHead/StoneRigJaw
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit11
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit11/StoneRigRArmDigit12
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit21
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit21/StoneRigRArmDigit22
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit21/StoneRigRArmDigit22/StoneRigRArmDigit23
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit31
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit31/StoneRigRArmDigit32
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit31/StoneRigRArmDigit32/StoneRigRArmDigit33
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit41
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit41/StoneRigRArmDigit42
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit41/StoneRigRArmDigit42/StoneRigRArmDigit43
+        weight: 1
+      - path: StoneRigLLegPlatform
+        weight: 1
+      - path: StoneRigRLegPlatform
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: Death2
+      takeName: Take 001
+      firstFrame: 696
+      lastFrame: 738
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: StoneGolem
+        weight: 1
+      - path: StoneGolem/StoneGolem(Body)
+        weight: 1
+      - path: StoneGolem/StoneGolem(BodyStones)
+        weight: 1
+      - path: StoneGolem/StoneGolem(Branch)
+        weight: 1
+      - path: StoneGolem/StoneGolem(HandStones)
+        weight: 1
+      - path: StoneGolem/StoneGolem(Head)
+        weight: 1
+      - path: StoneGolem/StoneGolem(Jaw)
+        weight: 1
+      - path: StoneGolem/StoneGolem(LegStones)
+        weight: 1
+      - path: StoneGolem/StoneGolem(ShoulderStone)
+        weight: 1
+      - path: StoneRig
+        weight: 1
+      - path: StoneRigHub
+        weight: 1
+      - path: StoneRigHub/StoneRigLLegThigh
+        weight: 1
+      - path: StoneRigHub/StoneRigLLegThigh/StoneRigLLegShin
+        weight: 1
+      - path: StoneRigHub/StoneRigLLegThigh/StoneRigLLegShin/StoneRigLLegFoot
+        weight: 1
+      - path: StoneRigHub/StoneRigRLegThigh
+        weight: 1
+      - path: StoneRigHub/StoneRigRLegThigh/StoneRigRLegShin
+        weight: 1
+      - path: StoneRigHub/StoneRigRLegThigh/StoneRigRLegShin/StoneRigRLegFoot
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit11
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit11/StoneRigLArmDigit12
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit21
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit21/StoneRigLArmDigit22
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit21/StoneRigLArmDigit22/StoneRigLArmDigit23
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit31
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit31/StoneRigLArmDigit32
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit31/StoneRigLArmDigit32/StoneRigLArmDigit33
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit41
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit41/StoneRigLArmDigit42
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigLArmCollarbone/StoneRigLArmShoulder/StoneRigLArmForearm1/StoneRigLArmForearm2/StoneRigLArmPalm/StoneRigLArmDigit41/StoneRigLArmDigit42/StoneRigLArmDigit43
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigNeck
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigNeck/StoneRigHead
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigNeck/StoneRigHead/StoneRigJaw
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit11
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit11/StoneRigRArmDigit12
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit21
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit21/StoneRigRArmDigit22
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit21/StoneRigRArmDigit22/StoneRigRArmDigit23
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit31
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit31/StoneRigRArmDigit32
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit31/StoneRigRArmDigit32/StoneRigRArmDigit33
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit41
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit41/StoneRigRArmDigit42
+        weight: 1
+      - path: StoneRigHub/StoneRigXbone/StoneRigSpine/StoneRigChest/StoneRigRArmCollarbone/StoneRigRArmShoulder/StoneRigRArmForearm1/StoneRigRArmForearm2/StoneRigRArmPalm/StoneRigRArmDigit41/StoneRigRArmDigit42/StoneRigRArmDigit43
+        weight: 1
+      - path: StoneRigLLegPlatform
+        weight: 1
+      - path: StoneRigRLegPlatform
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

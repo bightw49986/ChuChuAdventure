@@ -1,0 +1,1004 @@
+fileFormatVersion: 2
+guid: feed0247613bcab47b0957e7ede65843
+timeCreated: 1459419694
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: (Rig)IceGolem
+    100002: (Rig)IceGolemChest
+    100004: (Rig)IceGolemCrest
+    100006: (Rig)IceGolemFist(L)
+    100008: (Rig)IceGolemFist(R)
+    100010: (Rig)IceGolemFoot(L)
+    100012: (Rig)IceGolemFoot(R)
+    100014: (Rig)IceGolemHand(L)
+    100016: (Rig)IceGolemHand(R)
+    100018: (Rig)IceGolemHead
+    100020: (Rig)IceGolemLeg(L)
+    100022: (Rig)IceGolemLeg(R)
+    100024: (Rig)IceGolemPalm(L)
+    100026: (Rig)IceGolemPalm(R)
+    100028: //RootNode
+    100030: IceGolem(Body)
+    100032: IceGolem(Fists)
+    100034: IceGolem(Foots)
+    100036: IceGolem(Hands)
+    100038: IceGolem(Head)
+    100040: IceGolem(Legs)
+    100042: IceGolem(Mesh)
+    400000: (Rig)IceGolem
+    400002: (Rig)IceGolemChest
+    400004: (Rig)IceGolemCrest
+    400006: (Rig)IceGolemFist(L)
+    400008: (Rig)IceGolemFist(R)
+    400010: (Rig)IceGolemFoot(L)
+    400012: (Rig)IceGolemFoot(R)
+    400014: (Rig)IceGolemHand(L)
+    400016: (Rig)IceGolemHand(R)
+    400018: (Rig)IceGolemHead
+    400020: (Rig)IceGolemLeg(L)
+    400022: (Rig)IceGolemLeg(R)
+    400024: (Rig)IceGolemPalm(L)
+    400026: (Rig)IceGolemPalm(R)
+    400028: //RootNode
+    400030: IceGolem(Body)
+    400032: IceGolem(Fists)
+    400034: IceGolem(Foots)
+    400036: IceGolem(Hands)
+    400038: IceGolem(Head)
+    400040: IceGolem(Legs)
+    400042: IceGolem(Mesh)
+    4300000: IceGolem(Body)
+    4300002: IceGolem(Head)
+    4300004: IceGolem(Hands)
+    4300006: IceGolem(Fists)
+    4300008: IceGolem(Legs)
+    4300010: IceGolem(Foots)
+    7400000: Idle1
+    7400002: Idle2
+    7400004: Idle3
+    7400006: Walk
+    7400008: Attack1
+    7400010: Attack2
+    7400012: Attack3
+    7400014: Jump
+    7400016: GetHit1
+    7400018: GetHit2
+    7400020: Death1
+    7400022: Death2
+    9500000: //RootNode
+    13700000: IceGolem(Body)
+    13700002: IceGolem(Fists)
+    13700004: IceGolem(Foots)
+    13700006: IceGolem(Hands)
+    13700008: IceGolem(Head)
+    13700010: IceGolem(Legs)
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle1
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 81
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: (Rig)IceGolem
+        weight: 1
+      - path: (Rig)IceGolemChest
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemCrest
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemFoot(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemFoot(L)/(Rig)IceGolemLeg(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemFoot(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemFoot(R)/(Rig)IceGolemLeg(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(L)/(Rig)IceGolemPalm(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(L)/(Rig)IceGolemPalm(L)/(Rig)IceGolemFist(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(R)/(Rig)IceGolemPalm(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(R)/(Rig)IceGolemPalm(R)/(Rig)IceGolemFist(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHead
+        weight: 1
+      - path: IceGolem(Mesh)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Body)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Fists)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Foots)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Hands)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Head)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Legs)
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: Idle2
+      takeName: Take 001
+      firstFrame: 82
+      lastFrame: 142
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: (Rig)IceGolem
+        weight: 1
+      - path: (Rig)IceGolemChest
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemCrest
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemFoot(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemFoot(L)/(Rig)IceGolemLeg(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemFoot(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemFoot(R)/(Rig)IceGolemLeg(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(L)/(Rig)IceGolemPalm(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(L)/(Rig)IceGolemPalm(L)/(Rig)IceGolemFist(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(R)/(Rig)IceGolemPalm(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(R)/(Rig)IceGolemPalm(R)/(Rig)IceGolemFist(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHead
+        weight: 1
+      - path: IceGolem(Mesh)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Body)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Fists)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Foots)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Hands)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Head)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Legs)
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: Idle3
+      takeName: Take 001
+      firstFrame: 143
+      lastFrame: 240
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: (Rig)IceGolem
+        weight: 1
+      - path: (Rig)IceGolemChest
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemCrest
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemFoot(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemFoot(L)/(Rig)IceGolemLeg(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemFoot(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemFoot(R)/(Rig)IceGolemLeg(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(L)/(Rig)IceGolemPalm(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(L)/(Rig)IceGolemPalm(L)/(Rig)IceGolemFist(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(R)/(Rig)IceGolemPalm(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(R)/(Rig)IceGolemPalm(R)/(Rig)IceGolemFist(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHead
+        weight: 1
+      - path: IceGolem(Mesh)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Body)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Fists)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Foots)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Hands)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Head)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Legs)
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: Walk
+      takeName: Take 001
+      firstFrame: 241
+      lastFrame: 273
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: (Rig)IceGolem
+        weight: 1
+      - path: (Rig)IceGolemChest
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemCrest
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemFoot(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemFoot(L)/(Rig)IceGolemLeg(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemFoot(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemFoot(R)/(Rig)IceGolemLeg(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(L)/(Rig)IceGolemPalm(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(L)/(Rig)IceGolemPalm(L)/(Rig)IceGolemFist(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(R)/(Rig)IceGolemPalm(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(R)/(Rig)IceGolemPalm(R)/(Rig)IceGolemFist(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHead
+        weight: 1
+      - path: IceGolem(Mesh)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Body)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Fists)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Foots)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Hands)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Head)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Legs)
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: Attack1
+      takeName: Take 001
+      firstFrame: 274
+      lastFrame: 317
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: (Rig)IceGolem
+        weight: 1
+      - path: (Rig)IceGolemChest
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemCrest
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemFoot(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemFoot(L)/(Rig)IceGolemLeg(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemFoot(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemFoot(R)/(Rig)IceGolemLeg(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(L)/(Rig)IceGolemPalm(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(L)/(Rig)IceGolemPalm(L)/(Rig)IceGolemFist(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(R)/(Rig)IceGolemPalm(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(R)/(Rig)IceGolemPalm(R)/(Rig)IceGolemFist(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHead
+        weight: 1
+      - path: IceGolem(Mesh)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Body)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Fists)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Foots)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Hands)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Head)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Legs)
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: Attack2
+      takeName: Take 001
+      firstFrame: 318
+      lastFrame: 356
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: (Rig)IceGolem
+        weight: 1
+      - path: (Rig)IceGolemChest
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemCrest
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemFoot(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemFoot(L)/(Rig)IceGolemLeg(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemFoot(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemFoot(R)/(Rig)IceGolemLeg(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(L)/(Rig)IceGolemPalm(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(L)/(Rig)IceGolemPalm(L)/(Rig)IceGolemFist(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(R)/(Rig)IceGolemPalm(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(R)/(Rig)IceGolemPalm(R)/(Rig)IceGolemFist(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHead
+        weight: 1
+      - path: IceGolem(Mesh)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Body)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Fists)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Foots)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Hands)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Head)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Legs)
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: Attack3
+      takeName: Take 001
+      firstFrame: 357
+      lastFrame: 402
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: (Rig)IceGolem
+        weight: 1
+      - path: (Rig)IceGolemChest
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemCrest
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemFoot(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemFoot(L)/(Rig)IceGolemLeg(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemFoot(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemFoot(R)/(Rig)IceGolemLeg(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(L)/(Rig)IceGolemPalm(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(L)/(Rig)IceGolemPalm(L)/(Rig)IceGolemFist(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(R)/(Rig)IceGolemPalm(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(R)/(Rig)IceGolemPalm(R)/(Rig)IceGolemFist(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHead
+        weight: 1
+      - path: IceGolem(Mesh)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Body)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Fists)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Foots)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Hands)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Head)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Legs)
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: Jump
+      takeName: Take 001
+      firstFrame: 403
+      lastFrame: 437
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: (Rig)IceGolem
+        weight: 1
+      - path: (Rig)IceGolemChest
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemCrest
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemFoot(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemFoot(L)/(Rig)IceGolemLeg(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemFoot(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemFoot(R)/(Rig)IceGolemLeg(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(L)/(Rig)IceGolemPalm(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(L)/(Rig)IceGolemPalm(L)/(Rig)IceGolemFist(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(R)/(Rig)IceGolemPalm(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(R)/(Rig)IceGolemPalm(R)/(Rig)IceGolemFist(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHead
+        weight: 1
+      - path: IceGolem(Mesh)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Body)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Fists)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Foots)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Hands)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Head)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Legs)
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: GetHit1
+      takeName: Take 001
+      firstFrame: 438
+      lastFrame: 455
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: (Rig)IceGolem
+        weight: 1
+      - path: (Rig)IceGolemChest
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemCrest
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemFoot(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemFoot(L)/(Rig)IceGolemLeg(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemFoot(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemFoot(R)/(Rig)IceGolemLeg(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(L)/(Rig)IceGolemPalm(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(L)/(Rig)IceGolemPalm(L)/(Rig)IceGolemFist(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(R)/(Rig)IceGolemPalm(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(R)/(Rig)IceGolemPalm(R)/(Rig)IceGolemFist(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHead
+        weight: 1
+      - path: IceGolem(Mesh)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Body)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Fists)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Foots)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Hands)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Head)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Legs)
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: GetHit2
+      takeName: Take 001
+      firstFrame: 456
+      lastFrame: 476
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: (Rig)IceGolem
+        weight: 1
+      - path: (Rig)IceGolemChest
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemCrest
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemFoot(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemFoot(L)/(Rig)IceGolemLeg(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemFoot(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemFoot(R)/(Rig)IceGolemLeg(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(L)/(Rig)IceGolemPalm(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(L)/(Rig)IceGolemPalm(L)/(Rig)IceGolemFist(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(R)/(Rig)IceGolemPalm(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(R)/(Rig)IceGolemPalm(R)/(Rig)IceGolemFist(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHead
+        weight: 1
+      - path: IceGolem(Mesh)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Body)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Fists)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Foots)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Hands)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Head)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Legs)
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: Death1
+      takeName: Take 001
+      firstFrame: 477
+      lastFrame: 526
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: (Rig)IceGolem
+        weight: 1
+      - path: (Rig)IceGolemChest
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemCrest
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemFoot(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemFoot(L)/(Rig)IceGolemLeg(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemFoot(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemFoot(R)/(Rig)IceGolemLeg(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(L)/(Rig)IceGolemPalm(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(L)/(Rig)IceGolemPalm(L)/(Rig)IceGolemFist(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(R)/(Rig)IceGolemPalm(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(R)/(Rig)IceGolemPalm(R)/(Rig)IceGolemFist(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHead
+        weight: 1
+      - path: IceGolem(Mesh)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Body)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Fists)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Foots)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Hands)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Head)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Legs)
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: Death2
+      takeName: Take 001
+      firstFrame: 528
+      lastFrame: 598
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: (Rig)IceGolem
+        weight: 1
+      - path: (Rig)IceGolemChest
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemCrest
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemFoot(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemFoot(L)/(Rig)IceGolemLeg(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemFoot(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemFoot(R)/(Rig)IceGolemLeg(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(L)/(Rig)IceGolemPalm(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(L)/(Rig)IceGolemPalm(L)/(Rig)IceGolemFist(L)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(R)/(Rig)IceGolemPalm(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHand(R)/(Rig)IceGolemPalm(R)/(Rig)IceGolemFist(R)
+        weight: 1
+      - path: (Rig)IceGolemChest/(Rig)IceGolemHead
+        weight: 1
+      - path: IceGolem(Mesh)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Body)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Fists)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Foots)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Hands)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Head)
+        weight: 1
+      - path: IceGolem(Mesh)/IceGolem(Legs)
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
