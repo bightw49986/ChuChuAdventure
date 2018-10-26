@@ -4,19 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - GCPoint
   - WP
-  - WanderPoint
-  - WanderPoint1
-  - WanderPoint2
-  - WanderPoint3
-  - WanderPoint4
-  - WanderPoint5
-  - WanderPoint6
-  - WanderPoint7
-  - WanderPoint8
   - Pickup
-  - Obstacle
+  - Npc
   layers:
   - Default
   - TransparentFX

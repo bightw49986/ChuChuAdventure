@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class IKController : MonoBehaviour
 {
-
-
     [Header("Conditions")]
     [SerializeField] [Tooltip("要不要調膝蓋")] bool bAdjustCalf;
     [SerializeField] [Tooltip("要不要調骨盆")] bool bAdjustPelvis;
