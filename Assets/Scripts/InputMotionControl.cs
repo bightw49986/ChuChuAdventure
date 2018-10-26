@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public partial class InputMotionController : MonoBehaviour 
+public partial class InputMotionController : MonoBehaviour
 {
     void Awake()
     {
@@ -30,14 +30,13 @@ public partial class InputMotionController : MonoBehaviour
         GetInput();
         CalcuelateDirections();
         CalcuelateForward();
-        //CalcuelateGroundAngle();
         Turn();
         Dash();
     }
 
     void OnDrawGizmos()
     {
-        if(bDrawDebugLines)
+        if (bDrawDebugLines)
         {
             Gizmos.color = bGrounded ? Color.cyan : Color.white;
             Gizmos.DrawWireSphere(groundHitInfo.point, 0.1f);

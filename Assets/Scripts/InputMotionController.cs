@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
+[RequireComponent(typeof(Player))]
 public partial class InputMotionController : MonoBehaviour
 {
     Camera m_cam;
@@ -19,19 +20,16 @@ public partial class InputMotionController : MonoBehaviour
     public string DASH_AXIS = "Dash";
 
 
-    float m_fVInput, m_fHInput, m_fJInput, m_fDInput;
+    public static float m_fVInput, m_fHInput, m_fJInput, m_fDInput, m_fLAInput, m_fHAInput;
     float m_fVInputAbs, m_fHInputAbs, m_fMoveInput;
 
     [Header("Conditions")]
-    public bool bCanMove = true;
-    public bool bCanDash = true;
-    public bool bCanJump = true;
-    public bool bGrounded;
+    public static bool bGrounded;
 
     [Header("Move Settings")]
     [Tooltip("起步時的速度")]public float fStartSpeed = 3f;
     [Tooltip("全速前進的速度")] public float fFullSpeed = 6f;
-    [Tooltip("目前的速度")] float m_fMoveSpeed;
+    [Tooltip("目前的速度")] public static float m_fMoveSpeed;
     [Tooltip("順移位移")] public float fDashOffset = 4f;
     [Tooltip("瞬移冷卻時間")] public float fDashCD = 0.5f;
     [Tooltip("跳躍速度")] public Vector3 vJumpVel = new Vector3(0, 10, 0);
@@ -39,7 +37,7 @@ public partial class InputMotionController : MonoBehaviour
     [Tooltip("用來看現在的移動方向")]Vector3 m_vForward;
 
     [Header("Turn Settings")]
-    [Tooltip("旋轉到指定方向所需時間")][Range(0,1)] public float fTurnSpeed = 0.38f;
+    [Tooltip("旋轉到指定方向所需時間")] [Range(0, 1)] public float fTurnSpeed = 0.38f;
     [Tooltip("目標旋轉量的四元數")] Quaternion m_qTargetRotation;
 
     [Header("Physic Settings")]
@@ -47,14 +45,14 @@ public partial class InputMotionController : MonoBehaviour
     [Tooltip("GroundCheck射線的長度")] float m_fGroundOffset;
     [Tooltip("地板的Layer")] public LayerMask groundLayer;
     [Tooltip("GroundCheck射線打到的點(沒打到的話會是(0,0,0))")] RaycastHit groundHitInfo;
-    //[Tooltip("可接受的地板夾角")] public float fMaxGroundAngle = 90f;
-    //[Tooltip("當前地板夾角")]float m_fGroundAngle;
     [Tooltip("Collider的中心點位置")] Vector3 m_vCenter;
 
     [Tooltip("畫面的正前方")] Vector3 m_vCamForward;
     [Tooltip("畫面的正右方")] Vector3 m_vCamRight;
     [Tooltip("畫面的右前方")] Vector3 m_vCamRightForward;
     [Tooltip("畫面的左前方")] Vector3 m_vCamLeftForward;
+
+
     /*
 ========FixedUpdate=======================================
     */
@@ -76,12 +74,11 @@ public partial class InputMotionController : MonoBehaviour
         {
             m_velocity.y = 0;
         }
-        if(bGrounded ==false)
+        if (bGrounded == false)
         {
             ApplyGravity();
         }
     }
-
 
     /// <summary>
     /// 施加重力
@@ -98,9 +95,9 @@ public partial class InputMotionController : MonoBehaviour
     /// </summary>
     void Move()
     {
-        if (bCanMove)
+        if (Player.bCanMove)
         {
-            m_fMoveSpeed =Mathf.Lerp(fStartSpeed, fFullSpeed, m_fMoveInput);
+            m_fMoveSpeed = Mathf.Lerp(fStartSpeed, fFullSpeed, m_fMoveInput);
             if (m_fVInputAbs > m_fDeadZone || m_fHInputAbs > m_fDeadZone) //有輸入且大於DeadZone
             {
                 Vector3 vel = m_vForward * m_fMoveSpeed * m_fMoveInput;
@@ -109,9 +106,12 @@ public partial class InputMotionController : MonoBehaviour
             }
             else
             {
-                //if(bCanDash ==true)
                 m_velocity.z = m_velocity.x = 0f;
             }
+        }
+        else
+        {
+            m_velocity.z = m_velocity.x = 0f;
         }
     }
 
@@ -120,7 +120,7 @@ public partial class InputMotionController : MonoBehaviour
     /// </summary>
     void Jump()
     {
-        if (m_fJInput > 0 && bGrounded) //如果按下跳躍且在地上，增加y Velocity
+        if (m_fJInput > 0 && bGrounded && Player.bCanJump) //如果按下跳躍且在地上，增加y Velocity
         {
             m_velocity.y = vJumpVel.y;
             StartCoroutine(OnPlayerJump());
@@ -137,6 +137,9 @@ public partial class InputMotionController : MonoBehaviour
             PlayerJumpStart();
         yield return new WaitForEndOfFrame();
         yield return new WaitUntil(() => bGrounded == true);
+        FSMGenerater_1022.AnimPlayer.SetTrigger("JumpEnd");
+        FSMGenerater_1022.sNextState = "Idle";
+        Player.bCanJump = true;
         OnPlayerJumpEnd();
     }
     /// <summary>
@@ -169,13 +172,43 @@ public partial class InputMotionController : MonoBehaviour
     /// </summary>
     void GetInput()
     {
-        m_fVInput = CrossPlatformInputManager.GetAxis(FORWARD_AXIS);
-        m_fVInputAbs = Mathf.Abs(m_fVInput);
-        m_fHInput = CrossPlatformInputManager.GetAxis(TURN_AXIS);
-        m_fHInputAbs = Mathf.Abs(m_fHInput);
-        m_fJInput = CrossPlatformInputManager.GetAxisRaw(JUMP_AXIS);
-        m_fDInput = CrossPlatformInputManager.GetAxisRaw(DASH_AXIS);
-        m_fMoveInput = Mathf.Clamp01(m_fVInputAbs + m_fHInputAbs);
+        if (Player.bBlockInput == false)
+        {
+            if (Player.bCanMove)
+            {
+                m_fVInput = CrossPlatformInputManager.GetAxis(FORWARD_AXIS);
+                m_fVInputAbs = Mathf.Abs(m_fVInput);
+                m_fHInput = CrossPlatformInputManager.GetAxis(TURN_AXIS);
+                m_fHInputAbs = Mathf.Abs(m_fHInput);
+                m_fMoveInput = Mathf.Clamp01(m_fVInputAbs + m_fHInputAbs);
+            }
+            else m_fVInput = m_fHInput = m_fVInputAbs= m_fHInputAbs = m_fMoveInput =0;
+            if (Player.bCanJump && bGrounded)
+            {
+                m_fJInput = CrossPlatformInputManager.GetAxisRaw("Jump");
+            }
+            else m_fJInput = 0;
+            if (Player.bCanDash)
+            {
+                m_fDInput = CrossPlatformInputManager.GetAxisRaw(DASH_AXIS);
+            }
+            else m_fDInput = 0;
+            //能夠攻擊時才能有效輸入
+            if (Player.bCanAttack)
+            {
+                m_fLAInput = CrossPlatformInputManager.GetAxisRaw("Fire1");
+                m_fHAInput = CrossPlatformInputManager.GetAxisRaw("Fire2");
+            }
+            else
+            {
+                m_fLAInput = m_fHAInput = 0;
+            }
+        }
+        else
+        {
+            m_fVInput = m_fHInput = m_fJInput = m_fDInput = m_fLAInput= m_fHAInput=0;
+        }
+        
     }
 
     /// <summary>
@@ -202,13 +235,13 @@ public partial class InputMotionController : MonoBehaviour
         {
             m_vForward = Vector3.Cross(transform.right, groundHitInfo.normal);
         }
-        if(bDrawDebugLines)
-        Debug.DrawLine(m_vCenter, m_vCenter + m_vForward, Color.green);
+        if (bDrawDebugLines)
+            Debug.DrawLine(m_vCenter, m_vCenter + m_vForward, Color.green);
     }
 
-    ///// <summary>
-    ///// 計算地板坡度
-    ///// </summary>
+    /// <summary>
+    /// 計算地板坡度
+    /// </summary>
     //void CalcuelateGroundAngle()
     //{
     //    if (bGrounded == false) 
@@ -226,7 +259,7 @@ public partial class InputMotionController : MonoBehaviour
     /// </summary>
     void Turn()
     {
-        if (m_fHInputAbs > m_fDeadZone&& m_fVInputAbs < m_fDeadZone) //處理左右旋轉
+        if (m_fHInputAbs > m_fDeadZone && m_fVInputAbs < m_fDeadZone) //處理左右旋轉
         {
             if (m_fHInput > 0f) //純向右轉
             {
@@ -237,7 +270,7 @@ public partial class InputMotionController : MonoBehaviour
                 m_qTargetRotation = Quaternion.LookRotation(-m_vCamRight, Vector3.up);
             }
         }
-       
+
         if (m_fVInputAbs > m_fDeadZone && m_fHInputAbs < m_fDeadZone) //處理前後旋轉
         {
             if (m_fVInput > 0f) //純向前轉
@@ -250,9 +283,9 @@ public partial class InputMotionController : MonoBehaviour
             }
         }
 
-        else if (m_fHInputAbs > m_fDeadZone && m_fVInputAbs> m_fDeadZone)
+        else if (m_fHInputAbs > m_fDeadZone && m_fVInputAbs > m_fDeadZone)
         {
-            if(m_fVInput > 0 && m_fHInput > 0f) //向右前轉
+            if (m_fVInput > 0 && m_fHInput > 0f) //向右前轉
             {
                 m_qTargetRotation = Quaternion.LookRotation(m_vCamRightForward, Vector3.up);
             }
@@ -277,7 +310,7 @@ public partial class InputMotionController : MonoBehaviour
     /// </summary>
     void Dash()
     {
-        if (m_fDInput > 0 && bCanDash)
+        if (m_fDInput > 0 && Player.bCanDash)
         {
             StartCoroutine(ExecuteDash(fDashCD));
         }
@@ -289,9 +322,9 @@ public partial class InputMotionController : MonoBehaviour
     /// <param name="fCoolDown">瞬移的冷卻時間</param>
     IEnumerator ExecuteDash(float fCoolDown)
     {
-        bCanDash = false;
-        m_rig.AddForce(transform.forward * fDashOffset * 50f,ForceMode.VelocityChange);
+        Player.bCanDash = false;
+        m_rig.AddForce(transform.forward * fDashOffset * 50f, ForceMode.VelocityChange);
         yield return new WaitForSeconds(fCoolDown);
-        bCanDash = true;
+        Player.bCanDash = true;
     }
 }
