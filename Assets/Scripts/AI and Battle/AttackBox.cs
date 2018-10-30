@@ -36,7 +36,7 @@ namespace BattleSystem
         EAttackerType AttackerType { get; set; }
 
         /// <summary>
-        /// 初始化身上每一個攻擊盒，實作上應在場景中找到他們的reference，呼叫他們的InitAttackBox(this)，然後把它們加到AttackBoxes
+        /// 初始化身上每一個攻擊盒，實作上應在子物件中找到他們的reference，呼叫他們的InitAttackBox(this)，然後把它們加到AttackBoxes
         /// </summary>
         void InitAttackBoxes();
 
@@ -90,24 +90,11 @@ namespace BattleSystem
         /// <value>傷害值</value>
         protected virtual float DamageThisHit { get; set; }
 
-
         /// <summary>
         /// 這個攻擊盒的Collider
         /// </summary>
         /// <value>Collider</value>
         protected Collider Collider { get;private set; }
-
-        /// <summary>
-        /// 這個攻擊盒的傷害種類，在Inspecter裡面拖曳設定
-        /// </summary>
-        /// <value>傷害種類</value>
-        [SerializeField] protected EAttackerType DamageType { get; set; }
-
-        /// <summary>
-        /// 這個攻擊盒的特效物件Prefab，在Inspecter裡面拖曳設定
-        /// </summary>
-        /// <value>擊中特效</value>
-        protected GameObject AttackFX { get; set; }
 
         /// <summary>
         /// 記錄這次攻擊已擊中的防禦盒，避免重複判定
@@ -166,7 +153,7 @@ namespace BattleSystem
         /*詳細說明
         舉例來說今天做一個新的獸人狂戰士AttackBox，繼承這個Class，然後他有特殊的傷害計算方式：如果宿主血量低於一半，傷害兩倍，就可以這樣寫：
 
-        public class NewLogicAttackBox : AttackBox
+
         {
             ...
             
@@ -188,14 +175,15 @@ namespace BattleSystem
         */
 
 
-        /// <summary> 
-        /// 當Disable時，反註冊攻擊資料更新的事件
-        /// </summary>
-        protected void OnDisable()
+        protected virtual void Update()
         {
-            Host.AttackInfoUpdate -= OnAttackInfoUpdate;
-            HittenBoxes.Clear();
+            if (Collider.enabled == false) //檢查若Collider沒有作用就關閉攻擊盒
+            {
+                Debug.Log( Host + " 的攻擊盒Collider關閉，關閉攻擊盒！");
+                enabled = false;
+            }
         }
+       
 
         /// <summary>
         /// 當碰撞發生時，呼叫傷害傳遞
@@ -203,7 +191,7 @@ namespace BattleSystem
         /// <param name="other">撞到的Collider</param>
         protected virtual void OnTriggerEnter(Collider other)
         {
-            PassDamage(other,DamageType);
+            PassDamage(other,Host.AttackerType);
         }
 
         /// <summary>
@@ -221,7 +209,7 @@ namespace BattleSystem
                 {
                     if (hitTarget.TakeDamageType.Contains(damageType)) //檢查這個受擊盒是否會受到這個攻擊盒傷害類型的傷害
                     {
-                        hitTarget.CalculateDamage(DamageThisHit); //萬事俱備，傷害判定發生
+                        hitTarget.OnDamageOccured(DamageThisHit); //萬事俱備，傷害判定發生
                         HittenBoxes.Add(hitTarget); //把這個受擊盒加到這次攻擊已判定過的List裡面，防止重複判定
                         if (m_fInterval != 0f) //若有設置重複判定的時間，則開始等待重複判定的Coroutine
                         {
@@ -246,5 +234,15 @@ namespace BattleSystem
                 HittenBoxes.Remove(boxToRemove);
             }
         }
+
+        /// <summary> 
+        /// 當Disable時，反註冊攻擊資料更新的事件
+        /// </summary>
+        protected void OnDisable()
+        {
+            Host.AttackInfoUpdate -= OnAttackInfoUpdate;
+            HittenBoxes.Clear();
+        }
+
     }
 }

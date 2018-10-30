@@ -7,27 +7,41 @@ namespace AISystem
 {
     public interface IAI_SimpleMove
     {
-        float fCurrentSpeed { get; set; } 
-        float fMaxSpeed { get; set; }
-        Vector3 vVelocity { get; set; }
-        Vector3 vMaxAcceleration { get; set; }
-        Vector3 vMaxVelocity { get; set; }
-        Vector3 vPositionNextFrame { get; set; }
-        bool bAnimated { get; set; }
-        bool bUseRootMotion { get; set; }
+        float Speed { get; set; } 
+        float MaxSpeed { get; set; }
+        float AngularSpeed { get; set; }
+        float MaxAngularSpeed { get; set; }
+
+        Vector3 Velocity { get; set; }
+        Vector3 MaxVelocity { get; set; }
+        Vector3 DeltaVelocity { get; set; }
+        Vector3 MaxDeltaVelocity { get; set; }
+        Vector3 PositionNextFrame { get; set; }
+
+        bool UseRootMotion { get; set; }
         void GetRootMotionSpeed();
     }
 
     public interface IAI_CollisionAvoid
     {
-        Transform tNearestObstacle { set; get; }
-        LayerMask CollisionLayer { set; get; }
-        float fProbeLength { set; get; }
-        float fDetectionRadius { set; get; }
-        float fDotLastFrame { set; get; }
+        Transform NearestObstacle { get; set; }
+        LayerMask CollisionLayer { get; set; }
+        float ProbeLength { get; set; }
+        float CollisionDetectRadius { get; set; }
+        float DotLastFrame { get; set; }
 
         bool DetectCollision();
-
         void AvoidCollision();
+    }
+
+    public interface IAI_MonsterBehavior
+    {
+        Transform Target { get; set; }
+        Vector3 TargetDirection { get; set; }
+        float TargetDistance { get; set; }
+
+        float IdleSpeed { get; set; }
+        float ChaseRadius { get; set; }
+        // ... 
     }
 }
