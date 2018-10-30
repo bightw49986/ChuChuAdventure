@@ -1,8 +1,11 @@
 ﻿<Properties StartupConfiguration="{8BDCE74E-FD35-6103-357F-1A0A314EA38A}|">
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/p90FSM/FSMGenerater_1022.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/AI and Battle/AttackBox.cs">
     <Files>
-      <File FileName="Assets/Scripts/p90FSM/FSMGenerater_1022.cs" Line="21" Column="77" />
+      <File FileName="Assets/Scripts/Character/Player.cs" Line="22" Column="29" />
+      <File FileName="Assets/Scripts/AI and Battle/AISystem.cs" Line="45" Column="16" />
+      <File FileName="Assets/Scripts/AI and Battle/AttackBox.cs" Line="230" Column="10" />
+      <File FileName="Assets/Scripts/AI and Battle/DefendBox.cs" Line="178" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
