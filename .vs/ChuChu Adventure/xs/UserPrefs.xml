@@ -1,11 +1,12 @@
 ﻿<Properties StartupConfiguration="{8BDCE74E-FD35-6103-357F-1A0A314EA38A}|">
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/AI and Battle/AttackBox.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="../WalkThrough/Assets/FSM Scripts/TestSlopeFSM.cs">
     <Files>
-      <File FileName="Assets/Scripts/Character/Player.cs" Line="22" Column="29" />
-      <File FileName="Assets/Scripts/AI and Battle/AISystem.cs" Line="45" Column="16" />
-      <File FileName="Assets/Scripts/AI and Battle/AttackBox.cs" Line="230" Column="10" />
-      <File FileName="Assets/Scripts/AI and Battle/DefendBox.cs" Line="178" Column="1" />
+      <File FileName="Assets/Scripts/AI and Battle/AISystem.cs" Line="7" Column="2" />
+      <File FileName="Assets/Scripts/FSM/FSMState.cs" Line="29" Column="22" />
+      <File FileName="Assets/Scripts/FSM/FSMSystem.cs" Line="103" Column="9" />
+      <File FileName="Assets/Scripts/AI and Battle/BattleData.cs" Line="76" Column="26" />
+      <File FileName="../WalkThrough/Assets/FSM Scripts/TestSlopeFSM.cs" Line="4" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

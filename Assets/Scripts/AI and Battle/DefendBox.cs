@@ -50,7 +50,7 @@ namespace BattleSystem
         /// 強韌值在歸零或是沒有受到傷害幾秒後會開始恢復
         /// </summary>
         /// <value>不受傷害的秒數</value>
-        float StartRecoverTime { get; set; }
+        float RecoverTime { get; set; }
 
         /// <summary>
         /// 開始恢復後，每秒恢復多少強韌值
@@ -165,6 +165,12 @@ namespace BattleSystem
         {
 
         }
+
+        public void InitDefendBox(IDefender host)
+        {
+            Host = host;
+        }
+
 
         /// <summary>
         /// 根據攻擊盒那邊送來的傷害值計算傷害資料，判定最終扣血量
