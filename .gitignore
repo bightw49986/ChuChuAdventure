@@ -3,6 +3,7 @@
 # =============== #
 Temp/
 Library/
+Assets/Scenes/*.unity
 
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
