@@ -18,6 +18,12 @@ namespace BattleSystem
     public interface IAttacker
     {
         /// <summary>
+        /// 這個攻擊者的物件
+        /// </summary>
+        /// <value>GameObject</value>
+        GameObject GO { get; set; }
+
+        /// <summary>
         /// 這個攻擊者身上所有的攻擊盒
         /// </summary>
         /// <value>攻擊盒們</value>
@@ -43,13 +49,13 @@ namespace BattleSystem
         /// <summary>
         /// 當AtkValue被Set時觸發事件，通知所有註冊的攻擊盒更新資訊
         /// </summary>
-        event Action<float> AttackInfoUpdate;
+        event Action<float,AttackBox> AttackInfoUpdate;
 
         /// <summary>
         /// 應該被實作成AttackInfoUpdate的觸發器，並且塞在SetAtkValueToAttackBox裡面觸發
         /// </summary>
         /// <param name="fNewAttackValue">新的攻擊力</param>
-        void OnAttackInfoUpdate(float fNewAttackValue);
+        void OnAttackInfoUpdate(float fNewAttackValue, AttackBox attackBox);
 
         /// <summary>
         /// 給指定的攻擊盒設定新的攻擊力(實作記得防呆)
@@ -136,8 +142,9 @@ namespace BattleSystem
         /// 宿主攻擊力改變時，更新攻擊力
         /// </summary>
         /// <param name="fNewAttackValue">新的攻擊力</param>
-        protected void OnAttackInfoUpdate(float fNewAttackValue)
+        protected void OnAttackInfoUpdate(float fNewAttackValue,AttackBox attackBox)
         {
+            if (attackBox == this)
             DamageThisHit = fNewAttackValue;
         }
 
@@ -207,7 +214,7 @@ namespace BattleSystem
                 hitTarget = other.gameObject.GetComponent<DefendBox>();
                 if(HittenBoxes.Contains(hitTarget)==false) //檢查這個受擊盒不在這次攻擊已判定過的List裡面
                 {
-                    if (hitTarget.TakeDamageType.Contains(damageType)) //檢查這個受擊盒是否會受到這個攻擊盒傷害類型的傷害
+                    if (hitTarget.TakeDamageType.Contains(damageType) || hitTarget.Host.IsHarmless == false) //檢查這個受擊盒是否無敵，且會受到這個攻擊盒傷害類型的傷害
                     {
                         hitTarget.OnDamageOccured(DamageThisHit); //萬事俱備，傷害判定發生
                         HittenBoxes.Add(hitTarget); //把這個受擊盒加到這次攻擊已判定過的List裡面，防止重複判定
