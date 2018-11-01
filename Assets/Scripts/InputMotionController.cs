@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
-[RequireComponent(typeof(Player))]
+//[RequireComponent(typeof(Player))]
 public partial class InputMotionController : MonoBehaviour
 {
     Camera m_cam;
@@ -25,6 +25,7 @@ public partial class InputMotionController : MonoBehaviour
 
     [Header("Conditions")]
     public static bool bGrounded;
+    public static bool m_bJumpEnd;
 
     [Header("Move Settings")]
     [Tooltip("起步時的速度")]public float fStartSpeed = 3f;
@@ -65,6 +66,8 @@ public partial class InputMotionController : MonoBehaviour
         m_vCenter = transform.position + Vector3.up * m_fGroundOffset;
         Ray groundCheckRay = new Ray(m_vCenter, Vector3.down);
         bGrounded = Physics.Raycast(groundCheckRay, out groundHitInfo, m_fGroundOffset, groundLayer);
+        Ray jumpRay = new Ray(m_vCenter + Vector3.up, Vector3.down);
+        m_bJumpEnd = Physics.Raycast(jumpRay, out groundHitInfo, m_fGroundOffset*2.2f, groundLayer);
         if (bDrawDebugLines)
         {
             Vector3 vPredict = m_vCenter + Vector3.down * m_fGroundOffset;
@@ -137,9 +140,7 @@ public partial class InputMotionController : MonoBehaviour
             PlayerJumpStart();
         yield return new WaitForEndOfFrame();
         yield return new WaitUntil(() => bGrounded == true);
-        FSMGenerater_1022.AnimPlayer.SetTrigger("JumpEnd");
-        FSMGenerater_1022.sNextState = "Idle";
-        Player.bCanJump = true;
+        //Player.bCanJump = true;
         OnPlayerJumpEnd();
     }
     /// <summary>
