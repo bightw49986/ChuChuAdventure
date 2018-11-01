@@ -132,56 +132,6 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
---- !u!1102 &1102046176495391324
-AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: attack2Daggers
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: f9ad714bdb8172b4bb2aa17403b45466, type: 3}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
---- !u!1102 &1102154180060407104
-AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: attack2ForwardSwordShield_RM
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 258d25c542a18bb499c4ae7e3e7b9e91, type: 3}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
 --- !u!1102 &1102172797256053802
 AnimatorState:
   serializedVersion: 5
@@ -232,31 +182,6 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1102 &1102231536777856914
-AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: attack2ForwardDaggers_RM
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 85696ec38088cca4b8d41e2f81b9a4c8, type: 3}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
 --- !u!1102 &1102264528968051596
 AnimatorState:
   serializedVersion: 5
@@ -283,13 +208,13 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1102 &1102309411622089418
+--- !u!1102 &1102285063788054374
 AnimatorState:
   serializedVersion: 5
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: attack3ForwardSwordShield_RM
+  m_Name: getHitDaggers
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -302,32 +227,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: e887fb1afdd1e214f9b25deec227b060, type: 3}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
---- !u!1102 &1102366589488816804
-AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 2HitComboSwordShield
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: c92b96316c2786849afb0c46ce785c5b, type: 3}
+  m_Motion: {fileID: 7400000, guid: a7f51c394ff040d429b974cb71203de6, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -353,6 +253,31 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 99d7d8e93f2bc29409f54f4b8c347913, type: 3}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
+--- !u!1102 &1102417289168210526
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 3HitComboForwardSwordShield_RM
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 5ea95522e4ad612499f8a5a2e18d7146, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -408,13 +333,13 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1102 &1102526002889637768
+--- !u!1102 &1102513144449255456
 AnimatorState:
   serializedVersion: 5
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: 2HitComboDaggers
+  m_Name: deathSwordShield
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -427,7 +352,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 9c75b36703162f243adfd31dd032e9d7, type: 3}
+  m_Motion: {fileID: 7400000, guid: 2e08a1ff694c0d94d8f958be7138fd58, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -561,81 +486,6 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1102 &1102683651899114578
-AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: getHitSlingshot
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 96cdb853981f5bc4aa32fd3f2657a360, type: 3}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
---- !u!1102 &1102767141142384522
-AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: attack1ForwardSwordShield_RM
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: cb13b1682bdf1204d9b90dc4333a1aef, type: 3}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
---- !u!1102 &1102799147912811016
-AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: attack1SwordShield
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: eaa055f25dc10e740861bfe96437ef06, type: 3}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
 --- !u!1102 &1102945558631027906
 AnimatorState:
   serializedVersion: 5
@@ -671,67 +521,49 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1102264528968051596}
-    m_Position: {x: 576, y: -132, z: 0}
+    m_Position: {x: 576, y: -24, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102565397841696928}
-    m_Position: {x: 576, y: 12, z: 0}
+    m_Position: {x: 396, y: 228, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102445528514819092}
-    m_Position: {x: 204, y: 372, z: 0}
+    m_Position: {x: 408, y: 444, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102369578033763606}
-    m_Position: {x: 672, y: 372, z: 0}
+    m_Position: {x: 600, y: 384, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102446502087676348}
-    m_Position: {x: 444, y: 372, z: 0}
+    m_Position: {x: 228, y: 372, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102945558631027906}
-    m_Position: {x: 576, y: -192, z: 0}
+    m_Position: {x: 792, y: -24, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102579265086262016}
     m_Position: {x: 312, y: 84, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 1102683651899114578}
-    m_Position: {x: 408, y: 168, z: 0}
-  - serializedVersion: 1
     m_State: {fileID: 1102221518273197574}
-    m_Position: {x: 636, y: 168, z: 0}
+    m_Position: {x: 864, y: 132, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102586709408883210}
     m_Position: {x: -126.96008, y: -152.3753, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 1102309411622089418}
-    m_Position: {x: -120, y: -216, z: 0}
-  - serializedVersion: 1
     m_State: {fileID: 1102172797256053802}
-    m_Position: {x: 108, y: -156, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 1102154180060407104}
-    m_Position: {x: 108, y: -216, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 1102231536777856914}
-    m_Position: {x: -120, y: -336, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 1102046176495391324}
-    m_Position: {x: -120, y: -396, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 1102799147912811016}
-    m_Position: {x: 132, y: -336, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 1102767141142384522}
-    m_Position: {x: 132, y: -396, z: 0}
+    m_Position: {x: -132, y: -216, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102597273560469102}
-    m_Position: {x: 420, y: -336, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 1102366589488816804}
-    m_Position: {x: 420, y: -396, z: 0}
+    m_Position: {x: 108, y: -204, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102576123952704586}
-    m_Position: {x: -120, y: -492, z: 0}
+    m_Position: {x: -132, y: -276, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 1102526002889637768}
-    m_Position: {x: -120, y: -552, z: 0}
+    m_State: {fileID: 1102417289168210526}
+    m_Position: {x: 132, y: -276, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 1102513144449255456}
+    m_Position: {x: 924, y: 180, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 1102285063788054374}
+    m_Position: {x: 588, y: 132, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
