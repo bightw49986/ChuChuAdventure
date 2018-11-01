@@ -5,8 +5,11 @@ using UnityEngine;
 
 public abstract class StateSystem //所有狀態都來繼承它！ //PlayerFSMGenerater.sRecordInput = null改用NextState就好？
 {
-    //protected internal PlayerFSMGenerater playerFSMGenerater = new PlayerFSMGenerater();
-    //protected internal Player m_player = new Player();
+    public FSMGenerater FSM;
+    //public StateSystem(FSMGenerater fsm)
+    //{
+    //    FSM = fsm;
+    //}
     protected internal abstract void Transit();
     //從其他狀態轉換到這個狀態的期間的規範
     protected internal abstract void Do();
@@ -21,6 +24,10 @@ public abstract class StateSystem //所有狀態都來繼承它！ //PlayerFSMGe
 
 public class ChuChuIdleToRun : StateSystem
 {
+    //ChuChuIdleToRun(FSMGenerater fsm) : base(fsm)
+    //{
+        
+    //}
     //時間由其他狀態回Idle各自給定
     protected internal override void Transit()
     {

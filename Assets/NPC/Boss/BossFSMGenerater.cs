@@ -5,7 +5,11 @@ using UnityEngine;
 
 public sealed class BossFSMGenerater : NPCFSMGenerater
 {
-    Random rnd = new Random();
+    public void InitState(StateSystem state)
+    {
+        state.FSM = this;
+    }
+
     public sealed override bool AnyState()
     {
         if (BossStats.fHP <= 0f)
@@ -22,7 +26,8 @@ public sealed class BossFSMGenerater : NPCFSMGenerater
 
     public sealed override void AddState()
     {
-        SubscribeStateLibrary.Add("Idle", new BossIdle());
+        SubscribeStateLibrary.Add("Idle",new BossIdle());
+        InitState(SubscribeStateLibrary["Idle"]);
         SubscribeStateLibrary.Add("Walk", new BossWalk());
         SubscribeStateLibrary.Add("Jump", new BossJump());
         SubscribeStateLibrary.Add("Attack1", new BossAttack1());

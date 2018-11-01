@@ -8,7 +8,7 @@ public class NPCFSMGenerater : MonoBehaviour, FSMGenerater
     protected internal Dictionary<string, StateSystem> SubscribeStateLibrary = new Dictionary<string, StateSystem>();//狀態機dictionary
     protected internal bool bAllowTransit;//允許狀態轉換與否
     protected internal string sCurrentState;//現在的state(Key)
-    protected internal string sNextState;//準備上場的state(Key)，當轉換結束後改回null  
+    public string sNextState;//準備上場的state(Key)，當轉換結束後改回null  
 
     public virtual void Start()
     {

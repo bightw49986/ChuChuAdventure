@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerFSMGenerater : MonoBehaviour, FSMGenerater {
-    
     public static Animator AnimPlayer;//動畫播放機  
     private Dictionary<string, StateSystem> SubscribeStateLibrary = new Dictionary<string, StateSystem>();//狀態機dictionary
     private bool bAllowTransit;//允許狀態轉換與否

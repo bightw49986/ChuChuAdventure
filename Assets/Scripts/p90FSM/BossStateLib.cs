@@ -47,6 +47,10 @@ public class BossIdle : StateSystem
         //(antstate)be killed : death
 
         //Chase(Walk)
+        if (targetinsight)
+        {
+            
+        }
         //Attack1.2.3
         //Jump
         //Watch

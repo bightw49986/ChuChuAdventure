@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
-interface FSMGenerater {
-
+public interface FSMGenerater {
+    //int A { get; set; }
     //void Start()
     //{
     //    //取得Animator
