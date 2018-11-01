@@ -760,9 +760,8 @@ GameObject:
   - component: {fileID: 4535775812750268}
   - component: {fileID: 54132127459648762}
   - component: {fileID: 136334220783347110}
-  - component: {fileID: 114332743243130870}
   - component: {fileID: 95167086965253832}
-  - component: {fileID: 114994112218264800}
+  - component: {fileID: 114053243831616726}
   - component: {fileID: 114254877401906466}
   - component: {fileID: 114453318660055234}
   m_Layer: 11
@@ -2917,6 +2916,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114053243831616726
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1525632486331460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02a5716b7030b2e48ac6c7063763b2f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sState: 
 --- !u!114 &114254877401906466
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2935,7 +2946,7 @@ MonoBehaviour:
   JUMP_AXIS: Jump
   DASH_AXIS: Dash
   fStartSpeed: 0
-  fFullSpeed: 9
+  fFullSpeed: 6
   fDashOffset: 6
   fDashCD: 0.1
   vJumpVel: {x: 0, y: 8, z: 0}
@@ -2944,18 +2955,6 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 1792
---- !u!114 &114332743243130870
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1525632486331460}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eedecfd6422efff49921ca22a2816cff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sState: 
 --- !u!114 &114453318660055234
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2988,18 +2987,7 @@ MonoBehaviour:
   fLerpSmooth: 0.5
   slopeLayer:
     serializedVersion: 2
-    m_Bits: 1792
---- !u!114 &114994112218264800
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1525632486331460}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6572d10891fc7014c8e76d41c62962c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+    m_Bits: 1280
 --- !u!136 &136334220783347110
 CapsuleCollider:
   m_ObjectHideFlags: 1

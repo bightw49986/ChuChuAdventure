@@ -18,6 +18,7 @@ public partial class InputMotionController : MonoBehaviour
 
     void FixedUpdate()
     {
+        //Debug.LogError("bGrounded" + bGrounded);
         GroundCheck();
         Jump();
         Move();
