@@ -49,7 +49,6 @@ namespace CameraSystem
 
         [Header("Draw Debug Line")]
         [Tooltip("畫出目的地的視野金字塔")] public bool bDrawDesiredCollisionLines;
-        [Tooltip("畫出當前視野金塔")] public bool bDrawAdjustedCollisionLines;
         [Tooltip("畫出這一幀的目的地")] public bool bDrawDestinationThisFrame;
         [Tooltip("畫出上一幀的目的地")] public bool bDrawDestinationLastFrame;
 
@@ -66,14 +65,13 @@ namespace CameraSystem
         void OnTargetMove()
         {
             OrbitTarget();
+            ProcessZoom();
             CalculateDestination(m_Target);
-            RefreshCameraClipPoints(transform.position, transform.rotation, ref m_vAdjustedClipPoints);
             RefreshCameraClipPoints(m_vDest, transform.rotation, ref m_vDesiredClipPoints);
             CheckColliding(m_vTargetPos);
             AdjustDestination();
-            MoveToDestination();
-            ProcessZoom();
-            LookAtTarget(m_Target);
+            MoveToFinalDest();
+            LookAtTarget();
         }
 
         void OnDrawGizmos()

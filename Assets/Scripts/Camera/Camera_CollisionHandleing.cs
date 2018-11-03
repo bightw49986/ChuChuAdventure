@@ -7,7 +7,8 @@ namespace CameraSystem
     public partial class CameraController : MonoBehaviour
     {
         bool m_bColliding;
-        float m_fAdjustedRotationX, m_fOriginRotationX, m_fAdjustedDistance, m_fOriginTargetDistance;
+
+
         Vector3[] m_vAdjustedClipPoints, m_vDesiredClipPoints;
 
         void RefreshCameraClipPoints(Vector3 vCameraPosition, Quaternion qCameraRotation, ref Vector3[] vIntoArray)
@@ -52,14 +53,14 @@ namespace CameraSystem
             return false;
         }
 
-        float GetAdjustedDistanceFromTarget(Vector3 vTarget)
+        float GetAdjustedDistanceFromTarget(Vector3 vTarget, Vector3[] vClipPoints)
         {
             //有障礙物的話，回傳最短沒有障礙物的距離
 
             float fDistance = -1f;
-            for (int i = 0; i < m_vDesiredClipPoints.Length; i++)
+            for (int i = 0; i < vClipPoints.Length; i++)
             {
-                Vector3 vHitDirection = m_vDesiredClipPoints[i] - vTarget;
+                Vector3 vHitDirection = vClipPoints[i] - vTarget;
                 Ray ray = new Ray(vTarget, vHitDirection);
                 RaycastHit hitInfo;
                 if (Physics.Raycast(ray, out hitInfo, vHitDirection.magnitude, CollisionLayer))
@@ -82,45 +83,31 @@ namespace CameraSystem
 
         void CheckColliding(Vector3 vTargetPosition)
         {
-            if (CollisionDetectedAtClipPoints(m_vDesiredClipPoints, vTargetPosition) == true)
-            {
-                if (m_bColliding == false)
-                {
-                    OnObstacleDetected();
-                }
-                m_bColliding = true;
-
-            }
-            else
-            {
-                m_bColliding = false;
-            }
+            m_bColliding = CollisionDetectedAtClipPoints(m_vDesiredClipPoints, vTargetPosition);
         }
 
-        void OnObstacleDetected()
-        {
 
-            StartCoroutine(WaitForNotColliding());
-        }
-
-        IEnumerator WaitForNotColliding()
-        {
-            m_fOriginRotationX = fXRotation;
-            m_fOriginTargetDistance = fDistFromTarget;
-            yield return new WaitUntil(() => m_bColliding == false);
-            fXRotation = m_fOriginRotationX;
-            fDistFromTarget = m_fOriginTargetDistance;
-        }
 
         void AdjustDestination()
         {
-            if (m_bColliding == true)
+            if (m_bColliding == false)
             {
-                m_fAdjustedDistance = Mathf.Min(GetAdjustedDistanceFromTarget(m_vTargetPos), fMaxZoom);
-                m_fAdjustedRotationX = m_fAdjustedDistance >= fMinZoom
-                    ? Mathf.Clamp(fXRotation + 30f, fMinXRotation, fMaxXRotation)
-                    : fXRotation;
-                if (m_fAdjustedDistance < fMinZoom) m_fAdjustedDistance = fMinZoom;
+                m_vAdjustedDest = m_vDest;
+            }
+            else    
+            {
+                float fAdjustedDistance = Mathf.Min(GetAdjustedDistanceFromTarget(m_vTargetPos,m_vDesiredClipPoints), fMaxZoom);
+                float fAdjustedXRotation =m_fOriginXRotation;
+                if (fAdjustedDistance < fMinZoom) 
+                {
+                    float rate = 1 - (fMinZoom - fAdjustedDistance) / fMinZoom;
+                    fAdjustedDistance = fMinZoom;
+                    fAdjustedXRotation = Mathf.Lerp(m_fOriginXRotation, fMaxXRotation, rate);
+                }
+
+                Vector3 vNewDest = m_vTargetPos + Quaternion.Euler(fAdjustedXRotation, fYRotation, 0) * Vector3.back * fAdjustedDistance;
+
+                m_vAdjustedDest = vNewDest;
             }
         }
 

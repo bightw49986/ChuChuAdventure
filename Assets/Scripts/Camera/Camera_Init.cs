@@ -9,7 +9,7 @@ namespace CameraSystem
         Camera m_Cam;
         IMoveable m_Mover;
         Transform m_Player;
-        bool DRAWDESIRED, DRAWADJUSTED, DRAWDESTLAST, DRAWDESTTHIS;
+        bool DRAWDESIRED,DRAWDESTLAST, DRAWDESTTHIS;
 
         void InitCamera()
         {
@@ -36,12 +36,12 @@ namespace CameraSystem
             fXRotationSpeed *= Time.deltaTime;
             fYRotationSpeed *= Time.deltaTime;
             fSwitchTargetSpeed *= Time.deltaTime;
+
         }
 
         void InitDebugLines()
         {
             DRAWDESIRED = bDrawDesiredCollisionLines;
-            DRAWADJUSTED = bDrawAdjustedCollisionLines;
             DRAWDESTLAST = bDrawDestinationLastFrame;
             DRAWDESTTHIS = bDrawDestinationThisFrame;
         }
@@ -50,9 +50,6 @@ namespace CameraSystem
         {
             m_vAdjustedClipPoints = new Vector3[5];
             m_vDesiredClipPoints = new Vector3[5];
-            m_fOriginRotationX = fXRotation;
-            m_fOriginTargetDistance = fDistFromTarget;
-            RefreshCameraClipPoints(transform.position, transform.rotation, ref m_vAdjustedClipPoints);
             RefreshCameraClipPoints(m_vDest, transform.rotation, ref m_vDesiredClipPoints);
             gameObject.GetComponent<SphereCollider>().radius = fRadius;
         }
@@ -78,13 +75,7 @@ namespace CameraSystem
                     Debug.DrawLine(m_vTargetPos, m_vDesiredClipPoints[i], Color.green);
                 }
             }
-            if (DRAWADJUSTED)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    Debug.DrawLine(m_vTargetPos, m_vAdjustedClipPoints[i], Color.cyan);
-                }
-            }
+
             if (DRAWDESTTHIS)
             {
                 Gizmos.color = Color.red;
