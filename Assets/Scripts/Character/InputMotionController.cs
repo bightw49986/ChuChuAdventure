@@ -3,8 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
-//[RequireComponent(typeof(Player))]
-public partial class InputMotionController : MonoBehaviour
+public partial class InputMotionController : MonoBehaviour,IMoveable
 {
     Camera m_cam;
     Rigidbody m_rig;
@@ -157,11 +156,11 @@ public partial class InputMotionController : MonoBehaviour
     /// <summary>
     /// 做一個OnFixedUpdateDine事件確保Camera可以在Player物理運算完之後才做追蹤
     /// </summary>
-    public event Action FixedUpdateDone;
-    public virtual void OnFixedUpdateDone() //呼叫這個方法時，引發事件
+    public event Action Moved;
+    public virtual void OnMoved() //呼叫這個方法時，引發事件
     {
-        if (FixedUpdateDone != null) //若有該事件的註冊者，通知他們事件發生
-            FixedUpdateDone();
+        if (Moved != null) //若有該事件的註冊者，通知他們事件發生
+            Moved();
     }
 
     /*

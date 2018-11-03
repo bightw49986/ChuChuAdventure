@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public partial class InputMotionController : MonoBehaviour
+public partial class InputMotionController : MonoBehaviour,IMoveable
 {
     void Awake()
     {
@@ -18,12 +18,11 @@ public partial class InputMotionController : MonoBehaviour
 
     void FixedUpdate()
     {
-        //Debug.LogError("bGrounded" + bGrounded);
         GroundCheck();
         Jump();
         Move();
         m_rig.velocity = m_velocity;
-        OnFixedUpdateDone();
+        OnMoved();
     }
 
     void Update()

@@ -2969,7 +2969,7 @@ MonoBehaviour:
   bAdjustCalf: 1
   bAdjustPelvis: 1
   bSmoothAdjust: 1
-  bDrawDebugLines: 1
+  bDrawDebugLines: 0
   pelvis: {fileID: 4904052124677728}
   leftLeg: {fileID: 4901208387139842}
   leftCalf: {fileID: 4764500411573434}
