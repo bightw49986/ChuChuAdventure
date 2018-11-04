@@ -8,7 +8,7 @@ namespace CameraSystem
     {
         Transform m_Target;
         RaycastHit m_HitGround;
-        float m_fGroundDetection = 5f;
+        float m_fGroundDetection = 3f;
         Vector3 m_vTargetPos;
 
         public void SetTarget(Transform ta)

@@ -66,7 +66,7 @@ namespace CameraSystem
         {
             OrbitTarget();
             ProcessZoom();
-            CalculateDestination(m_Target);
+            CalculateDestination();
             RefreshCameraClipPoints(m_vDest, transform.rotation, ref m_vDesiredClipPoints);
             CheckColliding(m_vTargetPos);
             AdjustDestination();

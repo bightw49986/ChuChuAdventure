@@ -96,16 +96,16 @@ namespace CameraSystem
             }
             else    
             {
-                float fAdjustedDistance = Mathf.Min(GetAdjustedDistanceFromTarget(m_vTargetPos,m_vDesiredClipPoints), fMaxZoom);
-                float fAdjustedXRotation =m_fOriginXRotation;
+                fAdjustedDistance = Mathf.Min(GetAdjustedDistanceFromTarget(m_vTargetPos,m_vDesiredClipPoints), fMaxZoom);
+                fFinalXRotation =m_fOriginXRotation;
+                fFinalDist = fAdjustedDistance;
                 if (fAdjustedDistance < fMinZoom) 
                 {
                     float rate = 1 - (fMinZoom - fAdjustedDistance) / fMinZoom;
-                    fAdjustedDistance = fMinZoom;
-                    fAdjustedXRotation = Mathf.Lerp(m_fOriginXRotation, fMaxXRotation, rate);
+                    fFinalXRotation = Mathf.Lerp(m_fOriginXRotation, fMaxXRotation, rate);
+                    fFinalDist = Mathf.Lerp(fMinZoom, m_fOriginTargetDist, rate);
                 }
-
-                Vector3 vNewDest = m_vTargetPos + Quaternion.Euler(fAdjustedXRotation, fYRotation, 0) * Vector3.back * fAdjustedDistance;
+                Vector3 vNewDest = m_vTargetPos + Quaternion.Euler(fFinalXRotation, fYRotation, 0) * Vector3.back * fFinalDist;
 
                 m_vAdjustedDest = vNewDest;
             }

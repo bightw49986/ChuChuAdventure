@@ -1,11 +1,11 @@
 ﻿<Properties StartupConfiguration="{8BDCE74E-FD35-6103-357F-1A0A314EA38A}|">
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Camera/Camera_CollisionHandleing.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Camera/CameraController.cs">
     <Files>
-      <File FileName="Assets/Scripts/Camera/CameraController.cs" Line="45" Column="70" />
-      <File FileName="Assets/Scripts/Camera/Camera_SwitchTarget.cs" Line="14" Column="44" />
-      <File FileName="Assets/Scripts/Camera/Camera_Standard.cs" Line="45" Column="13" />
-      <File FileName="Assets/Scripts/Camera/Camera_CollisionHandleing.cs" Line="124" Column="24" />
+      <File FileName="Assets/Scripts/Camera/CameraController.cs" Line="74" Column="28" />
+      <File FileName="Assets/Scripts/Camera/Camera_SwitchTarget.cs" Line="11" Column="37" />
+      <File FileName="Assets/Scripts/Camera/Camera_Standard.cs" Line="48" Column="9" />
+      <File FileName="Assets/Scripts/Camera/Camera_CollisionHandleing.cs" Line="99" Column="17" />
       <File FileName="Assets/Scripts/Camera/Camera_Init.cs" Line="39" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>

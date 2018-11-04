@@ -9,6 +9,7 @@ namespace CameraSystem
         float m_fHInput, m_fVInput, m_fResetInput, m_fZoomInput;
         float m_fHInputAbs, m_fVInputAbs;
         float m_fOriginXRotation, m_fOriginTargetDist;
+        float fAdjustedDistance, fFinalDist, fFinalXRotation;
         Vector3 m_vDest;
         Vector3 m_vAdjustedDest;
         Vector3 m_vLastDest;
@@ -32,7 +33,7 @@ namespace CameraSystem
                 ResetRotation();
                 return;
             }
-            if (m_fVInputAbs > fTiltDeadZone && m_bColliding ==false)
+            if (m_fVInputAbs > fTiltDeadZone)
             {
                 fXRotation += -m_fVInput * fXRotationSpeed;
             }
@@ -41,18 +42,21 @@ namespace CameraSystem
             {
                 fYRotation += m_fHInput * fYRotationSpeed;
             }
-            m_fOriginXRotation = fXRotation = Mathf.Clamp(fXRotation, fMinXRotation, fMaxXRotation);
+            fXRotation = Mathf.Clamp(fXRotation, fMinXRotation, fMaxXRotation);
+            m_fOriginXRotation = m_bColliding &&fAdjustedDistance < fMinZoom ? fFinalXRotation: fXRotation;
         }
 
         void ProcessZoom()
         {
+
             fDistFromTarget += m_fZoomInput * fZoomSpeed;
-            m_fOriginTargetDist = fDistFromTarget = Mathf.Clamp(fDistFromTarget, fMinZoom, fMaxZoom);
+            fDistFromTarget = Mathf.Clamp(fDistFromTarget, fMinZoom, fMaxZoom);
+            m_fOriginTargetDist =m_bColliding ? fFinalDist: fDistFromTarget;           
         }
 
-        void CalculateDestination(Transform target)
+        void CalculateDestination()
         {
-            m_vTargetPos = GetTargetPos(target);
+            m_vTargetPos = GetTargetPos(m_Target);
             m_vDest = m_vTargetPos + Quaternion.Euler(m_fOriginXRotation, fYRotation, 0) * Vector3.back * m_fOriginTargetDist;
         }
 
