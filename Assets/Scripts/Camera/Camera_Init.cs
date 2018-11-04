@@ -48,7 +48,7 @@ namespace CameraSystem
 
         void InitCollisionHandler()
         {
-            m_vAdjustedClipPoints = new Vector3[5];
+            //m_vAdjustedClipPoints = new Vector3[5];
             m_vDesiredClipPoints = new Vector3[5];
             RefreshCameraClipPoints(m_vDest, transform.rotation, ref m_vDesiredClipPoints);
             gameObject.GetComponent<SphereCollider>().radius = fRadius;

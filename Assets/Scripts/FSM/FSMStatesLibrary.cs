@@ -14,7 +14,7 @@ namespace FSM
     public abstract class BasicIdle : FSMState
     {
 
-        float fIdleDuration;
+        //float fIdleDuration;
 
         protected BasicIdle(FSMSystem fsm) : base(fsm) { }
 
@@ -22,10 +22,10 @@ namespace FSM
 
         internal override void CheckConditions()
         {
-            if (m_FSM.stateTime >= fIdleDuration)
-            {
-                StartTransition(m_FSM.validStates[BasicFSMStates.Patrol]);
-            }
+            //if (m_FSM.stateTime >= fIdleDuration)
+            //{
+            //    StartTransition(m_FSM.validStates[BasicFSMStates.Patrol]);
+            //}
 
             //if (DetectPlayerInRange(m_FSM.m_AIData.Target))
             //{

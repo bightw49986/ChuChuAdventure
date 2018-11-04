@@ -8,8 +8,8 @@ namespace CameraSystem
     {
         bool m_bColliding;
 
-
-        Vector3[] m_vAdjustedClipPoints, m_vDesiredClipPoints;
+        Vector3[]  m_vDesiredClipPoints;
+        //Vector3[] m_vAdjustedClipPoints;
 
         void RefreshCameraClipPoints(Vector3 vCameraPosition, Quaternion qCameraRotation, ref Vector3[] vIntoArray)
         {
@@ -86,8 +86,6 @@ namespace CameraSystem
             m_bColliding = CollisionDetectedAtClipPoints(m_vDesiredClipPoints, vTargetPosition);
         }
 
-
-
         void AdjustDestination()
         {
             if (m_bColliding == false)
@@ -110,20 +108,6 @@ namespace CameraSystem
                 m_vAdjustedDest = vNewDest;
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         void TransparentObstacle(Collider collision)
         {
