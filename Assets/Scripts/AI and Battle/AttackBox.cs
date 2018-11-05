@@ -28,17 +28,9 @@ namespace BattleSystem
         /// </summary>
         /// <value>傷害值</value>
         protected virtual float DamageThisHit
-        {
-            get
-            {
-                return CalculateFinalDamage(m_fDamageThisHit);
-            }
-            set
-            {
-                m_fDamageThisHit = value;
-            }
-        }
+        {get { return CalculateFinalDamage(m_fDamageThisHit); } set {m_fDamageThisHit = value; } }
         float m_fDamageThisHit;
+
         /// <summary>
         /// 這個攻擊盒的Collider
         /// </summary>
@@ -57,7 +49,6 @@ namespace BattleSystem
         /// <value>間隔秒數，若 = 0 代表不允許重複判定</value>
         protected float Interval { get { return m_fInterval; } set { m_fInterval = value; } }
         private float m_fInterval;
-        private float _damageThisHit;
 
         protected virtual void Awake()
         {
@@ -88,7 +79,7 @@ namespace BattleSystem
             }
             Host.AttackInfoUpdate += OnAttackInfoUpdate;
             if (PrintLog)
-                print("攻擊盒端: " + name + "註冊傷害更新事件(宿主: " + Host.name + ")");
+                print("攻擊盒端: " + name + "開啟成功，註冊傷害更新事件(宿主: " + Host.name + ")");
         }
 
         /// <summary>

@@ -308,6 +308,7 @@ namespace BattleSystem
         void RecoverEndurance()
         {
             m_fRecoverTime = m_fRecoverTime > 0 ? m_fRecoverTime - Time.deltaTime : 0f;
+            if (m_fRecoverTime <= 0) Endurance = MaxEndurance;
         }
 
         IEnumerator HitInterval()
@@ -315,7 +316,7 @@ namespace BattleSystem
             IsHarmless = true;
             if (HitMessage)
             {
-                print("遭擊中，無敵 " + HarmlessTime + "秒");
+                print(gameObject.name +  "遭擊中，無敵 " + HarmlessTime + "秒");
             }
             yield return new WaitForSeconds(HarmlessTime);
             IsHarmless = false;
