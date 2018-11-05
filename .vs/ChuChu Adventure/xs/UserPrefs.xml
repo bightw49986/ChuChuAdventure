@@ -1,9 +1,13 @@
 ﻿<Properties StartupConfiguration="{8BDCE74E-FD35-6103-357F-1A0A314EA38A}|">
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Main GameLoop/ObjectPool.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Goblin.cs">
     <Files>
-      <File FileName="Assets/Scripts/Main GameLoop/ObjectPool.cs" Line="123" Column="96" />
-      <File FileName="../UnityLearning/5_Realm Rush/Assets/Scripts/PoolingGameObjectData.cs" Line="3" Column="1" />
+      <File FileName="Assets/Scripts/Character/InputMotionControl.cs" Line="27" Column="16" />
+      <File FileName="Assets/Scripts/AI and Battle/AttackBox.cs" Line="187" Column="22" />
+      <File FileName="Assets/Scripts/AI and Battle/BattleData.cs" Line="318" Column="44" />
+      <File FileName="Assets/Scripts/AI and Battle/DefendBox.cs" Line="25" Column="9" />
+      <File FileName="Assets/Scripts/Main Gameloop/ObjectPool.cs" Line="159" Column="50" />
+      <File FileName="Assets/Goblin.cs" Line="7" Column="14" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

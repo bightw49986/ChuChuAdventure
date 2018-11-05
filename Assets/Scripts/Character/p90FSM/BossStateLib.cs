@@ -2,21 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//public abstract class StateSystem //所有狀態都來繼承它！ //PlayerFSMGenerater.sRecordInput = null改用NextState就好？
-//{
-//    //protected internal PlayerFSMGenerater playerFSMGenerater = new PlayerFSMGenerater();
-//    //protected internal Player m_player = new Player();
-//    protected internal abstract void Transit();
-//    //從其他狀態轉換到這個狀態的期間的規範
-//    protected internal abstract void Do();
-//    //這裡寫執行狀態時該偵測的function或是改變的數值
-//    protected internal abstract void Check();
-//    //這裡偵測是否收到有效輸入按鍵或由被動觸發，而改變state
-//    protected internal abstract void Enter();
-//    //剛進來時定義好這個動作允不允許移動or攻擊or無敵狀態or跳躍(這部分單純看該動作給不給跳，跟ground check無關)
-//    protected internal abstract void Leave();
-//    //離開的時候要做的，通常是清空Do當中計算中的數值
-//}
 public class BossIdle : StateSystem
 {
     protected internal override void Transit()
@@ -47,9 +32,32 @@ public class BossIdle : StateSystem
         //(antstate)be killed : death
 
         //Chase(Walk)
+        //targetinsight but not in all 3 attacks' range
+        //also not too far way
+        if (true)
+        {
+            FSM.SNextState = "Walk";
+        }
         //Attack1.2.3
+        //in attack range 分別偵測, use if/else set the priority
+        //如果優先度三隻不一樣就調順序
+        if (true)
+        {
+            FSM.SNextState = "Attack1";
+            FSM.SNextState = "Attack2";
+            FSM.SNextState = "Attack3";
+        }
         //Jump
+        //If too far away then jump for a fixed distance toward/backward
+        if (true)
+        {
+            FSM.SNextState = "Jump";
+        }
         //Watch
+        if (bossStats.BCanTransform)
+        {
+            FSM.SNextState = "Watch";
+        }
     }
 }
 public class BossWalk : StateSystem
@@ -73,6 +81,10 @@ public class BossWalk : StateSystem
     protected internal override void Check()
     {
         //Idle
+        if(FSM.AnimPlayer.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+        {
+            FSM.SNextState = "Idle";
+        }
     }
 }
 public class BossJump : StateSystem
@@ -96,6 +108,10 @@ public class BossJump : StateSystem
     protected internal override void Check()
     {
         //Idle
+        if (FSM.AnimPlayer.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+        {
+            FSM.SNextState = "Idle";
+        }
     }
 }
 public class BossAttack1 : StateSystem
@@ -119,6 +135,10 @@ public class BossAttack1 : StateSystem
     protected internal override void Check()
     {
         //Idle
+        if (FSM.AnimPlayer.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+        {
+            FSM.SNextState = "Idle";
+        }
     }
 }
 public class BossAttack2 : StateSystem
@@ -142,6 +162,10 @@ public class BossAttack2 : StateSystem
     protected internal override void Check()
     {
         //Idle
+        if (FSM.AnimPlayer.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+        {
+            FSM.SNextState = "Idle";
+        }
     }
 }
 public class BossAttack3 : StateSystem
@@ -165,22 +189,21 @@ public class BossAttack3 : StateSystem
     protected internal override void Check()
     {
         //Idle
+        if (FSM.AnimPlayer.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+        {
+            FSM.SNextState = "Idle";
+        }
     }
 }
 public class BossTransform : StateSystem
 {
     protected internal override void Transit()
     {
-
+        bossStats.SwitchBoss();
     }
     protected internal override void Enter()
     {
         
-    }
-    IEnumerator Transforming()
-    {
-        
-        yield return new WaitForSeconds(BossStats.fIceOrFireTime);
     }
     protected internal override void Leave()
     {
@@ -193,6 +216,10 @@ public class BossTransform : StateSystem
     protected internal override void Check()
     {
         //Idle
+        if (FSM.AnimPlayer.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+        {
+            FSM.SNextState = "Idle";
+        }
     }
 }
 public class BossGetHit1 : StateSystem
@@ -216,6 +243,10 @@ public class BossGetHit1 : StateSystem
     protected internal override void Check()
     {
         //Idle
+        if (FSM.AnimPlayer.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+        {
+            FSM.SNextState = "Idle";
+        }
     }
 }
 public class BossGetHit2 : StateSystem
@@ -239,6 +270,10 @@ public class BossGetHit2 : StateSystem
     protected internal override void Check()
     {
         //Idle
+        if (FSM.AnimPlayer.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+        {
+            FSM.SNextState = "Idle";
+        }
     }
 }
 public class BossDeath : StateSystem
@@ -285,6 +320,10 @@ public class BossWatch : StateSystem
     protected internal override void Check()
     {
         //Transform
+        if (FSM.AnimPlayer.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+        {
+            FSM.SNextState = "Transform";
+        }
     }
 }
 

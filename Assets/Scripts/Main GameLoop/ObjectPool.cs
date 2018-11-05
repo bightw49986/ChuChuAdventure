@@ -156,7 +156,7 @@ namespace ObjectPool
     {
         public GameObject m_gameObject;
         public bool m_isUsing;
-        public enum PoolKey {};
+        public enum PoolKey {HitFX =0, Goblin = 1};
 
     }
 }

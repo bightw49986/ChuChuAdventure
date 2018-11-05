@@ -6,24 +6,24 @@ using UnityStandardAssets.CrossPlatformInput;
 /// <summary>
 /// 咱們可愛的ChuChu
 /// </summary>
-public class Player 
+public class Player : MonoBehaviour
 {
-    public static bool bCanMove = true; //主角當前可否移動
-    public static bool bCanAttack = true;//主角現在狀態能否攻擊
-    public static bool bHarmless = false;//主角現在狀態是否無敵，未完成！
-    public static bool bCanJump = true;//主角現在狀態能否跳躍 
-    public static bool bCanDash = true;//主角現在狀態能否跳躍
-    public static bool bFuckTheGravity = false;//主角能否不屑萬有引力
+    public bool bCanMove = true; //主角當前可否移動
+    public bool bCanAttack = true;//主角現在狀態能否攻擊
+    public bool bHarmless = false;//主角現在狀態是否無敵，未完成！
+    public bool bCanJump = true;//主角現在狀態能否跳躍 
+    public bool bCanDash = true;//主角現在狀態能否跳躍
+    public bool bFuckTheGravity = false;//主角能否不屑萬有引力
 
-    public static float fMouseInputSpeed = 1.0f;//滑鼠靈敏度
-    public static float fAttackSpeedRate = 1f;//攻擊速度倍率
-    public static float fToughness = 10f;//強韌度
-    public static float fLoseRecoverySpeedRate = 1f;//回血丟失速度倍率
-    public static float fHP = 100f;//血量
-    public static float fPower = 0f;//無雙值
+    public float fMouseInputSpeed = 1.0f;//滑鼠靈敏度
+    public float fAttackSpeedRate = 1f;//攻擊速度倍率
+    public float fToughness = 10f;//強韌度
+    public float fLoseRecoverySpeedRate = 1f;//回血丟失速度倍率
+    public float fHP = 100f;//血量
+    public float fPower = 0f;//無雙值
 
-    public static bool bBlockInput = false; //
-    public static float fBlockTime = 0; //
-    public static bool bPreEnter = false;//玩家是否記錄預輸入
-    public static float fRecordTime = 0; //
+    public bool bBlockInput = false; //
+    //public static float fBlockTime = 0; //
+    public bool bPreEnter = false;//玩家是否記錄預輸入
+    //public float fRecordTime = 0f;
 }

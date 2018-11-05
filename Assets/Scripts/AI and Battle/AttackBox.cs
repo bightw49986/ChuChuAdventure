@@ -32,28 +32,58 @@ namespace BattleSystem
         float m_fDamageThisHit;
 
         /// <summary>
-        /// 這個攻擊盒的Collider
+        /// 這個攻擊盒的的Collider
         /// </summary>
         /// <value>Collider</value>
-        protected Collider Collider { get; private set; }
+        protected Collider Collider;
 
         /// <summary>
         /// 記錄這次攻擊已擊中的防禦盒，避免重複判定
         /// </summary>
         /// <value>被打中的盒子們</value>
-        protected List<DefendBox> HittenBoxes { get; private set; }
+        public List<DefendBox> HittenBoxes;
 
         /// <summary>
-        /// 定義若允許在一次開關之間重複判定的判定間隔秒數(在get時已自動轉為秒數，無需乘上Time.deltaTime)
+        /// 定義若允許在一次開關之間重複判定的判定間隔秒數
         /// </summary>
         /// <value>間隔秒數，若 = 0 代表不允許重複判定</value>
-        protected float Interval { get { return m_fInterval; } set { m_fInterval = value; } }
-        private float m_fInterval;
+        public float Interval;
 
         protected virtual void Awake()
         {
             Collider = GetComponent<Collider>();
             enabled = false;
+        }
+
+        /// <summary>
+        /// 當Enable時，註冊宿主的攻擊資料更新事件，讓攻擊資料保持同步
+        /// </summary>
+        protected virtual void OnEnable()
+        {
+            HittenBoxes = new List<DefendBox>();
+            if (Host.AtkValues.ContainsKey(this))
+            {
+                DamageThisHit = Host.AtkValues[this];
+            }
+            Host.AttackInfoUpdate += OnAttackInfoUpdate;
+            Collider.enabled = true;
+            if (PrintLog)
+                print("攻擊盒端: " + name + "開啟成功，註冊傷害更新事件(宿主: " + Host.name + ")");
+        }
+
+        /// <summary> 
+        /// 當Disable時，反註冊攻擊資料更新的事件
+        /// </summary>
+        protected void OnDisable()
+        {
+            if (Host != null)
+            {
+                Host.AttackInfoUpdate -= OnAttackInfoUpdate;
+                HittenBoxes.Clear();
+                Collider.enabled = true;
+                if (PrintLog)
+                    print("攻擊盒端: " + name + "關閉成功，反註冊傷害更新事件(宿主: " + Host.name + ")");
+            }
         }
 
         /// <summary>
@@ -68,21 +98,6 @@ namespace BattleSystem
         }
 
         /// <summary>
-        /// 當Enable時，註冊宿主的攻擊資料更新事件，讓攻擊資料保持同步
-        /// </summary>
-        protected virtual void OnEnable()
-        {
-            HittenBoxes = new List<DefendBox>();
-            if (Host.AtkValues.ContainsKey(this))
-            {
-                DamageThisHit = Host.AtkValues[this];
-            }
-            Host.AttackInfoUpdate += OnAttackInfoUpdate;
-            if (PrintLog)
-                print("攻擊盒端: " + name + "開啟成功，註冊傷害更新事件(宿主: " + Host.name + ")");
-        }
-
-        /// <summary>
         /// 宿主攻擊力改變時，更新攻擊力
         /// </summary>
         /// <param name="fNewAttackValue">新的攻擊力</param>
@@ -94,7 +109,6 @@ namespace BattleSystem
                 if (PrintLog)
                     print("攻擊盒端: " + name + "成功更新傷害(宿主: " + Host.name + ")");
             }
-
         }
 
         /// <summary>
@@ -145,6 +159,7 @@ namespace BattleSystem
         /// <param name="other">撞到的Collider</param>
         protected virtual void OnTriggerStay(Collider other)
         {
+            if (enabled)
             PassDamage(other, Host.AttackerType);
         }
 
@@ -156,9 +171,8 @@ namespace BattleSystem
         {
 
             DefendBox hitTarget;
-            if (other.gameObject.GetComponent<DefendBox>()) //檢查撞到的Collider有沒有受擊盒
+            if ((hitTarget = other.gameObject.GetComponent<DefendBox>()) && hitTarget.enabled==true) //檢查撞到的Collider有沒有受擊盒
             {
-                hitTarget = other.gameObject.GetComponent<DefendBox>();
                 if (hitTarget.Host == Host)
                 {
                     if (PrintLog)
@@ -168,16 +182,9 @@ namespace BattleSystem
                 if (HittenBoxes.Contains(hitTarget) == false) //檢查這個受擊盒不在這次攻擊已判定過的List裡面
                 {
                     if (hitTarget.TakeDamageType.Contains(damageType) || hitTarget.Host.IsHarmless == false) //檢查這個受擊盒是否無敵，且會受到這個攻擊盒傷害類型的傷害
-                    {
-                        hitTarget.OnDamageOccured(DamageThisHit); //萬事俱備，傷害判定發生
-                        HittenBoxes.Add(hitTarget); //把這個受擊盒加到這次攻擊已判定過的List裡面，防止重複判定
-                        if (Interval != 0f) //若有設置重複判定的時間，則開始等待重複判定的Coroutine
-                        {
-                            StartCoroutine(DamageOccurInterval(Interval, hitTarget));
-                            if (PrintLog)
-                                print("攻擊盒端: " + name + "與防禦盒: " + hitTarget.name + "發生碰撞，傳送 " + DamageThisHit + "點傷害過去計算，" + Interval + "秒後可能再次判定(宿主: " + Host.name + ")");
-                            return;
-                        }
+                    {   //萬事俱備，傷害判定發生
+                        hitTarget.OnDamageOccured(DamageThisHit); //把傷害傳給DefendBox
+                        Host.OnAttackSuccess(hitTarget); //告訴宿主這次攻擊有打中這個目標，避免重複判定
                         if (PrintLog)
                             print("攻擊盒端: " + name + "與防禦盒: " + hitTarget.name + "發生碰撞，傳送 " + DamageThisHit + "點傷害過去計算(宿主: " + Host.name + ")");
                     }
@@ -200,7 +207,7 @@ namespace BattleSystem
         /// </summary>
         /// <param name="fInterval">間隔秒數</param>
         /// <param name="boxToRemove">作用的受擊盒</param>
-        IEnumerator DamageOccurInterval(float fInterval, DefendBox boxToRemove)
+        public IEnumerator DealDamageInterval(float fInterval, DefendBox boxToRemove)
         {
             yield return new WaitForSeconds(fInterval);
             if (HittenBoxes != null && HittenBoxes.Contains(boxToRemove))
@@ -208,18 +215,5 @@ namespace BattleSystem
                 HittenBoxes.Remove(boxToRemove);
             }
         }
-
-        /// <summary> 
-        /// 當Disable時，反註冊攻擊資料更新的事件
-        /// </summary>
-        protected void OnDisable()
-        {
-            if (Host != null)
-            {
-                Host.AttackInfoUpdate -= OnAttackInfoUpdate;
-                HittenBoxes.Clear();
-            }
-        }
-
     }
 }

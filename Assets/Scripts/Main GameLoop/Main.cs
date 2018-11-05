@@ -57,7 +57,8 @@ public class Main : MonoBehaviour ,ISingleton
 
     void InitUIMain()
     {
-        gameObject.AddComponent<UIMain>();
+        //GameObject uiMain = GameObject.FindGameObjectWithTag("UI");
+        //gameObject.AddComponent<UIMain>();
     }
 
 }

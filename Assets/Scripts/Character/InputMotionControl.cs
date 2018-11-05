@@ -4,6 +4,7 @@ public partial class InputMotionController : MonoBehaviour,IMoveable
 {
     void Awake()
     {
+        player = GetComponent<Player>();
         m_rig = GetComponent<Rigidbody>();
         m_cam = Camera.main;
         m_collider = GetComponent<CapsuleCollider>();
@@ -18,6 +19,7 @@ public partial class InputMotionController : MonoBehaviour,IMoveable
 
     void FixedUpdate()
     {
+        //Debug.LogError("bGrounded" + bGrounded);
         GroundCheck();
         Jump();
         Move();

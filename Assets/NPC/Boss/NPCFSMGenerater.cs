@@ -4,43 +4,54 @@ using UnityEngine;
 
 public class NPCFSMGenerater : MonoBehaviour, FSMGenerater
 {
-    protected internal Animator AnimPlayer;//動畫播放機  
-    protected internal Dictionary<string, StateSystem> SubscribeStateLibrary = new Dictionary<string, StateSystem>();//狀態機dictionary
-    protected internal bool bAllowTransit;//允許狀態轉換與否
-    protected internal string sCurrentState;//現在的state(Key)
-    protected internal string sNextState;//準備上場的state(Key)，當轉換結束後改回null  
+    public Animator AnimPlayer{ get; set; }
+    public Dictionary<string, StateSystem> SubscribeStateLibrary { get ; set ; }
+    public bool BAllowTransit { get ; set; }
+    public string SCurrentState { get; set ; }
+    public string SNextState { get ; set ; }
 
-    public virtual void Start()
+    public virtual void InitState(StateSystem state)
+    {
+        state.FSM = this;
+    }
+
+    public virtual void Awake()
     {
         //取得Animator
         AnimPlayer = GetComponent<Animator>();
+        SubscribeStateLibrary = new Dictionary<string, StateSystem>();//狀態機dictionary
+    }
+    public virtual void Start()
+    {
+        if (AnimPlayer == null) Debug.LogError("Doesn't attach boss' animator!!");
         //開始新增StateLibrary中的狀態
         AddState();
-        sCurrentState = "Idle";
-        bAllowTransit = true;
+        SCurrentState = "Idle";
+        BAllowTransit = true;
     }
     public virtual void Update()
     {
         AnyState();
-        if (bAllowTransit && sNextState != null) StartCoroutine(Transit(sNextState));
-        DoCurrentState(SubscribeStateLibrary[sCurrentState]);//擋的事交給coroutine的bools切換
+        if (BAllowTransit && SNextState != null) StartCoroutine(Transit(SNextState));
+        DoCurrentState(SubscribeStateLibrary[SCurrentState]);//擋的事交給coroutine的bools切換
     }
 
     public virtual IEnumerator Transit(string _state)
     {
-        if (SubscribeStateLibrary.ContainsKey(sNextState))//防呆！如果沒有註冊該狀態跳Log
+        if (SubscribeStateLibrary.ContainsKey(SNextState))//防呆！如果沒有註冊該狀態跳Log
         {
-            AnimPlayer.SetBool(sCurrentState, false);//(Animator)把原本進這狀態的transition關上
-            LeaveCurrentState(SubscribeStateLibrary[sCurrentState]);//執行Leave
-            sCurrentState = sNextState;//目前狀態->新的狀態
-            sNextState = null;//把排隊的位置清掉
-            bAllowTransit = false;//新的狀態即重新計算可轉換的時機
-            AnimPlayer.SetBool(sCurrentState, true);//(Animator)打開前往下一個狀態的transition
-            TransitCurrentState(SubscribeStateLibrary[sCurrentState]);//執行Transit
+            AnimPlayer.SetBool(SCurrentState, false);//(Animator)把原本進這狀態的transition關上
+            LeaveCurrentState(SubscribeStateLibrary[SCurrentState]);//執行Leave
+            SCurrentState = SNextState;//目前狀態->新的狀態
+            SNextState = null;//把排隊的位置清掉
+            BAllowTransit = false;//新的狀態即重新計算可轉換的時機
+            AnimPlayer.SetBool(SCurrentState, true);//(Animator)打開前往下一個狀態的transition
+            TransitCurrentState(SubscribeStateLibrary[SCurrentState]);//執行Transit
+            yield return new WaitUntil(() => AnimPlayer.IsInTransition(0) == false);//(Animator)等，直到動作切換結束
+            EnterCurrentState(SubscribeStateLibrary[SCurrentState]);//轉換結束後呼叫Enter該狀態改變規範
+            BAllowTransit = true;
         }
-        else Debug.Log("An accidental state be called !");//防呆！如果沒有註冊該狀態跳Log
-        yield return new WaitUntil(() => AnimPlayer.IsInTransition(0) == false);//(Animator)等，直到動作切換結束
-        EnterCurrentState(SubscribeStateLibrary[sCurrentState]);//轉換結束後呼叫Enter該狀態改變規範
+        else Debug.Log("An accidental state be called !");//防呆！如果沒有註冊該狀態跳Log      
     }
     public virtual void DoCurrentState(StateSystem state)
     {

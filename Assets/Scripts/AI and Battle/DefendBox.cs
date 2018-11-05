@@ -27,7 +27,7 @@ namespace BattleSystem
         /// 這個受擊盒的Collider
         /// </summary>
         /// <value>Collider</value>
-        public Collider Collider { get; private set; }
+        public Collider Collider;
 
         /// <summary>
         /// 這個受擊盒被打中時要播放的特效
@@ -42,7 +42,10 @@ namespace BattleSystem
 
         protected virtual void Awake()
         {
-            Collider = GetComponent<Collider>();
+            if(Collider==null)
+            {
+                Collider = GetComponent<Collider>();
+            }
             enabled = false;
         }
 

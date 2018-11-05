@@ -25,7 +25,7 @@ namespace BattleSystem
         [Tooltip("從硬直復原的時間，在硬直復原的時間內，如果強韌度又歸零，則觸發倒地")] public float RecoverTime;
         private float m_fRecoverTime;
         [Tooltip("若受到的傷害大於這個數值，則直接倒地")] public float KOLine = 2f;
-        [Tooltip("倒地無敵的持續時間(秒)")] public float HarmlessTime = 0.3f;
+        [Tooltip("倒地無敵的持續時間(秒)")] public float HarmlessTime = 0f;
 
         [Header("Log Setting")]
         [Tooltip("印出此BattleData初始化的訊息")] [SerializeField] bool InitMessage;
@@ -39,8 +39,7 @@ namespace BattleSystem
         }
         protected virtual void Start()
         {
-            EneableDefendBox(0);
-            EnableAttackBox(0);
+
         }
         protected virtual void Update()
         {
@@ -56,7 +55,7 @@ namespace BattleSystem
         public void InitAttackBoxes()
         {
             if(InitMessage)
-                print(gameObject.name + "開始初始化攻擊盒");
+                print(gameObject.name + " 開始初始化攻擊盒");
             AttackBoxes = new List<AttackBox>();
             AtkValues = new Dictionary<AttackBox, float>();
             AttackBox[] attackBoxes = GetComponentsInChildren<AttackBox>();
@@ -77,7 +76,7 @@ namespace BattleSystem
         public void InitDefendBoxs()
         {
             if(InitMessage)
-                print(gameObject.name + "開始初始化防禦盒");
+                print(gameObject.name + " 開始初始化防禦盒");
             DefendBoxes = new List<DefendBox>();
             DefendBox[] defendBoxes = GetComponentsInChildren<DefendBox>();
             for (int i = 0; i < defendBoxes.Length; i++)
@@ -99,11 +98,11 @@ namespace BattleSystem
             {
                 AttackBoxes[iAttackBoxIndex].enabled = true;
                 if(SwitchMessage)
-                    print(gameObject.name + "打開他的" + iAttackBoxIndex + "號攻擊盒，該攻擊盒攻擊力為: " + AtkValues[AttackBoxes[iAttackBoxIndex]] + "點");
+                    print(gameObject.name + " 打開他的" + iAttackBoxIndex + "號攻擊盒，該攻擊盒攻擊力為: " + AtkValues[AttackBoxes[iAttackBoxIndex]] + "點");
             }
             else
             {
-                Debug.LogWarning(gameObject.name + "要打開的攻擊盒不存在！");
+                Debug.LogWarning(gameObject.name + " 要打開的攻擊盒不存在！");
             }
         }
 
@@ -112,12 +111,12 @@ namespace BattleSystem
             if (AttackBoxes[iAttackBoxIndex] != null)
             {
                 if(SwitchMessage)
-                    print(gameObject.name + "關閉他的" + iAttackBoxIndex + "號攻擊盒");
+                    print(gameObject.name + " 關閉他的" + iAttackBoxIndex + "號攻擊盒");
                 AttackBoxes[iAttackBoxIndex].enabled = false;
             }
             else
             {
-                Debug.LogWarning(gameObject.name + "要關閉的攻擊盒不存在！");
+                Debug.LogWarning(gameObject.name + " 要關閉的攻擊盒不存在！");
             }
         }
 
@@ -126,7 +125,7 @@ namespace BattleSystem
             if (attackBox != null && AtkValues.ContainsKey(attackBox))
             {
                 if (UpdateMessage)
-                    print(gameObject.name + "的攻擊盒:" + attackBox.name + " 攻擊力更新了:" + AtkValues[attackBox] + " -> " + fNewAttackValue);
+                    print(gameObject.name + " 的攻擊盒:" + attackBox.name + " 攻擊力更新了:" + AtkValues[attackBox] + " -> " + fNewAttackValue);
                 AtkValues[attackBox] = fNewAttackValue;
                 OnAttackInfoUpdate(fNewAttackValue, attackBox);
             }
@@ -149,7 +148,7 @@ namespace BattleSystem
                 if (TakeDamageFrom.Contains(types[i]) == false)
                 {
                     if(UpdateMessage)
-                        print(gameObject.name + "增加了會受到的傷害類型:" + types[i]);
+                        print(gameObject.name + " 增加了會受到的傷害類型:" + types[i]);
                     TakeDamageFrom.Add(types[i]);
                 }
             }
@@ -160,12 +159,12 @@ namespace BattleSystem
             if (TakeDamageFrom.Contains(type))
             {
                 if(UpdateMessage)
-                    print(gameObject.name + "移除了會受到的傷害類型:" + type);
+                    print(gameObject.name + " 移除了會受到的傷害類型:" + type);
                 TakeDamageFrom.Remove(type);
             }
             else
             {
-                Debug.LogWarning(gameObject.name + "要移除的傷害類型不存在!");
+                Debug.LogWarning(gameObject.name + " 要移除的傷害類型不存在!");
             }
         }
 
@@ -174,13 +173,13 @@ namespace BattleSystem
             if (iDefendboxIndex <= DefendBoxes.Count - 1&& DefendBoxes[iDefendboxIndex] != null)
             {
                 if(SwitchMessage)
-                    print(gameObject.name + "打開他的 " + iDefendboxIndex + "號防禦盒，宿主血量剩餘: " + HP + " 點，強韌度: " + Endurance + " 點。" );
+                    print(gameObject.name + " 打開他的 " + iDefendboxIndex + "號防禦盒，宿主血量剩餘: " + HP + " 點，強韌度: " + Endurance + " 點。" );
                 DefendBoxes[iDefendboxIndex].enabled = true;
                 DefendBoxes[iDefendboxIndex].DamageOccured += OnDamageOccured;
             }
             else
             {
-                Debug.LogWarning(gameObject.name + "要打開的防禦盒不存在！");
+                Debug.LogWarning(gameObject.name + " 要打開的防禦盒不存在！");
             }
         }
 
@@ -189,13 +188,13 @@ namespace BattleSystem
             if (DefendBoxes[iDefendboxIndex] != null)
             {
                 if (SwitchMessage)
-                    print(gameObject.name + "關閉他的 " + iDefendboxIndex + "號防禦盒");
+                    print(gameObject.name + " 關閉他的 " + iDefendboxIndex + "號防禦盒");
                 DefendBoxes[iDefendboxIndex].enabled = false;
                 DefendBoxes[iDefendboxIndex].DamageOccured -= OnDamageOccured;
             }
             else
             {
-                Debug.LogWarning(gameObject.name + "要關閉防禦盒，但防禦盒不存在");
+                Debug.LogWarning(gameObject.name + " 要關閉防禦盒，但防禦盒不存在");
             }
         }
 
@@ -207,7 +206,7 @@ namespace BattleSystem
                 d.DamageOccured -= OnDamageOccured;
             }
             if(SwitchMessage)
-                Debug.Log(gameObject.name + "關閉所有防禦盒");
+                Debug.Log(gameObject.name + " 關閉所有防禦盒");
         }
 
         public void OnDamageOccured(float fDamage)
@@ -224,13 +223,13 @@ namespace BattleSystem
             if(IsHarmless == true)
             {
                 if (HitMessage)
-                print(gameObject.name + "在被擊中時處於無敵狀態，故不產生傷害判定");
+                print(gameObject.name + " 在被擊中時處於無敵狀態，故不產生傷害判定");
                 return;
             }
             if (fPredictHP <= 0)
             {
                 if (HitMessage)
-                    print(gameObject.name + "被打死了，關閉所有防禦盒");
+                    print(gameObject.name + " 被打死了，關閉所有防禦盒");
                 DisableAllDefendBoxes();
                 HP = 0f;
                 Endurance = 0f;
@@ -243,7 +242,7 @@ namespace BattleSystem
                     HP = fPredictHP;
                     Endurance = MaxEndurance;
                     if (HitMessage)
-                        print(gameObject.name + "受到巨大傷害而倒地了，" + "目前HP： " + HP + "，強韌度：" + Endurance);
+                        print(gameObject.name + " 受到巨大傷害而倒地了，" + "目前HP： " + HP + "，強韌度：" + Endurance);
                     OnKOed();
                     m_fRecoverTime = RecoverTime;
                 }
@@ -256,13 +255,13 @@ namespace BattleSystem
                         if (m_fRecoverTime > 0)
                         {
                             if (HitMessage)
-                                print(gameObject.name + "連續受到而倒地了，" + "目前HP： " + HP + "，強韌度：" + Endurance);
+                                print(gameObject.name + " 連續受到而倒地了，" + "目前HP： " + HP + "，強韌度：" + Endurance);
                             OnKOed();
                         }
                         else
                         {
                             if (HitMessage)
-                                print(gameObject.name + "被打硬直了，" + "目前HP： " + HP + "，強韌度：" + Endurance);
+                                print(gameObject.name + " 被打硬直了，" + "目前HP： " + HP + "，強韌度：" + Endurance);
                             OnFreezed();
                         }
                         m_fRecoverTime = RecoverTime;
@@ -272,12 +271,27 @@ namespace BattleSystem
                         HP = fPredictHP;
                         Endurance = fPredictToughness;
                         if (HitMessage)
-                            print(gameObject.name + "被擊中了，" + "目前HP： " + HP + "，強韌度：" + Endurance);
+                            print(gameObject.name + " 被擊中了，" + "目前HP： " + HP + "，強韌度：" + Endurance);
                         OnHitted();
                     }
                 }
                 StopCoroutine(HitInterval());
                 StartCoroutine(HitInterval());
+            }
+        }
+
+        public void OnAttackSuccess(DefendBox defendBox)
+        {
+            foreach(var atkBox in AttackBoxes)
+            {
+                if (atkBox.HittenBoxes.Contains(defendBox)==false)
+                {
+                    atkBox.HittenBoxes.Add(defendBox);
+                    if (atkBox.Interval != 0)
+                    {
+                        StartCoroutine(atkBox.DealDamageInterval(atkBox.Interval, defendBox));
+                    }
+                }
             }
         }
 
@@ -316,7 +330,7 @@ namespace BattleSystem
             IsHarmless = true;
             if (HitMessage)
             {
-                print(gameObject.name +  "遭擊中，無敵 " + HarmlessTime + "秒");
+                print(gameObject.name +  " 遭擊中，無敵 " + HarmlessTime + "秒");
             }
             yield return new WaitForSeconds(HarmlessTime);
             IsHarmless = false;

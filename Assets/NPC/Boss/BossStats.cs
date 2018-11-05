@@ -5,35 +5,59 @@ using UnityEngine;
 
 public class BossStats : MonoBehaviour
 {
-    public static float fHP = 100f;//血量
-    public static float fToughness = 10f;//強韌度
-    public static float fTransformCD = 40f;//變身的CD時間
-    public static float fIceOrFireTime = 25f;//變身時間
-    public static bool bCanMove = true; //主角當前可否移動
-    public static bool bCanAttack = true;//主角現在狀態能否攻擊
-    public static bool bCanJump = true;//主角現在狀態能否跳躍 
+    System.Random random = new System.Random();//隨機機
+    public float fHP = 100f;//血量
+    public float fToughness = 10f;//強韌度
+    public bool BCanTransform { get; private set; }//Boss能不能變形了
+    private float fStoneTime = 15f;//只有石頭的時間
+    public readonly float fIceOrFireTime = 25f;//有屬性的時間
+    public bool bCanMove = true; //Boss可否移動
+    public bool bCanAttack = true;//Boss能否攻擊
+    public bool bCanJump = true;//Boss能否跳躍 
     [SerializeField]protected internal GameObject StoneGolem;
     [SerializeField]protected internal GameObject FireGolem;
     [SerializeField]protected internal GameObject IceGolem;
 
-    // Use this for initialization
+    // 叫石頭出來
     void Start () {
         StoneGolem.SetActive(true);
     }
-
-    void SwitchBoss()
+    //變身術
+    public void SwitchBoss()
     {
-        
-
+        if (StoneGolem.activeInHierarchy == true)
+        {
+            StartCoroutine(OnfireOrIce());
+        }
+        else if (FireGolem.activeInHierarchy == true || IceGolem.activeInHierarchy == true)
+        {
+            StartCoroutine(ExtinguishfireOrIce());
+        }
     }
-
-    private static void Destroy(GameObject bosses)
+     //有一半機率變火或冰
+    IEnumerator OnfireOrIce()
     {
-        throw new NotImplementedException();
+        BCanTransform = false;
+        StoneGolem.SetActive(false);
+        if (random.NextDouble() > 0.5f)
+        {
+            FireGolem.SetActive(true);
+        }
+        else
+        {
+            IceGolem.SetActive(true);
+        }        
+        yield return new WaitForSeconds(fIceOrFireTime);
+        BCanTransform = true;
     }
-
-    // Update is called once per frame
-    void Update () {
-		
-	}
+    //時間到就變回石頭
+    IEnumerator ExtinguishfireOrIce()
+    {
+        BCanTransform = false;
+        StoneGolem.SetActive(true);
+        FireGolem.SetActive(false);
+        IceGolem.SetActive(false);
+        yield return new WaitForSeconds(fStoneTime);
+        BCanTransform = true;
+    }
 }
