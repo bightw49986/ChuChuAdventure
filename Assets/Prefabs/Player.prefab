@@ -764,6 +764,7 @@ GameObject:
   - component: {fileID: 114053243831616726}
   - component: {fileID: 114254877401906466}
   - component: {fileID: 114453318660055234}
+  - component: {fileID: 114892798853580748}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -1706,8 +1707,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1273015639685170}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.7071068, y: -0.000000014901161, z: 0.000000023283064, w: 0.70710677}
+  m_LocalPosition: {x: -0.02263739, y: 0.06976005, z: -0.0000046952628}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4904052124677728}
@@ -2247,8 +2248,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1089144934141980}
-  m_LocalRotation: {x: -0.04867129, y: 0.002748833, z: -0.015470867, w: 0.99869126}
-  m_LocalPosition: {x: -0.12546971, y: 0.0031005605, z: 0.00056312623}
+  m_LocalRotation: {x: -0.000000029802312, y: 0.00000007450578, z: -0.02425248, w: 0.99970585}
+  m_LocalPosition: {x: -0.12546985, y: 0.003100515, z: 0.00056317064}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4915842969746760}
@@ -2910,7 +2911,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 57b43efa28c31c9488d84b6d0459f3dc, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -2945,8 +2946,17 @@ MonoBehaviour:
   TURN_AXIS: Horizontal
   JUMP_AXIS: Jump
   DASH_AXIS: Dash
+  m_fVInput: 0
+  m_fHInput: 0
+  m_fJInput: 0
+  m_fDInput: 0
+  m_fLAInput: 0
+  m_fHAInput: 0
+  bGrounded: 0
+  m_bJumpEnd: 0
   fStartSpeed: 0
   fFullSpeed: 6
+  m_fMoveSpeed: 0
   fDashOffset: 6
   fDashCD: 0.1
   vJumpVel: {x: 0, y: 8, z: 0}
@@ -2988,6 +2998,17 @@ MonoBehaviour:
   slopeLayer:
     serializedVersion: 2
     m_Bits: 1280
+--- !u!114 &114892798853580748
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1525632486331460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b10cb2819906e4944a60a54bc91a6933, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &136334220783347110
 CapsuleCollider:
   m_ObjectHideFlags: 1

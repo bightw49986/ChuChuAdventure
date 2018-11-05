@@ -4,6 +4,7 @@ public partial class InputMotionController : MonoBehaviour
 {
     void Awake()
     {
+        player = GetComponent<Player>();
         m_rig = GetComponent<Rigidbody>();
         m_cam = Camera.main;
         m_collider = GetComponent<CapsuleCollider>();

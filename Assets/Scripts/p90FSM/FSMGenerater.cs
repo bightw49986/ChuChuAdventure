@@ -4,24 +4,12 @@ using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
 public interface FSMGenerater {
-    //int A { get; set; }
-    //void Start()
-    //{
-    //    //取得Animator
-    //    AnimPlayer = GetComponent<Animator>();
-    //    //開始新增StateLibrary中的狀態
-    //    AddState();
-    //    sCurrentState = "Idle";
-    //}
+    Animator AnimPlayer { get; set; }//動畫播放機  
+    Dictionary<string, StateSystem> SubscribeStateLibrary { get; set; }
+    bool BAllowTransit { get; set; }//允許狀態轉換與否
+    string SCurrentState { get; set; }//現在的state(Key)
+    string SNextState { get; set; }//準備上場的state(Key)，當轉換結束後改回null  
 
-    //取得輸入量->檢查AnyState->如有新狀態待切換，則開始Coroutine->執行現在(轉換後)狀態的Do+Check方法。
-    //void Update()
-    //{
-    //    sState = sCurrentState;
-    //    AnyState();
-    //    if (bAllowTransit && sNextState != null) StartCoroutine(Transit(sNextState));
-    //    DoCurrentState(SubscribeStateLibrary[sCurrentState]);//擋的事交給coroutine的bools切換
-    //}
     /// <summary>
     /// 轉換狀態
     /// </summary>
@@ -65,34 +53,21 @@ public interface FSMGenerater {
     /// </summary>
     /// <param name="state"></param>
     void DoCurrentState(StateSystem state);
-    //{
-    //    state.Check();
-    //    state.Do();
-    //}
     /// <summary>
     /// 狀態離開的時候該做的
     /// </summary>
     /// <param name="state"></param>
     void LeaveCurrentState(StateSystem state);
-    //{
-    //    state.Leave();
-    //}
     /// <summary>
     /// 狀態轉換結束後進入時呼叫
     /// </summary>
     /// <param name="state"></param>
     void EnterCurrentState(StateSystem state);
-    //{
-    //    state.Enter();
-    //}
     /// <summary>
     /// 狀態第一時間切換時呼叫
     /// </summary>
     /// <param name="state"></param>
     void TransitCurrentState(StateSystem state);
-    //{
-    //    state.Transit();
-    //}
 
     /// <summary>
     /// 擊退、死亡等Anystate在這裡判斷，若有狀態觸發到就回傳True

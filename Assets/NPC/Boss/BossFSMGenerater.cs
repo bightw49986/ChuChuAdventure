@@ -5,21 +5,17 @@ using UnityEngine;
 
 public sealed class BossFSMGenerater : NPCFSMGenerater
 {
-    public void InitState(StateSystem state)
-    {
-        state.FSM = this;
-    }
-
+    BossStats bossStats = new BossStats();
     public sealed override bool AnyState()
     {
-        if (BossStats.fHP <= 0f)
+        if (bossStats.fHP <= 0f)
         {
-            sNextState = "Death";
+            SNextState = "Death";
         }
-        else if (BossStats.fToughness <5f)
+        else if (bossStats.fToughness <5f)
         {
-            sNextState = "GetHit1";
-            sNextState = "GetHit2";
+            SNextState = "GetHit1";
+            SNextState = "GetHit2";
         }
         return false;
     }
@@ -29,14 +25,24 @@ public sealed class BossFSMGenerater : NPCFSMGenerater
         SubscribeStateLibrary.Add("Idle",new BossIdle());
         InitState(SubscribeStateLibrary["Idle"]);
         SubscribeStateLibrary.Add("Walk", new BossWalk());
+        InitState(SubscribeStateLibrary["Walk"]);
         SubscribeStateLibrary.Add("Jump", new BossJump());
+        InitState(SubscribeStateLibrary["Jump"]);
         SubscribeStateLibrary.Add("Attack1", new BossAttack1());
+        InitState(SubscribeStateLibrary["Attack1"]);
         SubscribeStateLibrary.Add("Attack2", new BossAttack2());
+        InitState(SubscribeStateLibrary["Attack2"]);
         SubscribeStateLibrary.Add("Attack3", new BossAttack3());
+        InitState(SubscribeStateLibrary["Attack3"]);
         SubscribeStateLibrary.Add("Transform", new BossTransform());
+        InitState(SubscribeStateLibrary["Transform"]);
         SubscribeStateLibrary.Add("GetHit1", new BossGetHit1());
+        InitState(SubscribeStateLibrary["GetHit1"]);
         SubscribeStateLibrary.Add("GetHit2", new BossGetHit2());
+        InitState(SubscribeStateLibrary["GetHit2"]);
         SubscribeStateLibrary.Add("Death", new BossDeath());
+        InitState(SubscribeStateLibrary["Death"]);
         SubscribeStateLibrary.Add("Watch", new BossWatch());
+        InitState(SubscribeStateLibrary["Watch"]);
     }
 }
