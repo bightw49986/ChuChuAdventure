@@ -481,7 +481,7 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.9967595
+      - time: 0.78030926
         functionName: CloseRecord
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -1575,7 +1575,7 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.9584241
+      - time: 0.858857
         functionName: CloseRecord
         data: 
         objectReferenceParameter: {instanceID: 0}
