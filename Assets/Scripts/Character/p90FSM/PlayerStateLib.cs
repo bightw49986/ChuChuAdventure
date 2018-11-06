@@ -24,7 +24,7 @@ public class ChuChuIdleToRun : StateSystem
     }
     protected internal override void Leave()
     {
-
+        player.bCanMove = false;
     }
     protected internal override void Do()
     {//這樣到底有沒有init一份啊？

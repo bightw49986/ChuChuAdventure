@@ -89,7 +89,7 @@ namespace CameraSystem
                     if (m_fVInputAbs == 0 && m_bColliding == false)
                     {
                         float flo = 0;
-                        fXRotation = Mathf.SmoothDamp(fXRotation, 0f, ref flo, fAdjustTime);
+                        fXRotation = Mathf.SmoothDamp(fXRotation, 15f, ref flo, fAdjustTime);
                     }
                     vRealDestination = m_vAdjustedDest + (m_vLastDest - m_vAdjustedDest) * 0.5f;
                     transform.position = Vector3.SmoothDamp(transform.position, vRealDestination, ref vel, fFollowSmooth * Time.deltaTime);

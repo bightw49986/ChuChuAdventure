@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 6c4fafdb1efc41444b18adbce8bb4087
+labels:
+- lighting
+- scattering
+- atmospherics
+- fog
+- DX11
+- shaders
+timeCreated: 1471888531
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - m_ProxyMesh: {fileID: 4300000, guid: c431b5bc397e26746a771758e1c6edea, type: 3}
+  - m_ProxyMaterial: {fileID: 2100000, guid: 41d0221718cb5c9428ecc0c6cf1ea3dd, type: 2}
+  - m_Context: {instanceID: 0}
+  - m_DirectLight: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

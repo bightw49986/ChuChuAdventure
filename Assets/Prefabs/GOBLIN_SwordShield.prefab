@@ -1302,7 +1302,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1675390028527372}
   m_LocalRotation: {x: -0, y: -0.96526927, z: -0, w: 0.26125708}
-  m_LocalPosition: {x: 182.72792, y: 60.988865, z: 132.65462}
+  m_LocalPosition: {x: 212.04799, y: 57.6284, z: 160.94746}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4132684964048546}
@@ -2280,7 +2280,7 @@ MonoBehaviour:
   Endurance: 1
   RecoverTime: 0
   KOLine: 10
-  HarmlessTime: 0.2
+  HarmlessTime: 0.1
   InitMessage: 0
   SwitchMessage: 0
   HitMessage: 1

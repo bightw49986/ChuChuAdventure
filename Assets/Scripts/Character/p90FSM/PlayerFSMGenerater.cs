@@ -77,7 +77,11 @@ public class PlayerFSMGenerater : MonoBehaviour, FSMGenerater {
             player.bBlockInput = false;
             //player.bPreEnter = true;
             EnterCurrentState(SubscribeStateLibrary[SCurrentState]);//轉換結束後呼叫Enter該狀態改變規範                                                                   //player.bPreEnter = false;
-            if (player.bPreEnter == false)
+            if (SCurrentState=="Idle"||
+                SCurrentState == "JumpStart" ||
+                SCurrentState == "JumpLoop" ||
+                SCurrentState == "JumpEnd" ||
+                SCurrentState == "Dash" )
             {
                 BAllowTransit = true;
             }
