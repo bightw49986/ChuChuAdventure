@@ -75,11 +75,11 @@ public partial class InputMotionController : MonoBehaviour,IMoveable
             Vector3 vPredict = m_vCenter + Vector3.down * m_fGroundOffset;
             Debug.DrawLine(m_vCenter, vPredict, bGrounded ? Color.cyan : Color.red);
         }
-        if (bGrounded)
+        if (bGrounded || player.bFuckTheGravity == true)
         {
             m_velocity.y = 0;
         }
-        if (bGrounded == false)
+        if (bGrounded == false && player.bFuckTheGravity == false)
         {
             ApplyGravity();
         }

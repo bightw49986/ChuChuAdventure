@@ -4,6 +4,7 @@
 Temp/
 Library/
 Assets/Scenes/*.unity
+Assets/Ignore
 
 # ===================================== #
 # Visual Studio / MonoDevelop generated #

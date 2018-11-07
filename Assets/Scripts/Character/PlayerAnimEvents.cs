@@ -15,12 +15,18 @@ public class PlayerAnimEvents : MonoBehaviour
     {
         player.bPreEnter = false;
         playerFSMGenerater.BAllowTransit = true;
-        battleData.DisableAttackBox(0);
     }
     void StartRecord()
     {
         playerFSMGenerater.BAllowTransit = false;
         player.bPreEnter = true;
+    }
+    void OAB()
+    {
         battleData.EnableAttackBox(0);
+    }
+    void CAB()
+    {
+        battleData.DisableAttackBox(0);
     }
 }

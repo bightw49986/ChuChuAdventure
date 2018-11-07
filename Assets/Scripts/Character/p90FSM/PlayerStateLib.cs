@@ -8,7 +8,7 @@ public class ChuChuIdleToRun : StateSystem
     //時間由其他狀態回Idle各自給定
     protected internal override void Transit()
     {
-        //player.bCanMove = false;
+        //player.bCanMove = true;
         player.bCanAttack = false;
         player.bHarmless = false;
         player.bCanJump = false;
@@ -28,7 +28,7 @@ public class ChuChuIdleToRun : StateSystem
     }
     protected internal override void Do()
     {//這樣到底有沒有init一份啊？
-        if(player.bCanMove == false)
+        if (player.bCanMove == false)
         {
             FSM.AnimPlayer.SetFloat("Move", 0);
         }
@@ -38,12 +38,12 @@ public class ChuChuIdleToRun : StateSystem
             {
                 fMoveDamp = Mathf.Lerp(fMoveDamp, inputMotionController.m_fMoveSpeed, 0.1f);
             }
-           
+
             else { fMoveDamp = Mathf.Lerp(fMoveDamp, 0, 0.2f); }
-            
+
             FSM.AnimPlayer.SetFloat("Move", fMoveDamp);
         }
-        
+
     }
     protected internal override void Check()
     {
@@ -368,7 +368,7 @@ public class ChuChuDash : StateSystem
     }
     protected internal override void Leave()
     {
-
+        player.bFuckTheGravity = false;
     }
     protected internal override void Do()
     {
@@ -413,6 +413,7 @@ public class ChuChuR1 : StateSystem
     protected internal override void Leave()
     {
         player.bPreEnter = false;
+        player.bFuckTheGravity = false;
     }
     protected internal override void Do()
     {
@@ -442,26 +443,27 @@ public class ChuChuR1 : StateSystem
                 FSM.SNextState = "Idle";
             }
         }
-        
+
     }
 }
-    public class ChuChuR1R1 : StateSystem
+public class ChuChuR1R1 : StateSystem
+{
+    protected internal override void Transit()
     {
-        protected internal override void Transit()
-        {
-            player.bCanMove = false;
-            player.bCanAttack = false;
-            player.bHarmless = false;
-            player.bCanJump = false;
-            player.bFuckTheGravity = true;
-        }
-        protected internal override void Enter()
-        {
-            player.bCanAttack = true;
-        }
+        player.bCanMove = false;
+        player.bCanAttack = false;
+        player.bHarmless = false;
+        player.bCanJump = false;
+        player.bFuckTheGravity = true;
+    }
+    protected internal override void Enter()
+    {
+        player.bCanAttack = true;
+    }
     protected internal override void Leave()
     {
         player.bPreEnter = false;
+        player.bFuckTheGravity = false;
     }
     protected internal override void Do()
     {
@@ -494,23 +496,24 @@ public class ChuChuR1 : StateSystem
 
     }
 }
-    public class ChuChuR1R1R1 : StateSystem
+public class ChuChuR1R1R1 : StateSystem
+{
+    protected internal override void Transit()
     {
-        protected internal override void Transit()
-        {
-            player.bCanMove = false;
-            player.bCanAttack = false;
-            player.bHarmless = false;
-            player.bCanJump = false;
-            player.bFuckTheGravity = true;
-        }
-        protected internal override void Enter()
-        {
-            player.bCanAttack = true;
-        }
+        player.bCanMove = false;
+        player.bCanAttack = false;
+        player.bHarmless = false;
+        player.bCanJump = false;
+        player.bFuckTheGravity = true;
+    }
+    protected internal override void Enter()
+    {
+        player.bCanAttack = true;
+    }
     protected internal override void Leave()
     {
         player.bPreEnter = false;
+        player.bFuckTheGravity = false;
     }
     protected internal override void Do()
     {
@@ -543,23 +546,24 @@ public class ChuChuR1 : StateSystem
 
     }
 }
-    public class ChuChuR1R1R1R1 : StateSystem
+public class ChuChuR1R1R1R1 : StateSystem
+{
+    protected internal override void Transit()
     {
-        protected internal override void Transit()
-        {
-            player.bCanMove = false;
-            player.bCanAttack = false;
-            player.bHarmless = false;
-            player.bCanJump = false;
-            player.bFuckTheGravity = true;
-        }
-        protected internal override void Enter()
-        {
-            player.bCanAttack = true;
-        }
+        player.bCanMove = false;
+        player.bCanAttack = false;
+        player.bHarmless = false;
+        player.bCanJump = false;
+        player.bFuckTheGravity = true;
+    }
+    protected internal override void Enter()
+    {
+        player.bCanAttack = true;
+    }
     protected internal override void Leave()
     {
         player.bPreEnter = false;
+        player.bFuckTheGravity = false;
     }
     protected internal override void Do()
     {
@@ -588,23 +592,24 @@ public class ChuChuR1 : StateSystem
 
     }
 }
-    public class ChuChuR1R1R1R1R1 : StateSystem
+public class ChuChuR1R1R1R1R1 : StateSystem
+{
+    protected internal override void Transit()
     {
-        protected internal override void Transit()
-        {
-            player.bCanMove = false;
-            player.bCanAttack = false;
-            player.bHarmless = false;
-            player.bCanJump = false;
-            player.bFuckTheGravity = true;
-        }
-        protected internal override void Enter()
-        {
+        player.bCanMove = false;
+        player.bCanAttack = false;
+        player.bHarmless = false;
+        player.bCanJump = false;
+        player.bFuckTheGravity = true;
+    }
+    protected internal override void Enter()
+    {
 
-        }
+    }
     protected internal override void Leave()
     {
         player.bPreEnter = false;
+        player.bFuckTheGravity = false;
     }
     protected internal override void Do()
     {
@@ -616,10 +621,10 @@ public class ChuChuR1 : StateSystem
         {
             if (FSM.AnimPlayer.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.99)
             {
-               if (inputMotionController.m_fMoveInput > 0.7f)
-               {
+                if (inputMotionController.m_fMoveInput > 0.7f)
+                {
                     FSM.SNextState = "Idle";
-               }
+                }
             }
             else
             {
@@ -629,20 +634,20 @@ public class ChuChuR1 : StateSystem
 
     }
 }
-    public class ChuChuR1R2 : StateSystem
+public class ChuChuR1R2 : StateSystem
+{
+    protected internal override void Transit()
     {
-        protected internal override void Transit()
-        {
-            player.bCanMove = false;
-            player.bCanAttack = false;
-            player.bHarmless = false;
-            player.bCanJump = false;
-            player.bFuckTheGravity = false;
-        }
-        protected internal override void Enter()
-        {
-            player.bCanAttack = true;
-        }
+        player.bCanMove = false;
+        player.bCanAttack = false;
+        player.bHarmless = false;
+        player.bCanJump = false;
+        player.bFuckTheGravity = false;
+    }
+    protected internal override void Enter()
+    {
+        player.bCanAttack = true;
+    }
     protected internal override void Leave()
     {
         player.bPreEnter = false;
@@ -674,20 +679,20 @@ public class ChuChuR1 : StateSystem
 
     }
 }
-    public class ChuChuR1R1R2 : StateSystem
+public class ChuChuR1R1R2 : StateSystem
+{
+    protected internal override void Transit()
     {
-        protected internal override void Transit()
-        {
-            player.bCanMove = false;
-            player.bCanAttack = false;
-            player.bHarmless = false;
-            player.bCanJump = false;
-            player.bFuckTheGravity = false;
-        }
-        protected internal override void Enter()
-        {
-            player.bCanAttack = true;
-        }
+        player.bCanMove = false;
+        player.bCanAttack = false;
+        player.bHarmless = false;
+        player.bCanJump = false;
+        player.bFuckTheGravity = false;
+    }
+    protected internal override void Enter()
+    {
+        player.bCanAttack = true;
+    }
     protected internal override void Leave()
     {
         player.bPreEnter = false;
@@ -719,20 +724,20 @@ public class ChuChuR1 : StateSystem
 
     }
 }
-    public class ChuChuR2R2R2R2 : StateSystem
+public class ChuChuR2R2R2R2 : StateSystem
+{
+    protected internal override void Transit()
     {
-        protected internal override void Transit()
-        {
-            player.bCanMove = false;
-            player.bCanAttack = false;
-            player.bHarmless = false;
-            player.bCanJump = false;
-            player.bFuckTheGravity = false;
-        }
-        protected internal override void Enter()
-        {
+        player.bCanMove = false;
+        player.bCanAttack = false;
+        player.bHarmless = false;
+        player.bCanJump = false;
+        player.bFuckTheGravity = false;
+    }
+    protected internal override void Enter()
+    {
 
-        }
+    }
     protected internal override void Leave()
     {
         player.bPreEnter = false;
@@ -760,20 +765,20 @@ public class ChuChuR1 : StateSystem
 
     }
 }
-    public class ChuChuR2 : StateSystem
+public class ChuChuR2 : StateSystem
+{
+    protected internal override void Transit()
     {
-        protected internal override void Transit()
-        {
-            player.bCanMove = false;
-            player.bCanAttack = false;
-            player.bHarmless = false;
-            player.bCanJump = false;
-            player.bFuckTheGravity = false;
-        }
-        protected internal override void Enter()
-        {
-            player.bCanAttack = true;
-        }
+        player.bCanMove = false;
+        player.bCanAttack = false;
+        player.bHarmless = false;
+        player.bCanJump = false;
+        player.bFuckTheGravity = false;
+    }
+    protected internal override void Enter()
+    {
+        player.bCanAttack = true;
+    }
     protected internal override void Leave()
     {
         player.bPreEnter = false;
@@ -805,20 +810,20 @@ public class ChuChuR1 : StateSystem
 
     }
 }
-    public class ChuChuR2R2 : StateSystem
+public class ChuChuR2R2 : StateSystem
+{
+    protected internal override void Transit()
     {
-        protected internal override void Transit()
-        {
-            player.bCanMove = false;
-            player.bCanAttack = false;
-            player.bHarmless = false;
-            player.bCanJump = false;
-            player.bFuckTheGravity = false;
-        }
-        protected internal override void Enter()
-        {
-            player.bCanAttack = true;
-        }
+        player.bCanMove = false;
+        player.bCanAttack = false;
+        player.bHarmless = false;
+        player.bCanJump = false;
+        player.bFuckTheGravity = false;
+    }
+    protected internal override void Enter()
+    {
+        player.bCanAttack = true;
+    }
     protected internal override void Leave()
     {
         player.bPreEnter = false;
@@ -850,20 +855,20 @@ public class ChuChuR1 : StateSystem
 
     }
 }
-    public class ChuChuR2R2R2 : StateSystem
+public class ChuChuR2R2R2 : StateSystem
+{
+    protected internal override void Transit()
     {
-        protected internal override void Transit()
-        {
-            player.bCanMove = false;
-            player.bCanAttack = false;
-            player.bHarmless = false;
-            player.bCanJump = false;
-            player.bFuckTheGravity = false;
-        }
-        protected internal override void Enter()
-        {
-            player.bCanAttack = true;
-        }
+        player.bCanMove = false;
+        player.bCanAttack = false;
+        player.bHarmless = false;
+        player.bCanJump = false;
+        player.bFuckTheGravity = false;
+    }
+    protected internal override void Enter()
+    {
+        player.bCanAttack = true;
+    }
     protected internal override void Leave()
     {
         player.bPreEnter = false;

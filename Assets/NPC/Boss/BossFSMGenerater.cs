@@ -5,14 +5,25 @@ using UnityEngine;
 
 public sealed class BossFSMGenerater : NPCFSMGenerater
 {
-    BossStats bossStats = new BossStats();
+    BossStats bossStats;
+    public override void InitState(StateSystem state)
+    {
+        base.InitState(state);
+        state.bossStats = bossStats;
+    }
+
+    public override void Awake()
+    {
+        base.Awake();
+        bossStats = GetComponentInParent<BossStats>();
+    }
     public sealed override bool AnyState()
     {
         if (bossStats.fHP <= 0f)
         {
             SNextState = "Death";
         }
-        else if (bossStats.fToughness <5f)
+        else if (bossStats.fToughness < 5f)
         {
             SNextState = "GetHit1";
             SNextState = "GetHit2";
@@ -22,7 +33,7 @@ public sealed class BossFSMGenerater : NPCFSMGenerater
 
     public sealed override void AddState()
     {
-        SubscribeStateLibrary.Add("Idle",new BossIdle());
+        SubscribeStateLibrary.Add("Idle", new BossIdle());
         InitState(SubscribeStateLibrary["Idle"]);
         SubscribeStateLibrary.Add("Walk", new BossWalk());
         InitState(SubscribeStateLibrary["Walk"]);

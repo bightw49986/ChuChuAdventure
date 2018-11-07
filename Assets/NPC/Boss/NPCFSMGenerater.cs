@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class NPCFSMGenerater : MonoBehaviour, FSMGenerater
 {
-    public Animator AnimPlayer{ get; set; }
-    public Dictionary<string, StateSystem> SubscribeStateLibrary { get ; set ; }
-    public bool BAllowTransit { get ; set; }
-    public string SCurrentState { get; set ; }
-    public string SNextState { get ; set ; }
 
     public virtual void InitState(StateSystem state)
     {
@@ -32,7 +27,15 @@ public class NPCFSMGenerater : MonoBehaviour, FSMGenerater
     public virtual void Update()
     {
         AnyState();
-        if (BAllowTransit && SNextState != null) StartCoroutine(Transit(SNextState));
+        sState = SCurrentState;
+        if (AnyState())
+        {
+            StartCoroutine(Transit(SNextState));
+        }
+        else if (BAllowTransit && SNextState != null)
+        {
+            StartCoroutine(Transit(SNextState));
+        }
         DoCurrentState(SubscribeStateLibrary[SCurrentState]);//擋的事交給coroutine的bools切換
     }
 
@@ -47,6 +50,7 @@ public class NPCFSMGenerater : MonoBehaviour, FSMGenerater
             BAllowTransit = false;//新的狀態即重新計算可轉換的時機
             AnimPlayer.SetBool(SCurrentState, true);//(Animator)打開前往下一個狀態的transition
             TransitCurrentState(SubscribeStateLibrary[SCurrentState]);//執行Transit
+            yield return new WaitUntil(() => AnimPlayer.IsInTransition(0) == true);//(Animator)等，直到動作切換結束
             yield return new WaitUntil(() => AnimPlayer.IsInTransition(0) == false);//(Animator)等，直到動作切換結束
             EnterCurrentState(SubscribeStateLibrary[SCurrentState]);//轉換結束後呼叫Enter該狀態改變規範
             BAllowTransit = true;
@@ -78,4 +82,10 @@ public class NPCFSMGenerater : MonoBehaviour, FSMGenerater
     {
 
     }
+    public Animator AnimPlayer { get; set; }
+    public Dictionary<string, StateSystem> SubscribeStateLibrary { get; set; }
+    public bool BAllowTransit { get; set; }
+    public string SCurrentState { get; set; }
+    public string SNextState { get; set; }
+    [SerializeField] private string sState;//暫時Show在Inspector用的
 }
