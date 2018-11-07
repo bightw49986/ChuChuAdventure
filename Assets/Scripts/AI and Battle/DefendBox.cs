@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -42,7 +41,7 @@ namespace BattleSystem
 
         protected virtual void Awake()
         {
-            if(Collider==null)
+            if (Collider == null)
             {
                 Collider = GetComponent<Collider>();
             }
@@ -65,7 +64,7 @@ namespace BattleSystem
         void OnDisable() //undone 把特效還給物件池
         {
         }
-        
+
 
         public void InitDefendBox(IDefender host)
         {
@@ -95,7 +94,7 @@ namespace BattleSystem
         /// </summary>
         protected virtual void PlayHitFX() //undone 物件池處理、多特效支援
         {
-            if (HitFX == null) 
+            if (HitFX == null)
             {
                 if (PrintLog)
                     Debug.LogError("特效未指派就被叫用！");
@@ -103,7 +102,7 @@ namespace BattleSystem
             }
             Instantiate(HitFX, transform.position, Quaternion.identity);
             if (PrintLog)
-                print("防禦盒端: " + name + " 噴出受傷特效" +HitFX.name + "(宿主: " + Host.name + ")");
+                print("防禦盒端: " + name + " 噴出受傷特效" + HitFX.name + "(宿主: " + Host.name + ")");
         }
 
         /// <summary>
@@ -119,7 +118,7 @@ namespace BattleSystem
                 if (PrintLog)
                     print("防禦盒端: " + name + " 把傷害" + fDamage + "傳給宿主(宿主: " + Host.name + ")");
             }
-                
+
         }
     }
 }

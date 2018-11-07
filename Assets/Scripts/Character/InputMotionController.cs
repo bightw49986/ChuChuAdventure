@@ -15,10 +15,10 @@ public partial class InputMotionController : MonoBehaviour,IMoveable
 
     [Header("Input Settings")]
     public float m_fDeadZone = 0.1f;
-    public string FORWARD_AXIS = "Vertical";
-    public string TURN_AXIS = "Horizontal";
-    public string JUMP_AXIS = "Jump";
-    public string DASH_AXIS = "Dash";
+    [HideInInspector] public string FORWARD_AXIS = "Vertical";
+    [HideInInspector] public string TURN_AXIS = "Horizontal";
+    [HideInInspector] public string JUMP_AXIS = "Jump";
+    [HideInInspector] public string DASH_AXIS = "Dash";
 
 
     public float m_fVInput, m_fHInput, m_fJInput, m_fDInput, m_fLAInput, m_fHAInput;
@@ -75,11 +75,11 @@ public partial class InputMotionController : MonoBehaviour,IMoveable
             Vector3 vPredict = m_vCenter + Vector3.down * m_fGroundOffset;
             Debug.DrawLine(m_vCenter, vPredict, bGrounded ? Color.cyan : Color.red);
         }
-        if (bGrounded || player.bFuckTheGravity == true)
+        if (bGrounded || player.bIgnoreGravity == true)
         {
             m_velocity.y = 0;
         }
-        if (bGrounded == false && player.bFuckTheGravity == false)
+        if (bGrounded == false && player.bIgnoreGravity == false)
         {
             ApplyGravity();
         }

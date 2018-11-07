@@ -21,11 +21,21 @@ public sealed class PlayerFSMGenerater : MonoBehaviour, FSMGenerater
     }
     void Start()
     {
+        SubscribePlayerEvents();
         //開始新增StateLibrary中的狀態
         AddState();
         SCurrentState = "Idle";
         BAllowTransit = true;
     }
+
+    void SubscribePlayerEvents()
+    {
+        player.Died += () => { playerDied = true; };
+        player.KOed += () => { playerKOed = true; };
+        player.Freezed += () => { playerFreezed = true; };
+        player.Hit += () => { playerHit = true; };
+    }
+
     void Update()
     {
         //if (player.bPreEnter == true)
@@ -33,7 +43,6 @@ public sealed class PlayerFSMGenerater : MonoBehaviour, FSMGenerater
         //    BAllowTransit = false;
         //}
         animatorInfo = AnimPlayer.GetCurrentAnimatorStateInfo(0);
-        sState = SCurrentState;
         if (AnyState())
         {
             StartCoroutine(Transit(SNextState));
@@ -43,6 +52,11 @@ public sealed class PlayerFSMGenerater : MonoBehaviour, FSMGenerater
             StartCoroutine(Transit(SNextState));
         }
         DoCurrentState(SubscribeStateLibrary[SCurrentState]);//擋的事交給coroutine的bools切換
+    }
+
+    void LateUpdate()
+    {
+        playerHit = playerFreezed = playerKOed = playerDied = false;
     }
 
     public IEnumerator Transit(string _state)
@@ -88,26 +102,27 @@ public sealed class PlayerFSMGenerater : MonoBehaviour, FSMGenerater
     }
     public bool AnyState()
     {
-        if (player.fHP <= 0)
+        if (playerDied == true)
         {
             SNextState = "Dead";
             return true;
         }
-        else if (player.fToughness <= 0)
+        if (playerKOed == true)
         {
             SNextState = "Down";
             return true;
         }
-        else if (player.fToughness <= 6)//這裡得判斷哪個方向被打惹
+        if (playerFreezed ==true)//這裡得判斷哪個方向被打
         {
+            //undone 受擊的State
             return true;
         }
-        else if (player.bCanDash && inputMotionController.m_fDInput >= 0.1f)
+        if (player.bCanDash && inputMotionController.m_fDInput >= 0.1f)
         {
             SNextState = "Dash";
             return true;
         }
-        else return false;
+        return false;
     }
     public void AddState()
     {
@@ -157,13 +172,35 @@ public sealed class PlayerFSMGenerater : MonoBehaviour, FSMGenerater
         InitState(SubscribeStateLibrary["R2R2R2"]);
     }
 
+#region AnimationEvents
+    void CloseRecord()
+    {
+        player.bPreEnter = false;
+        BAllowTransit = true;
+    }
+    void StartRecord()
+    {
+        BAllowTransit = false;
+        player.bPreEnter = true;
+    }
+    void SwitchOnAtkBox(int boxIndex)
+    {
+        player.EnableAttackBox(boxIndex);
+    }
+    void SwitchOffAtkBox(int boxIndex)
+    {
+        player.DisableAttackBox(boxIndex);
+    }
+#endregion
+
     public Animator AnimPlayer { get; set; }
     public Dictionary<string, StateSystem> SubscribeStateLibrary { get; set; }
     public bool BAllowTransit { get; set; }
-    public string SCurrentState { get; set; }
+    public string SCurrentState { get { return sState; } set { sState = value; } }
     public string SNextState { get; set; }
     AnimatorStateInfo animatorInfo;
     Player player;
     InputMotionController inputMotionController;
-    [SerializeField] private string sState;//暫時Show在Inspector用的
+    bool playerHit, playerFreezed, playerKOed, playerDied;
+    [SerializeField] string sState;//暫時Show在Inspector用的
 }

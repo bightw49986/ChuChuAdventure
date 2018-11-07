@@ -20,11 +20,6 @@ namespace BattleSystem
         void RemoveDamageType(EAttackerType type);
 
         /// <summary>
-        /// 初始化所有受擊盒，把受擊盒加入DefendBoxes清單
-        /// </summary>
-        void InitDefendBoxs();
-
-        /// <summary>
         /// 開啟特定的受擊盒，註冊DamageOccured傷害事件
         /// </summary>
         /// <param name="iDefendboxIndex">受擊盒在DefendBoxes清單裡的index</param>
@@ -50,8 +45,8 @@ namespace BattleSystem
         /// <summary>
         /// 一般擊中時觸發的事件
         /// </summary>
-        event Action Hitted;
-        void OnHitted();
+        event Action Hit;
+        void OnHit();
 
         /// <summary>
         /// 硬直觸發的事件

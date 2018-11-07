@@ -24,6 +24,11 @@ namespace BattleSystem
         [SerializeField] protected bool PrintLog;
 
         /// <summary>
+        /// 攻擊盒的基本攻擊力
+        /// </summary>
+        public float BasicAtk = 1;
+
+        /// <summary>
         /// 這一下攻擊會造成多少傷害，在繼承的情況下覆寫這個屬性，可以在Getter那邊和CalculateFinalDamage()搭配，增加額外的傷害計算邏輯(先往下看，CalculateFinalDamage那邊有更多註解)
         /// </summary>
         /// <value>傷害值</value>
@@ -41,7 +46,7 @@ namespace BattleSystem
         /// 記錄這次攻擊已擊中的防禦盒，避免重複判定
         /// </summary>
         /// <value>被打中的盒子們</value>
-        public List<DefendBox> HittenBoxes;
+        public List<DefendBox> HitBoxes;
 
         /// <summary>
         /// 定義若允許在一次開關之間重複判定的判定間隔秒數
@@ -60,7 +65,7 @@ namespace BattleSystem
         /// </summary>
         protected virtual void OnEnable()
         {
-            HittenBoxes = new List<DefendBox>();
+            HitBoxes = new List<DefendBox>();
             if (Host.AtkValues.ContainsKey(this))
             {
                 DamageThisHit = Host.AtkValues[this];
@@ -79,7 +84,7 @@ namespace BattleSystem
             if (Host != null)
             {
                 Host.AttackInfoUpdate -= OnAttackInfoUpdate;
-                HittenBoxes.Clear();
+                HitBoxes.Clear();
                 Collider.enabled = true;
                 if (PrintLog)
                     print("攻擊盒端: " + name + "關閉成功，反註冊傷害更新事件(宿主: " + Host.name + ")");
@@ -179,7 +184,7 @@ namespace BattleSystem
                         print("攻擊盒端: " + name + "與同宿主防禦盒碰撞，不計算傷害(宿主: " + Host.name + ")");
                     return;//如果撞到自己的防禦盒就return(不允許自傷)
                 }
-                if (HittenBoxes.Contains(hitTarget) == false) //檢查這個受擊盒不在這次攻擊已判定過的List裡面
+                if (HitBoxes.Contains(hitTarget) == false) //檢查這個受擊盒不在這次攻擊已判定過的List裡面
                 {
                     if (hitTarget.TakeDamageType.Contains(damageType) || hitTarget.Host.IsHarmless == false) //檢查這個受擊盒是否無敵，且會受到這個攻擊盒傷害類型的傷害
                     {   //萬事俱備，傷害判定發生
@@ -210,9 +215,9 @@ namespace BattleSystem
         public IEnumerator DealDamageInterval(float fInterval, DefendBox boxToRemove)
         {
             yield return new WaitForSeconds(fInterval);
-            if (HittenBoxes != null && HittenBoxes.Contains(boxToRemove))
+            if (HitBoxes != null && HitBoxes.Contains(boxToRemove))
             {
-                HittenBoxes.Remove(boxToRemove);
+                HitBoxes.Remove(boxToRemove);
             }
         }
     }

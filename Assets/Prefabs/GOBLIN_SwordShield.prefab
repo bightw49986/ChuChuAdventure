@@ -1302,7 +1302,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1675390028527372}
   m_LocalRotation: {x: -0, y: -0.96526927, z: -0, w: 0.26125708}
-  m_LocalPosition: {x: 212.04799, y: 57.6284, z: 160.94746}
+  m_LocalPosition: {x: 180.5923, y: 60.988865, z: 135.06189}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4132684964048546}
@@ -2214,7 +2214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Collider: {fileID: 0}
   HitFX: {fileID: 1240250018707908, guid: 5656e7ea1f1a75d4c895547ec2b824b3, type: 2}
-  PrintLog: 1
+  PrintLog: 0
 --- !u!114 &114438515977113148
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2228,7 +2228,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Collider: {fileID: 0}
   HitFX: {fileID: 1240250018707908, guid: 5656e7ea1f1a75d4c895547ec2b824b3, type: 2}
-  PrintLog: 1
+  PrintLog: 0
 --- !u!114 &114694952255588286
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2242,7 +2242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Collider: {fileID: 0}
   HitFX: {fileID: 1240250018707908, guid: 5656e7ea1f1a75d4c895547ec2b824b3, type: 2}
-  PrintLog: 1
+  PrintLog: 0
 --- !u!114 &114876808941661256
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2256,7 +2256,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Collider: {fileID: 0}
   HitFX: {fileID: 1240250018707908, guid: 5656e7ea1f1a75d4c895547ec2b824b3, type: 2}
-  PrintLog: 1
+  PrintLog: 0
 --- !u!114 &114912193828492324
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2268,22 +2268,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d77622c37c754ad1bac4a3c1c3d115e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BasicAtk: 1
   AttackerType: 1
   AttackBoxes: []
   DefendBoxes: []
   TakeDamageFrom: 00000000
   IsHarmless: 0
-  MaxHP: 5
-  HP: 5
-  MaxEndurance: 1
-  Endurance: 1
-  RecoverTime: 0
-  KOLine: 10
-  HarmlessTime: 0.1
+  RecoverTime: 5
+  m_MaxHp: 3
+  m_Hp: 3
+  m_MaxEndurance: 2
+  m_Endurance: 2
+  KOLine: 2
+  HitSafeTime: 0.2
+  KOSafeTime: 1
   InitMessage: 0
   SwitchMessage: 0
-  HitMessage: 1
+  HitMessage: 0
   UpdateMessage: 0
 --- !u!114 &114979574329416690
 MonoBehaviour:

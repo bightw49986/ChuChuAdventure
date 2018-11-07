@@ -13,11 +13,6 @@ namespace BattleSystem
     public interface IAttacker
     {
         /// <summary>
-        /// 初始化身上每一個攻擊盒，實作上應在子物件中找到他們的reference，呼叫他們的InitAttackBox(this)，然後把它們加到AttackBoxes
-        /// </summary>
-        void InitAttackBoxes();
-
-        /// <summary>
         /// 當AtkValue被Set時觸發事件，通知所有註冊的攻擊盒更新資訊
         /// </summary>
         event Action<float, AttackBox> AttackInfoUpdate;

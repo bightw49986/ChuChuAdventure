@@ -489,14 +489,14 @@ ModelImporter:
         intParameter: 0
         messageOptions: 0
       - time: 0.23285198
-        functionName: OAB
+        functionName: SwitchOnAtkBox
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
       - time: 0.30866426
-        functionName: CAB
+        functionName: SwitchOffAtkBox
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -726,14 +726,14 @@ ModelImporter:
         intParameter: 0
         messageOptions: 0
       - time: 0.2509149
-        functionName: OAB
+        functionName: SwitchOnAtkBox
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
       - time: 0.37948218
-        functionName: CAB
+        functionName: SwitchOffAtkBox
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -970,18 +970,18 @@ ModelImporter:
         intParameter: 0
         messageOptions: 0
       - time: 0.3025449
-        functionName: OAB
+        functionName: SwitchOnAtkBox
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
-        intParameter: 0
+        intParameter: 1
         messageOptions: 0
       - time: 0.4607664
-        functionName: CAB
+        functionName: SwitchOffAtkBox
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
-        intParameter: 0
+        intParameter: 1
         messageOptions: 0
       - time: 0.86823106
         functionName: CloseRecord
@@ -1653,42 +1653,42 @@ ModelImporter:
         intParameter: 0
         messageOptions: 0
       - time: 0.23285198
-        functionName: OAB
+        functionName: SwitchOnAtkBox
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
       - time: 0.28880867
-        functionName: CAB
+        functionName: SwitchOffAtkBox
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
       - time: 0.35920578
-        functionName: OAB
+        functionName: SwitchOnAtkBox
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
       - time: 0.39711192
-        functionName: CAB
+        functionName: SwitchOffAtkBox
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
       - time: 0.4566787
-        functionName: OAB
+        functionName: SwitchOnAtkBox
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
       - time: 0.50541514
-        functionName: CAB
+        functionName: SwitchOffAtkBox
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
