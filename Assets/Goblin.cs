@@ -26,7 +26,7 @@ public class Goblin : MonoBehaviour
         }
 	}
 
-    void OnFreezed()
+    void OnFreezed(DefendBox defendBox)
     {
         m_Animator.SetTrigger("Freezed");
     }

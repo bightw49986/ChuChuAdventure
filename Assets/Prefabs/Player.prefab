@@ -765,8 +765,7 @@ GameObject:
   - component: {fileID: 114053243831616726}
   - component: {fileID: 114254877401906466}
   - component: {fileID: 114453318660055234}
-  - component: {fileID: 114362583937054812}
-  - component: {fileID: 114614594452826012}
+  - component: {fileID: 114715304344320554}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -2971,7 +2970,7 @@ BoxCollider:
   m_GameObject: {fileID: 1653255741410882}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 2, z: 0.8}
   m_Center: {x: 0, y: 0, z: 0}
@@ -3081,20 +3080,6 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 1792
---- !u!114 &114362583937054812
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1525632486331460}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e7b6332e98b045c1b94329fd0fb4ed5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Collider: {fileID: 0}
-  HitFX: {fileID: 0}
-  PrintLog: 0
 --- !u!114 &114418046753731456
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3143,7 +3128,7 @@ MonoBehaviour:
   slopeLayer:
     serializedVersion: 2
     m_Bits: 1280
---- !u!114 &114614594452826012
+--- !u!114 &114715304344320554
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3151,9 +3136,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1525632486331460}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b10cb2819906e4944a60a54bc91a6933, type: 3}
+  m_Script: {fileID: 11500000, guid: a0f51be3f9ba44e50a31d337376984da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Collider: {fileID: 0}
+  HitFX: {fileID: 0}
+  PrintLog: 0
+  DamagePart: 0
 --- !u!114 &114779247533461752
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -40,7 +40,7 @@ namespace BattleSystem
         /// 這個攻擊盒的的Collider
         /// </summary>
         /// <value>Collider</value>
-        protected Collider Collider;
+        [HideInInspector]protected Collider Collider;
 
         /// <summary>
         /// 記錄這次攻擊已擊中的防禦盒，避免重複判定

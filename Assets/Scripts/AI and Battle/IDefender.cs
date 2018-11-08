@@ -40,7 +40,8 @@ namespace BattleSystem
         /// 傷害事件發生時要做的事(計算傷害、判斷硬直與否、死亡與否)
         /// </summary>
         /// <param name="fDamage">傷害值</param>
-        void OnDamageOccured(float fDamage);
+        /// <param name="defendBox">受傷部位的defendbox</param>
+        void OnDamageOccured(float fDamage, DefendBox defendBox);
 
         /// <summary>
         /// 一般擊中時觸發的事件
@@ -51,8 +52,8 @@ namespace BattleSystem
         /// <summary>
         /// 硬直觸發的事件
         /// </summary>
-        event Action Freezed;
-        void OnFreezed();
+        event Action<DefendBox> Freezed;
+        void OnFreezed(DefendBox defendBox);
 
         /// <summary>
         /// 倒地觸發的事件

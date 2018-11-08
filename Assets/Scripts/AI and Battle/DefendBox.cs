@@ -26,7 +26,7 @@ namespace BattleSystem
         /// 這個受擊盒的Collider
         /// </summary>
         /// <value>Collider</value>
-        public Collider Collider;
+        [HideInInspector] public Collider Collider;
 
         /// <summary>
         /// 這個受擊盒被打中時要播放的特效
@@ -51,7 +51,7 @@ namespace BattleSystem
         /// <summary>
         /// 啟動時，初始化受擊資訊
         /// </summary>
-        void OnEnable() //undone 跟物件池要特效備用
+        protected void OnEnable() //undone 跟物件池要特效備用
         {
             if (Host != null)
             {
@@ -61,7 +61,7 @@ namespace BattleSystem
             }
         }
 
-        void OnDisable() //undone 把特效還給物件池
+        protected void OnDisable() //undone 把特效還給物件池
         {
         }
 
@@ -108,13 +108,14 @@ namespace BattleSystem
         /// <summary>
         /// 傷害發生時觸發的事件，由攻擊盒觸發
         /// </summary>
-        public event Action<float> DamageOccured;
+        public event Action<float,DefendBox> DamageOccured;
         public virtual void OnDamageOccured(float fDamage)
         {
-            PlayHitFX(); //播擊中特效
+            if (HitFX != null)
+                PlayHitFX(); //播擊中特效
             if (DamageOccured != null)
             {
-                DamageOccured(CalculateDamage(fDamage)); //把傷害值傳給CalculateDamage計算，然後通知事件的註冊者扣血量
+                DamageOccured(CalculateDamage(fDamage),this); //把傷害值傳給CalculateDamage計算，然後通知事件的註冊者扣血量
                 if (PrintLog)
                     print("防禦盒端: " + name + " 把傷害" + fDamage + "傳給宿主(宿主: " + Host.name + ")");
             }

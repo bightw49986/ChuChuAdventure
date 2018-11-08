@@ -262,7 +262,7 @@ namespace BattleSystem
         /// 當傷害產生，計算傷害，判斷結果
         /// </summary>
         /// <param name="fDamage">傷害值</param>
-        public void OnDamageOccured(float fDamage)
+        public void OnDamageOccured(float fDamage, DefendBox damagedPart)
         {
             if (fDamage <= 0f)
             {
@@ -315,7 +315,7 @@ namespace BattleSystem
                         {
                             if (HitMessage)
                                 print(gameObject.name + " 被打硬直了，" + "目前HP： " + Hp + "，強韌度：" + Endurance);
-                            OnFreezed();
+                            OnFreezed(damagedPart);
                         }
                         m_fRecoverTime = RecoverTime;
                     }
@@ -361,12 +361,12 @@ namespace BattleSystem
         /// <summary>
         /// 當被打中，產生硬直時觸發事件
         /// </summary>
-        public void OnFreezed()
+        public void OnFreezed(DefendBox damagedPart)
         {
             if (hitInterval != null)
                 StopCoroutine(hitInterval);
             hitInterval = StartCoroutine(HitInterval(HitSafeTime));
-            if (Freezed != null) Freezed();
+            if (Freezed != null) Freezed(damagedPart);
         }
 
         /// <summary>

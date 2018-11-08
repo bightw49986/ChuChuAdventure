@@ -42,11 +42,6 @@ public class Player : BattleData
         Power = 0f;
     }
 
-    protected override void Update()
-    {
-        base.Update();
-    }
-
     protected override void OnStatsChanged()
     {
         if (m_Stats.ContainsKey("MaxAttackSpeedRate"))
@@ -67,6 +62,8 @@ public class Player : BattleData
             m_Stats.Add("Power", Power);
         base.OnStatsChanged();
     }
+
+
 
     void InitPlayerStats()
     {

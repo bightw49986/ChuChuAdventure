@@ -29,10 +29,10 @@ namespace BattleSystem
         protected Coroutine hitInterval;
 
         [Header("Log Setting")]
-        [Tooltip("印出此BattleData初始化的訊息")] [SerializeField] bool InitMessage;
-        [Tooltip("印出此BattleData開關戰鬥盒的訊息")] [SerializeField] bool SwitchMessage;
-        [Tooltip("印出此BattleData受到傷害的訊息")] [SerializeField] bool HitMessage;
-        [Tooltip("印出此BattleData更新其他屬性的訊息")] [SerializeField] bool UpdateMessage;
+        [Tooltip("印出此BattleData初始化的訊息")] [SerializeField] protected bool InitMessage;
+        [Tooltip("印出此BattleData開關戰鬥盒的訊息")] [SerializeField] protected bool SwitchMessage;
+        [Tooltip("印出此BattleData受到傷害的訊息")] [SerializeField]protected bool HitMessage;
+        [Tooltip("印出此BattleData更新其他屬性的訊息")] [SerializeField]protected bool UpdateMessage;
 
         protected virtual void Awake()
         {
@@ -48,7 +48,7 @@ namespace BattleSystem
 
         public event Action Hit;
 
-        public event Action Freezed;
+        public event Action<DefendBox> Freezed;
 
         public event Action KOed;
 
