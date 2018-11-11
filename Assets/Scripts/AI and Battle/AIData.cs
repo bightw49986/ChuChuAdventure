@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace AISystem
 {
-    public class AIData : MonoBehaviour
+    public class AIData 
     { 
     }
 }

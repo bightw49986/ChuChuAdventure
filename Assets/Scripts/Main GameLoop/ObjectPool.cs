@@ -13,6 +13,12 @@ namespace ObjectPool
             Init();
         }
 
+
+        void Start()
+        {
+
+        }
+
         void Init()
         {
             SingletonLized();

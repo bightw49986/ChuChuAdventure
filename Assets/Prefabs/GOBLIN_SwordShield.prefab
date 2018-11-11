@@ -1302,7 +1302,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1675390028527372}
   m_LocalRotation: {x: -0, y: -0.96526927, z: -0, w: 0.26125708}
-  m_LocalPosition: {x: 180.5923, y: 60.988865, z: 135.06189}
+  m_LocalPosition: {x: 182.72792, y: 60.988865, z: 132.65462}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4132684964048546}
@@ -2276,8 +2276,8 @@ MonoBehaviour:
   RecoverTime: 5
   m_MaxHp: 3
   m_Hp: 3
-  m_MaxEndurance: 2
-  m_Endurance: 2
+  m_MaxEndurance: 1
+  m_Endurance: 1
   KOLine: 2
   HitSafeTime: 0.2
   KOSafeTime: 1
