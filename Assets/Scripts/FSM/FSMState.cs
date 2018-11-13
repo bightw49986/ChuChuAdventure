@@ -16,17 +16,25 @@ namespace FSM
         /// The ID of this state.
         /// </summary>
         /// <value>ID.</value>
-        public Enum StateID { get; protected set; }
+        public virtual Enum StateID { get { return _stateID; } set { _stateID = value; } }
+        private Enum _stateID;
 
         /// <summary>
         /// The Collections of states in which this state can transfer to.
         /// </summary>
-        protected Dictionary<Enum,FSMState> transitions;
+        protected Dictionary<Enum, FSMState> transitions;
+
+        /// <summary>
+        /// Return if this state is a sub - machine state.
+        /// </summary>
+        public readonly bool IsSubMachine;
 
         /// <summary>
         /// The finite state machine which handles this state.
         /// </summary>
         internal FSMSystem m_FSM;
+
+
 
         /// <summary>
         /// Initializes a new instance of the <see cref="T:FSM.FSMState"/> class.
@@ -149,7 +157,7 @@ namespace FSM
             OnStateRunning(SubState);
         }
 
-        internal override void CheckConditions()
+        internal sealed override void CheckConditions()
         {
             CheckConditions(SubState);
         }

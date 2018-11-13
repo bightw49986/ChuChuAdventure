@@ -9,14 +9,14 @@ namespace BattleSystem
     /// <summary>
     /// 基本攻擊盒，運作方式為狀態機或其他外部腳本控制Enalbe開關
     /// </summary>
-    [RequireComponent(typeof(Collider))]
-    public class AttackBox : MonoBehaviour
+
+    public abstract class AttackBox : MonoBehaviour
     {
         /// <summary>
         /// 這個攻擊盒的主人，從它註冊AttackInfoUpdate事件檢查攻擊力的變動
         /// </summary>
         /// <value>攻擊盒的擁有者</value>
-        protected BattleData Host;
+        protected internal BattleData Host;
 
         /// <summary>
         /// 要不要印攻擊盒Log
@@ -29,18 +29,11 @@ namespace BattleSystem
         public float BasicAtk = 1;
 
         /// <summary>
-        /// 這一下攻擊會造成多少傷害，在繼承的情況下覆寫這個屬性，可以在Getter那邊和CalculateFinalDamage()搭配，增加額外的傷害計算邏輯(先往下看，CalculateFinalDamage那邊有更多註解)
+        /// 這一下攻擊會造成多少傷害，覆寫CalculateFinalDamage函式來更改計算傷害的邏輯
         /// </summary>
         /// <value>傷害值</value>
-        protected virtual float DamageThisHit
-        {get { return CalculateFinalDamage(m_fDamageThisHit); } set {m_fDamageThisHit = value; } }
+        protected float DamageThisHit { get { return CalculateFinalDamage(m_fDamageThisHit); } set {m_fDamageThisHit = value; } }
         float m_fDamageThisHit;
-
-        /// <summary>
-        /// 這個攻擊盒的的Collider
-        /// </summary>
-        /// <value>Collider</value>
-        [HideInInspector]protected Collider Collider;
 
         /// <summary>
         /// 記錄這次攻擊已擊中的防禦盒，避免重複判定
@@ -54,42 +47,36 @@ namespace BattleSystem
         /// <value>間隔秒數，若 = 0 代表不允許重複判定</value>
         public float Interval;
 
+        /// <summary>
+        /// 擊中時播放特效
+        /// </summary>
+        public GameObject HitFX { get { return m_hitFX; } private set { m_hitFX = value; } }
+        [SerializeField] GameObject m_hitFX;
+
         protected virtual void Awake()
         {
-            Collider = GetComponent<Collider>();
             enabled = false;
         }
 
         /// <summary>
         /// 當Enable時，註冊宿主的攻擊資料更新事件，讓攻擊資料保持同步
         /// </summary>
-        protected virtual void OnEnable()
+        protected void OnEnable()
         {
-            HitBoxes = new List<DefendBox>();
-            if (Host.AtkValues.ContainsKey(this))
-            {
-                DamageThisHit = Host.AtkValues[this];
-            }
-            Host.AttackInfoUpdate += OnAttackInfoUpdate;
-            Collider.enabled = true;
-            if (PrintLog)
-                print("攻擊盒端: " + name + "開啟成功，註冊傷害更新事件(宿主: " + Host.name + ")");
+            StartDetection();
         }
+        protected abstract void StartDetection();
+
 
         /// <summary> 
         /// 當Disable時，反註冊攻擊資料更新的事件
         /// </summary>
         protected void OnDisable()
         {
-            if (Host != null)
-            {
-                Host.AttackInfoUpdate -= OnAttackInfoUpdate;
-                HitBoxes.Clear();
-                Collider.enabled = true;
-                if (PrintLog)
-                    print("攻擊盒端: " + name + "關閉成功，反註冊傷害更新事件(宿主: " + Host.name + ")");
-            }
+            StopDetection();
         }
+        protected abstract void StopDetection();
+
 
         /// <summary>
         /// 外部初始化攻擊盒所要呼叫的函式，宿主必須在初始化每一個攻擊盒時都將自己當作參數傳給攻擊盒
@@ -98,22 +85,9 @@ namespace BattleSystem
         public void InitAttackBox(IAttacker host)
         {
             Host = (BattleData)host;
+            DamageThisHit = BasicAtk;
             if (PrintLog)
                 print("攻擊盒端: " + name + " 初始化成功(宿主: " + Host.name + ")");
-        }
-
-        /// <summary>
-        /// 宿主攻擊力改變時，更新攻擊力
-        /// </summary>
-        /// <param name="fNewAttackValue">新的攻擊力</param>
-        protected void OnAttackInfoUpdate(float fNewAttackValue, AttackBox attackBox)
-        {
-            if (attackBox == this)
-            {
-                DamageThisHit = fNewAttackValue;
-                if (PrintLog)
-                    print("攻擊盒端: " + name + "成功更新傷害(宿主: " + Host.name + ")");
-            }
         }
 
         /// <summary>
@@ -125,58 +99,16 @@ namespace BattleSystem
         {
             return fBaseDamage;
         }
-        /*詳細說明
-        舉例來說今天做一個新的獸人狂戰士AttackBox，繼承這個Class，然後他有特殊的傷害計算方式：如果宿主血量低於一半，傷害兩倍，就可以這樣寫：
-
-
-        {
-            ...
-            
-            protected override float DamageThisHit { get { return CalculateFinalDamage(m_fDamageThisHit);} set { m_fDamageThisHit = value;}}
-            private float m_fDamageThisHit;
-
-            ...
-
-            然後 CalculateFinalDamage()那邊也覆寫成：
-            protected override float CalculateFinalDamage(float fBaseDamage)
-            {
-                if (Host.HP < Host.MaxHP * 0.5) (這邊為了舉例方便假設Host也繼承了IDefender有HP跟MaxHP等屬性)
-                return fBaseDamage * 2;
-            }
-            
-            ...
-        }
-        這樣在下面PassDamage()要拿傷害傳給受擊盒的時候就直接拿DamageThisHit就好，不用再塞條件判定
-        */
-
-        protected virtual void Update()
-        {
-            if (Collider.enabled == false) //檢查若Collider沒有作用就關閉攻擊盒
-            {
-                Debug.LogWarning(Host.name + " 的攻擊盒: " + name + "Collider關閉，關閉攻擊盒！");
-                enabled = false;
-            }
-        }
-
-        /// <summary>
-        /// 當碰撞發生時，呼叫傷害傳遞
-        /// </summary>
-        /// <param name="other">撞到的Collider</param>
-        protected virtual void OnTriggerStay(Collider other)
-        {
-            if (enabled)
-            PassDamage(other, Host.AttackerType);
-        }
 
         /// <summary>
         /// 傷害傳遞
         /// </summary>
         /// <param name="other">撞到的Collider</param>
-        void PassDamage(Collider other, EAttackerType damageType)
+        protected void PassDamage(GameObject other, EAttackerType damageType)
         {
 
             DefendBox hitTarget;
-            if ((hitTarget = other.gameObject.GetComponent<DefendBox>()) && hitTarget.enabled==true) //檢查撞到的Collider有沒有受擊盒
+            if ((hitTarget = other.GetComponent<DefendBox>()) && hitTarget.enabled == true) //檢查撞到的Collider有沒有受擊盒
             {
                 if (hitTarget.Host == Host)
                 {
@@ -189,7 +121,7 @@ namespace BattleSystem
                     if (hitTarget.TakeDamageType.Contains(damageType) || hitTarget.Host.IsHarmless == false) //檢查這個受擊盒是否無敵，且會受到這個攻擊盒傷害類型的傷害
                     {   //萬事俱備，傷害判定發生
                         hitTarget.OnDamageOccured(DamageThisHit); //把傷害傳給DefendBox
-                        Host.OnAttackSuccess(hitTarget); //告訴宿主這次攻擊有打中這個目標，避免重複判定
+                        Host.OnAttackSuccess(hitTarget, this); //告訴宿主這次攻擊有打中這個目標，避免重複判定
                         if (PrintLog)
                             print("攻擊盒端: " + name + "與防禦盒: " + hitTarget.name + "發生碰撞，傳送 " + DamageThisHit + "點傷害過去計算(宿主: " + Host.name + ")");
                     }
@@ -208,17 +140,13 @@ namespace BattleSystem
         }
 
         /// <summary>
-        /// 等待下一次重複判斷的間隔
+        /// 指定攻擊盒的擊中特效
         /// </summary>
-        /// <param name="fInterval">間隔秒數</param>
-        /// <param name="boxToRemove">作用的受擊盒</param>
-        public IEnumerator DealDamageInterval(float fInterval, DefendBox boxToRemove)
+        /// <param name="go">特效的Prefab</param>
+        public void SetHitFX(GameObject go)
         {
-            yield return new WaitForSeconds(fInterval);
-            if (HitBoxes != null && HitBoxes.Contains(boxToRemove))
-            {
-                HitBoxes.Remove(boxToRemove);
-            }
+            HitFX = go;
         }
+
     }
 }

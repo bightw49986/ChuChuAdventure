@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ResourcesManagement;
 
 namespace BattleSystem 
 {
@@ -16,8 +18,9 @@ namespace BattleSystem
         /// </summary>
         void InitBattleData()
         {
+            objectPool = GameObject.FindGameObjectWithTag("Main").GetComponent<ObjectPool>();
             InitStats();
-            InitAttackBoxes();
+            InitMeleeAttackBoxes();
             InitDefendBoxs();
         }
 
@@ -34,18 +37,18 @@ namespace BattleSystem
         /// <summary>
         /// 初始化所有隸屬於此BattleData的攻擊盒
         /// </summary>
-        void InitAttackBoxes()
+        void InitMeleeAttackBoxes()
         {
             if (InitMessage)
-                print(gameObject.name + " 開始初始化攻擊盒");
-            AttackBoxes = new List<AttackBox>();
+                print(gameObject.name + " 開始初始化近戰攻擊盒");
+            MeleeAttackBoxes = new List<AttackBox_Melee>();
             AtkValues = new Dictionary<AttackBox, float>();
-            AttackBox[] attackBoxes = GetComponentsInChildren<AttackBox>();
+            AttackBox_Melee[] attackBoxes = GetComponentsInChildren<AttackBox_Melee>();
             for (int i = 0; i < attackBoxes.Length; i++)
             {
-                if (AttackBoxes.Contains(attackBoxes[i]) == false)
+                if (MeleeAttackBoxes.Contains(attackBoxes[i]) == false)
                 {
-                    AttackBoxes.Add(attackBoxes[i]);
+                    MeleeAttackBoxes.Add(attackBoxes[i]);
                     attackBoxes[i].InitAttackBox(this);
                     if (attackBoxes[i].BasicAtk <= 0 && UpdateMessage)
                     {
@@ -57,6 +60,24 @@ namespace BattleSystem
             }
             if (InitMessage)
                 print(gameObject.name + "攻擊盒初始化完成；共初始了: " + attackBoxes.Length + "個攻擊盒");
+        }
+
+        /// <summary>
+        /// 加入可以用的特效種類
+        /// </summary>
+        /// <param name="types">Types.</param>
+        void AddParticleAttackBoxes(params SkillFXKey[] types)
+        {
+            if (InitMessage)
+                print(gameObject.name + " 開始初始化特效攻擊盒");
+            if(ParticleAttackBoxes == null) ParticleAttackBoxes = new List<SkillFXKey>();
+            foreach (var t in types)
+            {
+                if (ParticleAttackBoxes.Contains(t) == false)
+                {
+                    ParticleAttackBoxes.Add(t);
+                }
+            }
         }
 
         /// <summary>
@@ -87,11 +108,11 @@ namespace BattleSystem
         /// <param name="iAttackBoxIndex">該攻擊盒在AttackBoxes清單裡的Index</param>
         public void EnableAttackBox(int iAttackBoxIndex)
         {
-            if (iAttackBoxIndex <= AttackBoxes.Count - 1 && AttackBoxes[iAttackBoxIndex] != null)
+            if (iAttackBoxIndex <= MeleeAttackBoxes.Count - 1 && MeleeAttackBoxes[iAttackBoxIndex] != null)
             {
-                AttackBoxes[iAttackBoxIndex].enabled = true;
+                MeleeAttackBoxes[iAttackBoxIndex].enabled = true;
                 if (SwitchMessage)
-                    print(gameObject.name + " 打開他的" + iAttackBoxIndex + "號攻擊盒，該攻擊盒攻擊力為: " + AtkValues[AttackBoxes[iAttackBoxIndex]] + "點");
+                    print(gameObject.name + " 打開他的" + iAttackBoxIndex + "號攻擊盒，該攻擊盒攻擊力為: " + AtkValues[MeleeAttackBoxes[iAttackBoxIndex]] + "點");
             }
             else
             {
@@ -105,11 +126,11 @@ namespace BattleSystem
         /// <param name="iAttackBoxIndex">該攻擊盒在AttackBoxes清單裡的Index</param>
         public void DisableAttackBox(int iAttackBoxIndex)
         {
-            if (AttackBoxes[iAttackBoxIndex] != null)
+            if (MeleeAttackBoxes[iAttackBoxIndex] != null)
             {
                 if (SwitchMessage)
                     print(gameObject.name + " 關閉他的" + iAttackBoxIndex + "號攻擊盒");
-                AttackBoxes[iAttackBoxIndex].enabled = false;
+                MeleeAttackBoxes[iAttackBoxIndex].enabled = false;
             }
             else
             {
@@ -120,18 +141,26 @@ namespace BattleSystem
         /// <summary>
         /// 指派新的攻擊力給指定的攻擊盒
         /// </summary>
-        /// <param name="fNewAttackValue">新的攻擊力</param>
+        /// <param name="fNewValue">新的攻擊力</param>
         /// <param name="attackBox">指定的攻擊盒</param>
-        public void SetAtkValueToAttackBox(float fNewAttackValue, AttackBox attackBox)
+        public void SetAtkToAttackBox(float fNewValue, AttackBox attackBox)
         {
             if (attackBox != null && AtkValues.ContainsKey(attackBox))
             {
                 if (UpdateMessage)
-                    print(gameObject.name + " 的攻擊盒:" + attackBox.name + " 攻擊力更新了:" + AtkValues[attackBox] + " -> " + fNewAttackValue);
-                AtkValues[attackBox] = fNewAttackValue;
-                OnAttackInfoUpdate(fNewAttackValue, attackBox);
+                    print(gameObject.name + " 的攻擊盒:" + attackBox.name + " 攻擊力更新了:" + AtkValues[attackBox] + " -> " + fNewValue);
+                AtkValues[attackBox] = fNewValue;
+                OnAttackInfoUpdate(fNewValue, attackBox);
             }
 
+        }
+
+        public void CastSkillBox(SkillFXKey type)
+        {
+            GameObject attackFX = objectPool.AccessGameObjectFromPool(PoolKey.SkillFX, type);
+            AttackBox_Skill skillBox = attackFX.GetComponent<AttackBox_Skill>();
+            if (skillBox == null) return;
+            skillBox.InitAttackBox(this);
         }
 
         /// <summary>
@@ -248,13 +277,13 @@ namespace BattleSystem
         /// <summary>
         /// 當攻擊力數值改變，觸發事件通知攻擊盒
         /// </summary>
-        /// <param name="fNewAttackValue">新的攻擊力</param>
+        /// <param name="fNewAtkValue">新的攻擊力</param>
         /// <param name="attackBox">攻擊盒</param>
-        public void OnAttackInfoUpdate(float fNewAttackValue, AttackBox attackBox)
+        public void OnAttackInfoUpdate(float fNewAtkValue, AttackBox attackBox)
         {
-            if (AttackInfoUpdate != null)
+            if (AtkValueChanged != null)
             {
-                AttackInfoUpdate(fNewAttackValue, attackBox);
+                AtkValueChanged(fNewAtkValue, attackBox);
             }
         }
 
@@ -334,20 +363,25 @@ namespace BattleSystem
         /// <summary>
         /// 當單次攻擊成功打中目標，通知身上其他攻擊盒不能在對目標造成傷害
         /// </summary>
-        /// <param name="defendBox">打中的防禦盒</param>
-        public void OnAttackSuccess(DefendBox defendBox)
+        /// <param name="hitTarget">打中的防禦盒</param>
+        /// <param name="attackBox">哪個攻擊盒打中</param>
+        public void OnAttackSuccess(DefendBox hitTarget,AttackBox attackBox)
         {
-            foreach (var atkBox in AttackBoxes)
+            if(attackBox.GetType()==typeof(AttackBox_Melee))
             {
-                if (atkBox.HitBoxes.Contains(defendBox) == false)
+                foreach (var atkBox in MeleeAttackBoxes)
                 {
-                    atkBox.HitBoxes.Add(defendBox);
-                    if (atkBox.Interval != 0)
+                    if (atkBox.HitBoxes.Contains(hitTarget) == false)
                     {
-                        StartCoroutine(atkBox.DealDamageInterval(atkBox.Interval, defendBox));
+                        atkBox.HitBoxes.Add(hitTarget);
+                        if (atkBox.Interval != 0)
+                        {
+                            StartCoroutine(atkBox.HitInterval(atkBox.Interval, hitTarget));
+                        }
                     }
                 }
             }
+            if (AttackSuccess != null) AttackSuccess(hitTarget, attackBox);
         }
 
         /// <summary>

@@ -15,7 +15,7 @@ namespace BattleSystem
         /// <summary>
         /// 當AtkValue被Set時觸發事件，通知所有註冊的攻擊盒更新資訊
         /// </summary>
-        event Action<float, AttackBox> AttackInfoUpdate;
+        event Action<float, AttackBox> AtkValueChanged;
 
         /// <summary>
         /// 應該被實作成AttackInfoUpdate的觸發器，並且塞在SetAtkValueToAttackBox裡面觸發
@@ -28,7 +28,7 @@ namespace BattleSystem
         /// </summary>
         /// <param name="fNewAttackValue">新的攻擊力</param>
         /// <param name="attackBox">要指定的攻擊盒</param>
-        void SetAtkValueToAttackBox(float fNewAttackValue, AttackBox attackBox);
+        void SetAtkToAttackBox(float fNewAttackValue, AttackBox attackBox);
 
         /// <summary>
         /// 打開指定索引的攻擊盒

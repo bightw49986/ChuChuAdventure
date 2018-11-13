@@ -47,7 +47,7 @@ public class Main : MonoBehaviour ,ISingleton
 
     void InitObjectPool()
     {
-        gameObject.AddComponent<ObjectPool.ObjectPool>();
+        gameObject.AddComponent<ResourcesManagement.ObjectPool>();
     }
 
     void InitMusicPlayer()

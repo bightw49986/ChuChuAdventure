@@ -72,13 +72,14 @@ namespace FSM
             validStates = new Dictionary<Enum, FSMState>();
             globalTransitions = new Dictionary<Enum, FSMState>();
             CurrentState = InitValidStates(InitialState);
+            CurrentState.OnStateEnter();
         }
 
         /// <summary>
-        /// 指定這個狀態機能執行的狀態，
+        /// 指定這個狀態機能執行的狀態，並設定初始狀態
         /// </summary>
         /// <returns>The valid states.</returns>
-        protected abstract FSMState InitValidStates(Enum initialState);
+        protected abstract FSMState InitValidStates(Enum initialStateID);
 
         /// <summary>
         /// 反初始化狀態機釋放資源
@@ -144,7 +145,7 @@ namespace FSM
         /// 執行狀態切換
         /// </summary>
         /// <param name="stateID">目標狀態的StateID</param>
-        internal void PerformTransition(Enum stateID)
+        internal virtual void PerformTransition(Enum stateID)
         {
             if (validStates != null && validStates.ContainsKey(stateID))
             {
@@ -199,13 +200,27 @@ namespace FSM
         protected internal BattleData m_BattleData;
         protected internal Animator m_Animator;
 
+        public bool CanBeHit;
+        public bool CanBeKOed;
+        public bool CanBeDead;
+
         protected override void InitFSM()
         {
             m_AIData = GetComponent<AIData>();
             m_BattleData = GetComponent<BattleData>();
             m_Animator = GetComponent<Animator>();
-            m_BattleData.Freezed += OnCharacterFreezed;
-            m_BattleData.Died += OnCharacterDied;
+
+            if (CanBeDead)
+            {
+                m_BattleData.Died += OnCharacterDied;
+                if (CanBeHit)
+                {
+                    m_BattleData.Hit += OnCharacterHit;
+                    m_BattleData.Freezed += OnCharacterFreezed;
+                    if (CanBeKOed)
+                        m_BattleData.KOed += OnCharacterKOed;
+                }
+            }
             base.InitFSM();
         }
 
@@ -213,8 +228,17 @@ namespace FSM
         {
             m_AIData = null;
             m_Animator = null;
-            m_BattleData.Freezed -= OnCharacterFreezed;
-            m_BattleData.Died -= OnCharacterDied;
+            if (CanBeDead)
+            {
+                m_BattleData.Died -= OnCharacterDied;
+                if (CanBeHit)
+                {
+                    m_BattleData.Hit -= OnCharacterHit;
+                    m_BattleData.Freezed -= OnCharacterFreezed;
+                    if (CanBeKOed)
+                        m_BattleData.KOed -= OnCharacterKOed;
+                }
+            }
             m_BattleData = null;
             base.UnInitFSM();
         }
@@ -228,11 +252,27 @@ namespace FSM
             bTranfering = true;
             OriginState = CurrentState;
             CurrentState.OnStateExit();
-            CharacterFSMState nextState = (CharacterFSMState)targetState;
-            if (String.IsNullOrEmpty(nextState.Trigger) == false)
+            if (targetState.GetType() != typeof(FSMSubMachine))
             {
-                m_Animator.SetTrigger(nextState.Trigger);
-                yield return new WaitUntil(() => (m_Animator.IsInTransition(0)) == true);
+                CharacterFSMState nextState = (CharacterFSMState)targetState;
+                if (String.IsNullOrEmpty(nextState.Trigger) == false)
+                {
+                    m_Animator.SetTrigger(nextState.Trigger);
+                    yield return new WaitUntil(() => (m_Animator.IsInTransition(0)) == true);
+                }
+            }
+            else if (targetState.GetType() == typeof(FSMSubMachine))
+            {
+                FSMSubMachine nextState = (FSMSubMachine)targetState;
+                if(String.IsNullOrEmpty(nextState.SubStatesTriggers[0]) ==false)
+                {
+                    m_Animator.SetTrigger(nextState.SubStatesTriggers[0]);
+                    yield return new WaitUntil(() => (m_Animator.IsInTransition(0)) == true);
+                }
+            }
+            else
+            {
+                Debug.LogWarning("輸入了一個不正確的目標狀態");
             }
             yield return new WaitUntil(() => (m_Animator.IsInTransition(0)) == false);
             CurrentState = targetState;
@@ -240,10 +280,54 @@ namespace FSM
             bTranfering = false;
         }
 
+        /// <summary>
+        /// 轉換狀態的Coroutine，當目標狀態是子狀態機時，用這個函式
+        /// </summary>
+        /// <param name="targetState">目標子狀態機</param>
+        /// <param name="stage">目標階段</param>
+        protected IEnumerator TransferTo(FSMSubMachine targetState,int stage)
+        {
+            bTranfering = true;
+            OriginState = CurrentState;
+            CurrentState.OnStateExit();
+            if(String.IsNullOrEmpty(targetState.SubStatesTriggers[stage]) == false)
+            {
+                m_Animator.SetTrigger(targetState.SubStatesTriggers[stage]);
+                yield return new WaitUntil(() => (m_Animator.IsInTransition(0)) == true);
+            }
+            else
+            {
+                Debug.LogWarning("輸入了一個不正確的目標狀態");
+            }
+            yield return new WaitUntil(() => (m_Animator.IsInTransition(0)) == false);
+            CurrentState = targetState;
+            CurrentState.OnStateEnter();
+            bTranfering = false;
+        }
+
+        internal void PerformTransition(Enum stateID,int stage)
+        {
+            if (validStates != null && validStates.ContainsKey(stateID))
+            {
+                if (validStates[stateID].GetType() == typeof(FSMSubMachine))
+                {
+                    FSMSubMachine nextState = (FSMSubMachine)validStates[stateID];
+                    StartCoroutine(TransferTo(nextState, stage));
+                }
+            }
+            else
+            {
+                Debug.LogError(gameObject.name + "狀態切換失敗！原因：要切換的狀態：" + stateID + " 不在此狀態機可切換的狀態清單內(是否忘記增刪過或遺漏條件判定？)");
+            }
+        }
+
+        protected abstract void OnCharacterHit();
+
         protected abstract void OnCharacterFreezed(DefendBox damagedPart);
 
-        protected abstract void OnCharacterDied();
+        protected abstract void OnCharacterKOed();
 
+        protected abstract void OnCharacterDied();
 
     }
 
@@ -272,13 +356,19 @@ namespace FSM
         public NpcStartingPose StartingPose { get { return _startingPose; } set { _startingPose = value; } }
         [SerializeField]NpcStartingPose _startingPose;
 
-        protected override FSMState InitValidStates(Enum initialState)
+        protected override FSMState InitValidStates(Enum initialStateID)
         {
             foreach (var s in StatesLib.BasicNpc.States)
             {
                 if ((Npc)s == Npc.Idle) AddState(new Idle(this));
+                if ((Npc)s == Npc.Died) AddState(new Died(this));
+                if ((Npc)s == Npc.Freezed) AddState(new Freezed(this));
+                if ((Npc)s == Npc.Patrol) AddState(new Patrol(this));
+                if ((Npc)s == Npc.Approach) AddState(new Approach(this));
+                if ((Npc)s == Npc.Attack) AddState(new Attack(this));
+                if ((Npc)s == Npc.Confront) AddState(new Confront(this));
             }
-            return validStates[initialState];
+            return validStates[initialStateID];
         }
     }
 }

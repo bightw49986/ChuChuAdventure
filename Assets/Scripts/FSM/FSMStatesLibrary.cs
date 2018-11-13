@@ -11,12 +11,12 @@ namespace FSM
     /// <summary>
     /// 使用狀態機的物種
     /// </summary>
-    public enum Species { Goblin = 1}
+    public enum Species { Goblin = 1 }
 
     /// <summary>
     /// Npc的狀態行為
     /// </summary>
-    public enum Npc { Freezed = -2 , Died =  -1 , Idle = 0, Ambush = 1 , Patrol = 2, Chase  = 3, Confront = 4, Attack = 5, Caution = 6, JumpAttack = 7}
+    public enum Npc { Freezed = -2 , Died =  -1 , Idle = 0, Patrol = 1, Chase  = 2, Confront = 3, Attack = 4 , Approach = 5 }
 
 
 
@@ -30,31 +30,37 @@ namespace FSM
                 public static readonly List<Enum> AnyStates = new List<Enum> { Npc.Freezed, Npc.Died };
 
                 public static readonly List<Enum> States = new List<Enum>
-                { Npc.Idle, Npc.Ambush, Npc.Patrol, Npc.Caution, Npc.Chase, Npc.Attack, Npc.Confront, Npc.JumpAttack };
+                { Npc.Idle, Npc.Patrol, Npc.Chase, Npc.Confront, Npc.Attack, Npc.Approach };
 
                 public static readonly Dictionary<Enum, string> Triggers = new Dictionary<Enum, string>
                 {
-                    { Npc.Died,"Died" }, { Npc.Freezed, "Freezed"}, { Npc.Idle , "Idle0"}, { Npc.Ambush, "Ambush"}, { Npc.Patrol, "Patrol"}, { Npc.Chase, "Chase"},
-                    { Npc.Confront, "Confront"}, { Npc.Attack, "Attack0"}, {Npc.Caution, "Caution"}, { Npc.JumpAttack, "JumpAttack"}
+                    { Npc.Died,"Died" }, { Npc.Freezed, "Freezed"},{ Npc.Idle, "Idle0" }, { Npc.Patrol, "Patrol"}, { Npc.Chase, "Chase"},{ Npc.Approach, "Approach"}, { Npc.Attack, "Attack0" }, {Npc.Confront, "Confront"}
                 };
 
                 public static readonly Dictionary<Enum, Dictionary<int, string>> SubStatesTriggers = new Dictionary<Enum, Dictionary<int, string>>
                 {
-                    { Npc.Idle, new Dictionary<int, string> { { 0, "Idle0" }, { 1, "Idle1" }, { 2, "Idle2" } } },
-                    { Npc.Attack, new Dictionary<int, string> { { 0, "Attack0" }, { 1, "Attack1" }, { 2, "Attack2" } } },
+                    { Npc.Idle, new Dictionary<int, string> { { 0, "Idle0" }, { 1, "Idle1" }, { 2, "Idle2" }, { 3, "Caution" }, { 4, "Ambush" }, { 5, "StandUp"} } },
+                    { Npc.Attack, new Dictionary<int, string> { { 0, "Attack0" }, { 1, "Attack1" }, { 2, "Attack2" }, { 3, "JumpAttack" } } },
                     { Npc.Confront, new Dictionary<int, string> { { 0, "Confront"}, { 1, "CloseIn" }, { 2, "Backward" }, { 3, "StrafeLeft" }, { 4, "StrafeRight" } } }
                 };
             }
         }
         #endregion
 
-        #region Basic Npc States
+        #region Basic Npc States (Order by ID)
 
         #region Died
         public class Died : CharacterFSMState
         {
-            public Died(FSMSystem fsm) : base(fsm) { StateID = Npc.Died; }
+            public override Enum StateID
+            {
+                get
+                {
+                    return Npc.Died;
+                }
+            }
 
+            public Died(FSMSystem fsm) : base(fsm) { }
 
             internal override void CheckConditions()
             {
@@ -81,7 +87,15 @@ namespace FSM
         #region Freezed
         public class Freezed : CharacterFSMState
         {
-            public Freezed(FSMSystem FSM) : base(FSM) { StateID = Npc.Freezed; }
+            public override Enum StateID
+            {
+                get
+                {
+                    return Npc.Freezed;
+                }
+            }
+
+            public Freezed(FSMSystem FSM) : base(FSM) { }
 
             internal override void CheckConditions()
             {
@@ -108,7 +122,15 @@ namespace FSM
         #region Idle
         public class Idle : FSMSubMachine
         {
-            public Idle(FSMSystem fsm) : base(fsm) { StateID = Npc.Idle; }
+            public override Enum StateID
+            {
+                get
+                {
+                    return Npc.Idle;
+                }
+            }
+
+            public Idle(FSMSystem fsm) : base(fsm) { }
 
             protected override void AssignSubStatesTriggers()
             {
@@ -137,37 +159,18 @@ namespace FSM
         }
         #endregion
 
-        #region Ambush
-        public class Ambush : CharacterFSMState
-        {
-            public Ambush(FSMSystem fsm) : base(fsm) { StateID = Npc.Ambush; }
-
-            internal override void CheckConditions()
-            {
-
-            }
-
-            internal override void OnStateEnter()
-            {
-
-            }
-
-            internal override void OnStateExit()
-            {
-
-            }
-
-            internal override void OnStateRunning()
-            {
-
-            }
-        }
-        #endregion
-
         #region Patrol
         public class Patrol : CharacterFSMState
         {
-            public Patrol(FSMSystem fsm) : base(fsm) { StateID = Npc.Patrol; }
+            public override Enum StateID
+            {
+                get
+                {
+                    return Npc.Patrol;
+                }
+            }
+
+            public Patrol(FSMSystem fsm) : base(fsm) { }
 
             internal override void CheckConditions()
             {
@@ -194,36 +197,15 @@ namespace FSM
         #region Chase
         public class Chase : CharacterFSMState
         {
-            public Chase(FSMSystem fsm) : base(fsm) { StateID = Npc.Chase; }
-
-
-
-            internal override void CheckConditions()
+            public override Enum StateID
             {
-
+                get
+                {
+                    return Npc.Chase;
+                }
             }
 
-            internal override void OnStateEnter()
-            {
-
-            }
-
-            internal override void OnStateExit()
-            {
-
-            }
-
-            internal override void OnStateRunning()
-            {
-
-            }
-        }
-        #endregion
-
-        #region Confront
-        public class Confront : CharacterFSMState
-        {
-            public Confront(FSMSystem fsm) : base(fsm) { StateID = Npc.Confront; }
+            public Chase(FSMSystem fsm) : base(fsm) { }
 
 
 
@@ -252,16 +234,19 @@ namespace FSM
         #region Attack
         public class Attack : FSMSubMachine
         {
-            public Attack(FSMSystem fsm) : base(fsm) { StateID = Npc.Attack; }
+            public override Enum StateID
+            {
+                get
+                {
+                    return Npc.Attack;
+                }
+            }
+
+            public Attack(FSMSystem fsm) : base(fsm) { }
 
             protected override void AssignSubStatesTriggers()
             {
-
-            }
-
-            internal override void CheckConditions()
-            {
-
+                SubStatesTriggers = StatesLib.BasicNpc.SubStatesTriggers[Npc.Attack];
             }
 
             internal override void CheckConditions(int stage)
@@ -291,12 +276,63 @@ namespace FSM
         }
         #endregion
 
-        #region Caution
-        public class Caution : CharacterFSMState
+        #region Confront
+        public class Confront : FSMSubMachine
         {
-            public Caution(FSMSystem fsm) : base(fsm) { StateID = Npc.Caution; }
+            public override Enum StateID
+            {
+                get
+                {
+                    return Npc.Confront;
+                }
+            }
 
+            public Confront(FSMSystem fsm) : base(fsm) { }
 
+            protected override void AssignSubStatesTriggers()
+            {
+               
+            }
+
+            internal override void CheckConditions(int stage)
+            {
+
+            }
+
+            internal override void OnStateEnter()
+            {
+
+            }
+
+            internal override void OnStateExit()
+            {
+
+            }
+
+            internal override void OnStateRunning()
+            {
+
+            }
+
+            internal override void OnStateRunning(int stage)
+            {
+
+            }
+        }
+        #endregion
+
+        #region Approach
+        public class Approach : CharacterFSMState
+        {
+            public override Enum StateID
+            {
+                get
+                {
+                    return Npc.Approach;
+                }
+            }
+
+            public Approach(FSMSystem fsm) : base(fsm) { }
 
             internal override void CheckConditions()
             {
@@ -319,35 +355,7 @@ namespace FSM
             }
         }
         #endregion
-
-        #region JumpAttack
-        public class JumpAttack : CharacterFSMState
-        {
-            public JumpAttack(FSMSystem fsm) : base(fsm) { StateID = Npc.JumpAttack; }
-
-
-
-            internal override void CheckConditions()
-            {
-
-            }
-
-            internal override void OnStateEnter()
-            {
-
-            }
-
-            internal override void OnStateExit()
-            {
-
-            }
-
-            internal override void OnStateRunning()
-            {
-
-            }
-        }
-        #endregion
+       
         #endregion
     }
 
