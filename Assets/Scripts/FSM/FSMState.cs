@@ -29,7 +29,7 @@ namespace FSM
         /// <summary>
         /// Return if this state is a sub - machine state.
         /// </summary>
-        public readonly bool IsSubMachine;
+        public bool IsSubMachine { get; protected set; }
 
         /// <summary>
         /// The finite state machine which handles this state.
@@ -135,7 +135,10 @@ namespace FSM
             Trigger = StatesLib.BasicNpc.Triggers[StateID];
         }
 
-        protected abstract void OnAnimatorMove();
+        protected internal virtual void OnAnimatorMove()
+        {
+
+        }
 
     }
 
@@ -157,6 +160,7 @@ namespace FSM
 
         protected FSMSubMachine(CharacterFSM FSM) : base(FSM)
         {
+            IsSubMachine = true;
             SubState = 0;
             SubStatesTriggers = new Dictionary<int, string>();
         }
@@ -273,6 +277,7 @@ namespace FSM
 
         protected NpcSubMachine(NpcFSM FSM) : base(FSM)
         {
+            IsSubMachine = true;
             SubState = 0;
             SubStatesTriggers = new Dictionary<int, string>();
         }

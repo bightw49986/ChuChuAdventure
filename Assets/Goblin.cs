@@ -22,13 +22,6 @@ namespace FSM
             m_isFreezed = m_isKOed = m_isDead = false;
         }
 
-        protected override void OnAnimatorMove()
-        {
-            m_Animator.ApplyBuiltinRootMotion();
-        }
-    
-
-
         protected override void OnCharacterHit()
         {
             //暫無特效

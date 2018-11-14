@@ -244,7 +244,10 @@ namespace FSM
 
         protected virtual void OnAnimatorMove()
         {
+            m_Animator.ApplyBuiltinRootMotion();
             if (m_Animator==null || CurrentState == null) return;
+            CharacterFSMState currentState = (CharacterFSMState)CurrentState;
+            currentState.OnAnimatorMove();
         }
 
         protected override void InitFSM()
@@ -301,7 +304,7 @@ namespace FSM
             bTranfering = true;
             OriginState = CurrentState;
             CurrentState.OnStateExit();
-            if (targetState.GetType() != typeof(FSMSubMachine))
+            if (targetState.IsSubMachine == false)
             {
                 if (String.IsNullOrEmpty(targetState.Trigger) == false)
                 {

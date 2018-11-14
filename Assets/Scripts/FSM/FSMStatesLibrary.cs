@@ -94,10 +94,6 @@ namespace FSM
 
                 }
 
-                protected override void OnAnimatorMove()
-                {
-
-                }
             }
             #endregion
 
@@ -134,10 +130,6 @@ namespace FSM
 
                 }
 
-                protected override void OnAnimatorMove()
-                {
-
-                }
             }
             #endregion
 
@@ -253,11 +245,6 @@ namespace FSM
                     CheckConditions(stage);
                     m_FSM.m_AIData.RestTime -= Time.deltaTime;
                 }
-
-                protected override void OnAnimatorMove()
-                {
-
-                }
             }
             #endregion
 
@@ -294,7 +281,7 @@ namespace FSM
 
                 }
 
-                protected override void OnAnimatorMove()
+                protected internal override void OnAnimatorMove()
                 {
 
                 }
@@ -336,7 +323,7 @@ namespace FSM
 
                 }
 
-                protected override void OnAnimatorMove()
+                protected internal override void OnAnimatorMove()
                 {
 
                 }
@@ -386,7 +373,7 @@ namespace FSM
 
                 }
 
-                protected override void OnAnimatorMove()
+                protected internal override void OnAnimatorMove()
                 {
 
                 }
@@ -436,7 +423,7 @@ namespace FSM
 
                 }
 
-                protected override void OnAnimatorMove()
+                protected internal override void OnAnimatorMove()
                 {
 
                 }
@@ -476,7 +463,7 @@ namespace FSM
 
                 }
 
-                protected override void OnAnimatorMove()
+                protected internal override void OnAnimatorMove()
                 {
 
                 }
