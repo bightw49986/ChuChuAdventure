@@ -917,8 +917,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4957489444688174}
-  - component: {fileID: 114779247533461752}
   - component: {fileID: 65391081724753592}
+  - component: {fileID: 114586636956125316}
   m_Layer: 0
   m_Name: "\u6A6B\u780D"
   m_TagString: Untagged
@@ -3016,7 +3016,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AttackerType: 0
-  AttackBoxes: []
+  MeleeAttackBoxes: []
+  ParticleAttackBoxes: 
   DefendBoxes: []
   TakeDamageFrom: 0100000002000000
   IsHarmless: 0
@@ -3086,7 +3087,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1818269235293534}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48967f802e86f4a93a310c9a269413e5, type: 3}
   m_Name: 
@@ -3128,6 +3129,22 @@ MonoBehaviour:
   slopeLayer:
     serializedVersion: 2
     m_Bits: 1280
+--- !u!114 &114586636956125316
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1653255741410882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23ff1e0d120a04d51ba2291344df11d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PrintLog: 0
+  BasicAtk: 1
+  HitBoxes: []
+  Interval: 0
+  m_hitFX: {fileID: 0}
 --- !u!114 &114715304344320554
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3143,21 +3160,6 @@ MonoBehaviour:
   HitFX: {fileID: 0}
   PrintLog: 0
   DamagePart: 0
---- !u!114 &114779247533461752
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1653255741410882}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48967f802e86f4a93a310c9a269413e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PrintLog: 1
-  BasicAtk: 1
-  HitBoxes: []
-  Interval: 0
 --- !u!136 &136334220783347110
 CapsuleCollider:
   m_ObjectHideFlags: 1

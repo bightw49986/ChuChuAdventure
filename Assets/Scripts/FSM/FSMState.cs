@@ -7,6 +7,7 @@ using FSM.StatesLibrary;
 
 namespace FSM
 {
+    #region Base FSM State
     /// <summary>
     /// Base class of finite state machine state.(If associates with animator, use CharacterFSMState instead).
     /// </summary>
@@ -24,6 +25,7 @@ namespace FSM
         /// </summary>
         protected Dictionary<Enum, FSMState> transitions;
 
+
         /// <summary>
         /// Return if this state is a sub - machine state.
         /// </summary>
@@ -32,9 +34,7 @@ namespace FSM
         /// <summary>
         /// The finite state machine which handles this state.
         /// </summary>
-        internal FSMSystem m_FSM;
-
-
+        protected internal FSMSystem m_FSM { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="T:FSM.FSMState"/> class.
@@ -44,6 +44,14 @@ namespace FSM
         {
             m_FSM = FSM;
             transitions = new Dictionary<Enum, FSMState>();
+        }
+
+        protected virtual void RegisterFSM(FSMSystem FSM)
+        {
+            if (m_FSM != null)
+            {
+                m_FSM = FSM;
+            }
         }
 
         /// <summary>
@@ -56,7 +64,7 @@ namespace FSM
             {
                 if (transitions.ContainsKey(targetState.StateID) == false)
                 {
-                    transitions.Add(targetState.StateID,targetState);
+                    transitions.Add(targetState.StateID, targetState);
                 }
             }
         }
@@ -78,7 +86,7 @@ namespace FSM
         protected virtual void StartTransition(Enum targetStateID)
         {
             if (transitions.ContainsKey(targetStateID))
-            m_FSM.PerformTransition(targetStateID);
+                m_FSM.PerformTransition(targetStateID);
         }
 
         /// <summary>
@@ -102,12 +110,16 @@ namespace FSM
         internal abstract void CheckConditions();
 
     }
+    #endregion
 
+    #region AnimatorFSM State
     /// <summary>
     /// Finite state machine state which associates with Unity's animator.
     /// </summary>
     public abstract class CharacterFSMState : FSMState
     {
+        protected internal new CharacterFSM m_FSM { get; set; }
+
         /// <summary>
         /// The trigger to activate this state in animator.
         /// </summary>
@@ -117,10 +129,14 @@ namespace FSM
         /// Initializes a new instance of the <see cref="T:FSM.CharacterFSMState"/> class.
         /// </summary>
         /// <param name="FSM">The finite state machine that handles this state(Most case use "this" keyword).</param>
-        protected CharacterFSMState(FSMSystem FSM) : base(FSM)
+        protected CharacterFSMState(CharacterFSM FSM) : base(FSM)
         {
+            m_FSM = (CharacterFSM)base.m_FSM;
             Trigger = StatesLib.BasicNpc.Triggers[StateID];
         }
+
+        protected abstract void OnAnimatorMove();
+
     }
 
     /// <summary>
@@ -139,13 +155,19 @@ namespace FSM
         /// </summary>
         public Dictionary<int, string> SubStatesTriggers;
 
-        protected FSMSubMachine(FSMSystem FSM) : base(FSM)
+        protected FSMSubMachine(CharacterFSM FSM) : base(FSM)
         {
             SubState = 0;
             SubStatesTriggers = new Dictionary<int, string>();
         }
 
-        protected abstract void AssignSubStatesTriggers();
+        internal void StartTransition(Enum targetStateID, int iSubState)
+        {
+            if (transitions.ContainsKey(targetStateID))
+                m_FSM.PerformTransition(targetStateID, iSubState);
+        }
+
+        protected internal abstract void AssignSubStatesTriggers();
 
         internal override void OnStateEnter()
         {
@@ -166,6 +188,134 @@ namespace FSM
 
         internal abstract void CheckConditions(int stage);
     }
+
+
+    #endregion
+
+    #region Npc FSMState
+    /// <summary>
+    /// Finite state machine state with npc stats.
+    /// </summary>
+    public abstract class NpcFSMState : CharacterFSMState
+    {
+        protected GameObject Player;
+
+        protected float m_fFaceCautionRange;
+        protected float m_fSqrFaceCautionRange;
+        protected float m_fBackCaurionRange;
+        protected float m_fSqrBackCaurionRange;
+        protected float m_fFOV;
+
+        protected float m_fChaseRange;
+        protected float m_fSqrChaseRange;
+
+        protected float m_fJumpAtkRange;
+        protected float m_fSqrJumpAtkRange;
+
+        protected float m_fAtkRange;
+        protected float m_fSqrAtkRange;
+
+        protected internal new NpcFSM m_FSM { get; set; }
+
+        protected NpcFSMState(NpcFSM FSM) : base(FSM)
+        {
+            m_FSM = (NpcFSM)base.m_FSM;
+            GetNpcAIStats();
+
+        }
+
+        void GetNpcAIStats()
+        {
+            Player = GameObject.FindWithTag("Player");
+            if (Player == null)
+            {
+                Debug.LogError("Can find GO with tag \" Player \"."); return;
+            }
+            m_fFaceCautionRange = m_FSM.m_AIData.FaceCautionRange;
+            m_fBackCaurionRange = m_FSM.m_AIData.BackCaurionRange;
+            m_fFOV = m_FSM.m_AIData.FOV;
+            m_fChaseRange = m_FSM.m_AIData.ChaseRange;
+            m_fJumpAtkRange = m_FSM.m_AIData.JumpAtkRange;
+            m_fAtkRange = m_FSM.m_AIData.AtkRange;
+            m_fSqrFaceCautionRange = m_fFaceCautionRange * m_fFaceCautionRange;
+            m_fSqrBackCaurionRange = m_fBackCaurionRange * m_fBackCaurionRange;
+            m_fSqrChaseRange = m_fChaseRange * m_fChaseRange;
+            m_fSqrJumpAtkRange = m_fJumpAtkRange * m_fJumpAtkRange;
+            m_fSqrAtkRange = m_fAtkRange * m_fAtkRange;
+        }
+
+        internal override void OnStateEnter()
+        {
+            RegisterTransitions();
+        }
+
+        protected virtual void RegisterTransitions()
+        {
+            foreach (var s in StatesLib.BasicNpc.Transitions[StateID])
+            {
+                AddTransition(m_FSM.validStates[s]);
+            }
+        }
+    }
+
+    public abstract class NpcSubMachine : NpcFSMState
+    {
+        /// <summary>
+        /// The stage this submachine is currently at.
+        /// </summary>
+        /// <value>Repersents the different animator states in Unity animator.</value>
+        public int SubState { get; protected set; }
+
+        /// <summary>
+        /// Triggers for each stage.
+        /// </summary>
+        public Dictionary<int, string> SubStatesTriggers;
+
+        protected NpcSubMachine(NpcFSM FSM) : base(FSM)
+        {
+            SubState = 0;
+            SubStatesTriggers = new Dictionary<int, string>();
+        }
+
+        protected abstract void AssignSubStatesTriggers();
+
+        internal override void OnStateEnter()
+        {
+            base.OnStateEnter();
+            AssignSubStatesTriggers();
+        }
+
+        internal override void OnStateRunning()
+        {
+            OnStateRunning(SubState);
+        }
+
+        internal sealed override void CheckConditions()
+        {
+            CheckConditions(SubState);
+        }
+
+        internal void StartTransition(Enum targetStateID, int iSubState)
+        {
+            if (transitions.ContainsKey(targetStateID))
+                m_FSM.PerformTransition(targetStateID,iSubState);
+        }
+
+        internal IEnumerator TransferToSubState(int iSubStateID)
+        {
+            m_FSM.bTranfering = true;
+            m_FSM.m_Animator.SetTrigger(SubStatesTriggers[iSubStateID]);
+            yield return new WaitUntil(() => (m_FSM.m_Animator.IsInTransition(0)) == true);
+            yield return new WaitUntil(() => (m_FSM.m_Animator.IsInTransition(0)) == false);
+            SubState = iSubStateID;
+            m_FSM.bTranfering = false;
+        }
+
+        internal abstract void OnStateRunning(int stage);
+
+        internal abstract void CheckConditions(int stage);
+    }
+    #endregion
 }
 
 

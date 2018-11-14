@@ -695,6 +695,7 @@ GameObject:
   - component: {fileID: 114979574329416690}
   - component: {fileID: 136081448037770782}
   - component: {fileID: 114912193828492324}
+  - component: {fileID: 114537618430032658}
   m_Layer: 0
   m_Name: GOBLIN_SwordShield
   m_TagString: Untagged
@@ -2229,6 +2230,34 @@ MonoBehaviour:
   Collider: {fileID: 0}
   HitFX: {fileID: 1240250018707908, guid: 5656e7ea1f1a75d4c895547ec2b824b3, type: 2}
   PrintLog: 0
+--- !u!114 &114537618430032658
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1675390028527372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 193e5fa8e7e09e74b8646adaf55a82c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyInSight: 0
+  DrawCautionRange: 0
+  FaceCautionRange: 15
+  BackCaurionRange: 7
+  FOV: 60
+  DrawChaseRange: 0
+  ChaseRange: 10
+  DrawJumpAtkRange: 0
+  JumpAtkRange: 4
+  DrawAtkRange: 0
+  AtkRange: 1.5
+  PlayerInSight: 0
+  Path: []
+  Patrolling: 0
+  RestTime: 0
+  PreviousWP: {fileID: 0}
+  NextWP: {fileID: 0}
 --- !u!114 &114694952255588286
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2269,7 +2298,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AttackerType: 1
-  AttackBoxes: []
+  MeleeAttackBoxes: []
+  ParticleAttackBoxes: 
   DefendBoxes: []
   TakeDamageFrom: 00000000
   IsHarmless: 0
@@ -2296,6 +2326,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b27927636e57841c49e8d5fdda114858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CanBeHit: 0
+  CanBeKOed: 0
+  CanBeDead: 0
+  InitialStateID: 0
+  _style: 0
+  _species: 0
+  _pose: 0
 --- !u!135 &135775699402142742
 SphereCollider:
   m_ObjectHideFlags: 1

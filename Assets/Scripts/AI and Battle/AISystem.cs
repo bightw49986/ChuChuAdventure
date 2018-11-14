@@ -60,7 +60,7 @@ namespace AISystem
         float IdleTime { get; set; }          //閒晃時間
         float ChaseRadius { get; set; }       //追逐範圍
         float ConRadius { get; set; }         //對峙範圍
-        float AttRadius { get; set; }         //攻擊範圍
+        float AtkRadius { get; set; }         //攻擊範圍
 
         // ... 
     }

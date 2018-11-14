@@ -11,7 +11,7 @@ namespace FSM
     /// <summary>
     /// 使用狀態機的物種
     /// </summary>
-    public enum Species { Goblin = 1 }
+    public enum Species { Goblin = 0 }
 
     /// <summary>
     /// Npc的狀態行為
@@ -37,6 +37,16 @@ namespace FSM
                     { Npc.Died,"Died" }, { Npc.Freezed, "Freezed"},{ Npc.Idle, "Idle0" }, { Npc.Patrol, "Patrol"}, { Npc.Chase, "Chase"},{ Npc.Approach, "Approach"}, { Npc.Attack, "Attack0" }, {Npc.Confront, "Confront"}
                 };
 
+                public static readonly Dictionary<Enum, List<Enum>> Transitions = new Dictionary<Enum, List<Enum>>
+                {
+                    {Npc.Idle,new List<Enum>{Npc.Approach,Npc.Patrol,Npc.Chase,Npc.Confront}},
+                    {Npc.Patrol,new List<Enum>{Npc.Idle,Npc.Confront,Npc.Chase}},
+                    {Npc.Approach,new List<Enum>{Npc.Idle,Npc.Chase,Npc.Attack}},
+                    {Npc.Chase,new List<Enum>{Npc.Idle,Npc.Attack}},
+                    {Npc.Attack,new List<Enum>{Npc.Idle,Npc.Confront,Npc.Approach}},
+                    {Npc.Confront,new List<Enum>{Npc.Idle,Npc.Chase,Npc.Attack,Npc.Approach}}
+                };
+
                 public static readonly Dictionary<Enum, Dictionary<int, string>> SubStatesTriggers = new Dictionary<Enum, Dictionary<int, string>>
                 {
                     { Npc.Idle, new Dictionary<int, string> { { 0, "Idle0" }, { 1, "Idle1" }, { 2, "Idle2" }, { 3, "Caution" }, { 4, "Ambush" }, { 5, "StandUp"} } },
@@ -49,313 +59,432 @@ namespace FSM
 
         #region Basic Npc States (Order by ID)
 
-        #region Died
-        public class Died : CharacterFSMState
+        public class BasicNpc
         {
-            public override Enum StateID
+            #region Died
+            public class Died : NpcFSMState
             {
-                get
+                public override Enum StateID
                 {
-                    return Npc.Died;
+                    get
+                    {
+                        return Npc.Died;
+                    }
+                }
+
+                public Died(NpcFSM fsm) : base(fsm) { }
+
+                internal override void CheckConditions()
+                {
+
+                }
+
+                internal override void OnStateEnter()
+                {
+
+                }
+
+                internal override void OnStateExit()
+                {
+
+                }
+
+                internal override void OnStateRunning()
+                {
+
+                }
+
+                protected override void OnAnimatorMove()
+                {
+
                 }
             }
+            #endregion
 
-            public Died(FSMSystem fsm) : base(fsm) { }
-
-            internal override void CheckConditions()
+            #region Freezed
+            public class Freezed : NpcFSMState
             {
-
-            }
-
-            internal override void OnStateEnter()
-            {
-
-            }
-
-            internal override void OnStateExit()
-            {
-
-            }
-
-            internal override void OnStateRunning()
-            {
-
-            }
-        }
-        #endregion
-
-        #region Freezed
-        public class Freezed : CharacterFSMState
-        {
-            public override Enum StateID
-            {
-                get
+                public override Enum StateID
                 {
-                    return Npc.Freezed;
+                    get
+                    {
+                        return Npc.Freezed;
+                    }
+                }
+
+                public Freezed(NpcFSM FSM) : base(FSM) { }
+
+                internal override void CheckConditions()
+                {
+
+                }
+
+                internal override void OnStateEnter()
+                {
+
+                }
+
+                internal override void OnStateExit()
+                {
+
+                }
+
+                internal override void OnStateRunning()
+                {
+
+                }
+
+                protected override void OnAnimatorMove()
+                {
+
                 }
             }
+            #endregion
 
-            public Freezed(FSMSystem FSM) : base(FSM) { }
-
-            internal override void CheckConditions()
+            #region Idle
+            public class Idle : NpcSubMachine
             {
+                NpcFSM.StartPose npcStartingPose;
 
-            }
-
-            internal override void OnStateEnter()
-            {
-
-            }
-
-            internal override void OnStateExit()
-            {
-
-            }
-
-            internal override void OnStateRunning()
-            {
-
-            }
-        }
-        #endregion
-
-        #region Idle
-        public class Idle : FSMSubMachine
-        {
-            public override Enum StateID
-            {
-                get
+                public override Enum StateID
                 {
-                    return Npc.Idle;
+                    get
+                    {
+                        return Npc.Idle;
+                    }
+                }
+
+                public Idle(NpcFSM fsm, NpcFSM.StartPose startingPose) : base(fsm) { npcStartingPose = startingPose;}
+
+                protected override void AssignSubStatesTriggers()
+                {
+                    SubStatesTriggers = StatesLib.BasicNpc.SubStatesTriggers[Npc.Idle];
+                }
+
+                internal override void CheckConditions(int stage)
+                {
+                    float fSqrPlayerDis = Vector3.SqrMagnitude(Player.transform.position - m_FSM.transform.position);
+
+                    if (stage == 0 || stage == 1 || stage == 2) //發呆
+                    {
+                        //如果時間到進 Patrol
+                        if (m_FSM.m_AIData.Patrolling)
+                        {
+                            if(m_FSM.m_AIData.RestTime <= 0)
+                            {
+                                StartTransition(Npc.Patrol);
+                            }
+                        }
+                        //如果敵人進入視線 Caution
+                        if (AIMethod2D.CheckinSightFan(m_FSM.transform,Player.transform.position,m_fFaceCautionRange,m_fFOV)) //fSqrPlayerDis < m_fSqrBackCaurionRange)
+                        {
+                            m_FSM.StartCoroutine(TransferToSubState(3));
+                            return;
+                        }
+                        //如果敵人突然進入追擊範圍 Chase
+                        if (fSqrPlayerDis < m_fSqrChaseRange)
+                        {
+                            m_FSM.m_AIData.PlayerInSight = true;
+                            StartTransition(Npc.Chase);
+                            return;
+                        }
+                        //如果敵人突然超近 Confront
+                        if (fSqrPlayerDis < m_fSqrJumpAtkRange)
+                        {
+                            m_FSM.m_AIData.PlayerInSight = true;
+                            StartTransition(Npc.Confront);
+                            return;
+                        }
+
+                    }
+                    if (stage == 3) //察覺有異，切Approach
+                    {
+                        StartTransition(Npc.Approach);
+                        return;
+                    }
+                    if (stage == 4) //蹲著
+                    {
+                        if (fSqrPlayerDis < m_fSqrJumpAtkRange) //如果敵人進入跳躍攻擊範圍，嚕下去
+                        {
+                            m_FSM.m_AIData.PlayerInSight = true;
+                            m_FSM.StartCoroutine(TransferToSubState(5));
+                            return;
+                        }
+                    }
+                    if (stage == 5) //站起
+                    {
+                        m_FSM.m_AIData.PlayerInSight = true;
+                        StartTransition(Npc.Attack, 3);
+                        return;
+                    }
+                }
+
+                internal override void OnStateEnter()
+                {
+                    base.OnStateEnter();
+
+                    switch (npcStartingPose)
+                    {
+                        case NpcFSM.StartPose.Stand:
+                            {
+                                int iPick = new System.Random().Next(0, 2);
+                                m_FSM.m_Animator.SetTrigger(SubStatesTriggers[iPick]);
+                                SubState = iPick;
+                                break;
+                            }
+
+                        case NpcFSM.StartPose.Crouch:
+                            {
+                                m_FSM.m_Animator.SetTrigger(SubStatesTriggers[4]);
+                                SubState = 4;
+                                break;
+                            }
+                    }
+                }
+
+                internal override void OnStateExit()
+                {
+
+                }
+
+                internal override void OnStateRunning(int stage) 
+                {
+                    Debug.Log("Stage : " + stage);
+                    CheckConditions(stage);
+                    m_FSM.m_AIData.RestTime -= Time.deltaTime;
+                }
+
+                protected override void OnAnimatorMove()
+                {
+
                 }
             }
+            #endregion
 
-            public Idle(FSMSystem fsm) : base(fsm) { }
-
-            protected override void AssignSubStatesTriggers()
+            #region Patrol
+            public class Patrol : NpcFSMState
             {
-                SubStatesTriggers = StatesLib.BasicNpc.SubStatesTriggers[Npc.Idle];
-            }
-
-            internal override void CheckConditions(int stage)
-            {
-
-            }
-
-            internal override void OnStateEnter()
-            {
-                base.OnStateEnter();
-            }
-
-            internal override void OnStateExit()
-            {
-                
-            }
-
-            internal override void OnStateRunning(int stage)
-            {
-
-            }
-        }
-        #endregion
-
-        #region Patrol
-        public class Patrol : CharacterFSMState
-        {
-            public override Enum StateID
-            {
-                get
+                public override Enum StateID
                 {
-                    return Npc.Patrol;
+                    get
+                    {
+                        return Npc.Patrol;
+                    }
+                }
+
+                public Patrol(NpcFSM fsm) : base(fsm) { }
+
+                internal override void CheckConditions()
+                {
+
+                }
+
+                internal override void OnStateEnter()
+                {
+
+                }
+
+                internal override void OnStateExit()
+                {
+
+                }
+
+                internal override void OnStateRunning()
+                {
+
+                }
+
+                protected override void OnAnimatorMove()
+                {
+
                 }
             }
+            #endregion
 
-            public Patrol(FSMSystem fsm) : base(fsm) { }
-
-            internal override void CheckConditions()
+            #region Chase
+            public class Chase : NpcFSMState
             {
-
-            }
-
-            internal override void OnStateEnter()
-            {
-
-            }
-
-            internal override void OnStateExit()
-            {
-
-            }
-
-            internal override void OnStateRunning()
-            {
-
-            }
-        }
-        #endregion
-
-        #region Chase
-        public class Chase : CharacterFSMState
-        {
-            public override Enum StateID
-            {
-                get
+                public override Enum StateID
                 {
-                    return Npc.Chase;
+                    get
+                    {
+                        return Npc.Chase;
+                    }
+                }
+
+                public Chase(NpcFSM fsm) : base(fsm) { }
+
+
+
+                internal override void CheckConditions()
+                {
+
+                }
+
+                internal override void OnStateEnter()
+                {
+
+                }
+
+                internal override void OnStateExit()
+                {
+
+                }
+
+                internal override void OnStateRunning()
+                {
+
+                }
+
+                protected override void OnAnimatorMove()
+                {
+
                 }
             }
+            #endregion
 
-            public Chase(FSMSystem fsm) : base(fsm) { }
-
-
-
-            internal override void CheckConditions()
+            #region Attack
+            public class Attack : NpcSubMachine
             {
-
-            }
-
-            internal override void OnStateEnter()
-            {
-
-            }
-
-            internal override void OnStateExit()
-            {
-
-            }
-
-            internal override void OnStateRunning()
-            {
-
-            }
-        }
-        #endregion
-
-        #region Attack
-        public class Attack : FSMSubMachine
-        {
-            public override Enum StateID
-            {
-                get
+                public override Enum StateID
                 {
-                    return Npc.Attack;
+                    get
+                    {
+                        return Npc.Attack;
+                    }
+                }
+
+                public Attack(NpcFSM fsm) : base(fsm) { }
+
+                protected override void AssignSubStatesTriggers()
+                {
+                    SubStatesTriggers = StatesLib.BasicNpc.SubStatesTriggers[Npc.Attack];
+                }
+
+                internal override void CheckConditions(int stage)
+                {
+                   
+                }
+
+                internal override void OnStateEnter()
+                {
+
+                }
+
+                internal override void OnStateExit()
+                {
+
+                }
+
+                internal override void OnStateRunning()
+                {
+
+                }
+
+                internal override void OnStateRunning(int stage)
+                {
+
+                }
+
+                protected override void OnAnimatorMove()
+                {
+
                 }
             }
+            #endregion
 
-            public Attack(FSMSystem fsm) : base(fsm) { }
-
-            protected override void AssignSubStatesTriggers()
+            #region Confront
+            public class Confront : NpcSubMachine
             {
-                SubStatesTriggers = StatesLib.BasicNpc.SubStatesTriggers[Npc.Attack];
-            }
-
-            internal override void CheckConditions(int stage)
-            {
-
-            }
-
-            internal override void OnStateEnter()
-            {
-
-            }
-
-            internal override void OnStateExit()
-            {
-
-            }
-
-            internal override void OnStateRunning()
-            {
-
-            }
-
-            internal override void OnStateRunning(int stage)
-            {
-
-            }
-        }
-        #endregion
-
-        #region Confront
-        public class Confront : FSMSubMachine
-        {
-            public override Enum StateID
-            {
-                get
+                public override Enum StateID
                 {
-                    return Npc.Confront;
+                    get
+                    {
+                        return Npc.Confront;
+                    }
+                }
+
+                public Confront(NpcFSM fsm) : base(fsm) { }
+
+                protected override void AssignSubStatesTriggers()
+                {
+
+                }
+
+                internal override void CheckConditions(int stage)
+                {
+
+                }
+
+                internal override void OnStateEnter()
+                {
+
+                }
+
+                internal override void OnStateExit()
+                {
+
+                }
+
+                internal override void OnStateRunning()
+                {
+
+                }
+
+                internal override void OnStateRunning(int stage)
+                {
+
+                }
+
+                protected override void OnAnimatorMove()
+                {
+
                 }
             }
+            #endregion
 
-            public Confront(FSMSystem fsm) : base(fsm) { }
-
-            protected override void AssignSubStatesTriggers()
+            #region Approach
+            public class Approach : NpcFSMState
             {
-               
-            }
-
-            internal override void CheckConditions(int stage)
-            {
-
-            }
-
-            internal override void OnStateEnter()
-            {
-
-            }
-
-            internal override void OnStateExit()
-            {
-
-            }
-
-            internal override void OnStateRunning()
-            {
-
-            }
-
-            internal override void OnStateRunning(int stage)
-            {
-
-            }
-        }
-        #endregion
-
-        #region Approach
-        public class Approach : CharacterFSMState
-        {
-            public override Enum StateID
-            {
-                get
+                public override Enum StateID
                 {
-                    return Npc.Approach;
+                    get
+                    {
+                        return Npc.Approach;
+                    }
+                }
+
+                public Approach(NpcFSM fsm) : base(fsm) { }
+
+                internal override void CheckConditions()
+                {
+
+                }
+
+                internal override void OnStateEnter()
+                {
+
+                }
+
+                internal override void OnStateExit()
+                {
+
+                }
+
+                internal override void OnStateRunning()
+                {
+
+                }
+
+                protected override void OnAnimatorMove()
+                {
+
                 }
             }
-
-            public Approach(FSMSystem fsm) : base(fsm) { }
-
-            internal override void CheckConditions()
-            {
-
-            }
-
-            internal override void OnStateEnter()
-            {
-
-            }
-
-            internal override void OnStateExit()
-            {
-
-            }
-
-            internal override void OnStateRunning()
-            {
-
-            }
+            #endregion
         }
-        #endregion
-       
+
+
         #endregion
     }
 

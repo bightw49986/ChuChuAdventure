@@ -8,6 +8,7 @@ TagManager:
   - Pickup
   - Npc
   - Boss
+  - Main
   layers:
   - Default
   - TransparentFX
