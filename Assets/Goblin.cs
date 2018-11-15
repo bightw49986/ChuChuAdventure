@@ -19,10 +19,7 @@ namespace FSM
 
 
 
-        void LateUpdate()
-        {
-            m_isFreezed = m_isKOed = m_isDead = false;
-        }
+
 
         protected override void OnCharacterHit()
         {
@@ -31,6 +28,7 @@ namespace FSM
 
         protected override void OnCharacterFreezed(DefendBox damagedPart)
         {
+            if(m_isFreezed ==false)
             m_isFreezed = true;
         }
 
@@ -41,22 +39,25 @@ namespace FSM
 
         protected override void OnCharacterDied()
         {
-            m_isDead = true;
-            Collider[] colliders = GetComponentsInChildren<Collider>();
-            foreach (var c in colliders)
+            if(m_isDead ==false)
             {
-                c.enabled = false;
+                m_isDead = true;
+                Collider[] colliders = GetComponentsInChildren<Collider>();
+                foreach (var c in colliders)
+                {
+                    c.enabled = false;
+                }
             }
         }
 
         protected override void CheckGlobalConditions()
         {
-            if (m_isDead)
+            if (m_isDead && m_Animator.IsInTransition(0)==false && bAllowedGloblaTransitions)
             {
                 PerformGlobalTransition(Npc.Died);
                 return;
             }
-            if(m_isFreezed)
+            if(m_isFreezed && m_Animator.IsInTransition(0) == false && bAllowedGloblaTransitions)
             {
                 PerformGlobalTransition(Npc.Freezed);
                 return;

@@ -235,7 +235,6 @@ namespace FSM
 
         protected internal override void StartTransition(Enum targetStateID, int iSubState)
         {
-
             if (transitions.ContainsKey(targetStateID))
             {
                 m_FSM.PerformTransition(targetStateID, iSubState);
@@ -309,7 +308,8 @@ namespace FSM
 
         internal sealed override void OnStateRunning()
         {
-            Debug.Log("State:" + this + "RunState");
+            if(m_FSM.bLogCurrentState)
+                Debug.Log("State:" + StateID);
             OnStateRunning(SubState);
         }
 

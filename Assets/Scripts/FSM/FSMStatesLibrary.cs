@@ -39,7 +39,8 @@ namespace FSM
 
                 public static readonly Dictionary<Enum, List<Enum>> Transitions = new Dictionary<Enum, List<Enum>>
                 {
-                    {Npc.Idle,new List<Enum>{Npc.Approach,Npc.Patrol,Npc.Chase,Npc.Confront}},
+                    {Npc.Freezed,new List<Enum>{Npc.Idle, Npc.Patrol, Npc.Chase, Npc.Confront, Npc.Attack, Npc.Approach}},
+                    {Npc.Idle,new List<Enum>{Npc.Approach,Npc.Patrol,Npc.Chase,Npc.Confront,Npc.Attack}},
                     {Npc.Patrol,new List<Enum>{Npc.Idle,Npc.Confront,Npc.Chase}},
                     {Npc.Approach,new List<Enum>{Npc.Idle,Npc.Chase,Npc.Attack}},
                     {Npc.Chase,new List<Enum>{Npc.Idle,Npc.Attack}},
@@ -82,6 +83,8 @@ namespace FSM
                 internal override void OnStateEnter()
                 {
                     base.OnStateEnter();
+                    m_FSM.bAllowedGloblaTransitions = false;
+                    m_FSM.m_isFreezed = m_FSM.m_isKOed = m_FSM.m_isDead = false;
                 }
 
                 internal override void OnStateExit()
@@ -112,22 +115,48 @@ namespace FSM
 
                 internal override void CheckConditions()
                 {
+                    if (m_FSM.m_Animator.IsInTransition(0) == false)
+                    {
+                        if((Npc)m_FSM.OriginState.StateID ==Npc.Freezed)
+                        {
+                            StartTransition(Npc.Confront);
+                            return;
+                        }
 
+                        if (m_FSM.m_AIData.PlayerInSight)
+                        {
+                            if ((Npc)m_FSM.OriginState.StateID == Npc.Attack)
+                            {
+                                StartTransition(Npc.Confront);
+                            }
+                            m_FSM.PerformTransition(m_FSM.OriginState.StateID);
+                            return;
+                        }
+                        else
+                        {
+                            StartTransition(Npc.Confront);
+                        }
+                    }
+                        
                 }
 
                 internal override void OnStateEnter()
                 {
                     base.OnStateEnter();
+                    Debug.Log("有進");
+                    m_FSM.bAllowedGloblaTransitions = false;
+                    m_FSM.m_isFreezed = m_FSM.m_isKOed = m_FSM.m_isDead = false;
                 }
 
                 internal override void OnStateExit()
                 {
-
+                   
                 }
 
                 internal override void OnStateRunning()
                 {
                     base.OnStateRunning();
+                    Debug.Log("有跑");
                 }
 
             }
@@ -202,16 +231,19 @@ namespace FSM
                     }
                     if (stage == 5) //站起
                     {
-                        m_FSM.StartJumpAttack();
-                        StartTransition(Npc.Attack, 3);
-                        return;
+                        if (m_FSM.m_Animator.IsInTransition(0)==false)
+                        {
+                            m_FSM.StartJumpAttack();
+                            StartTransition(Npc.Attack, 3);
+                            return;
+                        }
                     }
                 }
 
                 internal override void OnStateEnter()
                 {
                     base.OnStateEnter();
-
+                    m_FSM.bAllowedGloblaTransitions = true;
                     switch (npcStartingPose)
                     {
                         case NpcFSM.StartPose.Stand:
@@ -265,6 +297,7 @@ namespace FSM
                 internal override void OnStateEnter()
                 {
                     base.OnStateEnter();
+                    m_FSM.bAllowedGloblaTransitions = true;
                 }
 
                 internal override void OnStateExit()
@@ -324,6 +357,7 @@ namespace FSM
                 {
                     base.OnStateEnter();
                     m_FSM.m_AIData.PlayerInSight = true;
+                    m_FSM.bAllowedGloblaTransitions = true;
                 }
 
                 internal override void OnStateExit()
@@ -363,10 +397,7 @@ namespace FSM
 
                 internal override void CheckConditions(int stage)
                 {
-                    bool b;
-                    b = AIMethod2D.CheckinSightFan(m_FSM.transform, Player.transform.position, m_fAtkRange + m_fAtkOffset, 150f);
-                    Debug.Log(b);
-                    if (b==true)
+                    if (AIMethod2D.CheckinSightFan(m_FSM.transform, Player.transform.position, m_fAtkRange + m_fAtkOffset, 150f))
                     {
                         if (stage == 0)
                         {
@@ -388,6 +419,7 @@ namespace FSM
                 {
                     base.OnStateEnter();
                     m_FSM.m_AIData.PlayerInSight = true;
+                    m_FSM.bAllowedGloblaTransitions = true;
                 }
 
                 internal override void OnStateExit()
@@ -434,6 +466,7 @@ namespace FSM
                 {
                     base.OnStateEnter();
                     m_FSM.m_AIData.PlayerInSight = true;
+                    m_FSM.bAllowedGloblaTransitions = true;
                 }
 
                 internal override void OnStateExit()
@@ -469,7 +502,7 @@ namespace FSM
                 internal override void CheckConditions()
                 {
                     float fSqrPlayerDis = Vector3.SqrMagnitude(Player.transform.position - m_FSM.transform.position);
-                    //如果敵人進入追擊範圍 Chase
+                    //敵人第一次進追擊範圍 Chase
                     if (m_FSM.m_AIData.PlayerInSight ==false && fSqrPlayerDis < m_fSqrChaseRange)
                     {
                         StartTransition(Npc.Chase);
@@ -487,6 +520,7 @@ namespace FSM
                 {
 
                     base.OnStateEnter();
+                    m_FSM.bAllowedGloblaTransitions = true;
                 }
 
                 internal override void OnStateExit()
@@ -506,8 +540,6 @@ namespace FSM
             }
             #endregion
         }
-
-
         #endregion
     }
 

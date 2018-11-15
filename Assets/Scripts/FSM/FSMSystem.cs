@@ -23,6 +23,13 @@ namespace FSM
         protected internal bool bTranfering;
 
         /// <summary>
+        /// 是否允許切換全域狀態，用來阻止重複進入全域狀態
+        /// </summary>
+        protected internal bool bAllowedGloblaTransitions;
+
+        [SerializeField] protected internal bool bLogCurrentState;
+
+        /// <summary>
         /// 這個狀態機的初始狀態
         /// </summary>
         /// <value>初始狀態</value>
@@ -39,6 +46,12 @@ namespace FSM
         /// </summary>
         /// <value>原本的狀態</value>
         protected internal FSMState OriginState { get; set; }
+
+        /// <summary>
+        /// 目標State的ID
+        /// </summary>
+        /// <value>The target state identifier.</value>
+        protected internal Enum TargetStateID { get; set; }
 
         protected internal Func<FSMState, IEnumerator> TransitionHandler;
 
@@ -92,8 +105,10 @@ namespace FSM
         {
             validStates = new Dictionary<Enum, FSMState>();
             globalTransitions = new Dictionary<Enum, FSMState>();
-            CurrentState = InitValidStates();
+            OriginState = CurrentState = InitValidStates();
             CurrentState.OnStateEnter();
+            bTranfering = false;
+            bAllowedGloblaTransitions = true;
         }
 
         protected virtual void SetTransitionHandler()
@@ -162,6 +177,7 @@ namespace FSM
         IEnumerator TransferTo(FSMState targetState)
         {
             Debug.Log("1");
+            TargetStateID = targetState.StateID;
             bTranfering = true;
             OriginState = CurrentState;
             CurrentState.OnStateExit();
@@ -177,7 +193,9 @@ namespace FSM
         /// <param name="stateID">目標狀態的StateID</param>
         internal void PerformTransition(Enum stateID)
         {
-            if (validStates != null && validStates.ContainsKey(stateID))
+            if (TargetStateID == stateID) return;
+            if (validStates == null) return;
+            if (validStates.ContainsKey(stateID))
             {
                 m_currentTransition = StartCoroutine(TransitionHandler(validStates[stateID]));
             }
@@ -210,15 +228,25 @@ namespace FSM
         /// <param name="anyStateID">全域狀態的ID</param>
         protected internal void PerformGlobalTransition(Enum anyStateID)
         {
-            if (globalTransitions != null && globalTransitions.ContainsKey(anyStateID))
+            if (bAllowedGloblaTransitions ==true)
             {
-                StopCoroutine(m_currentTransition);
-                m_currentTransition = StartCoroutine(TransitionHandler(globalTransitions[anyStateID]));
+                if (TargetStateID == anyStateID) return;
+                if (globalTransitions == null || CurrentState == globalTransitions[anyStateID]) return;
+                if (globalTransitions.ContainsKey(anyStateID))
+                {
+                    if (m_currentTransition != null)
+                    {
+                        StopCoroutine(m_currentTransition);
+                    }
+                    Debug.Log("有進Perform");
+                    m_currentTransition = StartCoroutine(TransitionHandler(globalTransitions[anyStateID]));
+                }
+                else
+                {
+                    Debug.LogError(gameObject.name + "全域狀態切換失敗！原因：要切換的AnyState：" + anyStateID + " 不在此狀態機可切換的全域狀態內");
+                }
             }
-            else
-            {
-                Debug.LogError(gameObject.name + "全域狀態切換失敗！原因：要切換的AnyState：" + anyStateID + " 不在此狀態機可切換的全域狀態內");
-            }
+
         }
     }
 
@@ -244,7 +272,7 @@ namespace FSM
         public bool CanBeKOed;
         public bool CanBeDead;
 
-        protected bool m_isDead, m_isFreezed, m_isKOed;
+        protected internal bool m_isDead, m_isFreezed, m_isKOed;
 
         protected virtual void OnAnimatorMove()
         {
@@ -306,7 +334,9 @@ namespace FSM
         /// <param name="targetState">目標狀態</param>
         IEnumerator TransferTo(CharacterFSMState targetState)
         {
-            Debug.Log("2");
+            Debug.LogWarning("進到父類別的了！");
+            if (TargetStateID == targetState.StateID)yield break;
+            TargetStateID = targetState.StateID;
             bTranfering = true;
             OriginState = CurrentState;
             CurrentState.OnStateExit();
@@ -314,6 +344,7 @@ namespace FSM
             {
                 if (String.IsNullOrEmpty(targetState.Trigger) == false)
                 {
+                    if (m_Animator.IsInTransition(0))
                     m_Animator.SetTrigger(targetState.Trigger);
                     yield return new WaitUntil(() => (m_Animator.IsInTransition(0)) == true);
                 }
@@ -344,7 +375,9 @@ namespace FSM
         /// <param name="subStateID">目標階段</param>
         IEnumerator TransferTo(FSMSubMachine targetState, int subStateID)
         {
-            Debug.Log("3");
+            Debug.LogWarning("進到父類別的了！");
+            if (TargetStateID == targetState.StateID) yield break;
+            TargetStateID = targetState.StateID;
             bTranfering = true;
             OriginState = CurrentState;
             CurrentState.OnStateExit();
@@ -434,14 +467,20 @@ namespace FSM
 
         protected override void SetTransitionHandler()
         {
-
             TransitionHandler = (arg1) => TransferTo((NpcFSMState)arg1);
             SubMachineTransitionHandler = (arg1, arg2) => TransferToSub((NpcSubMachine)arg1, arg2);
         }
 
         IEnumerator TransferTo(NpcFSMState targetState)
         {
-            Debug.Log("4");
+            //Debug.Log(TargetStateID + " : " + targetState.StateID);
+            if ((Npc)targetState.StateID == Npc.Freezed || (Npc)targetState.StateID == Npc.Died)
+            {
+                Debug.Log("有");
+                bAllowedGloblaTransitions = false;
+            }
+            if (TargetStateID == targetState.StateID) yield break;
+            TargetStateID = targetState.StateID;
             bTranfering = true;
             OriginState = CurrentState;
             CurrentState.OnStateExit();
@@ -475,6 +514,8 @@ namespace FSM
         IEnumerator TransferToSub(NpcSubMachine targetState,int subStateID)
         {
             Debug.Log("5");
+            if (TargetStateID == targetState.StateID) yield break;
+            TargetStateID = targetState.StateID;
             bTranfering = true;
             OriginState = CurrentState;
             CurrentState.OnStateExit();
@@ -496,9 +537,10 @@ namespace FSM
 
         protected internal override void PerformTransition(Enum stateID, int subStateID)
         {
-            if (validStates != null && validStates.ContainsKey(stateID))
+            if (validStates == null || CurrentState == validStates[stateID]) return;
+
+            if (validStates.ContainsKey(stateID))
             {
-                Debug.Log("Y");
                 m_currentTransition = StartCoroutine(SubMachineTransitionHandler(validStates[stateID], subStateID));
             }
             else

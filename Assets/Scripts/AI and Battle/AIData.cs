@@ -37,6 +37,8 @@ namespace AISystem
         public Waypoint NextWP;
 
         [Header("Battle Settings")]
+        public int NextMoveID; 
+
         public float AtkOffset = 0.5f;
         public bool AtkReady = true;
         public bool JumpAtkReady = true;
