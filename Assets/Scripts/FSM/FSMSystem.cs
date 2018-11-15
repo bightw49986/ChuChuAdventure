@@ -40,6 +40,8 @@ namespace FSM
         /// <value>原本的狀態</value>
         protected internal FSMState OriginState { get; set; }
 
+        protected internal Func<FSMState, IEnumerator> TransitionHandler;
+
         /// <summary>
         /// 這個狀態機可切換的一般狀態
         /// </summary>
@@ -66,11 +68,10 @@ namespace FSM
         /// </summary>
         [SerializeField] protected internal string CurrentStateID;
 
-        protected internal Func<FSMState,IEnumerator> TransitionHandler;
-
         protected virtual void Awake()
         {
             InitFSM();
+            SetTransitionHandler();
         }
 
         protected void OnDestroy()
@@ -91,7 +92,6 @@ namespace FSM
         {
             validStates = new Dictionary<Enum, FSMState>();
             globalTransitions = new Dictionary<Enum, FSMState>();
-            SetTransitionHandler();
             CurrentState = InitValidStates();
             CurrentState.OnStateEnter();
         }
@@ -161,6 +161,7 @@ namespace FSM
         /// <param name="targetState">目標狀態</param>
         IEnumerator TransferTo(FSMState targetState)
         {
+            Debug.Log("1");
             bTranfering = true;
             OriginState = CurrentState;
             CurrentState.OnStateExit();
@@ -234,7 +235,10 @@ namespace FSM
         protected internal BattleData m_BattleData;
         protected internal Animator m_Animator;
 
-        protected internal Func<FSMState, int, IEnumerator> SubMachineTransitionHandler;
+        protected internal  Func<FSMState, int, IEnumerator> SubMachineTransitionHandler;
+
+
+        Func<FSMState, int, IEnumerator> _subMachineTransitionHandler;
 
         public bool CanBeHit;
         public bool CanBeKOed;
@@ -291,6 +295,7 @@ namespace FSM
 
         protected override void SetTransitionHandler()
         {
+
             TransitionHandler = (arg1) => TransferTo((CharacterFSMState)arg1);
             SubMachineTransitionHandler = (arg1, arg2) => TransferTo((FSMSubMachine)arg1, arg2);
         }
@@ -301,6 +306,7 @@ namespace FSM
         /// <param name="targetState">目標狀態</param>
         IEnumerator TransferTo(CharacterFSMState targetState)
         {
+            Debug.Log("2");
             bTranfering = true;
             OriginState = CurrentState;
             CurrentState.OnStateExit();
@@ -338,6 +344,7 @@ namespace FSM
         /// <param name="subStateID">目標階段</param>
         IEnumerator TransferTo(FSMSubMachine targetState, int subStateID)
         {
+            Debug.Log("3");
             bTranfering = true;
             OriginState = CurrentState;
             CurrentState.OnStateExit();
@@ -362,26 +369,27 @@ namespace FSM
         /// </summary>
         /// <param name="stateID">該子狀態機的ID</param>
         /// <param name="subStateID">目標子狀態的階段</param>
-        protected internal void PerformTransition(Enum stateID, int subStateID)
-        {
-            if (validStates != null && validStates.ContainsKey(stateID))
-            {
-                if (validStates[stateID].GetType() == typeof(FSMSubMachine))
-                {
-                    FSMSubMachine nextState = (FSMSubMachine)validStates[stateID];
-                    m_currentTransition = StartCoroutine(SubMachineTransitionHandler(nextState, subStateID));
-                }
-                else
-                {
-                    FSMState nextState = validStates[stateID];
-                    m_currentTransition = StartCoroutine(TransitionHandler(nextState));
-                }
-            }
-            else
-            {
-                Debug.LogError(gameObject.name + "狀態切換失敗！原因：要切換的狀態：" + stateID + " 不在此狀態機可切換的狀態清單內(是否忘記增刪過或遺漏條件判定？)");
-            }
-        }
+        protected internal abstract void PerformTransition(Enum stateID, int subStateID);
+        //{
+        //    if (validStates != null && validStates.ContainsKey(stateID))
+        //    {
+        //        if (validStates[stateID].GetType() == typeof(FSMSubMachine))
+        //        {
+        //            FSMSubMachine nextState = (FSMSubMachine)validStates[stateID];
+        //            m_currentTransition = StartCoroutine(SubMachineTransitionHandler(nextState, subStateID));
+        //        }
+        //        else
+        //        {
+        //            FSMState nextState = validStates[stateID];
+        //            m_currentTransition = StartCoroutine(TransitionHandler(nextState));
+        //        }
+        //    }
+        //    else
+        //    {
+        //        Debug.LogError(gameObject.name + "狀態切換失敗！原因：要切換的狀態：" + stateID + " 不在此狀態機可切換的狀態清單內(是否忘記增刪過或遺漏條件判定？)");
+        //    }
+        //}
+
 
         protected abstract void OnCharacterHit();
 
@@ -426,13 +434,14 @@ namespace FSM
 
         protected override void SetTransitionHandler()
         {
+
             TransitionHandler = (arg1) => TransferTo((NpcFSMState)arg1);
-            SubMachineTransitionHandler = (arg1, arg2) => TransferTo((NpcSubMachine)arg1, arg2);
+            SubMachineTransitionHandler = (arg1, arg2) => TransferToSub((NpcSubMachine)arg1, arg2);
         }
 
         IEnumerator TransferTo(NpcFSMState targetState)
         {
-
+            Debug.Log("4");
             bTranfering = true;
             OriginState = CurrentState;
             CurrentState.OnStateExit();
@@ -463,14 +472,15 @@ namespace FSM
             bTranfering = false;
         }
 
-        IEnumerator TransferTo(NpcSubMachine targetState,int subStateID)
+        IEnumerator TransferToSub(NpcSubMachine targetState,int subStateID)
         {
-
+            Debug.Log("5");
             bTranfering = true;
             OriginState = CurrentState;
             CurrentState.OnStateExit();
             if (String.IsNullOrEmpty(targetState.SubStatesTriggers[subStateID]) == false)
             {
+
                 m_Animator.SetTrigger(targetState.SubStatesTriggers[subStateID]);
                 yield return new WaitUntil(() => (m_Animator.IsInTransition(0)) == true);
             }
@@ -482,6 +492,19 @@ namespace FSM
             CurrentState = targetState;
             CurrentState.OnStateEnter();
             bTranfering = false;
+        }
+
+        protected internal override void PerformTransition(Enum stateID, int subStateID)
+        {
+            if (validStates != null && validStates.ContainsKey(stateID))
+            {
+                Debug.Log("Y");
+                m_currentTransition = StartCoroutine(SubMachineTransitionHandler(validStates[stateID], subStateID));
+            }
+            else
+            {
+                Debug.LogError(gameObject.name + "狀態切換失敗！原因：要切換的狀態：" + stateID + " 不在此狀態機可切換的狀態清單內(是否忘記增刪過或遺漏條件判定？)");
+            }
         }
 
         protected override FSMState InitValidStates()
@@ -501,6 +524,18 @@ namespace FSM
                 if ((Npc)a == Npc.Freezed) AddGlobalTransition(new BasicNpc.Freezed(this));
             }
             return validStates[InitialStateID];
+        }
+
+        protected internal virtual void StartJumpAttack()
+        {
+            if (m_AIData.JumpAtkReady == false) return;
+            m_AIData.JumpAttack();
+        }
+
+        protected internal virtual void StartAttack()
+        {
+            if (m_AIData.AtkReady == false) return;
+            m_AIData.Attack();
         }
     }
 

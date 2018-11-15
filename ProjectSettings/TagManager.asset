@@ -9,6 +9,7 @@ TagManager:
   - Npc
   - Boss
   - Main
+  - GridMap
   layers:
   - Default
   - TransparentFX

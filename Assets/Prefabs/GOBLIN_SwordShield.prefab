@@ -1303,7 +1303,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1675390028527372}
   m_LocalRotation: {x: -0, y: -0.96526927, z: -0, w: 0.26125708}
-  m_LocalPosition: {x: 182.72792, y: 60.988865, z: 132.65462}
+  m_LocalPosition: {x: 180.5923, y: 60.988865, z: 135.06189}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4132684964048546}
@@ -2241,6 +2241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 193e5fa8e7e09e74b8646adaf55a82c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FSM: {fileID: 0}
   EnemyInSight: 0
   DrawCautionRange: 0
   FaceCautionRange: 15
@@ -2251,13 +2252,17 @@ MonoBehaviour:
   DrawJumpAtkRange: 0
   JumpAtkRange: 4
   DrawAtkRange: 0
-  AtkRange: 1.5
+  AtkRange: 1
   PlayerInSight: 0
   Path: []
   Patrolling: 0
   RestTime: 0
   PreviousWP: {fileID: 0}
   NextWP: {fileID: 0}
+  AtkReady: 1
+  JumpAtkReady: 1
+  AttackFrequency: 3
+  JumpAttackFrequency: 7
 --- !u!114 &114694952255588286
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2326,6 +2331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b27927636e57841c49e8d5fdda114858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrentStateID: 
   CanBeHit: 0
   CanBeKOed: 0
   CanBeDead: 0

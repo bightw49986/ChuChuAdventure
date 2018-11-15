@@ -94,6 +94,7 @@ namespace FSM
         /// </summary>
         internal abstract void OnStateEnter();
 
+
         /// <summary>
         /// Execute what this state should do. Pick a method in "Update", "FixedUpdate", or other callback function to call this method.
         /// </summary>
@@ -135,11 +136,18 @@ namespace FSM
             Trigger = StatesLib.BasicNpc.Triggers[StateID];
         }
 
-        protected internal virtual void OnAnimatorMove()
-        {
+        protected internal abstract void StartTransition(Enum targetStateID, int iSubState);
+        //{
+        //    if (transitions.ContainsKey(targetStateID))
+        //        m_FSM.PerformTransition(targetStateID, iSubState);
+        //}
 
+        internal override void OnStateRunning()
+        {
+            CheckConditions();
         }
 
+        protected internal virtual void OnAnimatorMove(){}
     }
 
     /// <summary>
@@ -163,12 +171,6 @@ namespace FSM
             IsSubMachine = true;
             SubState = 0;
             SubStatesTriggers = new Dictionary<int, string>();
-        }
-
-        internal void StartTransition(Enum targetStateID, int iSubState)
-        {
-            if (transitions.ContainsKey(targetStateID))
-                m_FSM.PerformTransition(targetStateID, iSubState);
         }
 
         protected internal abstract void AssignSubStatesTriggers();
@@ -219,6 +221,9 @@ namespace FSM
         protected float m_fAtkRange;
         protected float m_fSqrAtkRange;
 
+        protected float m_fAtkOffset;
+        protected float m_fSqrAtkOffset;
+
         protected internal new NpcFSM m_FSM { get; set; }
 
         protected NpcFSMState(NpcFSM FSM) : base(FSM)
@@ -226,6 +231,16 @@ namespace FSM
             m_FSM = (NpcFSM)base.m_FSM;
             GetNpcAIStats();
 
+        }
+
+        protected internal override void StartTransition(Enum targetStateID, int iSubState)
+        {
+
+            if (transitions.ContainsKey(targetStateID))
+            {
+                m_FSM.PerformTransition(targetStateID, iSubState);
+            }
+                
         }
 
         void GetNpcAIStats()
@@ -241,11 +256,13 @@ namespace FSM
             m_fChaseRange = m_FSM.m_AIData.ChaseRange;
             m_fJumpAtkRange = m_FSM.m_AIData.JumpAtkRange;
             m_fAtkRange = m_FSM.m_AIData.AtkRange;
+            m_fAtkOffset = m_FSM.m_AIData.AtkOffset;
             m_fSqrFaceCautionRange = m_fFaceCautionRange * m_fFaceCautionRange;
             m_fSqrBackCaurionRange = m_fBackCaurionRange * m_fBackCaurionRange;
             m_fSqrChaseRange = m_fChaseRange * m_fChaseRange;
             m_fSqrJumpAtkRange = m_fJumpAtkRange * m_fJumpAtkRange;
             m_fSqrAtkRange = m_fAtkRange * m_fAtkRange;
+            m_fSqrAtkOffset = (m_fAtkRange + m_fAtkOffset) * (m_fAtkRange + m_fAtkOffset);
         }
 
         internal override void OnStateEnter()
@@ -280,6 +297,7 @@ namespace FSM
             IsSubMachine = true;
             SubState = 0;
             SubStatesTriggers = new Dictionary<int, string>();
+            AssignSubStatesTriggers();
         }
 
         protected abstract void AssignSubStatesTriggers();
@@ -287,23 +305,17 @@ namespace FSM
         internal override void OnStateEnter()
         {
             base.OnStateEnter();
-            AssignSubStatesTriggers();
         }
 
-        internal override void OnStateRunning()
+        internal sealed override void OnStateRunning()
         {
+            Debug.Log("State:" + this + "RunState");
             OnStateRunning(SubState);
         }
 
         internal sealed override void CheckConditions()
         {
             CheckConditions(SubState);
-        }
-
-        internal void StartTransition(Enum targetStateID, int iSubState)
-        {
-            if (transitions.ContainsKey(targetStateID))
-                m_FSM.PerformTransition(targetStateID,iSubState);
         }
 
         internal IEnumerator TransferToSubState(int iSubStateID)
@@ -316,7 +328,11 @@ namespace FSM
             m_FSM.bTranfering = false;
         }
 
-        internal abstract void OnStateRunning(int stage);
+        internal virtual void OnStateRunning(int stage)
+        {
+            CheckConditions();
+        }
+
 
         internal abstract void CheckConditions(int stage);
     }

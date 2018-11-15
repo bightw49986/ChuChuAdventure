@@ -17,6 +17,8 @@ namespace FSM
             }
         }
 
+
+
         void LateUpdate()
         {
             m_isFreezed = m_isKOed = m_isDead = false;

@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FSM;
 
 
 namespace AISystem
 {
     public class AIData : MonoBehaviour
     {
+        public CharacterFSM m_FSM;
+
         [Header("Range Settings")]
         public bool EnemyInSight;
 
@@ -34,8 +37,44 @@ namespace AISystem
         public Waypoint NextWP;
 
         [Header("Battle Settings")]
-        public float AttackFrequency;
+        public float AtkOffset = 0.5f;
+        public bool AtkReady = true;
+        public bool JumpAtkReady = true;
 
+        public float AttackFrequency = 3f;
+        public float JumpAttackFrequency = 7f;
+
+        void Start()
+        {
+            m_FSM = GetComponent<CharacterFSM>();
+        }
+
+
+
+        public void Attack()
+        {
+            StartCoroutine(AtkCD(AttackFrequency));
+        }
+
+        IEnumerator AtkCD(float fCD)
+        {
+            AtkReady = false;
+            yield return new WaitForSeconds(fCD);
+            AtkReady = true;
+        }
+
+        public void JumpAttack()
+        {
+            StartCoroutine(JumpAtkCD(JumpAttackFrequency));
+        }
+
+        IEnumerator JumpAtkCD(float fCD)
+        {
+            JumpAtkReady = false;
+            yield return new WaitForSeconds(fCD);
+            JumpAtkReady = true;
+
+        }
 
         void OnDrawGizmosSelected()
         {

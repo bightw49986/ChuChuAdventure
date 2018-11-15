@@ -81,7 +81,7 @@ namespace FSM
 
                 internal override void OnStateEnter()
                 {
-
+                    base.OnStateEnter();
                 }
 
                 internal override void OnStateExit()
@@ -91,7 +91,7 @@ namespace FSM
 
                 internal override void OnStateRunning()
                 {
-
+                    base.OnStateRunning();
                 }
 
             }
@@ -117,7 +117,7 @@ namespace FSM
 
                 internal override void OnStateEnter()
                 {
-
+                    base.OnStateEnter();
                 }
 
                 internal override void OnStateExit()
@@ -127,7 +127,7 @@ namespace FSM
 
                 internal override void OnStateRunning()
                 {
-
+                    base.OnStateRunning();
                 }
 
             }
@@ -174,16 +174,14 @@ namespace FSM
                             return;
                         }
                         //如果敵人突然進入追擊範圍 Chase
-                        if (fSqrPlayerDis < m_fSqrChaseRange)
+                        if (fSqrPlayerDis <= m_fSqrChaseRange)
                         {
-                            m_FSM.m_AIData.PlayerInSight = true;
                             StartTransition(Npc.Chase);
                             return;
                         }
                         //如果敵人突然超近 Confront
-                        if (fSqrPlayerDis < m_fSqrJumpAtkRange)
+                        if (fSqrPlayerDis <= m_fSqrJumpAtkRange)
                         {
-                            m_FSM.m_AIData.PlayerInSight = true;
                             StartTransition(Npc.Confront);
                             return;
                         }
@@ -198,14 +196,13 @@ namespace FSM
                     {
                         if (fSqrPlayerDis < m_fSqrJumpAtkRange) //如果敵人進入跳躍攻擊範圍，嚕下去
                         {
-                            m_FSM.m_AIData.PlayerInSight = true;
                             m_FSM.StartCoroutine(TransferToSubState(5));
                             return;
                         }
                     }
                     if (stage == 5) //站起
                     {
-                        m_FSM.m_AIData.PlayerInSight = true;
+                        m_FSM.StartJumpAttack();
                         StartTransition(Npc.Attack, 3);
                         return;
                     }
@@ -241,8 +238,7 @@ namespace FSM
 
                 internal override void OnStateRunning(int stage) 
                 {
-                    Debug.Log("Stage : " + stage);
-                    CheckConditions(stage);
+                    base.OnStateRunning(stage);
                     m_FSM.m_AIData.RestTime -= Time.deltaTime;
                 }
             }
@@ -268,7 +264,7 @@ namespace FSM
 
                 internal override void OnStateEnter()
                 {
-
+                    base.OnStateEnter();
                 }
 
                 internal override void OnStateExit()
@@ -278,7 +274,7 @@ namespace FSM
 
                 internal override void OnStateRunning()
                 {
-
+                    base.OnStateRunning();
                 }
 
                 protected internal override void OnAnimatorMove()
@@ -305,12 +301,29 @@ namespace FSM
 
                 internal override void CheckConditions()
                 {
+                    float fSqrPlayerDis = Vector3.SqrMagnitude(Player.transform.position - m_FSM.transform.position);
 
+                    //JumpAtk
+                    if (fSqrPlayerDis <= m_fSqrJumpAtkRange && m_FSM.m_AIData.JumpAtkReady)
+                    {
+                        m_FSM.StartJumpAttack();
+                        StartTransition(Npc.Attack, 3);
+                        return;
+                    }
+
+                    //Atk
+                    if(fSqrPlayerDis <= m_fSqrAtkRange && m_FSM.m_AIData.AtkReady)
+                    {
+                        m_FSM.StartAttack();
+                        StartTransition(Npc.Attack, 0);
+                        return;
+                    }
                 }
 
                 internal override void OnStateEnter()
                 {
-
+                    base.OnStateEnter();
+                    m_FSM.m_AIData.PlayerInSight = true;
                 }
 
                 internal override void OnStateExit()
@@ -320,7 +333,7 @@ namespace FSM
 
                 internal override void OnStateRunning()
                 {
-
+                    base.OnStateRunning();
                 }
 
                 protected internal override void OnAnimatorMove()
@@ -350,12 +363,31 @@ namespace FSM
 
                 internal override void CheckConditions(int stage)
                 {
-                   
+                    bool b;
+                    b = AIMethod2D.CheckinSightFan(m_FSM.transform, Player.transform.position, m_fAtkRange + m_fAtkOffset, 150f);
+                    Debug.Log(b);
+                    if (b==true)
+                    {
+                        if (stage == 0)
+                        {
+                            m_FSM.StartCoroutine(TransferToSubState(1));
+                        }
+                        if (stage == 1)
+                        {
+                            m_FSM.StartCoroutine(TransferToSubState(2));
+                        }
+                    }
+                    else
+                    {
+                        StartTransition(Npc.Confront);
+                    }
+
                 }
 
                 internal override void OnStateEnter()
                 {
-
+                    base.OnStateEnter();
+                    m_FSM.m_AIData.PlayerInSight = true;
                 }
 
                 internal override void OnStateExit()
@@ -363,14 +395,9 @@ namespace FSM
 
                 }
 
-                internal override void OnStateRunning()
-                {
-
-                }
-
                 internal override void OnStateRunning(int stage)
                 {
-
+                    base.OnStateRunning(stage);
                 }
 
                 protected internal override void OnAnimatorMove()
@@ -405,7 +432,8 @@ namespace FSM
 
                 internal override void OnStateEnter()
                 {
-
+                    base.OnStateEnter();
+                    m_FSM.m_AIData.PlayerInSight = true;
                 }
 
                 internal override void OnStateExit()
@@ -413,14 +441,9 @@ namespace FSM
 
                 }
 
-                internal override void OnStateRunning()
-                {
-
-                }
-
                 internal override void OnStateRunning(int stage)
                 {
-
+                    base.OnStateRunning(stage);
                 }
 
                 protected internal override void OnAnimatorMove()
@@ -445,12 +468,25 @@ namespace FSM
 
                 internal override void CheckConditions()
                 {
-
+                    float fSqrPlayerDis = Vector3.SqrMagnitude(Player.transform.position - m_FSM.transform.position);
+                    //如果敵人進入追擊範圍 Chase
+                    if (m_FSM.m_AIData.PlayerInSight ==false && fSqrPlayerDis < m_fSqrChaseRange)
+                    {
+                        StartTransition(Npc.Chase);
+                        return;
+                    }
+                    //attack
+                    if (m_FSM.m_AIData.PlayerInSight ==true && fSqrPlayerDis < m_fSqrAtkRange)
+                    {
+                        m_FSM.StartAttack();
+                        StartTransition(Npc.Attack,0);
+                    }
                 }
 
                 internal override void OnStateEnter()
                 {
 
+                    base.OnStateEnter();
                 }
 
                 internal override void OnStateExit()
@@ -460,7 +496,7 @@ namespace FSM
 
                 internal override void OnStateRunning()
                 {
-
+                    base.OnStateRunning();
                 }
 
                 protected internal override void OnAnimatorMove()
