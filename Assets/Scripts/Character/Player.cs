@@ -71,18 +71,6 @@ public class Player : BattleData
         TakeDamageFrom = new List<EAttackerType>{ EAttackerType.MonsterGroup1,EAttackerType.MonsterGroup2};
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
     //public float fMouseInputSpeed = 1.0f;//滑鼠靈敏度
     //public float fLoseRecoverySpeedRate = 1f;//回血丟失速度倍率
 }

@@ -114,12 +114,7 @@ namespace FSM
 
                 internal override void CheckConditions()
                 {
-                    float i = m_FSM.m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
-                    if (i>0 && i%1 == 0f )
-                    {
-
-                    }
-                        
+                    StartTransition(Npc.Confront);
                 }
 
                 internal override void OnStateEnter()
@@ -167,7 +162,7 @@ namespace FSM
                     if (stage == 0 || stage == 1 || stage == 2) //發呆
                     {
                         //如果敵人進入視線 Caution
-                        if (m_FSM.m_AIData.SomethingShowUp()) //fSqrPlayerDis < m_fSqrBackCaurionRange)
+                        if (m_FSM.m_AIData.SomethingShowUp())
                         {
                             m_FSM.StartCoroutine(TransferToSubState(3));
                             return;
@@ -175,12 +170,14 @@ namespace FSM
                         //如果敵人突然進入追擊範圍 Chase
                         if (m_FSM.m_AIData.TargetInChaseRange())
                         {
+                            m_FSM.m_AIData.EnterBattle();
                             StartTransition(Npc.Chase);
                             return;
                         }
                         //如果敵人突然超近 Confront
                         if (m_FSM.m_AIData.TargetInJumpAtkRange())
                         {
+                            m_FSM.m_AIData.EnterBattle();
                             StartTransition(Npc.Confront);
                             return;
                         }
@@ -203,6 +200,7 @@ namespace FSM
                     {
                         if (m_FSM.m_Animator.IsInTransition(0)==false)
                         {
+                            m_FSM.m_AIData.EnterBattle();
                             m_FSM.m_AIData.JumpAttack();
                             StartTransition(Npc.Attack, 3);
                             return;
@@ -303,22 +301,39 @@ namespace FSM
                 internal override void CheckConditions()
                 {
 
-
-                    //JumpAtk
-                    if (m_FSM.m_AIData.TargetInJumpAtkRange() && m_FSM.m_AIData.JumpAtkReady)
+                    if (m_FSM.m_AIData.IsInBattle == false)
                     {
-                        m_FSM.m_AIData.JumpAttack();
-                        StartTransition(Npc.Attack, 3);
-                        return;
+                        //JumpAtk
+                        if (m_FSM.m_AIData.TargetInJumpAtkRange() && m_FSM.m_AIData.JumpAtkReady)
+                        {
+                            m_FSM.m_AIData.JumpAttack();
+                            StartTransition(Npc.Attack, 3);
+                            return;
+                        }
                     }
 
-                    //Atk
-                    if(m_FSM.m_AIData.TargetInAtkRange() && m_FSM.m_AIData.AtkReady)
+                    else 
                     {
-                        m_FSM.m_AIData.Attack();
-                        StartTransition(Npc.Attack, 0);
-                        return;
+                        //JumpAtk
+                        if (m_FSM.m_AIData.TargetInJumpAtkRange() && m_FSM.m_AIData.JumpAtkReady)
+                        {
+                            m_FSM.m_AIData.JumpAttack();
+                            StartTransition(Npc.Attack, 3);
+                            return;
+                        }
+
+                        //Atk
+                        if (m_FSM.m_AIData.TargetInAtkRange() && m_FSM.m_AIData.AtkReady)
+                        {
+                            m_FSM.m_AIData.Attack();
+                            StartTransition(Npc.Attack, 0);
+                            return;
+                        }
+
+                        StartTransition(Npc.Confront);
                     }
+
+
                 }
 
                 internal override void OnStateEnter()
@@ -574,13 +589,14 @@ namespace FSM
                 internal override void CheckConditions()
                 {
                     //敵人第一次進追擊範圍 Chase
-                    if (m_FSM.m_AIData.PlayerInSight ==false && m_FSM.m_AIData.TargetInChaseRange())
+                    if (m_FSM.m_AIData.IsInBattle ==false && m_FSM.m_AIData.TargetInChaseRange())
                     {
+                        m_FSM.m_AIData.EnterBattle();
                         StartTransition(Npc.Chase);
                         return;
                     }
                     //attack
-                    if (m_FSM.m_AIData.PlayerInSight ==true && m_FSM.m_AIData.TargetInAtkRange())
+                    if (m_FSM.m_AIData.IsInBattle ==true && m_FSM.m_AIData.TargetInAtkRange())
                     {
                         m_FSM.m_AIData.Attack();
                         StartTransition(Npc.Attack,0);

@@ -1,12 +1,13 @@
 ﻿<Properties StartupConfiguration="{8BDCE74E-FD35-6103-357F-1A0A314EA38A}|">
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/FSM/FSMSystem.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/AI and Battle/BattleData.cs">
     <Files>
-      <File FileName="Assets/Scripts/AI and Battle/AIData.cs" Line="151" Column="39" />
-      <File FileName="Assets/Scripts/FSM/FSMStatesLibrary.cs" Line="377" Column="26" />
-      <File FileName="Assets/Goblin.cs" Line="19" Column="1" />
-      <File FileName="Assets/Scripts/FSM/FSMState.cs" Line="239" Column="39" />
-      <File FileName="Assets/Scripts/FSM/FSMSystem.cs" Line="315" Column="14" />
+      <File FileName="Assets/Scripts/Main Gameloop/ObjectPool.cs" Line="112" Column="1" />
+      <File FileName="Assets/Scripts/Character/p90FSM/PlayerFSMGenerater.cs" Line="243" Column="42" />
+      <File FileName="Assets/Scripts/Character/Player.cs" Line="63" Column="16" />
+      <File FileName="Assets/Scripts/AI and Battle/BattleDataMethods.cs" Line="449" Column="26" />
+      <File FileName="Assets/Scripts/UI/UIMain.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/AI and Battle/BattleData.cs" Line="64" Column="55" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

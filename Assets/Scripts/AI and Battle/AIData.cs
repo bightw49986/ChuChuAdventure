@@ -101,7 +101,7 @@ namespace AISystem
                 fTargetDis = Mathf.Sqrt(fSqrTaDis);
                 fTaDirDotForward = Vector3.Dot(transform.forward, vDirectionToTarget.normalized);
                 fAbsDot = Mathf.Abs(fTaDirDotForward);
-                fTurnningWeight = 1 - fAbsDot;
+                fTurnningWeight = (1 - fAbsDot) * (1 - fAbsDot);
             }
         }
 
@@ -188,10 +188,15 @@ namespace AISystem
             return fTaDirDotForward > 0;
         }
 
+        public void EnterBattle()
+        {
+            PlayerInSight = true;
+            IsInBattle = true;
+        }
 
         public void LookAtTarget()
         {
-            transform.LookAt(vTargetPos);
+            transform.LookAt(vTargetPos,Vector3.up);
         }
         public void ChaseTarget()
         {
