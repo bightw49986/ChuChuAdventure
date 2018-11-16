@@ -18,9 +18,6 @@ namespace FSM
         }
 
 
-
-
-
         protected override void OnCharacterHit()
         {
             //暫無特效
@@ -30,11 +27,20 @@ namespace FSM
         {
             if(m_isFreezed ==false)
             m_isFreezed = true;
+            m_Animator.SetTrigger("Freezed");
+            OriginState = CurrentState;
+            CurrentState = globalTransitions[Npc.Freezed];
+            CurrentState.OnStateEnter();
         }
 
         protected override void OnCharacterKOed()
         {
-            //暫無倒地
+            if (m_isFreezed == false)
+                m_isFreezed = true;
+            m_Animator.SetTrigger("Freezed");
+            OriginState = CurrentState;
+            CurrentState = globalTransitions[Npc.Freezed];
+            CurrentState.OnStateEnter();
         }
 
         protected override void OnCharacterDied()
@@ -42,26 +48,38 @@ namespace FSM
             if(m_isDead ==false)
             {
                 m_isDead = true;
+                m_Animator.SetTrigger("Died");
+                OriginState = CurrentState;
+                CurrentState = globalTransitions[Npc.Died];
+                CurrentState.OnStateEnter();
+                GetComponent<Rigidbody>().useGravity = false;
                 Collider[] colliders = GetComponentsInChildren<Collider>();
                 foreach (var c in colliders)
                 {
                     c.enabled = false;
                 }
+
             }
         }
 
         protected override void CheckGlobalConditions()
         {
-            if (m_isDead && m_Animator.IsInTransition(0)==false && bAllowedGloblaTransitions)
-            {
-                PerformGlobalTransition(Npc.Died);
-                return;
-            }
-            if(m_isFreezed && m_Animator.IsInTransition(0) == false && bAllowedGloblaTransitions)
-            {
-                PerformGlobalTransition(Npc.Freezed);
-                return;
-            }
+            //if (m_isDead)
+            //{
+            //    m_Animator.SetTrigger("Died");
+            //    OriginState = CurrentState;
+            //    CurrentState = globalTransitions[Npc.Died];
+            //    CurrentState.OnStateEnter();
+            //    return;
+            //}
+            //if(m_isFreezed)
+            //{
+            //    m_Animator.SetTrigger("Freezed");
+            //    OriginState = CurrentState;
+            //    CurrentState = globalTransitions[Npc.Freezed];
+            //    CurrentState.OnStateEnter();
+            //    return;
+            //}
         }
     }
 

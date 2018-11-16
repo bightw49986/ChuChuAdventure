@@ -39,8 +39,9 @@ namespace FSM
 
                 public static readonly Dictionary<Enum, List<Enum>> Transitions = new Dictionary<Enum, List<Enum>>
                 {
+                    {Npc.Died,new List<Enum>()},
                     {Npc.Freezed,new List<Enum>{Npc.Idle, Npc.Patrol, Npc.Chase, Npc.Confront, Npc.Attack, Npc.Approach}},
-                    {Npc.Idle,new List<Enum>{Npc.Approach,Npc.Patrol,Npc.Chase,Npc.Confront,Npc.Attack}},
+                    {Npc.Idle,new List<Enum>{ Npc.Idle,Npc.Approach,Npc.Patrol,Npc.Chase,Npc.Confront,Npc.Attack}},
                     {Npc.Patrol,new List<Enum>{Npc.Idle,Npc.Confront,Npc.Chase}},
                     {Npc.Approach,new List<Enum>{Npc.Idle,Npc.Chase,Npc.Attack}},
                     {Npc.Chase,new List<Enum>{Npc.Idle,Npc.Attack}},
@@ -83,8 +84,6 @@ namespace FSM
                 internal override void OnStateEnter()
                 {
                     base.OnStateEnter();
-                    m_FSM.bAllowedGloblaTransitions = false;
-                    m_FSM.m_isFreezed = m_FSM.m_isKOed = m_FSM.m_isDead = false;
                 }
 
                 internal override void OnStateExit()
@@ -115,27 +114,10 @@ namespace FSM
 
                 internal override void CheckConditions()
                 {
-                    if (m_FSM.m_Animator.IsInTransition(0) == false)
+                    float i = m_FSM.m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
+                    if (i>0 && i%1 == 0f )
                     {
-                        if((Npc)m_FSM.OriginState.StateID ==Npc.Freezed)
-                        {
-                            StartTransition(Npc.Confront);
-                            return;
-                        }
 
-                        if (m_FSM.m_AIData.PlayerInSight)
-                        {
-                            if ((Npc)m_FSM.OriginState.StateID == Npc.Attack)
-                            {
-                                StartTransition(Npc.Confront);
-                            }
-                            m_FSM.PerformTransition(m_FSM.OriginState.StateID);
-                            return;
-                        }
-                        else
-                        {
-                            StartTransition(Npc.Confront);
-                        }
                     }
                         
                 }
@@ -143,20 +125,17 @@ namespace FSM
                 internal override void OnStateEnter()
                 {
                     base.OnStateEnter();
-                    Debug.Log("有進");
-                    m_FSM.bAllowedGloblaTransitions = false;
                     m_FSM.m_isFreezed = m_FSM.m_isKOed = m_FSM.m_isDead = false;
                 }
 
                 internal override void OnStateExit()
                 {
-                   
+
                 }
 
                 internal override void OnStateRunning()
                 {
                     base.OnStateRunning();
-                    Debug.Log("有跑");
                 }
 
             }
@@ -184,32 +163,23 @@ namespace FSM
 
                 internal override void CheckConditions(int stage)
                 {
-                    float fSqrPlayerDis = Vector3.SqrMagnitude(Player.transform.position - m_FSM.transform.position);
 
                     if (stage == 0 || stage == 1 || stage == 2) //發呆
                     {
-                        //如果時間到進 Patrol
-                        if (m_FSM.m_AIData.Patrolling)
-                        {
-                            if(m_FSM.m_AIData.RestTime <= 0)
-                            {
-                                StartTransition(Npc.Patrol);
-                            }
-                        }
                         //如果敵人進入視線 Caution
-                        if (AIMethod2D.CheckinSightFan(m_FSM.transform,Player.transform.position,m_fFaceCautionRange,m_fFOV)) //fSqrPlayerDis < m_fSqrBackCaurionRange)
+                        if (m_FSM.m_AIData.SomethingShowUp()) //fSqrPlayerDis < m_fSqrBackCaurionRange)
                         {
                             m_FSM.StartCoroutine(TransferToSubState(3));
                             return;
                         }
                         //如果敵人突然進入追擊範圍 Chase
-                        if (fSqrPlayerDis <= m_fSqrChaseRange)
+                        if (m_FSM.m_AIData.TargetInChaseRange())
                         {
                             StartTransition(Npc.Chase);
                             return;
                         }
                         //如果敵人突然超近 Confront
-                        if (fSqrPlayerDis <= m_fSqrJumpAtkRange)
+                        if (m_FSM.m_AIData.TargetInJumpAtkRange())
                         {
                             StartTransition(Npc.Confront);
                             return;
@@ -223,7 +193,7 @@ namespace FSM
                     }
                     if (stage == 4) //蹲著
                     {
-                        if (fSqrPlayerDis < m_fSqrJumpAtkRange) //如果敵人進入跳躍攻擊範圍，嚕下去
+                        if (m_FSM.m_AIData.TargetInJumpAtkRange()) //如果敵人進入跳躍攻擊範圍，嚕下去
                         {
                             m_FSM.StartCoroutine(TransferToSubState(5));
                             return;
@@ -233,7 +203,7 @@ namespace FSM
                     {
                         if (m_FSM.m_Animator.IsInTransition(0)==false)
                         {
-                            m_FSM.StartJumpAttack();
+                            m_FSM.m_AIData.JumpAttack();
                             StartTransition(Npc.Attack, 3);
                             return;
                         }
@@ -243,7 +213,6 @@ namespace FSM
                 internal override void OnStateEnter()
                 {
                     base.OnStateEnter();
-                    m_FSM.bAllowedGloblaTransitions = true;
                     switch (npcStartingPose)
                     {
                         case NpcFSM.StartPose.Stand:
@@ -271,7 +240,6 @@ namespace FSM
                 internal override void OnStateRunning(int stage) 
                 {
                     base.OnStateRunning(stage);
-                    m_FSM.m_AIData.RestTime -= Time.deltaTime;
                 }
             }
             #endregion
@@ -297,7 +265,7 @@ namespace FSM
                 internal override void OnStateEnter()
                 {
                     base.OnStateEnter();
-                    m_FSM.bAllowedGloblaTransitions = true;
+
                 }
 
                 internal override void OnStateExit()
@@ -312,7 +280,7 @@ namespace FSM
 
                 protected internal override void OnAnimatorMove()
                 {
-
+                    m_FSM.m_AIData.TurnToTarget();
                 }
             }
             #endregion
@@ -334,20 +302,20 @@ namespace FSM
 
                 internal override void CheckConditions()
                 {
-                    float fSqrPlayerDis = Vector3.SqrMagnitude(Player.transform.position - m_FSM.transform.position);
+
 
                     //JumpAtk
-                    if (fSqrPlayerDis <= m_fSqrJumpAtkRange && m_FSM.m_AIData.JumpAtkReady)
+                    if (m_FSM.m_AIData.TargetInJumpAtkRange() && m_FSM.m_AIData.JumpAtkReady)
                     {
-                        m_FSM.StartJumpAttack();
+                        m_FSM.m_AIData.JumpAttack();
                         StartTransition(Npc.Attack, 3);
                         return;
                     }
 
                     //Atk
-                    if(fSqrPlayerDis <= m_fSqrAtkRange && m_FSM.m_AIData.AtkReady)
+                    if(m_FSM.m_AIData.TargetInAtkRange() && m_FSM.m_AIData.AtkReady)
                     {
-                        m_FSM.StartAttack();
+                        m_FSM.m_AIData.Attack();
                         StartTransition(Npc.Attack, 0);
                         return;
                     }
@@ -357,7 +325,7 @@ namespace FSM
                 {
                     base.OnStateEnter();
                     m_FSM.m_AIData.PlayerInSight = true;
-                    m_FSM.bAllowedGloblaTransitions = true;
+
                 }
 
                 internal override void OnStateExit()
@@ -372,7 +340,7 @@ namespace FSM
 
                 protected internal override void OnAnimatorMove()
                 {
-
+                    m_FSM.m_AIData.TurnToTarget();
                 }
             }
             #endregion
@@ -397,7 +365,7 @@ namespace FSM
 
                 internal override void CheckConditions(int stage)
                 {
-                    if (AIMethod2D.CheckinSightFan(m_FSM.transform, Player.transform.position, m_fAtkRange + m_fAtkOffset, 150f))
+                    if (m_FSM.m_AIData.TargetStillInAtkRange())
                     {
                         if (stage == 0)
                         {
@@ -410,6 +378,7 @@ namespace FSM
                     }
                     else
                     {
+                        Debug.Log("有進");
                         StartTransition(Npc.Confront);
                     }
 
@@ -419,7 +388,8 @@ namespace FSM
                 {
                     base.OnStateEnter();
                     m_FSM.m_AIData.PlayerInSight = true;
-                    m_FSM.bAllowedGloblaTransitions = true;
+                    m_FSM.m_AIData.StopTurnToTarget();
+
                 }
 
                 internal override void OnStateExit()
@@ -442,6 +412,8 @@ namespace FSM
             #region Confront
             public class Confront : NpcSubMachine
             {
+                bool bStrafeOnce;
+                System.Random random = new System.Random();
                 public override Enum StateID
                 {
                     get
@@ -454,24 +426,124 @@ namespace FSM
 
                 protected override void AssignSubStatesTriggers()
                 {
-
+                    SubStatesTriggers = StatesLib.BasicNpc.SubStatesTriggers[Npc.Confront];
                 }
 
                 internal override void CheckConditions(int stage)
                 {
+                    int pick = random.Next();
+                    if (m_FSM.m_AIData.AtkReady || m_FSM.m_AIData.JumpAtkReady)
+                    {
+                        m_FSM.StartCoroutine(TransferToSubState(0));
+                        if (m_FSM.m_AIData.TargetInAtkRange())
+                        {
+                            StartTransition(Npc.Attack);
+                            return;
+                        }
+                        switch (m_FSM.BehaviorStyle)
+                        {
+                            case NpcFSM.Style.Normal:
+                                Debug.Log("有進");
+                                if (pick%2==0)
+                                {
+                                    StartTransition(Npc.Chase);
+                                }
+                                else
+                                {
+                                    StartTransition(Npc.Approach);
+                                }
+                                break;
+                            case NpcFSM.Style.Sinister:
+                                StartTransition(Npc.Chase);
+                                break;
+                            case NpcFSM.Style.Cautious:
+                                StartTransition(Npc.Approach);
+                                break;
+                        }
+                        return;
+                    }
+                    if (stage ==0)
+                    {
+                        if (bStrafeOnce)
+                        {
+                            if (m_FSM.m_AIData.TargetInAtkRange())
+                            {
+                                m_FSM.StartCoroutine(TransferToSubState(2));
+                                return;
+                            }
+                            if (m_FSM.m_AIData.TargetInJumpAtkRange())
+                            {
+                                m_FSM.StartCoroutine(TransferToSubState(1));
+                                return;
+                            }
+                        }
 
+                        if (m_FSM.m_AIData.TargetInChaseRange())
+                        {
+                            switch (m_FSM.BehaviorStyle)
+                            {
+                                case NpcFSM.Style.Normal:
+                                    if (pick % 2 == 0)
+                                    {
+                                        StartTransition(Npc.Chase);
+                                    }
+                                    else
+                                    {
+                                        StartTransition(Npc.Approach);
+                                    }
+                                    break;
+                                case NpcFSM.Style.Sinister:
+                                    StartTransition(Npc.Chase);
+                                    break;
+                                case NpcFSM.Style.Cautious:
+                                    StartTransition(Npc.Approach);
+                                    break;
+                            }
+                            return;
+                        }
+
+                    }
+                    if (stage ==1 || stage ==2)
+                    {
+                        if (bStrafeOnce)
+                        {
+                            m_FSM.StartCoroutine(TransferToSubState(0));
+                            return;
+                        }
+                        if (m_FSM.m_AIData.TargetInJumpAtkRange())
+                        {
+                            if (m_FSM.m_AIData.TargetOnRightSide())
+                            m_FSM.StartCoroutine(TransferToSubState(3));
+                            else
+                                m_FSM.StartCoroutine(TransferToSubState(4));
+                            return;
+                        }
+                    }
+                    if (stage==3 || stage ==4)
+                    {
+                        m_FSM.StartCoroutine(TransferToSubState(0));
+                        bStrafeOnce = true;
+                        return;
+                    }
+
+                    if (!m_FSM.m_AIData.TargetInChaseRange())
+                    {
+                        m_FSM.StartCoroutine(TransferToSubState(0));
+                        StartTransition(Npc.Chase);
+                    }
                 }
 
                 internal override void OnStateEnter()
                 {
                     base.OnStateEnter();
                     m_FSM.m_AIData.PlayerInSight = true;
-                    m_FSM.bAllowedGloblaTransitions = true;
+                    bStrafeOnce = false;
+
                 }
 
                 internal override void OnStateExit()
                 {
-
+                    bStrafeOnce = false;
                 }
 
                 internal override void OnStateRunning(int stage)
@@ -481,7 +553,7 @@ namespace FSM
 
                 protected internal override void OnAnimatorMove()
                 {
-
+                    m_FSM.m_AIData.LookAtTarget();
                 }
             }
             #endregion
@@ -501,17 +573,16 @@ namespace FSM
 
                 internal override void CheckConditions()
                 {
-                    float fSqrPlayerDis = Vector3.SqrMagnitude(Player.transform.position - m_FSM.transform.position);
                     //敵人第一次進追擊範圍 Chase
-                    if (m_FSM.m_AIData.PlayerInSight ==false && fSqrPlayerDis < m_fSqrChaseRange)
+                    if (m_FSM.m_AIData.PlayerInSight ==false && m_FSM.m_AIData.TargetInChaseRange())
                     {
                         StartTransition(Npc.Chase);
                         return;
                     }
                     //attack
-                    if (m_FSM.m_AIData.PlayerInSight ==true && fSqrPlayerDis < m_fSqrAtkRange)
+                    if (m_FSM.m_AIData.PlayerInSight ==true && m_FSM.m_AIData.TargetInAtkRange())
                     {
-                        m_FSM.StartAttack();
+                        m_FSM.m_AIData.Attack();
                         StartTransition(Npc.Attack,0);
                     }
                 }
@@ -520,7 +591,7 @@ namespace FSM
                 {
 
                     base.OnStateEnter();
-                    m_FSM.bAllowedGloblaTransitions = true;
+
                 }
 
                 internal override void OnStateExit()
@@ -535,7 +606,7 @@ namespace FSM
 
                 protected internal override void OnAnimatorMove()
                 {
-
+                    m_FSM.m_AIData.TurnToTarget();
                 }
             }
             #endregion
