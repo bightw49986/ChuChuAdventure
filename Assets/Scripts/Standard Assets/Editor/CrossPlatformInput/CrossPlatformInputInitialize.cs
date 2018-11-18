@@ -32,8 +32,7 @@ namespace UnityStandardAssets.CrossPlatformInput.Inspector
             {
                 case BuildTarget.Android:
                 case BuildTarget.iOS:
-                case BuildTarget.PSM: 
-                case BuildTarget.Tizen: 
+               
                 case BuildTarget.WSAPlayer: 
                     EditorUtility.DisplayDialog("Mobile Input",
                                                 "You have enabled Mobile Input. You'll need to use the Unity Remote app on a connected device to control your game in the Editor.",
@@ -81,19 +80,15 @@ namespace UnityStandardAssets.CrossPlatformInput.Inspector
         }
 
 
-        private static BuildTargetGroup[] buildTargetGroups = new BuildTargetGroup[]
-            {
+        private static BuildTargetGroup[] buildTargetGroups = {
                 BuildTargetGroup.Standalone,
                 BuildTargetGroup.Android,
                 BuildTargetGroup.iOS
             };
 
-        private static BuildTargetGroup[] mobileBuildTargetGroups = new BuildTargetGroup[]
-            {
+        private static BuildTargetGroup[] mobileBuildTargetGroups = {
                 BuildTargetGroup.Android,
                 BuildTargetGroup.iOS,
-                BuildTargetGroup.PSM, 
-                BuildTargetGroup.Tizen,
                 BuildTargetGroup.WSA 
             };
 

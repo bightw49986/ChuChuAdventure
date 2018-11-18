@@ -66,11 +66,11 @@ namespace BattleSystem
         /// 加入可以用的特效種類
         /// </summary>
         /// <param name="types">Types.</param>
-        void AddParticleAttackBoxes(params SkillFXKey[] types)
+        void AddParticleAttackBoxes(params BossFX_Fire[] types)
         {
             if (InitMessage)
                 print(gameObject.name + " 開始初始化特效攻擊盒");
-            if(ParticleAttackBoxes == null) ParticleAttackBoxes = new List<SkillFXKey>();
+            if(ParticleAttackBoxes == null) ParticleAttackBoxes = new List<Enum>();
             foreach (var t in types)
             {
                 if (ParticleAttackBoxes.Contains(t) == false)
@@ -155,9 +155,15 @@ namespace BattleSystem
 
         }
 
-        public void CastSkillBox(SkillFXKey type)
+        /// <summary>
+        /// 從物件池拿來招式發射器
+        /// </summary>
+        /// <param name="poolKey">Pool key.</param>
+        /// <param name="typeKey">Type key.</param>
+        public void CastSkillBox(PoolKey poolKey, Enum typeKey)
         {
-            GameObject attackFX = objectPool.AccessGameObjectFromPool(PoolKey.SkillFX, type);
+            if (ParticleAttackBoxes.Contains(typeKey) == false) return;
+            GameObject attackFX = objectPool.AccessGameObjectFromPool(poolKey,typeKey);
             AttackBox_Skill skillBox = attackFX.GetComponent<AttackBox_Skill>();
             if (skillBox == null) return;
             skillBox.InitAttackBox(this);
@@ -253,7 +259,7 @@ namespace BattleSystem
         /// <summary>
         /// 隨時間恢復強韌度
         /// </summary>
-        void RecoverEndurance()//undone
+        void RecoverEndurance()
         {
             m_fRecoverTime = m_fRecoverTime > 0 ? m_fRecoverTime - Time.deltaTime : 0f;
             if (m_fRecoverTime <= 0) Endurance = MaxEndurance;

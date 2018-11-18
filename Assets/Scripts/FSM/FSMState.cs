@@ -244,7 +244,20 @@ namespace FSM
         internal override void OnStateEnter()
         {
             m_FSM.bTranfering = false;
+            //ResetTriggers();
             RegisterTransitions();
+        }
+
+        void ResetTriggers()
+        {
+            m_FSM.m_Animator.ResetTrigger("Died");
+            m_FSM.m_Animator.ResetTrigger("Freezed");
+            m_FSM.m_Animator.ResetTrigger("Idle0");
+            m_FSM.m_Animator.ResetTrigger("Patrol");
+            m_FSM.m_Animator.ResetTrigger("Chase");
+            m_FSM.m_Animator.ResetTrigger("Approach");
+            m_FSM.m_Animator.ResetTrigger("Attack0");
+            m_FSM.m_Animator.ResetTrigger("Confront");
         }
 
         protected virtual void RegisterTransitions()
@@ -271,6 +284,11 @@ namespace FSM
 
         protected NpcSubMachine(NpcFSM FSM) : base(FSM)
         {
+            InitSubMachine();
+        }
+
+        void InitSubMachine()
+        {
             IsSubMachine = true;
             SubState = 0;
             SubStatesTriggers = new Dictionary<int, string>();
@@ -287,7 +305,7 @@ namespace FSM
         internal sealed override void OnStateRunning()
         {
             if(m_FSM.bLogCurrentState)
-                Debug.Log("State:" + StateID);
+                Debug.Log("State: " + StateID + " SubState : " + SubState);
             OnStateRunning(SubState);
         }
 
@@ -300,15 +318,19 @@ namespace FSM
         internal IEnumerator TransferToSubState(int iSubStateID)
         {
             m_FSM.bTranfering = true;
-            Debug.Log(m_FSM.CurrentStateID +  "進SubTransition" + iSubStateID);
+            if (m_FSM.bLogTransition)
+                Debug.Log(m_FSM.CurrentStateID +  "進SubTransition" + iSubStateID);
             m_FSM.m_Animator.SetTrigger(SubStatesTriggers[iSubStateID]);
-            Debug.Log("Sub有Set到");
+            if (m_FSM.bLogTransition)
+                Debug.Log("Sub有Set到");
             yield return new WaitUntil(() => (m_FSM.m_Animator.IsInTransition(0)) == true);
             yield return new WaitUntil(() => (m_FSM.m_Animator.IsInTransition(0)) == false);
-            Debug.Log("Sub有等到");
+            if (m_FSM.bLogTransition)
+                Debug.Log("Sub有等到");
             SubState = iSubStateID;
             m_FSM.bTranfering = false;
-            Debug.Log(m_FSM.CurrentStateID + "出SubTransition" + iSubStateID);
+            if (m_FSM.bLogTransition)
+                Debug.Log(m_FSM.CurrentStateID + "出SubTransition" + iSubStateID);
         }
 
         internal virtual void OnStateRunning(int stage)

@@ -20,7 +20,20 @@ namespace FSM
         /// </summary>
         protected internal bool bTranfering;
 
+        /// <summary>
+        /// 是否印出現在的狀態
+        /// </summary>
         [SerializeField] protected internal bool bLogCurrentState;
+
+        /// <summary>
+        /// 是否印狀態切換的Log
+        /// </summary>
+        [SerializeField] protected internal bool bLogTransition;
+
+        /// <summary>
+        /// 現在的StateID，會秀在Inspecter裡面
+        /// </summary>
+        [SerializeField] protected internal string CurrentStateID;
 
         /// <summary>
         /// 這個狀態機的初始狀態
@@ -69,10 +82,9 @@ namespace FSM
         /// </summary>
         protected internal Coroutine m_currentTransition;
 
-        /// <summary>
-        /// 現在的StateID，會秀在Inspecter裡面
-        /// </summary>
-        [SerializeField] protected internal string CurrentStateID;
+
+
+
 
         protected virtual void Awake()
         {
@@ -169,7 +181,8 @@ namespace FSM
         /// <param name="targetState">目標狀態</param>
         IEnumerator TransferTo(FSMState targetState)
         {
-            Debug.Log("1");
+            if (bLogTransition)
+                Debug.LogWarning("1，進到父類的了");
             TargetStateID = targetState.StateID;
             bTranfering = true;
             OriginState = CurrentState;
@@ -186,7 +199,11 @@ namespace FSM
         /// <param name="stateID">目標狀態的StateID</param>
         internal void PerformTransition(Enum stateID)
         {
-            if (TargetStateID == stateID) return;
+            if (TargetStateID != null && TargetStateID == stateID)
+            {
+                Debug.LogError("狀態切換失敗！原因：要切換的狀態：" + stateID + " 等於現在的狀態！不應該發生");
+                return;
+            }
             if (validStates == null) return;
             if (validStates.ContainsKey(stateID))
             {
@@ -221,21 +238,25 @@ namespace FSM
         /// <param name="anyStateID">全域狀態的ID</param>
         protected internal void PerformGlobalTransition(Enum anyStateID)
         {
-                if (TargetStateID == anyStateID) return;
-                if (globalTransitions == null || CurrentState == globalTransitions[anyStateID]) return;
-                if (globalTransitions.ContainsKey(anyStateID))
+            if ((TargetStateID != null && TargetStateID == anyStateID) || CurrentState == globalTransitions[anyStateID])
+            {
+                Debug.LogError("全域狀態切換失敗！原因：要切換的狀態：" + anyStateID + " 等於現在的狀態！不應該發生");
+                return;
+            }
+            if (globalTransitions != null && globalTransitions.ContainsKey(anyStateID))
+            {
+                if (m_currentTransition != null)
                 {
-                    if (m_currentTransition != null)
-                    {
-                        StopCoroutine(m_currentTransition);
-                    }
+                    StopCoroutine(m_currentTransition);
+                }
+                if (bLogTransition)
                     Debug.Log("有進Perform");
-                    m_currentTransition = StartCoroutine(TransitionHandler(globalTransitions[anyStateID]));
-                }
-                else
-                {
-                    Debug.LogError(gameObject.name + "全域狀態切換失敗！原因：要切換的AnyState：" + anyStateID + " 不在此狀態機可切換的全域狀態內");
-                }
+                m_currentTransition = StartCoroutine(TransitionHandler(globalTransitions[anyStateID]));
+            }
+            else
+            {
+                Debug.LogError(gameObject.name + "全域狀態切換失敗！原因：要切換的AnyState：" + anyStateID + " 不在此狀態機可切換的全域狀態內");
+            }
         }
     }
 
@@ -283,6 +304,8 @@ namespace FSM
         IEnumerator TransferTo(NpcFSMState targetState)
         {
             if (TargetStateID == targetState.StateID) yield break;
+            if (bLogTransition)
+                Debug.Log(CurrentState.StateID + " 進Transition : " + targetState.StateID);
             TargetStateID = targetState.StateID;
             bTranfering = true;
             OriginState = CurrentState;
@@ -291,8 +314,12 @@ namespace FSM
             {
                 if (String.IsNullOrEmpty(targetState.Trigger) == false)
                 {
+                    if (bLogTransition)
+                        Debug.Log("狀態轉換trigger有set到");
                     m_Animator.SetTrigger(targetState.Trigger);
                     yield return new WaitUntil(() => (m_Animator.IsInTransition(0)) == true);
+                    if (bLogTransition)
+                        Debug.Log("等待Animator進transition有等到");
                 }
             }
             else if (targetState.GetType() == typeof(NpcSubMachine))
@@ -309,45 +336,51 @@ namespace FSM
                 Debug.LogWarning("輸入了一個不正確的目標狀態");
             }
             yield return new WaitUntil(() => (m_Animator.IsInTransition(0)) == false);
+            TargetStateID = null;
             CurrentState = targetState;
             CurrentState.OnStateEnter();
+            if (bLogTransition)
+                Debug.Log("出Transition，執行 " + CurrentState.StateID + "的Enter");
             bTranfering = false;
-            yield return null;
         }
 
         IEnumerator TransferToSub(NpcSubMachine targetState,int subStateID)
         {
             if (TargetStateID == targetState.StateID) yield break;
-            Debug.Log("進Transition");
+            if (bLogTransition)
+                Debug.Log(CurrentState.StateID +  " 進Transition : " + targetState.StateID + " 的" + subStateID + "號substate.");
             TargetStateID = targetState.StateID;
             bTranfering = true;
             OriginState = CurrentState;
             CurrentState.OnStateExit();
             if (String.IsNullOrEmpty(targetState.SubStatesTriggers[subStateID]) == false)
             {
-                Debug.Log("有set到");
+                if (bLogTransition)
+                    Debug.Log("狀態轉換trigger有set到");
                 m_Animator.SetTrigger(targetState.SubStatesTriggers[subStateID]);
                 yield return new WaitUntil(() => (m_Animator.IsInTransition(0)) == true);
-                Debug.Log("有等到");
+                if (bLogTransition)
+                    Debug.Log("等待Ainator進transition有等到");
             }
             else
             {
                 Debug.LogWarning("輸入了一個不正確的目標狀態");
             }
             yield return new WaitUntil(() => (m_Animator.IsInTransition(0)) == false);
-            Debug.Log("出Transition");
+
             targetState.SubState = subStateID;
+            TargetStateID = null;
             CurrentState = targetState;
             CurrentState.OnStateEnter();
+            if (bLogTransition)
+                Debug.Log("出Transition，執行 " + CurrentState.StateID + "的Enter");
             bTranfering = false;
-            yield return null;
         }
 
         protected internal override void PerformTransition(Enum stateID, int subStateID)
         {
             if (validStates == null || CurrentState == validStates[stateID])
             {
-                Debug.Log("卡這");
                 return;
             }
             if (validStates.ContainsKey(stateID))
@@ -378,7 +411,6 @@ namespace FSM
             }
             return validStates[InitialStateID];
         }
-
     }
 
     #endregion

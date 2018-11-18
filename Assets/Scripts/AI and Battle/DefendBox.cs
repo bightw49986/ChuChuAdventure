@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using ResourcesManagement;
 
 namespace BattleSystem
 {
@@ -32,7 +33,13 @@ namespace BattleSystem
         /// 這個受擊盒被打中時要播放的特效
         /// </summary>
         /// <value>特效的Prefab</value>
-        [SerializeField] protected GameObject HitFX;
+        [SerializeField] protected GameObject HitEffect;
+        public bool ApplyHitFX;
+
+        /// <summary>
+        /// 擊中特效在池子的ID
+        /// </summary>
+        public HitFX HitFXID;
 
         /// <summary>
         /// 要不要印防禦盒Log
@@ -61,11 +68,6 @@ namespace BattleSystem
             }
         }
 
-        protected void OnDisable() //undone 把特效還給物件池
-        {
-        }
-
-
         public void InitDefendBox(IDefender host)
         {
             if (host != null)
@@ -90,19 +92,36 @@ namespace BattleSystem
         }
 
         /// <summary>
+        /// 指定防禦盒的擊中特效
+        /// </summary>
+        /// <param name="hitFXID">特效的ID</param>
+        public void SetHitFX(HitFX hitFXID)
+        {
+            HitFXID = hitFXID;
+        }
+
+        /// <summary>
         /// 播擊中特效
         /// </summary>
-        protected virtual void PlayHitFX() //undone 物件池處理、多特效支援
+        protected virtual void DisplayHitFX() //undone 只拿到特效而已，沒決定怎麼播(位置角度那些)、怎麼還
         {
-            if (HitFX == null)
+            if (HitFXID == HitFX.None) return;
+            if (ApplyHitFX)
             {
-                if (PrintLog)
-                    Debug.LogError("特效未指派就被叫用！");
-                return;
+                HitEffect = Host.objectPool.AccessGameObjectFromPool(PoolKey.HitFX, HitFXID);
             }
-            Instantiate(HitFX, transform.position, Quaternion.identity);
+
             if (PrintLog)
-                print("防禦盒端: " + name + " 噴出受傷特效" + HitFX.name + "(宿主: " + Host.name + ")");
+                print("防禦盒端: " + name + " 噴出受傷特效" + HitEffect.name + "(宿主: " + Host.name + ")");
+        }
+
+        /// <summary>
+        /// 把特效還回池子(可能做成CallBack)
+        /// </summary>
+        protected void ReturnHitFXToPool() //undone 還沒決定什麼時候call這個
+        {
+            if (HitEffect == null) return;
+            Host.objectPool.ReturnGameObjectToPool(HitEffect, PoolKey.HitFX, HitFXID);
         }
 
         /// <summary>
@@ -111,8 +130,7 @@ namespace BattleSystem
         public event Action<float,DefendBox> DamageOccured;
         public virtual void OnDamageOccured(float fDamage)
         {
-            if (HitFX != null)
-                PlayHitFX(); //播擊中特效
+                DisplayHitFX(); //播擊中特效
             if (DamageOccured != null)
             {
                 DamageOccured(CalculateDamage(fDamage),this); //把傷害值傳給CalculateDamage計算，然後通知事件的註冊者扣血量
@@ -122,4 +140,6 @@ namespace BattleSystem
 
         }
     }
+
+
 }

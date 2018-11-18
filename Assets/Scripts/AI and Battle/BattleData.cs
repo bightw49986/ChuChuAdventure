@@ -8,11 +8,11 @@ namespace BattleSystem
     public partial class BattleData : MonoBehaviour, IAttacker, IDefender
     {
         protected Dictionary<string, float> m_Stats = new Dictionary<string, float>();
-        ObjectPool objectPool;
+        public ObjectPool objectPool { get; private set; }
         [Header("Attack Stats")]
         [Tooltip("這個角色的傷害類型")] public EAttackerType AttackerType = EAttackerType.MonsterGroup1;
         [Tooltip("這個角色當前擁有的近戰攻擊盒")] public List<AttackBox_Melee> MeleeAttackBoxes;
-        [Tooltip("這個角色使用的特效攻擊盒")] public List<SkillFXKey> ParticleAttackBoxes;
+        [Tooltip("這個角色使用的特效攻擊盒")] public List<Enum> ParticleAttackBoxes;
         [Tooltip("每個攻擊盒各自對應的攻擊力(用SetAtkValueToAttackBox()來個別設定")] public Dictionary<AttackBox, float> AtkValues;
 
         [Header("Defend Stats")]

@@ -3089,13 +3089,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1818269235293534}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48967f802e86f4a93a310c9a269413e5, type: 3}
+  m_Script: {fileID: 11500000, guid: 23ff1e0d120a04d51ba2291344df11d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PrintLog: 1
+  PrintLog: 0
   BasicAtk: 1
   HitBoxes: []
   Interval: 0
+  m_hitFX: {fileID: 0}
 --- !u!114 &114453318660055234
 MonoBehaviour:
   m_ObjectHideFlags: 1

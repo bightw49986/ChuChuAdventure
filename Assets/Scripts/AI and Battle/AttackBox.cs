@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using ResourcesManagement;
 
 namespace BattleSystem
 {
@@ -48,10 +48,16 @@ namespace BattleSystem
         public float Interval;
 
         /// <summary>
-        /// 擊中時播放特效
+        /// 擊中特效在池子的ID
         /// </summary>
-        public GameObject HitFX { get { return m_hitFX; } private set { m_hitFX = value; } }
-        [SerializeField] GameObject m_hitFX;
+        public HitFX HitFXID;
+
+        [SerializeField] GameObject HitEffect;
+
+        /// <summary>
+        /// 決定擊中時是否播特效
+        /// </summary>
+        public bool ApplyHitFX;
 
         protected virtual void Awake()
         {
@@ -142,11 +148,31 @@ namespace BattleSystem
         /// <summary>
         /// 指定攻擊盒的擊中特效
         /// </summary>
-        /// <param name="go">特效的Prefab</param>
-        public void SetHitFX(GameObject go)
+        /// <param name="hitFXID">特效的ID</param>
+        public void SetHitFX(HitFX hitFXID)
         {
-            HitFX = go;
+            HitFXID = hitFXID;
         }
 
+        /// <summary>
+        /// 播放擊中特效
+        /// </summary>
+        protected void DisplatHitFX() //undone 只拿到特效而已，沒決定怎麼播(位置角度那些)、怎麼還
+        {
+            if (HitFXID == HitFX.None) return;
+            if(ApplyHitFX)
+            {
+                HitEffect =  Host.objectPool.AccessGameObjectFromPool(PoolKey.HitFX, HitFXID);
+            }
+        }
+
+        /// <summary>
+        /// 把特效還回池子(可能做成CallBack)
+        /// </summary>
+        protected void ReturnHitFXToPool() //undone 還沒決定什麼時候call這個
+        {
+            if (HitEffect == null) return;
+            Host.objectPool.ReturnGameObjectToPool(HitEffect, PoolKey.HitFX, HitFXID);
+        }
     }
 }

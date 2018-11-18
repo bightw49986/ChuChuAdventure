@@ -696,7 +696,7 @@ GameObject:
   - component: {fileID: 136081448037770782}
   - component: {fileID: 114912193828492324}
   - component: {fileID: 114537618430032658}
-  - component: {fileID: 54814785357187034}
+  - component: {fileID: 54625014305512218}
   m_Layer: 0
   m_Name: GOBLIN_SwordShield
   m_TagString: Untagged
@@ -2185,7 +2185,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1385785660076130}
   m_Mesh: {fileID: 4300008, guid: 369bf22314485f2499b7991776c86074, type: 3}
---- !u!54 &54814785357187034
+--- !u!54 &54625014305512218
 Rigidbody:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2230,7 +2230,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Collider: {fileID: 0}
-  HitFX: {fileID: 1240250018707908, guid: 5656e7ea1f1a75d4c895547ec2b824b3, type: 2}
+  HitEffect: {fileID: 0}
+  ApplyHitFX: 0
+  HitFXID: 0
   PrintLog: 0
 --- !u!114 &114438515977113148
 MonoBehaviour:
@@ -2244,7 +2246,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Collider: {fileID: 0}
-  HitFX: {fileID: 1240250018707908, guid: 5656e7ea1f1a75d4c895547ec2b824b3, type: 2}
+  HitEffect: {fileID: 0}
+  ApplyHitFX: 0
+  HitFXID: 0
   PrintLog: 0
 --- !u!114 &114537618430032658
 MonoBehaviour:
@@ -2273,23 +2277,35 @@ MonoBehaviour:
   DrawAtkRange: 1
   fAtkRange: 1.5
   fSqrAtkRange: 0
-  IgnoreLayer:
+  fHeight: 2
+  fPorbe: 3
+  fWidth: 0.4
+  CollisionLayer:
     serializedVersion: 2
     m_Bits: 0
-  m_Player: {fileID: 0}
+  fMoveSpeed: 1
+  fMaxSpeed: 10
+  fMaxSteerSpeed: 8
+  fMaxTurnDegree: 180
+  player: {fileID: 0}
+  PlayerIsDead: 0
   PlayerInSight: 0
   IsInBattle: 0
-  fTargetDis: 0
-  fSqrTaDis: 0
-  fTaDirDotForward: 0
-  fAbsDot: 0
+  m_vPlayerPos: {x: 0, y: 0, z: 0}
+  fPlayerDis: 0
+  fSqrPlayerDis: 0
   Patrolling: 0
+  Path: []
+  fRestTime: 0
+  previousWP: {fileID: 0}
+  nextWP: {fileID: 0}
+  vLastPosBeforeBattle: {x: 0, y: 0, z: 0}
   NextMoveID: 0
   AtkReady: 1
   JumpAtkReady: 1
   fAtkOffset: 0.5
   fAttackFrequency: 3
-  fJumpAttackFrequency: 7
+  fJumpAttackFrequency: 20
 --- !u!114 &114694952255588286
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2302,7 +2318,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Collider: {fileID: 0}
-  HitFX: {fileID: 1240250018707908, guid: 5656e7ea1f1a75d4c895547ec2b824b3, type: 2}
+  HitEffect: {fileID: 0}
+  ApplyHitFX: 0
+  HitFXID: 0
   PrintLog: 0
 --- !u!114 &114876808941661256
 MonoBehaviour:
@@ -2316,7 +2334,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Collider: {fileID: 0}
-  HitFX: {fileID: 1240250018707908, guid: 5656e7ea1f1a75d4c895547ec2b824b3, type: 2}
+  HitEffect: {fileID: 0}
+  ApplyHitFX: 0
+  HitFXID: 0
   PrintLog: 0
 --- !u!114 &114912193828492324
 MonoBehaviour:
@@ -2331,7 +2351,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttackerType: 1
   MeleeAttackBoxes: []
-  ParticleAttackBoxes: 
   DefendBoxes: []
   TakeDamageFrom: 00000000
   IsHarmless: 0
@@ -2359,10 +2378,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bLogCurrentState: 1
+  bLogTransition: 1
   CurrentStateID: 
   CanBeHit: 1
   CanBeKOed: 1
   CanBeDead: 1
+  ApplyRootMotion: 1
   InitialStateID: 0
   _style: 0
   _species: 0

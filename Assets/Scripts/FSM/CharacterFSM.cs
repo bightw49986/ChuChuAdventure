@@ -17,21 +17,22 @@ namespace FSM
         protected internal AIData m_AIData;
         protected internal BattleData m_BattleData;
         protected internal Animator m_Animator;
-
         protected internal Func<FSMState, int, IEnumerator> SubMachineTransitionHandler;
-
 
         Func<FSMState, int, IEnumerator> _subMachineTransitionHandler;
 
+        [Header("BattleConditions")]
         public bool CanBeHit;
         public bool CanBeKOed;
         public bool CanBeDead;
 
+        [Header("RootMotion")]
+        public bool ApplyRootMotion = true;
+
         protected internal bool m_isDead, m_isFreezed, m_isKOed;
 
         protected virtual void OnAnimatorMove()
-        {
-            m_Animator.ApplyBuiltinRootMotion();
+        {            
             if (m_Animator == null || CurrentState == null) return;
             CharacterFSMState currentState = (CharacterFSMState)CurrentState;
             currentState.OnAnimatorMove();
@@ -42,7 +43,7 @@ namespace FSM
             m_AIData = GetComponent<AIData>();
             m_BattleData = GetComponent<BattleData>();
             m_Animator = GetComponent<Animator>();
-
+            m_Animator.applyRootMotion = ApplyRootMotion;
             if (CanBeDead)
             {
                 m_BattleData.Died += OnCharacterDied;
@@ -89,7 +90,7 @@ namespace FSM
         /// <param name="targetState">目標狀態</param>
         IEnumerator TransferTo(CharacterFSMState targetState)
         {
-            Debug.LogWarning("進到父類別的了！");
+            Debug.LogError("進到父類別的了！");
             if (TargetStateID == targetState.StateID) yield break;
             TargetStateID = targetState.StateID;
             bTranfering = true;
@@ -118,6 +119,7 @@ namespace FSM
                 Debug.LogWarning("輸入了一個不正確的目標狀態");
             }
             yield return new WaitUntil(() => (m_Animator.IsInTransition(0)) == false);
+            TargetStateID = null;
             CurrentState = targetState;
             CurrentState.OnStateEnter();
             bTranfering = false;
@@ -130,7 +132,7 @@ namespace FSM
         /// <param name="subStateID">目標階段</param>
         IEnumerator TransferTo(FSMSubMachine targetState, int subStateID)
         {
-            Debug.LogWarning("進到父類別的了！");
+            Debug.LogError("進到父類別的了！");
             if (TargetStateID == targetState.StateID) yield break;
             TargetStateID = targetState.StateID;
             bTranfering = true;
@@ -146,6 +148,7 @@ namespace FSM
                 Debug.LogWarning("輸入了一個不正確的目標狀態");
             }
             yield return new WaitUntil(() => (m_Animator.IsInTransition(0)) == false);
+            TargetStateID = null;
             CurrentState = targetState;
             CurrentState.OnStateEnter();
             bTranfering = false;

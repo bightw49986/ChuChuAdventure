@@ -181,12 +181,12 @@ namespace DeepSky.Haze
                 return false;
             }
 
-            if (!SystemInfo.supportsRenderTextures)
-            {
-                Debug.LogError("DeepSky::DS_HazeView: Render Textures are not supported on this platform.");
-                enabled = false;
-                return false;
-            }
+            //if (!SystemInfo.supportsRenderTextures)
+            //{
+            //    Debug.LogError("DeepSky::DS_HazeView: Render Textures are not supported on this platform.");
+            //    enabled = false;
+            //    return false;
+            //}
 
             if (SystemInfo.graphicsShaderLevel < 30)
             {
@@ -532,9 +532,9 @@ namespace DeepSky.Haze
         /// <summary>
         /// Create a render target to hold the radiance accumulation. Takes care of format differences when rendering in HDR.
         /// </summary>
-        /// <param name="name"></param>
+        /// <param name="sName"></param>
         /// <param name="radianceTarget"></param>
-        private void CreateRadianceTarget(string name, out RenderTexture radianceTarget)
+        private void CreateRadianceTarget(string sName, out RenderTexture radianceTarget)
         {
             if (m_Camera.allowHDR)
             {
@@ -545,7 +545,7 @@ namespace DeepSky.Haze
                 radianceTarget = new RenderTexture(m_Camera.pixelWidth, m_Camera.pixelHeight, 0, RenderTextureFormat.ARGB32);
             }
 
-            radianceTarget.name = name;
+            radianceTarget.name = sName;
             radianceTarget.antiAliasing = 1;
             radianceTarget.useMipMap = false;
             radianceTarget.hideFlags = HideFlags.HideAndDontSave;
@@ -555,13 +555,13 @@ namespace DeepSky.Haze
         /// <summary>
         /// Create a render target to use for storing depth.
         /// </summary>
-        /// <param name="name"> The render target's name.</param>
+        /// <param name="sName"> The render target's name.</param>
         /// <param name="depthTarget"> The render target object to fill.</param>
         /// <param name="halfsize"> Should it be half-size (used when performing the depth down-sample)?</param>
-        private void CreateDepthTarget(string name, out RenderTexture depthTarget, bool halfsize = false)
+        private void CreateDepthTarget(string sName, out RenderTexture depthTarget, bool halfsize = false)
         {
             depthTarget = new RenderTexture(halfsize ? m_X : m_Camera.pixelWidth, halfsize ? m_Y : m_Camera.pixelHeight, 0, RenderTextureFormat.RFloat, RenderTextureReadWrite.Linear);
-            depthTarget.name = name;
+            depthTarget.name = sName;
             depthTarget.antiAliasing = 1;
             depthTarget.useMipMap = false;
             depthTarget.hideFlags = HideFlags.HideAndDontSave;
