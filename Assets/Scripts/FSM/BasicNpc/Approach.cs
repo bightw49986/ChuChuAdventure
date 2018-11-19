@@ -24,9 +24,9 @@ namespace FSM
 
                 internal override void CheckConditions()
                 {
-                    if (!m_FSM.m_AIData.IsInBattle) //戰鬥外
+                    if (!m_FSM.m_AIData.IsInBattle) //戰鬥外Approach代表第一次發現敵人，緩緩靠近確認
                     {
-                        //敵人第一次進追擊範圍 Chase
+                        //敵人第一次進追擊範圍 進入戰鬥
                         if (m_FSM.m_AIData.PlayerInChaseRange())
                         {
                             m_FSM.m_AIData.EnterBattle();
@@ -36,36 +36,26 @@ namespace FSM
                     }
                     if (m_FSM.m_AIData.IsInBattle) //戰鬥中
                     {
-                        if(m_FSM.m_AIData.AtkReady)
+                        if (m_FSM.m_AIData.PlayerInJumpAtkRange()) //如果敵人在撲擊範圍內
                         {
-                            if (m_FSM.m_AIData.PlayerInAtkRange()) //距離夠近
+                            if (m_FSM.m_AIData.AtkReady && m_FSM.m_AIData.PlayerInAtkRange()) //攻擊準備好且可以攻擊的話攻擊
                             {
-                                m_FSM.m_AIData.Attack();
                                 StartTransition(Npc.Attack, 0);
                                 return;
                             }
-                            StartTransition(Npc.Chase);
+                            StartTransition(Npc.Confront, 0); //否則就對峙
                             return;
                         }
-                        if (m_FSM.m_AIData.PlayerInJumpAtkRange())
-                        {
-                            StartTransition(Npc.Confront, 0);
-                            return;
-                        }
-                      
                     }
                 }
 
                 internal override void OnStateEnter()
                 {
-
-                    base.OnStateEnter();
-
                 }
 
                 internal override void OnStateExit()
                 {
-
+                    base.OnStateExit();
                 }
 
                 internal override void OnStateRunning()

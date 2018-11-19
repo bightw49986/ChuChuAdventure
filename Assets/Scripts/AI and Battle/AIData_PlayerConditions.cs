@@ -10,6 +10,11 @@ namespace AISystem
             return AIMethod.CheckPointInFan(transform, m_vPlayerPos, fFaceCautionRange, FOV) || PlayerInCautionRange();
         }
 
+        public bool PlayerInBattleRange()
+        {
+            return fSqrPlayerDis <= fSqrFaceCautionRange;
+        }
+
         public bool PlayerInCautionRange()
         {
             return fSqrPlayerDis <= fSqrBackCautionRange;

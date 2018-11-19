@@ -31,12 +31,11 @@ namespace FSM
 
                 internal override void OnStateEnter()
                 {
-                    base.OnStateEnter();
                 }
 
                 internal override void OnStateExit()
                 {
-
+                    base.OnStateExit();
                 }
 
                 internal override void OnStateRunning()

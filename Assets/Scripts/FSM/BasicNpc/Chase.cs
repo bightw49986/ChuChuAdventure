@@ -31,56 +31,52 @@ namespace FSM
                     {
                         //應該沒有戰鬥外
                     }
-                    if (m_FSM.m_AIData.IsInBattle)
+                    if (m_FSM.m_AIData.IsInBattle)//戰鬥中
                     {
-
-                    }
-
-                    if (m_FSM.m_AIData.IsInBattle == false)
-                    {
-                        //JumpAtk
-                        if (m_FSM.m_AIData.PlayerInJumpAtkRange() && m_FSM.m_AIData.JumpAtkReady)
+                        if (m_FSM.m_AIData.PlayerInBattleRange()==false) //如果敵人超過最大距離，發呆看著敵人離去的方向
                         {
-                            m_FSM.m_AIData.JumpAttack();
-                            StartTransition(Npc.Attack, 3);
+                            StartTransition(Npc.Idle);
                             return;
                         }
-                    }
-
-                    else
-                    {
-                        //JumpAtk
-                        if (m_FSM.m_AIData.PlayerInJumpAtkRange() && m_FSM.m_AIData.JumpAtkReady)
+                        else
                         {
-                            m_FSM.m_AIData.JumpAttack();
-                            StartTransition(Npc.Attack, 3);
-                            return;
-                        }
+                            if (m_FSM.m_AIData.PlayerInJumpAtkRange()) //如果進到撲擊的範圍內
+                            {
+                                if (m_FSM.m_AIData.JumpAtkReady == false && m_FSM.m_AIData.AtkReady == false) //攻擊跟撲擊的冷卻都沒到就改成靠近
+                                {
+                                    StartTransition(Npc.Approach);
+                                    return;
+                                }
 
-                        //Atk
-                        if (m_FSM.m_AIData.PlayerInAtkRange() && m_FSM.m_AIData.AtkReady)
-                        {
-                            m_FSM.m_AIData.Attack();
-                            StartTransition(Npc.Attack, 0);
-                            return;
+                                if (m_FSM.m_AIData.JumpAtkReady) //如果跳躍準備好了就檢查能不能跳躍攻擊，可以就跳 undone： 檢查可不可以跳
+                                {
+                                    StartTransition(Npc.Attack, 3);
+                                    return;
+                                }
+                                if (m_FSM.m_AIData.PlayerInAtkRange()) //如果進到攻擊範圍內了
+                                {
+                                    if (m_FSM.m_AIData.AtkReady) //且攻擊準備好 undone：檢查有沒有面向玩家
+                                    {
+                                        StartTransition(Npc.Attack, 0);
+                                        return;
+                                    }
+                                    else
+                                    {
+                                        StartTransition(Npc.Confront);
+                                    }
+                                }
+                            }
                         }
-
-                        StartTransition(Npc.Confront);
                     }
-
-
                 }
 
                 internal override void OnStateEnter()
                 {
-                    base.OnStateEnter();
-                    m_FSM.m_AIData.PlayerInSight = true;
-
                 }
 
                 internal override void OnStateExit()
                 {
-
+                    base.OnStateExit();
                 }
 
                 internal override void OnStateRunning()

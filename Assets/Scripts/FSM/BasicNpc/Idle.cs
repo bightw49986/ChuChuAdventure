@@ -83,16 +83,17 @@ namespace FSM
                             }
                         }
                     }
-                    if (m_FSM.m_AIData.IsInBattle) //戰鬥中發呆
+                    if (m_FSM.m_AIData.IsInBattle) //戰鬥中發呆代表玩家脫離戰鬥，準備回到初始位置
                     {
-                        //undone 原地轉到面朝目標，攻擊冷卻到了就Chase或Approach，沒到就Confront，如果玩家死了就愣個幾秒回Patrol
+                        //等待一個秒數
+                        StartTransition(Npc.Patrol);
+                        return;
                     }
 
                 }
 
                 internal override void OnStateEnter()
                 {
-                    base.OnStateEnter();
                     switch (npcStartingPose)
                     {
                         case NpcFSM.StartPose.Stand:
@@ -114,12 +115,12 @@ namespace FSM
 
                 internal override void OnStateExit()
                 {
-
+                    base.OnStateExit();
                 }
 
                 internal override void OnStateRunning(int stage)
                 {
-                    base.OnStateRunning(stage);
+
                 }
 
                 protected internal override void OnAnimatorMove()

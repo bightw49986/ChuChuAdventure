@@ -451,7 +451,7 @@ namespace BattleSystem
                 m_Stats["Endurance"] = Endurance;
             else
                 m_Stats.Add("Endurance",Endurance);
-            if (StatsChanged != null)
+            if (StatsChanged != null) //若有人註冊，則觸發事件
                 StatsChanged(m_Stats);
         }
     }

@@ -23,10 +23,13 @@ namespace FSM
         {
             public static class BasicNpc
             {
-                public static readonly List<Enum> AnyStates = new List<Enum> { Npc.Freezed, Npc.Died };
+                //public static readonly List<Npc> AnyStates = new List<Npc> { Npc.Freezed, Npc.Died };
 
-                public static readonly List<Enum> States = new List<Enum>
-                { Npc.Idle, Npc.Patrol, Npc.Chase, Npc.Confront, Npc.Attack, Npc.Approach };
+                //public static readonly Dictionary<Species, List<Npc>> States = new Dictionary<Species, List<Npc>>
+                //{
+                //    {Species.Goblin,new List<Npc>{ Npc.Idle, Npc.Patrol, Npc.Chase, Npc.Confront, Npc.Attack, Npc.Approach }}
+                //};
+
 
                 public static readonly Dictionary<Enum, string> Triggers = new Dictionary<Enum, string>
                 {
@@ -40,7 +43,7 @@ namespace FSM
                     {Npc.Idle,new List<Enum>{ Npc.Idle,Npc.Approach,Npc.Patrol,Npc.Chase,Npc.Confront,Npc.Attack}},
                     {Npc.Patrol,new List<Enum>{Npc.Idle,Npc.Confront,Npc.Chase}},
                     {Npc.Approach,new List<Enum>{Npc.Idle,Npc.Chase,Npc.Attack}},
-                    {Npc.Chase,new List<Enum>{Npc.Idle,Npc.Attack}},
+                    {Npc.Chase,new List<Enum>{Npc.Idle,Npc.Approach,Npc.Attack}},
                     {Npc.Attack,new List<Enum>{Npc.Idle,Npc.Confront,Npc.Approach}},
                     {Npc.Confront,new List<Enum>{Npc.Idle,Npc.Chase,Npc.Attack,Npc.Approach}}
                 };

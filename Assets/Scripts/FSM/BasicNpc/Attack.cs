@@ -36,8 +36,14 @@ namespace FSM
                     }
                     if (m_FSM.m_AIData.IsInBattle) //戰鬥中
                     {
+                        if (stage == 3)
+                        {
+                            StartTransition(Npc.Approach);
+                            return;
+                        }
                         if (m_FSM.m_AIData.PlayerStillInAtkRange()) //如果敵人還在攻擊範圍內就繼續攻擊
                         {
+
                             if (stage == 0)
                             {
                                 m_FSM.StartCoroutine(TransferToSubState(1));
@@ -49,30 +55,30 @@ namespace FSM
                                 return;
                             }
                         }
-
                         StartTransition(Npc.Confront);
-
                     }
-
-
-
                 }
 
                 internal override void OnStateEnter()
                 {
-                    base.OnStateEnter();
                     m_FSM.m_AIData.LookAtTargetDirectly();
                 }
 
                 internal override void OnStateExit()
                 {
-                    m_FSM.m_AIData.Attack();
-                    m_FSM.m_AIData.JumpAttack();
+                    if (SubState == 0 || SubState==1 || SubState == 2)
+                    {
+                        m_FSM.m_AIData.Attack();
+                    }
+                    if (SubState ==3)
+                    {
+                        m_FSM.m_AIData.JumpAttack();
+                    }
+                    base.OnStateExit();
                 }
 
                 internal override void OnStateRunning(int stage)
                 {
-                    base.OnStateRunning(stage);
                     if(m_FSM.m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime % 1 ==0)
                     {
                         m_FSM.m_AIData.LookAtTargetDirectly();

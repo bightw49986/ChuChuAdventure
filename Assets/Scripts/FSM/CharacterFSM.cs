@@ -7,8 +7,9 @@ using BattleSystem;
 
 namespace FSM
 {
-    #region Animator FSM
-
+    [RequireComponent(typeof(Animator))]
+    [RequireComponent(typeof(BattleData))]
+    [RequireComponent(typeof(AIData))]
     public abstract class CharacterFSM : FSMSystem
     {
         /// <summary>
@@ -22,12 +23,24 @@ namespace FSM
         Func<FSMState, int, IEnumerator> _subMachineTransitionHandler;
 
         [Header("BattleConditions")]
-        public bool CanBeHit;
-        public bool CanBeKOed;
-        public bool CanBeDead;
+        /// <summary>
+        /// 是否註冊受傷事件
+        /// </summary>
+        [Tooltip("是否註冊受傷事件")]public bool CanBeHit = true;
+        /// <summary>
+        /// 是否註冊KO事件
+        /// </summary>
+        [Tooltip("是否註冊KO事件")] public bool CanBeKOed;
+        /// <summary>
+        /// 是否註冊死亡事件
+        /// </summary>
+        [Tooltip("是否註冊死亡事件")] public bool CanBeDead = true;
 
         [Header("RootMotion")]
-        public bool ApplyRootMotion = true;
+        /// <summary>
+        /// 是否Apply root motion
+        /// </summary>
+        [Tooltip("是否Apply root motion.")] public bool ApplyRootMotion = true;
 
         protected internal bool m_isDead, m_isFreezed, m_isKOed;
 
@@ -38,35 +51,62 @@ namespace FSM
             currentState.OnAnimatorMove();
         }
 
+        /// <summary>
+        /// 初始化狀態機
+        /// </summary>
         protected override void InitFSM()
         {
             m_AIData = GetComponent<AIData>();
-            if (m_AIData) m_AIData.AIDataInitialized += base.InitFSM;
-            m_BattleData = GetComponent<BattleData>();
-            m_Animator = GetComponent<Animator>();
-            m_Animator.applyRootMotion = ApplyRootMotion;
-
-            if (CanBeDead)
+            if (m_AIData)
             {
-                m_BattleData.Died += OnCharacterDied;
-                if (CanBeHit)
+                m_AIData.AIDataInitialized += base.InitFSM;
+            }
+            else
+            {
+                Debug.LogError("少一個Component: " + " AIData");
+            }
+            m_BattleData = GetComponent<BattleData>();
+            if(m_BattleData)
+            {
+                if (CanBeDead)
                 {
-                    m_BattleData.Hit += OnCharacterHit;
-                    m_BattleData.Freezed += OnCharacterFreezed;
-                    if (CanBeKOed)
-                        m_BattleData.KOed += OnCharacterKOed;
+                    m_BattleData.Died += OnCharacterDied;
+                    if (CanBeHit)
+                    {
+                        m_BattleData.Hit += OnCharacterHit;
+                        m_BattleData.Freezed += OnCharacterFreezed;
+                        if (CanBeKOed)
+                            m_BattleData.KOed += OnCharacterKOed;
+                    }
                 }
             }
-            //base.InitFSM();
+            else
+            {
+                Debug.LogError("少一個Component: " + " BattleData");
+            }
+            m_Animator = GetComponent<Animator>();
+            if(m_Animator)
+            {
+                m_Animator.applyRootMotion = ApplyRootMotion;
+            }
+            else
+            {
+                Debug.LogError("少一個Component: " + " Animator");
+            }
+
+            base.InitFSM();
         }
 
-
-
-
+        /// <summary>
+        /// 反初始化狀態機
+        /// </summary>
         protected override void UnInitFSM()
         {
-            m_AIData = null;
-            m_Animator = null;
+            if (m_AIData)
+                m_AIData = null;
+            if(m_Animator)
+                m_Animator = null;
+
             if (CanBeDead)
             {
                 m_BattleData.Died -= OnCharacterDied;
@@ -78,13 +118,17 @@ namespace FSM
                         m_BattleData.KOed -= OnCharacterKOed;
                 }
             }
-            m_BattleData = null;
+            if (m_BattleData)
+                m_BattleData = null;
+
             base.UnInitFSM();
         }
 
+        /// <summary>
+        /// 設定負責Transition的delegate
+        /// </summary>
         protected override void SetTransitionHandler()
         {
-
             TransitionHandler = (arg1) => TransferTo((CharacterFSMState)arg1);
             SubMachineTransitionHandler = (arg1, arg2) => TransferTo((FSMSubMachine)arg1, arg2);
         }
@@ -96,18 +140,17 @@ namespace FSM
         IEnumerator TransferTo(CharacterFSMState targetState)
         {
             Debug.LogError("進到父類別的了！");
-            if (TargetStateID == targetState.StateID) yield break;
-            TargetStateID = targetState.StateID;
+
             bTranfering = true;
+            if (m_Animator.IsInTransition(0) == true)
+                yield return new WaitUntil(() => (m_Animator.IsInTransition(0)) == false);
             OriginState = CurrentState;
             CurrentState.OnStateExit();
             if (targetState.IsSubMachine == false)
             {
                 if (String.IsNullOrEmpty(targetState.Trigger) == false)
                 {
-                    if (m_Animator.IsInTransition(0))
-                        m_Animator.SetTrigger(targetState.Trigger);
-                    yield return new WaitUntil(() => (m_Animator.IsInTransition(0)) == true);
+                    m_Animator.SetTrigger(targetState.Trigger);
                 }
             }
             else if (targetState.GetType() == typeof(FSMSubMachine))
@@ -116,17 +159,17 @@ namespace FSM
                 if (String.IsNullOrEmpty(nextState.SubStatesTriggers[0]) == false)
                 {
                     m_Animator.SetTrigger(nextState.SubStatesTriggers[0]);
-                    yield return new WaitUntil(() => (m_Animator.IsInTransition(0)) == true);
                 }
             }
             else
             {
-                Debug.LogWarning("輸入了一個不正確的目標狀態");
+                Debug.LogError("輸入了一個不正確的目標狀態");
+                yield break;
             }
-            yield return new WaitUntil(() => (m_Animator.IsInTransition(0)) == false);
-            TargetStateID = null;
+            yield return new WaitUntil(() => (m_Animator.IsInTransition(0)) == true);
             CurrentState = targetState;
             CurrentState.OnStateEnter();
+            yield return new WaitUntil(() => (m_Animator.IsInTransition(0)) == false);
             bTranfering = false;
         }
 
@@ -138,27 +181,26 @@ namespace FSM
         IEnumerator TransferTo(FSMSubMachine targetState, int subStateID)
         {
             Debug.LogError("進到父類別的了！");
-            if (TargetStateID == targetState.StateID) yield break;
-            TargetStateID = targetState.StateID;
             bTranfering = true;
+            if (m_Animator.IsInTransition(0) == true)
+                yield return new WaitUntil(() => (m_Animator.IsInTransition(0)) == false);
             OriginState = CurrentState;
             CurrentState.OnStateExit();
             if (String.IsNullOrEmpty(targetState.SubStatesTriggers[subStateID]) == false)
             {
                 m_Animator.SetTrigger(targetState.SubStatesTriggers[subStateID]);
-                yield return new WaitUntil(() => (m_Animator.IsInTransition(0)) == true);
             }
             else
             {
-                Debug.LogWarning("輸入了一個不正確的目標狀態");
+                Debug.LogError("輸入了一個不正確的目標狀態");
+                yield break;
             }
-            yield return new WaitUntil(() => (m_Animator.IsInTransition(0)) == false);
-            TargetStateID = null;
+            yield return new WaitUntil(() => (m_Animator.IsInTransition(0)) == true);
             CurrentState = targetState;
             CurrentState.OnStateEnter();
+            yield return new WaitUntil(() => (m_Animator.IsInTransition(0)) == false);
             bTranfering = false;
         }
-
 
         /// <summary>
         /// 開始切換到子狀態機
@@ -166,37 +208,27 @@ namespace FSM
         /// <param name="stateID">該子狀態機的ID</param>
         /// <param name="subStateID">目標子狀態的階段</param>
         protected internal abstract void PerformTransition(Enum stateID, int subStateID);
-        //{
-        //    if (validStates != null && validStates.ContainsKey(stateID))
-        //    {
-        //        if (validStates[stateID].GetType() == typeof(FSMSubMachine))
-        //        {
-        //            FSMSubMachine nextState = (FSMSubMachine)validStates[stateID];
-        //            m_currentTransition = StartCoroutine(SubMachineTransitionHandler(nextState, subStateID));
-        //        }
-        //        else
-        //        {
-        //            FSMState nextState = validStates[stateID];
-        //            m_currentTransition = StartCoroutine(TransitionHandler(nextState));
-        //        }
-        //    }
-        //    else
-        //    {
-        //        Debug.LogError(gameObject.name + "狀態切換失敗！原因：要切換的狀態：" + stateID + " 不在此狀態機可切換的狀態清單內(是否忘記增刪過或遺漏條件判定？)");
-        //    }
-        //}
 
-
+        /// <summary>
+        /// 角色被打到時觸發的事件
+        /// </summary>
         protected abstract void OnCharacterHit();
 
+        /// <summary>
+        /// 角色強韌度歸0觸發的事件
+        /// </summary>
+        /// <param name="damagedPart">Damaged part.</param>
         protected abstract void OnCharacterFreezed(DefendBox damagedPart);
 
+        /// <summary>
+        /// 角色倒地觸發的事件
+        /// </summary>
         protected abstract void OnCharacterKOed();
 
+        /// <summary>
+        /// 角色死亡時觸發的事件
+        /// </summary>
         protected abstract void OnCharacterDied();
 
     }
-
-    #endregion
-
 }

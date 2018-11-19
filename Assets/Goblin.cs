@@ -26,21 +26,13 @@ namespace FSM
         protected override void OnCharacterFreezed(DefendBox damagedPart)
         {
             if(m_isFreezed ==false)
-            m_isFreezed = true;
-            m_Animator.SetTrigger("Freezed");
-            OriginState = CurrentState;
-            CurrentState = globalTransitions[Npc.Freezed];
-            CurrentState.OnStateEnter();
+                m_isFreezed = true;
         }
 
         protected override void OnCharacterKOed()
         {
             if (m_isFreezed == false)
                 m_isFreezed = true;
-            m_Animator.SetTrigger("Freezed");
-            OriginState = CurrentState;
-            CurrentState = globalTransitions[Npc.Freezed];
-            CurrentState.OnStateEnter();
         }
 
         protected override void OnCharacterDied()
@@ -48,10 +40,6 @@ namespace FSM
             if(m_isDead ==false)
             {
                 m_isDead = true;
-                m_Animator.SetTrigger("Died");
-                OriginState = CurrentState;
-                CurrentState = globalTransitions[Npc.Died];
-                CurrentState.OnStateEnter();
                 Rigidbody rig = GetComponent<Rigidbody>();
                 rig.useGravity = false;
                 rig.constraints = RigidbodyConstraints.FreezeAll;
@@ -66,22 +54,16 @@ namespace FSM
 
         protected override void CheckGlobalConditions()
         {
-            if (m_isDead)
+            if (m_isDead && CurrentState != globalTransitions[Npc.Died])
             {
-                m_Animator.SetTrigger("Died");
-                OriginState = CurrentState;
-                CurrentState = globalTransitions[Npc.Died];
-                CurrentState.OnStateEnter();
+                StartCoroutine(PerformGlobalTransition(Npc.Died));
                 return;
             }
-            //if(m_isFreezed)
-            //{
-            //    m_Animator.SetTrigger("Freezed");
-            //    OriginState = CurrentState;
-            //    CurrentState = globalTransitions[Npc.Freezed];
-            //    CurrentState.OnStateEnter();
-            //    return;
-            //}
+            if(m_isFreezed && CurrentState != globalTransitions[Npc.Freezed])
+            {
+                StartCoroutine(PerformGlobalTransition(Npc.Freezed));
+                return;
+            }
         }
     }
 
