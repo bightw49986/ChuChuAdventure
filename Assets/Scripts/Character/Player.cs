@@ -6,8 +6,20 @@ using BattleSystem;
 /// <summary>
 /// 咱們可愛的ChuChu
 /// </summary>
-public class Player : BattleData
+public class Player : BattleData , PathFinding.ILocationData
 {
+    public Vector3 Position { get { return GetPosOnPlane(); } set { gameObject.transform.position = value; }}
+
+    public Vector3 GetPosOnPlane()
+    {
+        Ray ray = new Ray(gameObject.transform.position + Vector3.up * 2, Vector3.down);
+        RaycastHit hit;
+        Physics.Raycast(ray, out hit, 10f, GetComponent<InputMotionController>().groundLayer);
+        return hit.point == Vector3.zero ? transform.position : hit.point; 
+    }
+
+    public int AreaID { get; set; }
+
     [Header("Conditions")]
     [Tooltip("主角當前可否移動")] public bool bCanMove = true;
     [Tooltip("主角現在狀態能否攻擊")] public bool bCanAttack = true;

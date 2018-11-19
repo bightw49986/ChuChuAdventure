@@ -1,44 +1,54 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class Waypoint : MonoBehaviour 
+namespace PathFinding
 {
-    public int AreaID;
-    public List<Waypoint> Neighbours = new List<Waypoint>();
-    public List<string> NeighboursID;
-    public bool Traversable = true;
-    public bool HardToTravel = false;
-    public bool IsLink;
-    [SerializeField] bool drawNeighbourhood;
-
-    void Start()
+    [SelectionBase]
+    public class Waypoint : MonoBehaviour, ILocationData 
     {
-        SetNeighbourID();
-    }
+        public int AreaID { get; set; }
 
-    void SetNeighbourID()
-    {
-        foreach (var n in Neighbours)
+        public Vector3 Position { get { return GetPosOnPlane(); } set { transform.position = value; } }
+        public LayerMask GroundLayers;
+        public Vector3 GetPosOnPlane()
         {
-            if (NeighboursID.Contains(n.name) == false)
+            Ray ray = new Ray(gameObject.transform.position + Vector3.up, Vector3.down);
+            RaycastHit hit;
+            Physics.Raycast(ray, out hit, 10f, GroundLayers);
+            return hit.point == Vector3.zero ? transform.position : hit.point;
+        }
+
+        public List<Waypoint> Neighbours = new List<Waypoint>();
+        public bool Traversable = true;
+        public float Cost = 1f;
+        public bool IsLink;
+        [SerializeField] bool drawNeighbourhood;
+        [SerializeField] bool drawPosition;
+
+        void OnDrawGizmos()
+        {
+            if (drawPosition)
             {
-                NeighboursID.Add(n.name);
+                Gizmos.color = Traversable ? Color.blue : Color.red;
+                Gizmos.DrawSphere(transform.position, 0.15f);
             }
         }
-    }
 
-    void OnDrawGizmosSelected()
-    {
-        if (drawNeighbourhood)
+        void OnDrawGizmosSelected()
         {
-            foreach (Waypoint wp in Neighbours)
+            if (drawNeighbourhood)
             {
-                if (wp != null)
+                foreach (Waypoint wp in Neighbours)
                 {
-                    Gizmos.color = wp.Traversable ? Color.green : Color.red;
-                    Gizmos.DrawLine(transform.position, wp.transform.position);
+                    if (wp != null)
+                    {
+                        Gizmos.color =  Color.cyan;
+                        Gizmos.DrawLine(transform.position, wp.transform.position);
+                    }
                 }
             }
         }
     }
 }
+
+

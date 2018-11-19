@@ -41,9 +41,11 @@ namespace FSM
         protected override void InitFSM()
         {
             m_AIData = GetComponent<AIData>();
+            if (m_AIData) m_AIData.AIDataInitialized += base.InitFSM;
             m_BattleData = GetComponent<BattleData>();
             m_Animator = GetComponent<Animator>();
             m_Animator.applyRootMotion = ApplyRootMotion;
+
             if (CanBeDead)
             {
                 m_BattleData.Died += OnCharacterDied;
@@ -55,8 +57,11 @@ namespace FSM
                         m_BattleData.KOed += OnCharacterKOed;
                 }
             }
-            base.InitFSM();
+            //base.InitFSM();
         }
+
+
+
 
         protected override void UnInitFSM()
         {

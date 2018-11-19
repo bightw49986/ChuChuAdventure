@@ -1303,8 +1303,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1675390028527372}
-  m_LocalRotation: {x: -0, y: -0.96526927, z: -0, w: 0.26125708}
-  m_LocalPosition: {x: 182.04, y: 60.988865, z: 137.55}
+  m_LocalRotation: {x: -0, y: -0.9094179, z: -0, w: 0.4158834}
+  m_LocalPosition: {x: 188.45, y: 60.988865, z: 140.42}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4132684964048546}
@@ -1312,7 +1312,7 @@ Transform:
   - {fileID: 4640591521304290}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -130.85, z: 0}
 --- !u!4 &4357211591956634
 Transform:
   m_ObjectHideFlags: 1
@@ -2265,14 +2265,14 @@ MonoBehaviour:
   DrawCautionRange: 1
   fFaceCautionRange: 15
   fSqrFaceCautionRange: 0
-  fBackCaurionRange: 7
-  fSqrBackCaurionRange: 0
+  fBackCautionRange: 7
+  fSqrBackCautionRange: 0
   FOV: 60
   DrawChaseRange: 1
   fChaseRange: 10
   fSqrChaseRange: 0
   DrawJumpAtkRange: 1
-  fJumpAtkRange: 4
+  fJumpAtkRange: 5.5
   fSqrJumpAtkRange: 0
   DrawAtkRange: 1
   fAtkRange: 1.5
@@ -2282,10 +2282,10 @@ MonoBehaviour:
   fWidth: 0.4
   CollisionLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   fMoveSpeed: 1
   fMaxSpeed: 10
-  fMaxSteerSpeed: 8
+  fMaxSteerSpeed: 5
   fMaxTurnDegree: 180
   player: {fileID: 0}
   PlayerIsDead: 0
@@ -2304,7 +2304,7 @@ MonoBehaviour:
   AtkReady: 1
   JumpAtkReady: 1
   fAtkOffset: 0.5
-  fAttackFrequency: 3
+  fAttackFrequency: 5
   fJumpAttackFrequency: 20
 --- !u!114 &114694952255588286
 MonoBehaviour:

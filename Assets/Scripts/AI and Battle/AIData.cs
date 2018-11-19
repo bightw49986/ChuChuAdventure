@@ -30,11 +30,11 @@ namespace AISystem
         /// <summary>
         /// 視野範圍，進入這個距離，則一定會被察覺
         /// </summary>
-        public float fBackCaurionRange = 7f;
+        public float fBackCautionRange = 7f;
         /// <summary>
         /// 視野範圍的平方
         /// </summary>
-        [HideInInspector] public float fSqrBackCaurionRange;
+        [HideInInspector] public float fSqrBackCautionRange;
         /// <summary>
         /// 角色的視線開角
         /// </summary>
@@ -248,8 +248,6 @@ namespace AISystem
         /// </summary>
         float m_fAbsDestDot;
 
-
-
         [Header("Battle Info")]
         /// <summary>
         /// 下一個行動的代號
@@ -283,11 +281,31 @@ namespace AISystem
 
         void Start()
         {
+            InitAIData();
+        }
+
+        void InitAIData()
+        {
             m_FSM = GetComponent<NpcFSM>();
             InitStats();
+            InitPlayerData();
+            OnAIDataInitialized();
+        }
+
+        void InitPlayerData()
+        {
             player = GameObject.FindWithTag("Player").GetComponent<Player>();
             player.Died += () => { PlayerIsDead = true; };
             m_Player = player.transform;
+            UpdatePlayerInfo();
+            UpdateProbe();
+        }
+
+        public event Action AIDataInitialized;
+
+        protected virtual void OnAIDataInitialized()
+        {
+            if (AIDataInitialized != null) AIDataInitialized();
         }
 
         void Update()
@@ -303,12 +321,9 @@ namespace AISystem
 
         void UpdatePlayerInfo()
         {
-            if (m_Player != null)
-            {
-                m_vPlayerPos = m_Player.position;
-                fSqrPlayerDis = Vector3.SqrMagnitude(vDirectionToDest);
-                fPlayerDis = Mathf.Sqrt(fSqrPlayerDis);
-            }
+            m_vPlayerPos = m_Player.position;
+            fSqrPlayerDis = Vector3.SqrMagnitude(vDirectionToDest);
+            fPlayerDis = Mathf.Sqrt(fSqrPlayerDis);
         }
 
         void UpdateDestinationInfo()
@@ -344,7 +359,7 @@ namespace AISystem
         {
             m_vDestination = vDirectionToDest = m_vDestLastFrame = Vector3.zero;
             fSqrFaceCautionRange = fFaceCautionRange * fFaceCautionRange;
-            fSqrBackCaurionRange = fBackCaurionRange * fBackCaurionRange;
+            fSqrBackCautionRange = fBackCautionRange * fBackCautionRange;
             fSqrChaseRange = fChaseRange * fChaseRange;
             fSqrJumpAtkRange = fJumpAtkRange * fJumpAtkRange;
             fSqrAtkRange = fAtkRange * fAtkRange;
@@ -404,21 +419,21 @@ namespace AISystem
         void SteerToDestination()
         {
             Quaternion qDesireRotation = Quaternion.identity;
-            Vector3 steering = Vector3.zero;
-            if (transform.position != m_vDestination)
-            {
-                steering = AIMethod.Seek(transform.position, m_vDestination, m_FSM.m_Animator.velocity, fMaxSteerSpeed);
-                if(Physics.CapsuleCast(m_vCenter, m_vProbeEnd, fWidth, m_vDestination, CollisionLayer))
-                {
-                    if (fSteerLastFrame * m_fDestDot > 0 && !AIMethod.Random(20))
-                    {
-                        steering += AvoidObstacles(m_vDestination, m_FSM.m_Animator.velocity);
-                    }
-                }
-                steering = Vector3.Min(steering, steering.normalized * fMaxSteerSpeed);
-            }
+            //Vector3 steering = Vector3.zero;
+            //if (transform.position != m_vDestination)
+            //{
+            //    steering = AIMethod.Seek(transform.position, m_vDestination, m_FSM.m_Animator.velocity, fMaxSteerSpeed);
+            //    if(Physics.CapsuleCast(m_vCenter, m_vProbeEnd, fWidth, m_vDestination, CollisionLayer))
+            //    {
+            //        if (fSteerLastFrame * m_fDestDot > 0 && !AIMethod.Random(20))
+            //        {
+            //            steering += AvoidObstacles(m_vDestination, m_FSM.m_Animator.velocity);
+            //        }
+            //    }
+            //    steering = Vector3.Min(steering, steering.normalized * fMaxSteerSpeed);
+            //}
 
-            Vector3 vel = Vector3.ClampMagnitude(m_FSM.m_Animator.velocity + steering, fMaxSpeed);
+            //Vector3 vel = Vector3.ClampMagnitude(m_FSM.m_Animator.velocity + steering, fMaxSpeed);
             if (transform.forward != vDirectionToDest)
             {
                 qDesireRotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(vDirectionToDest), fMaxTurnDegree * Time.deltaTime);

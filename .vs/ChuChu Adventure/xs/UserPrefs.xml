@@ -1,16 +1,14 @@
 ﻿<Properties StartupConfiguration="{8BDCE74E-FD35-6103-357F-1A0A314EA38A}|">
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/FSM/FSMSystem.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/AStarTerrainSystem/WaypointManager.cs">
     <Files>
-      <File FileName="Assets/Scripts/AI and Battle/AIData.cs" Line="324" Column="10" />
-      <File FileName="Assets/Goblin.cs" Line="20" Column="1" />
-      <File FileName="Assets/Scripts/FSM/BasicNpc/Confront.cs" Line="23" Column="18" />
-      <File FileName="Assets/Scripts/FSM/BasicNpc/Approach.cs" Line="50" Column="64" />
-      <File FileName="Assets/Scripts/FSM/BasicNpc/Chase.cs" Line="44" Column="57" />
-      <File FileName="Assets/Scripts/FSM/FSMSystem.cs" Line="413" Column="10" />
-      <File FileName="Assets/Scripts/FSM/BasicNpc/Attack.cs" Line="64" Column="59" />
-      <File FileName="Assets/Scripts/AI and Battle/BattleData.cs" Line="11" Column="52" />
-      <File FileName="Assets/Scripts/FSM/BasicNpc/Idle.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/AI and Battle/BattleDataMethods.cs" Line="446" Column="46" />
+      <File FileName="Assets/Scripts/AI and Battle/BattleData.cs" Line="32" Column="1" />
+      <File FileName="Assets/Scripts/FSM/FSMSystem.cs" Line="416" Column="1" />
+      <File FileName="Assets/Scripts/FSM/CharacterFSM.cs" Line="63" Column="1" />
+      <File FileName="Assets/Scripts/Character/Player.cs" Line="75" Column="24" />
+      <File FileName="Assets/Editor/CustomMenu.cs" Line="11" Column="9" />
+      <File FileName="Assets/Scripts/AStarTerrainSystem/WaypointManager.cs" Line="9" Column="33" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

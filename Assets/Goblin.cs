@@ -52,7 +52,9 @@ namespace FSM
                 OriginState = CurrentState;
                 CurrentState = globalTransitions[Npc.Died];
                 CurrentState.OnStateEnter();
-                GetComponent<Rigidbody>().useGravity = false;
+                Rigidbody rig = GetComponent<Rigidbody>();
+                rig.useGravity = false;
+                rig.constraints = RigidbodyConstraints.FreezeAll;
                 Collider[] colliders = GetComponentsInChildren<Collider>();
                 foreach (var c in colliders)
                 {
@@ -64,14 +66,14 @@ namespace FSM
 
         protected override void CheckGlobalConditions()
         {
-            //if (m_isDead)
-            //{
-            //    m_Animator.SetTrigger("Died");
-            //    OriginState = CurrentState;
-            //    CurrentState = globalTransitions[Npc.Died];
-            //    CurrentState.OnStateEnter();
-            //    return;
-            //}
+            if (m_isDead)
+            {
+                m_Animator.SetTrigger("Died");
+                OriginState = CurrentState;
+                CurrentState = globalTransitions[Npc.Died];
+                CurrentState.OnStateEnter();
+                return;
+            }
             //if(m_isFreezed)
             //{
             //    m_Animator.SetTrigger("Freezed");

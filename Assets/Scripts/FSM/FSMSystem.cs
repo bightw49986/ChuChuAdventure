@@ -113,7 +113,6 @@ namespace FSM
             OriginState = CurrentState = InitValidStates();
             CurrentState.OnStateEnter();
             bTranfering = false;
-
         }
 
         protected virtual void SetTransitionHandler()

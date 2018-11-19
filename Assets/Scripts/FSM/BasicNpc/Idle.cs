@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 namespace FSM
 {
@@ -34,9 +35,11 @@ namespace FSM
                     {
                         if (stage == 0 || stage == 1 || stage == 2) //發呆
                         {
+                            bool b;
                             //如果敵人進入視線 Caution
-                            if (m_FSM.m_AIData.PlayerShowedUp())
+                            if (b=m_FSM.m_AIData.PlayerShowedUp())
                             {
+                                Debug.Log(b);
                                 m_FSM.StartCoroutine(TransferToSubState(3));
                                 return;
                             }
@@ -94,7 +97,7 @@ namespace FSM
                     {
                         case NpcFSM.StartPose.Stand:
                             {
-                                int iPick = new Random().Next(0, 2);
+                                int iPick = new System.Random().Next(0, 2);
                                 m_FSM.m_Animator.SetTrigger(SubStatesTriggers[iPick]);
                                 SubState = iPick;
                                 break;

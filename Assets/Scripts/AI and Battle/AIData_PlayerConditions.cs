@@ -12,7 +12,7 @@ namespace AISystem
 
         public bool PlayerInCautionRange()
         {
-            return fSqrPlayerDis <= fSqrBackCaurionRange;
+            return fSqrPlayerDis <= fSqrBackCautionRange;
         }
 
         public bool PlayerInChaseRange()
