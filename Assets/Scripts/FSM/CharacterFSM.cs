@@ -202,6 +202,28 @@ namespace FSM
             bTranfering = false;
         }
 
+        protected internal void ResetTriggers()
+        {
+            //m_Animator.ResetTrigger("Idle0");
+            m_Animator.ResetTrigger("Idle1");
+            m_Animator.ResetTrigger("Idle2");
+            m_Animator.ResetTrigger("Ambush");
+            m_Animator.ResetTrigger("StandUp");
+            //m_Animator.ResetTrigger("Patrol");
+            m_Animator.ResetTrigger("Caution");
+            //m_Animator.ResetTrigger("Chase");
+            //m_Animator.ResetTrigger("Approach");
+            m_Animator.ResetTrigger("Attack0");
+            //m_Animator.ResetTrigger("Attack1");
+            //m_Animator.ResetTrigger("Attack2");
+            m_Animator.ResetTrigger("JumpAttack");
+            m_Animator.ResetTrigger("Confront");
+            //m_Animator.ResetTrigger("CloseIn");
+            //m_Animator.ResetTrigger("Backward");
+            //m_Animator.ResetTrigger("StrafeLeft");
+            //m_Animator.ResetTrigger("StrafeRight");
+        }
+
         /// <summary>
         /// 開始切換到子狀態機
         /// </summary>

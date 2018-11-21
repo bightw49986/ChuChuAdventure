@@ -2272,10 +2272,10 @@ MonoBehaviour:
   fChaseRange: 10
   fSqrChaseRange: 0
   DrawJumpAtkRange: 1
-  fJumpAtkRange: 5.5
+  fJumpAtkRange: 3.8
   fSqrJumpAtkRange: 0
   DrawAtkRange: 1
-  fAtkRange: 1.5
+  fAtkRange: 1.7
   fSqrAtkRange: 0
   fHeight: 2
   fPorbe: 3
@@ -2355,13 +2355,13 @@ MonoBehaviour:
   TakeDamageFrom: 00000000
   IsHarmless: 0
   RecoverTime: 5
-  m_MaxHp: 3
-  m_Hp: 3
+  m_MaxHp: 100
+  m_Hp: 100
   m_MaxEndurance: 1
   m_Endurance: 1
   KOLine: 2
-  HitSafeTime: 0
-  KOSafeTime: 0
+  HitSafeTime: 0.02
+  KOSafeTime: 0.02
   InitMessage: 0
   SwitchMessage: 0
   HitMessage: 0

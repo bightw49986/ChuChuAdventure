@@ -74,7 +74,7 @@ namespace FSM
                     {
                         m_FSM.m_AIData.JumpAttack();
                     }
-                    base.OnStateExit();
+                    m_FSM.ResetTriggers();
                 }
 
                 internal override void OnStateRunning(int stage)

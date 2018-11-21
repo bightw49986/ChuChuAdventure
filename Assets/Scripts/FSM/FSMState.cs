@@ -144,7 +144,6 @@ namespace FSM
 
         internal override void OnStateRunning()
         {
-            if (m_FSM.bTranfering == true) return;
             CheckConditions();
         }
 
@@ -179,13 +178,6 @@ namespace FSM
         internal override void OnStateEnter()
         {
             AssignSubStatesTriggers();
-        }
-
-        internal override void OnStateRunning()
-        {
-            if (m_FSM.bTranfering == true) return;
-            CheckConditions(SubState);
-            OnStateRunning();
         }
 
         internal sealed override void CheckConditions()
@@ -240,33 +232,6 @@ namespace FSM
             }
         }
 
-        internal override void OnStateExit()
-        {
-            ResetTriggers();
-        }
-
-        protected void ResetTriggers()
-        {
-            m_FSM.m_Animator.ResetTrigger("Idle0");
-            m_FSM.m_Animator.ResetTrigger("Idle1");
-            m_FSM.m_Animator.ResetTrigger("Idle2");
-            m_FSM.m_Animator.ResetTrigger("Ambush");
-            m_FSM.m_Animator.ResetTrigger("StandUp");
-            m_FSM.m_Animator.ResetTrigger("Patrol");
-            m_FSM.m_Animator.ResetTrigger("Caution");
-            m_FSM.m_Animator.ResetTrigger("Chase");
-            m_FSM.m_Animator.ResetTrigger("Approach");
-            m_FSM.m_Animator.ResetTrigger("Attack0");
-            m_FSM.m_Animator.ResetTrigger("Attack1");
-            m_FSM.m_Animator.ResetTrigger("Attack2");
-            m_FSM.m_Animator.ResetTrigger("JumpAttack");
-            m_FSM.m_Animator.ResetTrigger("Confront");
-            m_FSM.m_Animator.ResetTrigger("CloseIn");
-            m_FSM.m_Animator.ResetTrigger("Backward");
-            m_FSM.m_Animator.ResetTrigger("StrafeLeft");
-            m_FSM.m_Animator.ResetTrigger("StrafeRight");
-        }
-
         protected internal virtual void RegisterTransitions()
         {
             foreach (var s in StatesLib.BasicNpc.Transitions[StateID])
@@ -306,16 +271,14 @@ namespace FSM
 
         internal sealed override void OnStateRunning()
         {
-            if (m_FSM.bTranfering == true) return;
             if (m_FSM.bLogCurrentState)
-                Debug.Log("State: " + StateID + " SubState : " + SubState);
+                Debug.Log("State: " + StateID + "  : " + SubState);
             OnStateRunning(SubState);
             CheckConditions();
         }
 
         internal sealed override void CheckConditions()
         {
-            if (m_FSM.bTranfering) return;
             CheckConditions(SubState);
         }
 
@@ -323,24 +286,19 @@ namespace FSM
         {
             m_FSM.bTranfering = true;
             if (m_FSM.bLogTransition)
-                Debug.Log(m_FSM.CurrentStateID +  "進SubTransition" + iSubStateID);
-
-            if (m_FSM.m_Animator.IsInTransition(0) == true)
-            {
-                yield return new WaitUntil(() => (m_FSM.m_Animator.IsInTransition(0)) == false);
-                ResetTriggers();
-            }
+                Debug.Log(m_FSM.CurrentStateID +  " -> " + iSubStateID);
+            //if (m_FSM.m_Animator.IsInTransition(0) == true)
+            //{
+            //    yield return new WaitUntil(() => (m_FSM.m_Animator.IsInTransition(0)) == false);
+            //    //ResetTriggers();
+            //}
             m_FSM.m_Animator.SetTrigger(SubStatesTriggers[iSubStateID]);
-            if (m_FSM.bLogTransition)
-                Debug.Log("Sub有Set到");
             yield return new WaitUntil(() => (m_FSM.m_Animator.IsInTransition(0)) == true);
-            if (m_FSM.bLogTransition)
-                Debug.Log("Sub有等到");
             SubState = iSubStateID;
             yield return new WaitUntil(() => (m_FSM.m_Animator.IsInTransition(0)) == false);
             m_FSM.bTranfering = false;
             if (m_FSM.bLogTransition)
-                Debug.Log(m_FSM.CurrentStateID + "出SubTransition" + iSubStateID);
+                Debug.Log(m_FSM.CurrentStateID + " -> " + iSubStateID);
         }
 
         internal abstract void OnStateRunning(int stage);

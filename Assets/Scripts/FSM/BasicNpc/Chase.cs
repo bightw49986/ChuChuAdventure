@@ -76,7 +76,7 @@ namespace FSM
 
                 internal override void OnStateExit()
                 {
-                    base.OnStateExit();
+                    m_FSM.ResetTriggers();
                 }
 
                 internal override void OnStateRunning()

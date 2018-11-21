@@ -35,7 +35,6 @@ namespace FSM
 
                 internal override void OnStateExit()
                 {
-                    base.OnStateExit();
                 }
 
                 internal override void OnStateRunning()

@@ -104,7 +104,7 @@ namespace FSM
         /// <summary>
         /// 更新狀態機，執行狀態Update
         /// </summary>
-        protected virtual void Update()
+        protected void Update()
         {
             CurrentStateID = CurrentState.StateID.ToString();
             RunState();
@@ -314,18 +314,14 @@ namespace FSM
         IEnumerator TransferTo(NpcFSMState targetState)
         {
             if (bLogTransition)
-                Debug.Log(CurrentState.StateID + " 準備轉換狀態至 : " + targetState.StateID);
+                Debug.Log(CurrentState.StateID + " -> " + targetState.StateID);
             bTranfering = true;
-            if (m_Animator.IsInTransition(0) == true)
-                yield return new WaitUntil(() => (m_Animator.IsInTransition(0)) == false);
             OriginState = CurrentState;
             CurrentState.OnStateExit();
             if (targetState.GetType() != typeof(NpcSubMachine))
             {
                 if (String.IsNullOrEmpty(targetState.Trigger) == false)
                 {
-                    if (bLogTransition)
-                        Debug.Log("狀態轉換trigger有set到");
                     m_Animator.SetTrigger(targetState.Trigger);
                 }
             }
@@ -346,26 +342,24 @@ namespace FSM
             CurrentState = targetState;
             CurrentState.OnStateEnter();
             if (bLogTransition)
-                Debug.Log("進Transition，執行 " + CurrentState.StateID + "的Enter");
+                Debug.Log(CurrentState.StateID + " Enter");
             yield return new WaitUntil(() => (m_Animator.IsInTransition(0)) == false);
             bTranfering = false;
             if (bLogTransition)
-                Debug.Log("出Transition，開始執行 " + CurrentState.StateID + "的Update");
+                Debug.Log(CurrentState.StateID + " 開始Update");
         }
 
         IEnumerator TransferToSub(NpcSubMachine targetState,int subStateID)
         {
             if (bLogTransition)
-                Debug.Log(CurrentState.StateID + " 準備轉換狀態至 : " + targetState.StateID + " 的" + subStateID + "號substate.");
+                Debug.Log(CurrentState.StateID + " -> " + targetState.StateID + " : " + subStateID);
             bTranfering = true;
-            if (m_Animator.IsInTransition(0)==true)
-                yield return new WaitUntil(() => (m_Animator.IsInTransition(0)) == false);
+            //if (m_Animator.IsInTransition(0)==true)
+                //yield return new WaitUntil(() => (m_Animator.IsInTransition(0)) == false);
             OriginState = CurrentState;
             CurrentState.OnStateExit();
             if (String.IsNullOrEmpty(targetState.SubStatesTriggers[subStateID]) == false)
             {
-                if (bLogTransition)
-                    Debug.Log("狀態轉換trigger有set到");
                 m_Animator.SetTrigger(targetState.SubStatesTriggers[subStateID]);
             }
             else
@@ -378,11 +372,11 @@ namespace FSM
             CurrentState = targetState;
             CurrentState.OnStateEnter();
             if (bLogTransition)
-                Debug.Log("進Transition，執行 " + CurrentState.StateID + "的Enter");
+                Debug.Log(CurrentState.StateID + " Enter");
             yield return new WaitUntil(() => (m_Animator.IsInTransition(0)) == false);
             bTranfering = false;
             if (bLogTransition)
-                Debug.Log("出Transition，開始執行 " + CurrentState.StateID + "的Update");
+                Debug.Log(CurrentState.StateID + " 開始Update");
         }
 
         protected internal override void PerformTransition(Enum stateID, int subStateID)

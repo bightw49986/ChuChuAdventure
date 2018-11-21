@@ -26,20 +26,18 @@ namespace FSM
 
                 internal override void CheckConditions()
                 {
-                    if (m_FSM.m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime % 1 >=  0.8)
-                    {
-                        StartTransition(Npc.Confront);
-                    }
+
                 }
 
                 internal override void OnStateEnter()
                 {
                     m_FSM.m_isFreezed = m_FSM.m_isKOed = m_FSM.m_isDead = false;
+                    StartTransition(Npc.Confront);
                 }
 
                 internal override void OnStateExit()
                 {
-                    base.OnStateExit();
+
                 }
 
                 internal override void OnStateRunning()

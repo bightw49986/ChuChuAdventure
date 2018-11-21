@@ -1251,8 +1251,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4972754426638300}
-  - component: {fileID: 114418046753731456}
   - component: {fileID: 136932612761805796}
+  - component: {fileID: 114564475823274462}
   m_Layer: 0
   m_Name: "\u7A81\u523A"
   m_TagString: Untagged
@@ -2318,7 +2318,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1525632486331460}
   m_LocalRotation: {x: 0.02006041, y: -0.2954548, z: -0.0062054824, w: -0.9551259}
-  m_LocalPosition: {x: 178.541, y: 60.992, z: 132.042}
+  m_LocalPosition: {x: 176.6, y: 60.8, z: 129.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4352189020235560}
@@ -3017,7 +3017,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttackerType: 0
   MeleeAttackBoxes: []
-  ParticleAttackBoxes: 
   DefendBoxes: []
   TakeDamageFrom: 0100000002000000
   IsHarmless: 0
@@ -3077,26 +3076,10 @@ MonoBehaviour:
   fDashCD: 1
   vJumpVel: {x: 0, y: 9, z: 0}
   fTurnSpeed: 0.38
-  vGravity: {x: 1, y: 25, z: 1}
+  vGravity: {x: 0, y: 25, z: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 1792
---- !u!114 &114418046753731456
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1818269235293534}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23ff1e0d120a04d51ba2291344df11d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PrintLog: 0
-  BasicAtk: 1
-  HitBoxes: []
-  Interval: 0
-  m_hitFX: {fileID: 0}
 --- !u!114 &114453318660055234
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3130,6 +3113,24 @@ MonoBehaviour:
   slopeLayer:
     serializedVersion: 2
     m_Bits: 1280
+--- !u!114 &114564475823274462
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1818269235293534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23ff1e0d120a04d51ba2291344df11d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PrintLog: 0
+  BasicAtk: 20
+  HitBoxes: []
+  Interval: 0
+  HitFXID: 0
+  HitEffect: {fileID: 0}
+  ApplyHitFX: 0
 --- !u!114 &114586636956125316
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3142,10 +3143,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PrintLog: 0
-  BasicAtk: 1
+  BasicAtk: 33
   HitBoxes: []
   Interval: 0
-  m_hitFX: {fileID: 0}
+  HitFXID: 0
+  HitEffect: {fileID: 0}
+  ApplyHitFX: 0
 --- !u!114 &114715304344320554
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3158,7 +3161,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Collider: {fileID: 0}
-  HitFX: {fileID: 0}
+  HitEffect: {fileID: 0}
+  ApplyHitFX: 0
+  HitFXID: 0
   PrintLog: 0
   DamagePart: 0
 --- !u!136 &136334220783347110

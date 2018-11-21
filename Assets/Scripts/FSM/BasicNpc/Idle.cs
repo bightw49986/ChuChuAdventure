@@ -35,11 +35,10 @@ namespace FSM
                     {
                         if (stage == 0 || stage == 1 || stage == 2) //發呆
                         {
-                            bool b;
                             //如果敵人進入視線 Caution
-                            if (b=m_FSM.m_AIData.PlayerShowedUp())
+                            if (m_FSM.m_AIData.PlayerShowedUp())
                             {
-                                Debug.Log(b);
+
                                 m_FSM.StartCoroutine(TransferToSubState(3));
                                 return;
                             }
@@ -115,7 +114,7 @@ namespace FSM
 
                 internal override void OnStateExit()
                 {
-                    base.OnStateExit();
+                    m_FSM.ResetTriggers();
                 }
 
                 internal override void OnStateRunning(int stage)

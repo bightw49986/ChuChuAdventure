@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 namespace FSM
 {
@@ -11,9 +12,10 @@ namespace FSM
             /// </summary>
             public class Confront : NpcSubMachine
             {
+                float fTired;
                 bool bConfrontOnce;
                 bool bStrafeOnce;
-                Random random = new Random();
+                System.Random random = new System.Random();
                 public override Enum StateID
                 {
                     get
@@ -38,6 +40,11 @@ namespace FSM
                     }
                     if (m_FSM.m_AIData.IsInBattle) //戰鬥中
                     {
+                        if (fTired >= 5f)
+                        {
+                            m_FSM.m_AIData.AtkReady = true;
+                        }
+
                         if (m_FSM.m_AIData.PlayerInJumpAtkRange() == false) //超過跳躍攻擊的距離的話，追上去
                         {
                             StartTransition(Npc.Chase);
@@ -176,13 +183,16 @@ namespace FSM
 
                 internal override void OnStateExit()
                 {
+                    fTired = 0f;
                     bConfrontOnce = bStrafeOnce = false;
-                    base.OnStateExit();
+                    m_FSM.ResetTriggers();
                 }
 
                 internal override void OnStateRunning(int stage)
                 {
-
+                    fTired += Time.deltaTime;
+                    Debug.Log("bConfrontOnce: " + bConfrontOnce);
+                    Debug.Log("bStrafeOnce" + bStrafeOnce);
                 }
 
                 protected internal override void OnAnimatorMove()

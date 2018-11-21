@@ -1,16 +1,18 @@
 ﻿<Properties StartupConfiguration="{8BDCE74E-FD35-6103-357F-1A0A314EA38A}|">
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/FSM/BasicNpc/Confront.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/AStarTerrainSystem/AStarAgent.cs">
     <Files>
-      <File FileName="Assets/Scripts/AI and Battle/AIData_PlayerConditions.cs" Line="15" Column="58" />
-      <File FileName="Assets/Scripts/FSM/FSMStateLibrary.cs" Line="26" Column="19" />
+      <File FileName="Assets/Scripts/FSM/FSMStateLibrary.cs" Line="48" Column="93" />
       <File FileName="Assets/Scripts/AI and Battle/AIData.cs" Line="172" Column="35" />
-      <File FileName="Assets/Scripts/FSM/FSMState.cs" Line="136" Column="48" />
-      <File FileName="Assets/Scripts/FSM/FSMSystem.cs" Line="375" Column="14" />
-      <File FileName="Assets/Scripts/FSM/CharacterFSM.cs" Line="51" Column="33" />
-      <File FileName="Assets/Scripts/FSM/BasicNpc/Freezed.cs" Line="43" Column="18" />
-      <File FileName="Assets/Scripts/FSM/BasicNpc/Died.cs" Line="34" Column="18" />
-      <File FileName="Assets/Scripts/FSM/BasicNpc/Confront.cs" Line="174" Column="57" />
+      <File FileName="Assets/Scripts/FSM/FSMState.cs" Line="129" Column="9" />
+      <File FileName="Assets/Scripts/FSM/FSMSystem.cs" Line="349" Column="1" />
+      <File FileName="Assets/Scripts/FSM/CharacterFSM.cs" Line="53" Column="9" />
+      <File FileName="Assets/Goblin.cs" Line="73" Column="18" />
+      <File FileName="Assets/Scripts/AI and Battle/AttackBox_Skill.cs" Line="16" Column="10" />
+      <File FileName="Assets/Scripts/FSM/BasicNpc/Approach.cs" Line="61" Column="33" />
+      <File FileName="Assets/Scripts/FSM/BasicNpc/Confront.cs" Line="34" Column="43" />
+      <File FileName="Assets/Scripts/AI and Battle/AIData_PlayerConditions.cs" Line="30" Column="47" />
+      <File FileName="Assets/Scripts/AStarTerrainSystem/AStarAgent.cs" Line="180" Column="23" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

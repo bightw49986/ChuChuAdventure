@@ -8932,6 +8932,7 @@ MonoBehaviour:
   Neighbours:
   - {fileID: 114038933441758972}
   - {fileID: 114588703470676452}
+  - {fileID: 114489667101901012}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -8972,7 +8973,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
-  - {fileID: 114328194399447642}
+  - {fileID: 0}
   - {fileID: 114819528843630256}
   - {fileID: 114494976267196980}
   - {fileID: 114360518045660934}
@@ -9018,13 +9019,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
-  - {fileID: 114955115597405996}
-  - {fileID: 114804358433717406}
-  - {fileID: 114443875883234958}
   - {fileID: 114500138414138192}
   - {fileID: 114652015937889336}
-  - {fileID: 114632387463082590}
-  - {fileID: 114032648213255764}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -9045,7 +9041,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
-  - {fileID: 114306182021091064}
+  - {fileID: 114938610842517806}
+  - {fileID: 0}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -9066,7 +9063,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
-  - {fileID: 114498400950039290}
+  - {fileID: 114725969687392750}
+  - {fileID: 114992479832802962}
+  - {fileID: 114600565631748566}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -9087,6 +9086,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
+  - {fileID: 114970000269943726}
+  - {fileID: 114680442580410760}
+  - {fileID: 114098607653568996}
   - {fileID: 114949665085797892}
   Traversable: 1
   Cost: 1
@@ -9108,12 +9110,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
-  - {fileID: 114500138414138192}
-  - {fileID: 114019958098422250}
-  - {fileID: 114652015937889336}
   - {fileID: 114632387463082590}
-  - {fileID: 114114409056162552}
-  - {fileID: 114404156887943384}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -9181,11 +9178,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
-  - {fileID: 114780513184018006}
+  - {fileID: 0}
   - {fileID: 114866823531285538}
   - {fileID: 114517393142750296}
   - {fileID: 114000206597678728}
-  - {fileID: 114907431782300094}
+  - {fileID: 0}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -9205,7 +9202,12 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 1280
-  Neighbours: []
+  Neighbours:
+  - {fileID: 114501339044390536}
+  - {fileID: 114768965789525182}
+  - {fileID: 114874849040647544}
+  - {fileID: 0}
+  - {fileID: 114483259103302178}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -9227,9 +9229,10 @@ MonoBehaviour:
     m_Bits: 1280
   Neighbours:
   - {fileID: 114550821642670502}
-  - {fileID: 114271966804548954}
+  - {fileID: 114325877724598694}
   - {fileID: 114985038705212896}
   - {fileID: 114284519254774346}
+  - {fileID: 114875923763885848}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -9271,7 +9274,9 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 1280
-  Neighbours: []
+  Neighbours:
+  - {fileID: 114137144551646254}
+  - {fileID: 114344988238128280}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -9321,6 +9326,7 @@ MonoBehaviour:
   - {fileID: 114455382576403780}
   - {fileID: 114502062583963394}
   - {fileID: 114789046386607942}
+  - {fileID: 114879139274460352}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -9340,7 +9346,10 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 1280
-  Neighbours: []
+  Neighbours:
+  - {fileID: 114586412201740288}
+  - {fileID: 114881696425998386}
+  - {fileID: 0}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -9388,7 +9397,7 @@ MonoBehaviour:
   Neighbours:
   - {fileID: 114736915254700866}
   - {fileID: 114273472460016160}
-  - {fileID: 114397561684589330}
+  - {fileID: 0}
   - {fileID: 114233431133565064}
   Traversable: 1
   Cost: 1
@@ -9516,7 +9525,7 @@ MonoBehaviour:
   - {fileID: 114065452037933174}
   - {fileID: 114881696425998386}
   AreaID: 4
-  ManualMode: 0
+  ManualMode: 1
   ObstacleLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -9535,10 +9544,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
-  - {fileID: 114344988238128280}
-  - {fileID: 114137144551646254}
   - {fileID: 114863111637032442}
-  - {fileID: 114907846877830586}
+  - {fileID: 114137144551646254}
+  - {fileID: 0}
   - {fileID: 114780513184018006}
   - {fileID: 114725931126595372}
   Traversable: 1
@@ -9561,9 +9569,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
-  - {fileID: 114971843654926734}
+  - {fileID: 0}
   - {fileID: 114998248849094180}
-  - {fileID: 114429540403520388}
+  - {fileID: 0}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -9631,7 +9639,7 @@ MonoBehaviour:
   - {fileID: 114613735722268024}
   - {fileID: 114002912096633240}
   AreaID: 5
-  ManualMode: 0
+  ManualMode: 1
   ObstacleLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -9651,6 +9659,7 @@ MonoBehaviour:
     m_Bits: 1280
   Neighbours:
   - {fileID: 114975423874883392}
+  - {fileID: 114892085483397710}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -9670,7 +9679,9 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 1280
-  Neighbours: []
+  Neighbours:
+  - {fileID: 114317275677298082}
+  - {fileID: 114666927224892096}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -9690,7 +9701,12 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 1280
-  Neighbours: []
+  Neighbours:
+  - {fileID: 114800169941401140}
+  - {fileID: 114388695017702030}
+  - {fileID: 114402347770975196}
+  - {fileID: 114311467935236238}
+  - {fileID: 114964427402598690}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -9712,6 +9728,7 @@ MonoBehaviour:
     m_Bits: 1280
   Neighbours:
   - {fileID: 114267639609206208}
+  - {fileID: 114608861046480062}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -9733,6 +9750,10 @@ MonoBehaviour:
     m_Bits: 1280
   Neighbours:
   - {fileID: 114424075714601712}
+  - {fileID: 114554824679115252}
+  - {fileID: 114997072257187732}
+  - {fileID: 114363266317782260}
+  - {fileID: 114194001528717826}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -9776,7 +9797,8 @@ MonoBehaviour:
     m_Bits: 1280
   Neighbours:
   - {fileID: 114949665085797892}
-  - {fileID: 114020457757317414}
+  - {fileID: 114434510616208362}
+  - {fileID: 0}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -9821,7 +9843,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
-  - {fileID: 114997072257187732}
+  - {fileID: 0}
   - {fileID: 114756485289947414}
   - {fileID: 114554824679115252}
   Traversable: 1
@@ -9888,7 +9910,7 @@ MonoBehaviour:
     m_Bits: 1280
   Neighbours:
   - {fileID: 114934510239900768}
-  - {fileID: 114916465783616444}
+  - {fileID: 0}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -9908,15 +9930,7 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 1280
-  Neighbours:
-  - {fileID: 114032648213255764}
-  - {fileID: 114632387463082590}
-  - {fileID: 114404156887943384}
-  - {fileID: 114443310311768696}
-  - {fileID: 114792338789233504}
-  - {fileID: 114265508148220240}
-  - {fileID: 114793412452309316}
-  - {fileID: 114655522186466076}
+  Neighbours: []
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -9938,6 +9952,7 @@ MonoBehaviour:
     m_Bits: 1280
   Neighbours:
   - {fileID: 114210819065103442}
+  - {fileID: 114338654706293516}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -9958,8 +9973,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
-  - {fileID: 114889234603049948}
-  - {fileID: 114888790728752770}
+  - {fileID: 114377799609147774}
+  - {fileID: 114497134800311520}
+  - {fileID: 0}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -10031,7 +10047,7 @@ MonoBehaviour:
   - {fileID: 114483976872236602}
   - {fileID: 114301903427899176}
   AreaID: 3
-  ManualMode: 0
+  ManualMode: 1
   ObstacleLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -10051,6 +10067,9 @@ MonoBehaviour:
     m_Bits: 1280
   Neighbours:
   - {fileID: 114226435892752394}
+  - {fileID: 114588301438396686}
+  - {fileID: 114213433121115114}
+  - {fileID: 114762045583791438}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -10073,6 +10092,9 @@ MonoBehaviour:
   Neighbours:
   - {fileID: 114601048368472226}
   - {fileID: 114343666571578860}
+  - {fileID: 114988935179727922}
+  - {fileID: 114282937612950228}
+  - {fileID: 114494976267196980}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -10093,12 +10115,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
+  - {fileID: 114344988238128280}
   - {fileID: 114863111637032442}
-  - {fileID: 114907846877830586}
-  - {fileID: 114780513184018006}
-  - {fileID: 114725931126595372}
-  - {fileID: 114075164255350158}
-  - {fileID: 114483259103302178}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -10118,7 +10136,9 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 1280
-  Neighbours: []
+  Neighbours:
+  - {fileID: 114308419352488384}
+  - {fileID: 114600565631748566}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -10139,8 +10159,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
-  - {fileID: 114661511138856274}
+  - {fileID: 0}
   - {fileID: 114588301438396686}
+  - {fileID: 114799942390879540}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -10162,6 +10183,8 @@ MonoBehaviour:
     m_Bits: 1280
   Neighbours:
   - {fileID: 114641181927988652}
+  - {fileID: 114762045583791438}
+  - {fileID: 114210819065103442}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -10226,7 +10249,8 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 1280
-  Neighbours: []
+  Neighbours:
+  - {fileID: 114674284646804532}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -10249,6 +10273,7 @@ MonoBehaviour:
   Neighbours:
   - {fileID: 114465847276060944}
   - {fileID: 114325877724598694}
+  - {fileID: 114219573411926170}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -10316,6 +10341,7 @@ MonoBehaviour:
   - {fileID: 114194001528717826}
   - {fileID: 114537038250281844}
   - {fileID: 114536695830313530}
+  - {fileID: 114819361031963424}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -10337,7 +10363,7 @@ MonoBehaviour:
     m_Bits: 1280
   Neighbours:
   - {fileID: 114181186061887282}
-  - {fileID: 114679039815091278}
+  - {fileID: 0}
   - {fileID: 114537038250281844}
   Traversable: 1
   Cost: 1
@@ -10358,7 +10384,11 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 1280
-  Neighbours: []
+  Neighbours:
+  - {fileID: 114752699074610150}
+  - {fileID: 114110623854097388}
+  - {fileID: 114482969612020424}
+  - {fileID: 114916465783616444}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -10442,7 +10472,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
-  - {fileID: 114879139274460352}
+  - {fileID: 0}
   - {fileID: 114455382576403780}
   Traversable: 1
   Cost: 1
@@ -10467,6 +10497,7 @@ MonoBehaviour:
   - {fileID: 114271966804548954}
   - {fileID: 114465847276060944}
   - {fileID: 114985038705212896}
+  - {fileID: 0}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -10490,7 +10521,7 @@ MonoBehaviour:
   - {fileID: 114941024569407434}
   - {fileID: 114101209143106784}
   - {fileID: 114546623094802574}
-  - {fileID: 114532769991289762}
+  - {fileID: 0}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -10556,8 +10587,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
-  - {fileID: 114948027834446502}
-  - {fileID: 114562163059069326}
+  - {fileID: 0}
+  - {fileID: 114596728252722862}
   - {fileID: 114572093236216048}
   - {fileID: 114061855476724344}
   - {fileID: 114614576632585466}
@@ -10581,7 +10612,12 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 1280
-  Neighbours: []
+  Neighbours:
+  - {fileID: 114309554965921120}
+  - {fileID: 114757356433463488}
+  - {fileID: 114923215511680298}
+  - {fileID: 114338654706293516}
+  - {fileID: 114119291320995190}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -10604,6 +10640,7 @@ MonoBehaviour:
   Neighbours:
   - {fileID: 114899071140897984}
   - {fileID: 114557167504798750}
+  - {fileID: 114304650500453304}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -10676,6 +10713,7 @@ MonoBehaviour:
   - {fileID: 114518155627937090}
   - {fileID: 114608861046480062}
   - {fileID: 114090256699100266}
+  - {fileID: 114226435892752394}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -10696,7 +10734,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
-  - {fileID: 114058445889293562}
+  - {fileID: 0}
   - {fileID: 114219573411926170}
   - {fileID: 114985038705212896}
   - {fileID: 114287872603616236}
@@ -10723,6 +10761,7 @@ MonoBehaviour:
     m_Bits: 1280
   Neighbours:
   - {fileID: 114341508678847810}
+  - {fileID: 114557167504798750}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -10743,7 +10782,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
-  - {fileID: 114847673229427020}
+  - {fileID: 114430970438674528}
   - {fileID: 114736915254700866}
   - {fileID: 114068533449418188}
   - {fileID: 114397561684589330}
@@ -10820,6 +10859,7 @@ MonoBehaviour:
   - {fileID: 114271966804548954}
   - {fileID: 114954377523891814}
   - {fileID: 114036624243800258}
+  - {fileID: 114219573411926170}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -10841,9 +10881,9 @@ MonoBehaviour:
     m_Bits: 1280
   Neighbours:
   - {fileID: 114489667101901012}
-  - {fileID: 114517393142750296}
+  - {fileID: 0}
   - {fileID: 114038933441758972}
-  - {fileID: 114000206597678728}
+  - {fileID: 0}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -10870,7 +10910,7 @@ MonoBehaviour:
   - {fileID: 114995232592742040}
   - {fileID: 114671257852707440}
   - {fileID: 114613735722268024}
-  - {fileID: 114539408349598118}
+  - {fileID: 0}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -10890,7 +10930,8 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 1280
-  Neighbours: []
+  Neighbours:
+  - {fileID: 114483976872236602}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -10932,7 +10973,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
-  - {fileID: 114020457757317414}
+  - {fileID: 114098607653568996}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -10952,7 +10993,9 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 1280
-  Neighbours: []
+  Neighbours:
+  - {fileID: 114455007255715742}
+  - {fileID: 114600565631748566}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -11006,6 +11049,8 @@ MonoBehaviour:
     m_Bits: 1280
   Neighbours:
   - {fileID: 114402347770975196}
+  - {fileID: 114964427402598690}
+  - {fileID: 114180822271639968}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -11060,7 +11105,10 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 1280
-  Neighbours: []
+  Neighbours:
+  - {fileID: 114483720166880570}
+  - {fileID: 114287872603616236}
+  - {fileID: 114954377523891814}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -11102,6 +11150,8 @@ MonoBehaviour:
     m_Bits: 1280
   Neighbours:
   - {fileID: 114694529205166676}
+  - {fileID: 114905492067044060}
+  - {fileID: 114309554965921120}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -11145,7 +11195,7 @@ MonoBehaviour:
     m_Bits: 1280
   Neighbours:
   - {fileID: 114819528843630256}
-  - {fileID: 114008696243979952}
+  - {fileID: 0}
   - {fileID: 114988935179727922}
   Traversable: 1
   Cost: 1
@@ -11281,6 +11331,7 @@ MonoBehaviour:
   - {fileID: 114134589914920186}
   - {fileID: 114282937612950228}
   - {fileID: 114795608397331364}
+  - {fileID: 114892085483397710}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -11300,11 +11351,7 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 1280
-  Neighbours:
-  - {fileID: 114460579848845376}
-  - {fileID: 114874849040647544}
-  - {fileID: 114137144551646254}
-  - {fileID: 114075164255350158}
+  Neighbours: []
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -11327,6 +11374,8 @@ MonoBehaviour:
   Neighbours:
   - {fileID: 114847673229427020}
   - {fileID: 114397561684589330}
+  - {fileID: 114502062583963394}
+  - {fileID: 114437397702758524}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -11374,6 +11423,8 @@ MonoBehaviour:
   Neighbours:
   - {fileID: 114997072257187732}
   - {fileID: 114341508678847810}
+  - {fileID: 114633350148712380}
+  - {fileID: 114633350148712380}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -11394,7 +11445,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
-  - {fileID: 114491490740231620}
+  - {fileID: 0}
   - {fileID: 114060933229610940}
   Traversable: 1
   Cost: 1
@@ -11415,7 +11466,9 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 1280
-  Neighbours: []
+  Neighbours:
+  - {fileID: 114889234603049948}
+  - {fileID: 114317275677298082}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -11458,8 +11511,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
-  - {fileID: 114661206023547484}
-  - {fileID: 114030881026030916}
+  - {fileID: 114768965789525182}
+  - {fileID: 114501339044390536}
+  - {fileID: 0}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -11481,7 +11535,7 @@ MonoBehaviour:
     m_Bits: 1280
   Neighbours:
   - {fileID: 114847673229427020}
-  - {fileID: 114068533449418188}
+  - {fileID: 0}
   - {fileID: 114273472460016160}
   - {fileID: 114345243690321634}
   - {fileID: 114437397702758524}
@@ -11508,6 +11562,7 @@ MonoBehaviour:
   - {fileID: 114594392761793992}
   - {fileID: 114388695017702030}
   - {fileID: 114311467935236238}
+  - {fileID: 114180822271639968}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -11530,9 +11585,6 @@ MonoBehaviour:
   Neighbours:
   - {fileID: 114032648213255764}
   - {fileID: 114632387463082590}
-  - {fileID: 114114409056162552}
-  - {fileID: 114443310311768696}
-  - {fileID: 114793412452309316}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -11552,7 +11604,9 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 1280
-  Neighbours: []
+  Neighbours:
+  - {fileID: 114163863327549424}
+  - {fileID: 114587481618725068}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -11576,6 +11630,8 @@ MonoBehaviour:
   - {fileID: 114865123151761380}
   - {fileID: 114108979803121008}
   - {fileID: 114599281084329636}
+  - {fileID: 114532769991289762}
+  - {fileID: 114819528843630256}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -11597,6 +11653,8 @@ MonoBehaviour:
     m_Bits: 1280
   Neighbours:
   - {fileID: 114091268782832016}
+  - {fileID: 114734046025009352}
+  - {fileID: 114194001528717826}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -11619,6 +11677,8 @@ MonoBehaviour:
   Neighbours:
   - {fileID: 114599398910900356}
   - {fileID: 114601048368472226}
+  - {fileID: 114585593282702636}
+  - {fileID: 114638970040193234}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -11642,6 +11702,7 @@ MonoBehaviour:
   - {fileID: 114438161654230510}
   - {fileID: 114734920394760066}
   - {fileID: 114696233176575416}
+  - {fileID: 114101209143106784}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -11663,7 +11724,7 @@ MonoBehaviour:
     m_Bits: 1280
   Neighbours:
   - {fileID: 114971843654926734}
-  - {fileID: 114078299357171786}
+  - {fileID: 0}
   - {fileID: 114998248849094180}
   - {fileID: 114594501080123602}
   - {fileID: 114066306237929806}
@@ -11691,6 +11752,8 @@ MonoBehaviour:
   - {fileID: 114296011062176802}
   - {fileID: 114995232592742040}
   - {fileID: 114671257852707440}
+  - {fileID: 114502062583963394}
+  - {fileID: 114397561684589330}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -11713,6 +11776,8 @@ MonoBehaviour:
   Neighbours:
   - {fileID: 114632387463082590}
   - {fileID: 114582807286427014}
+  - {fileID: 114443875883234958}
+  - {fileID: 114768782441325832}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -11734,6 +11799,7 @@ MonoBehaviour:
     m_Bits: 1280
   Neighbours:
   - {fileID: 114035281475235714}
+  - {fileID: 114949665085797892}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -11777,6 +11843,8 @@ MonoBehaviour:
     m_Bits: 1280
   Neighbours:
   - {fileID: 114428087815610236}
+  - {fileID: 114734920394760066}
+  - {fileID: 114793702557675778}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -11798,7 +11866,7 @@ MonoBehaviour:
     m_Bits: 1280
   Neighbours:
   - {fileID: 114213433121115114}
-  - {fileID: 114799942390879540}
+  - {fileID: 0}
   - {fileID: 114588301438396686}
   - {fileID: 114661511138856274}
   Traversable: 1
@@ -11820,8 +11888,7 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 1280
-  Neighbours:
-  - {fileID: 114793412452309316}
+  Neighbours: []
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -11842,13 +11909,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
-  - {fileID: 114632387463082590}
-  - {fileID: 114404156887943384}
   - {fileID: 114114409056162552}
-  - {fileID: 114792338789233504}
   - {fileID: 114793412452309316}
-  - {fileID: 114504862008316846}
-  - {fileID: 114655522186466076}
+  - {fileID: 114265508148220240}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -11920,7 +11983,10 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 1280
-  Neighbours: []
+  Neighbours:
+  - {fileID: 114600565631748566}
+  - {fileID: 114515003310412370}
+  - {fileID: 114725969687392750}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -11965,7 +12031,8 @@ MonoBehaviour:
     m_Bits: 1280
   Neighbours:
   - {fileID: 114874849040647544}
-  - {fileID: 114661206023547484}
+  - {fileID: 114050351661854926}
+  - {fileID: 0}
   - {fileID: 114907846877830586}
   - {fileID: 114344988238128280}
   Traversable: 1
@@ -11990,6 +12057,7 @@ MonoBehaviour:
   Neighbours:
   - {fileID: 114219573411926170}
   - {fileID: 114174855126752542}
+  - {fileID: 114662113052761212}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -12011,9 +12079,9 @@ MonoBehaviour:
     m_Bits: 1280
   Neighbours:
   - {fileID: 114959992173092974}
-  - {fileID: 114633350148712380}
+  - {fileID: 0}
   - {fileID: 114110623854097388}
-  - {fileID: 114934510239900768}
+  - {fileID: 0}
   - {fileID: 114916465783616444}
   Traversable: 1
   Cost: 1
@@ -12035,8 +12103,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
-  - {fileID: 114137144551646254}
-  - {fileID: 114907846877830586}
+  - {fileID: 114050351661854926}
+  - {fileID: 114804818145438740}
+  - {fileID: 114344988238128280}
+  - {fileID: 114460579848845376}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -12056,7 +12126,8 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 1280
-  Neighbours: []
+  Neighbours:
+  - {fileID: 114287872603616236}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -12076,7 +12147,9 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 1280
-  Neighbours: []
+  Neighbours:
+  - {fileID: 114889872778131464}
+  - {fileID: 114614576632585466}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -12121,7 +12194,7 @@ MonoBehaviour:
     m_Bits: 1280
   Neighbours:
   - {fileID: 114060933229610940}
-  - {fileID: 114369871930977078}
+  - {fileID: 114221713933358190}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -12145,6 +12218,7 @@ MonoBehaviour:
   - {fileID: 114819528843630256}
   - {fileID: 114008696243979952}
   - {fileID: 114599398910900356}
+  - {fileID: 114360518045660934}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -12166,6 +12240,8 @@ MonoBehaviour:
     m_Bits: 1280
   Neighbours:
   - {fileID: 114888790728752770}
+  - {fileID: 114406644279929490}
+  - {fileID: 114163863327549424}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -12186,7 +12262,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
-  - {fileID: 114030458570468978}
+  - {fileID: 114725969687392750}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -12208,6 +12284,7 @@ MonoBehaviour:
     m_Bits: 1280
   Neighbours:
   - {fileID: 114177886123040644}
+  - {fileID: 114620597282767570}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -12227,13 +12304,7 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 1280
-  Neighbours:
-  - {fileID: 114955115597405996}
-  - {fileID: 114804358433717406}
-  - {fileID: 114443875883234958}
-  - {fileID: 114019958098422250}
-  - {fileID: 114652015937889336}
-  - {fileID: 114032648213255764}
+  Neighbours: []
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -12254,8 +12325,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
-  - {fileID: 114615498083331230}
-  - {fileID: 114970000269943726}
+  - {fileID: 114768965789525182}
+  - {fileID: 0}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -12297,11 +12368,7 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 1280
-  Neighbours:
-  - {fileID: 114443310311768696}
-  - {fileID: 114265508148220240}
-  - {fileID: 114793412452309316}
-  - {fileID: 114655522186466076}
+  Neighbours: []
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -12323,7 +12390,7 @@ MonoBehaviour:
     m_Bits: 1280
   Neighbours:
   - {fileID: 114641335165043898}
-  - {fileID: 114679848045267146}
+  - {fileID: 0}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -12347,6 +12414,7 @@ MonoBehaviour:
   - {fileID: 114517393142750296}
   - {fileID: 114038933441758972}
   - {fileID: 114866659479364704}
+  - {fileID: 114293654750914878}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -12366,7 +12434,9 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 1280
-  Neighbours: []
+  Neighbours:
+  - {fileID: 114725969687392750}
+  - {fileID: 114030458570468978}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -12389,8 +12459,8 @@ MonoBehaviour:
   Neighbours:
   - {fileID: 114780513184018006}
   - {fileID: 114866823531285538}
-  - {fileID: 114725931126595372}
-  - {fileID: 114293654750914878}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 114511649671489224}
   - {fileID: 114038933441758972}
   Traversable: 1
@@ -12413,9 +12483,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
-  - {fileID: 114594501080123602}
+  - {fileID: 114226435892752394}
   - {fileID: 114066306237929806}
   - {fileID: 114267639609206208}
+  - {fileID: 114126033696469962}
+  - {fileID: 114588301438396686}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -12459,6 +12531,9 @@ MonoBehaviour:
   Neighbours:
   - {fileID: 114557167504798750}
   - {fileID: 114597030545765754}
+  - {fileID: 114594501080123602}
+  - {fileID: 0}
+  - {fileID: 114254994186571004}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -12479,7 +12554,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
-  - {fileID: 114620597282767570}
+  - {fileID: 114588703470676452}
   - {fileID: 114829714057894032}
   - {fileID: 114446964399923946}
   Traversable: 1
@@ -12516,6 +12591,7 @@ MonoBehaviour:
   Neighbours:
   - {fileID: 114101209143106784}
   - {fileID: 114865123151761380}
+  - {fileID: 114819528843630256}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -12537,7 +12613,7 @@ MonoBehaviour:
     m_Bits: 1280
   Neighbours:
   - {fileID: 114829721652591912}
-  - {fileID: 114273168369408766}
+  - {fileID: 0}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -12580,8 +12656,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
-  - {fileID: 114296011062176802}
+  - {fileID: 114335909675610236}
   - {fileID: 114613735722268024}
+  - {fileID: 114342213441060784}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -12624,6 +12701,7 @@ MonoBehaviour:
   Neighbours:
   - {fileID: 114256113163264210}
   - {fileID: 114550821642670502}
+  - {fileID: 114161812009593854}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -12647,6 +12725,7 @@ MonoBehaviour:
   - {fileID: 114941024569407434}
   - {fileID: 114713844754395124}
   - {fileID: 114532769991289762}
+  - {fileID: 114819528843630256}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -12671,6 +12750,7 @@ MonoBehaviour:
   - {fileID: 114058445889293562}
   - {fileID: 114887783620949754}
   - {fileID: 114325877724598694}
+  - {fileID: 114875923763885848}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -12704,7 +12784,7 @@ MonoBehaviour:
     m_Bits: 1280
   Neighbours:
   - {fileID: 114997072257187732}
-  - {fileID: 114756485289947414}
+  - {fileID: 0}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -12747,7 +12827,9 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 1280
-  Neighbours: []
+  Neighbours:
+  - {fileID: 114060952771393284}
+  - {fileID: 114344988238128280}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -12772,7 +12854,7 @@ MonoBehaviour:
   - {fileID: 114795608397331364}
   - {fileID: 114572093236216048}
   - {fileID: 114061855476724344}
-  - {fileID: 114239047228657868}
+  - {fileID: 0}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -12795,6 +12877,7 @@ MonoBehaviour:
   Neighbours:
   - {fileID: 114905492067044060}
   - {fileID: 114641181927988652}
+  - {fileID: 114226435892752394}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -12839,7 +12922,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
-  - {fileID: 114725969687392750}
+  - {fileID: 114992479832802962}
+  - {fileID: 114030458570468978}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -12860,9 +12944,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
-  - {fileID: 114948027834446502}
+  - {fileID: 0}
   - {fileID: 114061855476724344}
-  - {fileID: 114614576632585466}
+  - {fileID: 0}
   - {fileID: 114239047228657868}
   Traversable: 1
   Cost: 1
@@ -12883,7 +12967,8 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 1280
-  Neighbours: []
+  Neighbours:
+  - {fileID: 114881696425998386}
   Traversable: 1
   Cost: 1
   IsLink: 1
@@ -12906,6 +12991,7 @@ MonoBehaviour:
   Neighbours:
   - {fileID: 114433326050389244}
   - {fileID: 114955407343022992}
+  - {fileID: 114783834364082196}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -12948,7 +13034,8 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 1280
-  Neighbours: []
+  Neighbours:
+  - {fileID: 114315539687524296}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -12968,7 +13055,9 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 1280
-  Neighbours: []
+  Neighbours:
+  - {fileID: 114163863327549424}
+  - {fileID: 114566363576572020}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -13012,7 +13101,9 @@ MonoBehaviour:
     m_Bits: 1280
   Neighbours:
   - {fileID: 114000206597678728}
-  - {fileID: 114588703470676452}
+  - {fileID: 114106094597557580}
+  - {fileID: 114965160292550670}
+  - {fileID: 114965160292550670}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -13034,6 +13125,9 @@ MonoBehaviour:
     m_Bits: 1280
   Neighbours:
   - {fileID: 114446964399923946}
+  - {fileID: 114106094597557580}
+  - {fileID: 114038933441758972}
+  - {fileID: 114866823531285538}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -13056,6 +13150,8 @@ MonoBehaviour:
   Neighbours:
   - {fileID: 114402347770975196}
   - {fileID: 114180822271639968}
+  - {fileID: 114388695017702030}
+  - {fileID: 114655767895675078}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -13076,9 +13172,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
-  - {fileID: 114429540403520388}
+  - {fileID: 114971843654926734}
   - {fileID: 114066306237929806}
-  - {fileID: 114518155627937090}
+  - {fileID: 0}
   - {fileID: 114597030545765754}
   Traversable: 1
   Cost: 1
@@ -13213,6 +13309,7 @@ MonoBehaviour:
     m_Bits: 1280
   Neighbours:
   - {fileID: 114889234603049948}
+  - {fileID: 114515003310412370}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -13235,6 +13332,8 @@ MonoBehaviour:
   Neighbours:
   - {fileID: 114427303186457638}
   - {fileID: 114134589914920186}
+  - {fileID: 114494976267196980}
+  - {fileID: 114599398910900356}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -13283,6 +13382,7 @@ MonoBehaviour:
   - {fileID: 114296011062176802}
   - {fileID: 114995232592742040}
   - {fileID: 114671257852707440}
+  - {fileID: 114443875883234958}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -13303,7 +13403,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
-  - {fileID: 114572093236216048}
+  - {fileID: 0}
   - {fileID: 114757255492194516}
   - {fileID: 114889872778131464}
   - {fileID: 114239047228657868}
@@ -13328,8 +13428,8 @@ MonoBehaviour:
     m_Bits: 1280
   Neighbours:
   - {fileID: 114501339044390536}
-  - {fileID: 114391657999121748}
-  - {fileID: 114030881026030916}
+  - {fileID: 114970000269943726}
+  - {fileID: 114050351661854926}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -13353,7 +13453,7 @@ MonoBehaviour:
   - {fileID: 114153803089898210}
   - {fileID: 114177886123040644}
   - {fileID: 114829714057894032}
-  - {fileID: 114521293234611876}
+  - {fileID: 0}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -13374,8 +13474,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
-  - {fileID: 114641335165043898}
-  - {fileID: 114509701345308032}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 114679848045267146}
   Traversable: 1
   Cost: 1
@@ -13397,11 +13497,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
-  - {fileID: 114019958098422250}
-  - {fileID: 114433326050389244}
-  - {fileID: 114404156887943384}
-  - {fileID: 114114409056162552}
-  - {fileID: 114443310311768696}
+  - {fileID: 114443875883234958}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -13422,7 +13518,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
-  - {fileID: 114482969612020424}
+  - {fileID: 0}
   - {fileID: 114959992173092974}
   - {fileID: 114756485289947414}
   - {fileID: 114341508678847810}
@@ -13470,6 +13566,8 @@ MonoBehaviour:
   Neighbours:
   - {fileID: 114562642333463882}
   - {fileID: 114151272620763120}
+  - {fileID: 114736451352741746}
+  - {fileID: 114762045583791438}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -13490,9 +13588,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
-  - {fileID: 114624861354658880}
-  - {fileID: 114509701345308032}
-  - {fileID: 114679848045267146}
+  - {fileID: 114489667101901012}
+  - {fileID: 114907431782300094}
+  - {fileID: 0}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -13533,11 +13631,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
-  - {fileID: 114955115597405996}
-  - {fileID: 114500138414138192}
-  - {fileID: 114019958098422250}
-  - {fileID: 114632387463082590}
   - {fileID: 114032648213255764}
+  - {fileID: 114632387463082590}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -13582,6 +13677,8 @@ MonoBehaviour:
     m_Bits: 1280
   Neighbours:
   - {fileID: 114339786750895424}
+  - {fileID: 114388695017702030}
+  - {fileID: 114180822271639968}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -13602,14 +13699,14 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
-  - {fileID: 114460579848845376}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 114768965789525182}
-  - {fileID: 114863111637032442}
+  - {fileID: 0}
   - {fileID: 114866823531285538}
   - {fileID: 114446964399923946}
   - {fileID: 114725931126595372}
   - {fileID: 114907846877830586}
-  - {fileID: 114391657999121748}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -13632,7 +13729,7 @@ MonoBehaviour:
   Neighbours:
   - {fileID: 114438253558085320}
   - {fileID: 114588301438396686}
-  - {fileID: 114146392761963460}
+  - {fileID: 0}
   - {fileID: 114799942390879540}
   Traversable: 1
   Cost: 1
@@ -13653,7 +13750,9 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 1280
-  Neighbours: []
+  Neighbours:
+  - {fileID: 114219573411926170}
+  - {fileID: 114483720166880570}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -13673,7 +13772,9 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 1280
-  Neighbours: []
+  Neighbours:
+  - {fileID: 114889234603049948}
+  - {fileID: 114317275677298082}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -13720,7 +13821,11 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 1280
-  Neighbours: []
+  Neighbours:
+  - {fileID: 114968408463697952}
+  - {fileID: 114030458570468978}
+  - {fileID: 114566363576572020}
+  - {fileID: 114888790728752770}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -13741,7 +13846,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
-  - {fileID: 114194001528717826}
+  - {fileID: 114181186061887282}
   - {fileID: 114537038250281844}
   Traversable: 1
   Cost: 1
@@ -13763,7 +13868,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
-  - {fileID: 114641335165043898}
+  - {fileID: 0}
   - {fileID: 114509701345308032}
   Traversable: 1
   Cost: 1
@@ -13784,7 +13889,9 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 1280
-  Neighbours: []
+  Neighbours:
+  - {fileID: 114949665085797892}
+  - {fileID: 114035281475235714}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -13830,6 +13937,7 @@ MonoBehaviour:
   Neighbours:
   - {fileID: 114428087815610236}
   - {fileID: 114854714720288652}
+  - {fileID: 114865123151761380}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -13925,7 +14033,7 @@ MonoBehaviour:
   - {fileID: 114521293234611876}
   - {fileID: 114020457757317414}
   AreaID: 2
-  ManualMode: 0
+  ManualMode: 1
   ObstacleLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -13968,6 +14076,7 @@ MonoBehaviour:
   - {fileID: 114546623094802574}
   - {fileID: 114328194399447642}
   - {fileID: 114819528843630256}
+  - {fileID: 114988935179727922}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -13991,7 +14100,7 @@ MonoBehaviour:
   - {fileID: 114661206023547484}
   - {fileID: 114907846877830586}
   - {fileID: 114866823531285538}
-  - {fileID: 114517393142750296}
+  - {fileID: 0}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -14012,7 +14121,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
-  - {fileID: 114566363576572020}
+  - {fileID: 114992479832802962}
+  - {fileID: 0}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -14055,7 +14165,7 @@ MonoBehaviour:
   - {fileID: 114566363576572020}
   - {fileID: 114085383105146866}
   AreaID: 1
-  ManualMode: 0
+  ManualMode: 1
   ObstacleLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -14119,6 +14229,7 @@ MonoBehaviour:
     m_Bits: 1280
   Neighbours:
   - {fileID: 114733313750187804}
+  - {fileID: 114194001528717826}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -14141,6 +14252,7 @@ MonoBehaviour:
   Neighbours:
   - {fileID: 114428087815610236}
   - {fileID: 114696233176575416}
+  - {fileID: 114696233176575416}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -14160,7 +14272,13 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 1280
-  Neighbours: []
+  Neighbours:
+  - {fileID: 114119291320995190}
+  - {fileID: 114309554965921120}
+  - {fileID: 114249528836101440}
+  - {fileID: 114562642333463882}
+  - {fileID: 114905492067044060}
+  - {fileID: 114320576310731398}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -14185,6 +14303,7 @@ MonoBehaviour:
   - {fileID: 114068533449418188}
   - {fileID: 114273472460016160}
   - {fileID: 114783834364082196}
+  - {fileID: 114430970438674528}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -14207,6 +14326,8 @@ MonoBehaviour:
   Neighbours:
   - {fileID: 114066306237929806}
   - {fileID: 114597030545765754}
+  - {fileID: 114267639609206208}
+  - {fileID: 114594501080123602}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -14251,7 +14372,7 @@ MonoBehaviour:
   - {fileID: 114633350148712380}
   - {fileID: 114997072257187732}
   - {fileID: 114105971594453998}
-  - {fileID: 114554824679115252}
+  - {fileID: 0}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -14295,6 +14416,8 @@ MonoBehaviour:
     m_Bits: 1280
   Neighbours:
   - {fileID: 114800169941401140}
+  - {fileID: 114309554965921120}
+  - {fileID: 114089266062202382}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -14316,6 +14439,8 @@ MonoBehaviour:
     m_Bits: 1280
   Neighbours:
   - {fileID: 114213433121115114}
+  - {fileID: 114226435892752394}
+  - {fileID: 114562642333463882}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -14341,6 +14466,7 @@ MonoBehaviour:
   - {fileID: 114443875883234958}
   - {fileID: 114995232592742040}
   - {fileID: 114671257852707440}
+  - {fileID: 114430970438674528}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -14364,6 +14490,7 @@ MonoBehaviour:
   - {fileID: 114874849040647544}
   - {fileID: 114661206023547484}
   - {fileID: 114446964399923946}
+  - {fileID: 114391657999121748}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -14384,8 +14511,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
-  - {fileID: 114491490740231620}
-  - {fileID: 114060933229610940}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 114369871930977078}
   Traversable: 1
   Cost: 1
@@ -14430,12 +14557,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
-  - {fileID: 114137144551646254}
-  - {fileID: 114863111637032442}
+  - {fileID: 0}
   - {fileID: 114866823531285538}
   - {fileID: 114725931126595372}
   - {fileID: 114517393142750296}
-  - {fileID: 114038933441758972}
+  - {fileID: 0}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -14457,6 +14583,9 @@ MonoBehaviour:
     m_Bits: 1280
   Neighbours:
   - {fileID: 114736915254700866}
+  - {fileID: 114768782441325832}
+  - {fileID: 114433326050389244}
+  - {fileID: 114068533449418188}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -14478,7 +14607,7 @@ MonoBehaviour:
     m_Bits: 1280
   Neighbours:
   - {fileID: 114063420688147564}
-  - {fileID: 114502062583963394}
+  - {fileID: 0}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -14499,8 +14628,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
-  - {fileID: 114443310311768696}
-  - {fileID: 114265508148220240}
+  - {fileID: 114433326050389244}
+  - {fileID: 114582807286427014}
+  - {fileID: 114632387463082590}
+  - {fileID: 114114409056162552}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -14521,12 +14652,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
-  - {fileID: 114404156887943384}
-  - {fileID: 114114409056162552}
-  - {fileID: 114443310311768696}
-  - {fileID: 114265508148220240}
+  - {fileID: 114655522186466076}
   - {fileID: 114504862008316846}
-  - {fileID: 114439490238629150}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -14568,7 +14695,9 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 1280
-  Neighbours: []
+  Neighbours:
+  - {fileID: 114342213441060784}
+  - {fileID: 114342213441060784}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -14592,6 +14721,7 @@ MonoBehaviour:
   - {fileID: 114892085483397710}
   - {fileID: 114562163059069326}
   - {fileID: 114343666571578860}
+  - {fileID: 114572093236216048}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -14612,7 +14742,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
-  - {fileID: 114438253558085320}
+  - {fileID: 0}
   - {fileID: 114661511138856274}
   - {fileID: 114588301438396686}
   Traversable: 1
@@ -14705,6 +14835,7 @@ MonoBehaviour:
   - {fileID: 114304650500453304}
   - {fileID: 114971843654926734}
   - {fileID: 114094383345861442}
+  - {fileID: 114594501080123602}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -14726,7 +14857,7 @@ MonoBehaviour:
     m_Bits: 1280
   Neighbours:
   - {fileID: 114536695830313530}
-  - {fileID: 114829721652591912}
+  - {fileID: 0}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -14769,7 +14900,9 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 1280
-  Neighbours: []
+  Neighbours:
+  - {fileID: 114519213131393512}
+  - {fileID: 114391657999121748}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -14792,6 +14925,7 @@ MonoBehaviour:
   Neighbours:
   - {fileID: 114620597282767570}
   - {fileID: 114521293234611876}
+  - {fileID: 114153803089898210}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -14834,7 +14968,7 @@ MonoBehaviour:
     m_Bits: 1280
   Neighbours:
   - {fileID: 114502062583963394}
-  - {fileID: 114273472460016160}
+  - {fileID: 114430970438674528}
   - {fileID: 114397561684589330}
   - {fileID: 114345243690321634}
   Traversable: 1
@@ -14879,11 +15013,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
-  - {fileID: 114874849040647544}
-  - {fileID: 114661206023547484}
   - {fileID: 114907846877830586}
-  - {fileID: 114866823531285538}
-  - {fileID: 114780513184018006}
+  - {fileID: 114725931126595372}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -14906,6 +15037,7 @@ MonoBehaviour:
   Neighbours:
   - {fileID: 114420514116985038}
   - {fileID: 114532769991289762}
+  - {fileID: 114428087815610236}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -14927,7 +15059,7 @@ MonoBehaviour:
     m_Bits: 1280
   Neighbours:
   - {fileID: 114511649671489224}
-  - {fileID: 114038933441758972}
+  - {fileID: 0}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -14949,7 +15081,7 @@ MonoBehaviour:
     m_Bits: 1280
   Neighbours:
   - {fileID: 114661206023547484}
-  - {fileID: 114907846877830586}
+  - {fileID: 0}
   - {fileID: 114446964399923946}
   - {fileID: 114725931126595372}
   - {fileID: 114517393142750296}
@@ -14975,7 +15107,6 @@ MonoBehaviour:
     m_Bits: 1280
   Neighbours:
   - {fileID: 114661206023547484}
-  - {fileID: 114863111637032442}
   - {fileID: 114907846877830586}
   - {fileID: 114768965789525182}
   Traversable: 1
@@ -15022,7 +15153,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
-  - {fileID: 114215884125108464}
+  - {fileID: 0}
   - {fileID: 114335909675610236}
   - {fileID: 114455382576403780}
   - {fileID: 114502062583963394}
@@ -15070,6 +15201,7 @@ MonoBehaviour:
   Neighbours:
   - {fileID: 114550821642670502}
   - {fileID: 114325877724598694}
+  - {fileID: 114545046280213268}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -15090,8 +15222,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
+  - {fileID: 114968408463697952}
+  - {fileID: 114889234603049948}
+  - {fileID: 114377799609147774}
   - {fileID: 114122240625205782}
-  - {fileID: 114497134800311520}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -15112,8 +15246,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
-  - {fileID: 114122240625205782}
   - {fileID: 114600565631748566}
+  - {fileID: 114144549075468650}
+  - {fileID: 114317275677298082}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -15178,7 +15313,9 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 1280
-  Neighbours: []
+  Neighbours:
+  - {fileID: 114955115597405996}
+  - {fileID: 114500138414138192}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -15247,7 +15384,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
-  - {fileID: 114038933441758972}
+  - {fileID: 114489667101901012}
+  - {fileID: 114293654750914878}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -15268,10 +15406,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
+  - {fileID: 0}
   - {fileID: 114661206023547484}
-  - {fileID: 114866823531285538}
+  - {fileID: 0}
   - {fileID: 114725931126595372}
-  - {fileID: 114483259103302178}
+  - {fileID: 0}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -15293,6 +15432,8 @@ MonoBehaviour:
     m_Bits: 1280
   Neighbours:
   - {fileID: 114955407343022992}
+  - {fileID: 114783834364082196}
+  - {fileID: 114068533449418188}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -15314,6 +15455,7 @@ MonoBehaviour:
     m_Bits: 1280
   Neighbours:
   - {fileID: 114638970040193234}
+  - {fileID: 114427303186457638}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -15336,7 +15478,7 @@ MonoBehaviour:
   Neighbours:
   - {fileID: 114482969612020424}
   - {fileID: 114959992173092974}
-  - {fileID: 114110623854097388}
+  - {fileID: 0}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -15358,6 +15500,8 @@ MonoBehaviour:
     m_Bits: 1280
   Neighbours:
   - {fileID: 114964427402598690}
+  - {fileID: 114757356433463488}
+  - {fileID: 114089266062202382}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -15378,8 +15522,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
-  - {fileID: 114482969612020424}
-  - {fileID: 114959992173092974}
+  - {fileID: 114304650500453304}
+  - {fileID: 114254994186571004}
   - {fileID: 114899071140897984}
   - {fileID: 114110623854097388}
   Traversable: 1
@@ -15402,6 +15546,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
+  - {fileID: 114938610842517806}
+  - {fileID: 0}
   - {fileID: 114306182021091064}
   Traversable: 1
   Cost: 1
@@ -15448,9 +15594,9 @@ MonoBehaviour:
   Neighbours:
   - {fileID: 114728133264548276}
   - {fileID: 114562163059069326}
-  - {fileID: 114572093236216048}
+  - {fileID: 0}
   - {fileID: 114061855476724344}
-  - {fileID: 114239047228657868}
+  - {fileID: 0}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -15471,6 +15617,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
+  - {fileID: 114098607653568996}
   - {fileID: 114035281475235714}
   Traversable: 1
   Cost: 1
@@ -15518,8 +15665,8 @@ MonoBehaviour:
   - {fileID: 114804358433717406}
   - {fileID: 114443875883234958}
   - {fileID: 114500138414138192}
-  - {fileID: 114019958098422250}
-  - {fileID: 114652015937889336}
+  - {fileID: 114613735722268024}
+  - {fileID: 114707950671015340}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -15542,6 +15689,7 @@ MonoBehaviour:
   Neighbours:
   - {fileID: 114582807286427014}
   - {fileID: 114911168404760360}
+  - {fileID: 114783834364082196}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -15563,9 +15711,9 @@ MonoBehaviour:
     m_Bits: 1280
   Neighbours:
   - {fileID: 114482969612020424}
-  - {fileID: 114633350148712380}
+  - {fileID: 0}
   - {fileID: 114756485289947414}
-  - {fileID: 114934510239900768}
+  - {fileID: 0}
   - {fileID: 114916465783616444}
   Traversable: 1
   Cost: 1
@@ -15588,6 +15736,7 @@ MonoBehaviour:
     m_Bits: 1280
   Neighbours:
   - {fileID: 114923215511680298}
+  - {fileID: 114249528836101440}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -15610,6 +15759,7 @@ MonoBehaviour:
   Neighbours:
   - {fileID: 114489667101901012}
   - {fileID: 114000206597678728}
+  - {fileID: 114641335165043898}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -15629,7 +15779,10 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 1280
-  Neighbours: []
+  Neighbours:
+  - {fileID: 114600565631748566}
+  - {fileID: 114889234603049948}
+  - {fileID: 114030458570468978}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -15650,8 +15803,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Neighbours:
-  - {fileID: 114501339044390536}
-  - {fileID: 114306182021091064}
+  - {fileID: 114820220268478204}
+  - {fileID: 114680442580410760}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -15674,7 +15827,7 @@ MonoBehaviour:
   Neighbours:
   - {fileID: 114807392057451250}
   - {fileID: 114094383345861442}
-  - {fileID: 114078299357171786}
+  - {fileID: 0}
   - {fileID: 114998248849094180}
   - {fileID: 114429540403520388}
   Traversable: 1
@@ -15699,6 +15852,7 @@ MonoBehaviour:
   Neighbours:
   - {fileID: 114776411312791040}
   - {fileID: 114084423603812516}
+  - {fileID: 114892085483397710}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -15723,6 +15877,7 @@ MonoBehaviour:
   - {fileID: 114271966804548954}
   - {fileID: 114219573411926170}
   - {fileID: 114284519254774346}
+  - {fileID: 114174855126752542}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -15745,6 +15900,8 @@ MonoBehaviour:
   Neighbours:
   - {fileID: 114328194399447642}
   - {fileID: 114282937612950228}
+  - {fileID: 114819528843630256}
+  - {fileID: 114892085483397710}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -15764,7 +15921,8 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 1280
-  Neighbours: []
+  Neighbours:
+  - {fileID: 114498400950039290}
   Traversable: 1
   Cost: 1
   IsLink: 0
@@ -15815,7 +15973,7 @@ MonoBehaviour:
   - {fileID: 114554824679115252}
   - {fileID: 114363266317782260}
   - {fileID: 114756485289947414}
-  - {fileID: 114105971594453998}
+  - {fileID: 114633350148712380}
   Traversable: 1
   Cost: 1
   IsLink: 0

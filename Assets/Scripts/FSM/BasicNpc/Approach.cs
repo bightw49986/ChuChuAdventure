@@ -12,6 +12,8 @@ namespace FSM
             /// </summary>
             public class Approach : NpcFSMState
             {
+                float fTired = 0f;
+
                 public override Enum StateID
                 {
                     get
@@ -43,6 +45,7 @@ namespace FSM
                                 StartTransition(Npc.Attack, 0);
                                 return;
                             }
+                            if (fTired >= 5f)
                             StartTransition(Npc.Confront, 0); //否則就對峙
                             return;
                         }
@@ -55,12 +58,14 @@ namespace FSM
 
                 internal override void OnStateExit()
                 {
-                    base.OnStateExit();
+                    fTired = 0f;
+                    m_FSM.ResetTriggers();
                 }
 
                 internal override void OnStateRunning()
                 {
                     base.OnStateRunning();
+                    fTired += Time.deltaTime;
                     //如果與玩家之間有障礙物，算出沒有障礙物的點，把目標位置改成那個點
                 }
 

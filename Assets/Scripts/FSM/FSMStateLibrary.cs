@@ -42,10 +42,10 @@ namespace FSM
                     {Npc.Freezed,new List<Enum>{Npc.Idle, Npc.Patrol, Npc.Chase, Npc.Confront, Npc.Attack, Npc.Approach}},
                     {Npc.Idle,new List<Enum>{ Npc.Idle,Npc.Approach,Npc.Patrol,Npc.Chase,Npc.Confront,Npc.Attack}},
                     {Npc.Patrol,new List<Enum>{Npc.Idle,Npc.Confront,Npc.Chase}},
-                    {Npc.Approach,new List<Enum>{Npc.Idle,Npc.Chase,Npc.Attack}},
-                    {Npc.Chase,new List<Enum>{Npc.Idle,Npc.Approach,Npc.Attack}},
-                    {Npc.Attack,new List<Enum>{Npc.Idle,Npc.Confront,Npc.Approach}},
-                    {Npc.Confront,new List<Enum>{Npc.Idle,Npc.Chase,Npc.Attack,Npc.Approach}}
+                    {Npc.Approach,new List<Enum>{Npc.Idle,Npc.Chase,Npc.Attack, Npc.Confront}},
+                    {Npc.Chase,new List<Enum>{Npc.Idle,Npc.Approach,Npc.Attack, Npc.Confront}},
+                    {Npc.Attack,new List<Enum>{Npc.Idle,Npc.Confront,Npc.Approach, Npc.Confront}},
+                    {Npc.Confront,new List<Enum>{Npc.Idle,Npc.Chase,Npc.Attack,Npc.Approach,Npc.Confront}}
                 };
 
                 public static readonly Dictionary<Enum, Dictionary<int, string>> SubStatesTriggers = new Dictionary<Enum, Dictionary<int, string>>
