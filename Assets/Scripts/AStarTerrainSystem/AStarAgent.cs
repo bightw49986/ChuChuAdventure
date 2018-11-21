@@ -13,70 +13,68 @@ namespace PathFinding
     public class AStarNode : ILocationData
     {
         /// <summary>
-        /// GameObject of this node.
+        /// 節點的GameObject
         /// </summary>
         public GameObject gameObject;
 
         /// <summary>
-        /// Position of this node.
+        /// 節點的位置
         /// </summary>
         public Vector3 Position { get;set; }
 
         /// <summary>
-        /// The waypoint this node is from.
+        /// 這個節點的原生航點
         /// </summary>
         public Waypoint WP;
 
         /// <summary>
-        /// AreaID of this node.
+        /// 這個節點的AreaID
         /// </summary>
         public int AreaID { get; set; }
 
         /// <summary>
-        /// return if this node is a link between two area.
+        /// 這個節點是不是連接點
         /// </summary>
         public bool IsLink;
 
         /// <summary>
-        /// The neighbours of this node.
+        /// 這個節點的鄰居節點
         /// </summary>
         public List<AStarNode> Neighbours = new List<AStarNode>();
 
         /// <summary>
-        /// The cost rate of this node. The harder the terrain is , the higher this value should be;
+        /// 這個節點的旅行成本
         /// </summary>
         public float m_Cost = 1f;
 
         /// <summary>
-        /// The cost form start.
+        /// 從起點累積的成本
         /// </summary>
         public float m_fCFS;
 
         /// <summary>
-        /// The cost to goal.
+        /// 到目標所需的成本
         /// </summary>
         public float m_fCTG;
 
         /// <summary>
-        /// Total costs.
+        /// 總計旅行成本
         /// </summary>
         public float m_fTTC;
 
         /// <summary>
-        /// Node states.
+        /// 節點在Astar過程中會經過的狀態
         /// </summary>
         public enum NodeState
         {
             none, open, closed
         }
-
         /// <summary>
-        /// Node state of this node.
+        /// 節點的當前狀態
         /// </summary>
         public NodeState m_NodeState = NodeState.none;
-
         /// <summary>
-        /// Which node does this node searched from.
+        /// 節點目前從哪個鄰居搜尋過來
         /// </summary>
         public AStarNode m_searchFrom;
 
@@ -88,13 +86,9 @@ namespace PathFinding
     {
         #region Properties
         /// <summary>
-        /// 這個場景的所有節點
+        /// 這個場景的所有航點
         /// </summary>
         Dictionary<int, List<AStarNode>> m_nodes;
-        /// <summary>
-        /// 這個場景的所有連接點
-        /// </summary>
-        Dictionary<int, AStarNode[]> m_links;
         /// <summary>
         /// 這個物件目前的區域ID
         /// </summary>
@@ -136,8 +130,8 @@ namespace PathFinding
 
         void Awake()
         {
-            m_nodes = new Dictionary<int, List<AStarNode>>(); //把節點的dictionary初始化
-            LoadWP(); //讀取節點
+            m_nodes = new Dictionary<int, List<AStarNode>>(); //把航點的dictionary初始化
+            LoadWP(); //讀取航點
         }
 
         void Start()
@@ -152,6 +146,9 @@ namespace PathFinding
 
         #region Waypoint Loading
 
+        /// <summary>
+        /// 讀取場景中所有航點
+        /// </summary>
         void LoadWP()
         {
             waypointManagers = FindObjectsOfType<WaypointManager>();
@@ -160,7 +157,6 @@ namespace PathFinding
             {
                 if (m_nodes.ContainsKey(area.AreaID) == false)
                 {
-                    AStarNode[] linksToAdd = new AStarNode[2];
                     List<AStarNode> nodesToAdd = new List<AStarNode>();
                     for (int i = 0; i < area.m_waypoints.Count;i++)
                     {
@@ -172,23 +168,20 @@ namespace PathFinding
                             AreaID = area.AreaID,
                             IsLink = area.m_waypoints[i].IsLink
                         };
-                        if (node.IsLink)
-                        {
-                            if (linksToAdd[0] == null) linksToAdd[0] = node;
-                            else if (linksToAdd[1] == null) linksToAdd[1] = node;
-                        }
                         node.m_Cost = area.m_waypoints[i].Cost;
                         nodesToAdd.Add(node);
                     }
                     m_nodes.Add(area.AreaID, nodesToAdd);
-                    m_links.Add(area.AreaID, linksToAdd);
                     SetNodeNeighbours(nodesToAdd);
                 }
             }
 
 
         }
-
+        /// <summary>
+        /// 設定清單中的節點鄰居關係
+        /// </summary>
+        /// <param name="nodes">Nodes.</param>
         void SetNodeNeighbours(List<AStarNode> nodes)
         {
             for (int i = 0; i < nodes.Count; i++)
@@ -207,6 +200,9 @@ namespace PathFinding
 
         #region Other Methods
 
+        /// <summary>
+        /// 清空現在的節點cost資訊
+        /// </summary>
         internal void ClearAStarData()
         {
             for (int i = 0; i < m_nodes.Count - 1 ; i++)
@@ -222,7 +218,12 @@ namespace PathFinding
             }
         }
 
-        internal AStarNode FindNearestNode(Vector3 vPos)
+        /// <summary>
+        /// 在目前區域中找到最近的節點
+        /// </summary>
+        /// <returns>回傳最近的節點</returns>
+        /// <param name="vPos">目標位置</param>
+        internal AStarNode FindNearestNodeInArea(Vector3 vPos)
         {
             AStarNode nearestNode = null;
             float fMinSqrDis = 10000f;
@@ -244,31 +245,36 @@ namespace PathFinding
             return  nearestNode;
         }
 
+        /// <summary>
+        /// 找到場景中最近的節點
+        /// </summary>
+        /// <returns>回傳最近的節點.</returns>
+        /// <param name="location">目標位置</param>
         internal AStarNode FindNearestNode(ILocationData location)
         {
             AStarNode nearestNode = null;
             float fMinSqrDist = 10000f;
             if (location.AreaID != AreaID)
             {
-                foreach (var link in m_links[AreaID])
+                foreach (var node in m_nodes[location.AreaID])
                 {
-                    Vector3 vLinkDir = location.Position - link.Position;
-                    float fLinkSqrDist = Vector3.SqrMagnitude(vLinkDir);
-                    if (fLinkSqrDist <= Mathf.Epsilon)
+                    Vector3 vNodeDir = location.Position - node.Position;
+                    float fNodeSqrDist = Vector3.SqrMagnitude(vNodeDir);
+                    if (fNodeSqrDist <= Mathf.Epsilon)
                     {
-                        nearestNode = link;
+                        nearestNode = node;
                         break;
                     }
-                    if (fLinkSqrDist < fMinSqrDist)
+                    if (fNodeSqrDist < fMinSqrDist)
                     {
-                        nearestNode = link;
-                        fMinSqrDist = fLinkSqrDist;
+                        nearestNode = node;
+                        fMinSqrDist = fNodeSqrDist;
                     }
                 }
             }
             else
             {
-                nearestNode = FindNearestNode(location.Position);
+                nearestNode = FindNearestNodeInArea(location.Position);
             }
             return nearestNode;
         }
@@ -358,11 +364,17 @@ namespace PathFinding
             return path;
         }
 
-        public List<Vector3> GetPath(Vector3 startPos, Vector3 goalPos)
+        /// <summary>
+        /// 用 a star 演算法在區域中取得路徑
+        /// </summary>
+        /// <returns>回傳位置的清單</returns>
+        /// <param name="startPos">開始位置</param>
+        /// <param name="goalPos">目標位置</param>
+        public List<Vector3> GetPathInArea(Vector3 startPos, Vector3 goalPos)
         {
             ClearAStarData();
-            AStarNode startNode = FindNearestNode(startPos);
-            AStarNode goalNode = FindNearestNode(goalPos);
+            AStarNode startNode = FindNearestNodeInArea(startPos);
+            AStarNode goalNode = FindNearestNodeInArea(goalPos);
             if (startNode == null)
             {
                 Debug.LogWarning("StartNode = null,check your start location.");

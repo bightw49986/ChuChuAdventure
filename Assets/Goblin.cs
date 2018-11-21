@@ -25,34 +25,25 @@ namespace FSM
 
         protected override void OnCharacterFreezed(DefendBox damagedPart)
         {
-            //if(m_isFreezed ==false)
-            //m_isFreezed = true;
             m_Animator.SetTrigger("Freezed");
         }
 
         protected override void OnCharacterKOed()
         {
-            //if (m_isFreezed == false)
-            //m_isFreezed = true;
             m_Animator.SetTrigger("Freezed");
         }
 
         protected override void OnCharacterDied()
         {
-            //if(m_isDead ==false)
-            //{
-            //m_isDead = true;
             m_Animator.SetTrigger("Died");
-                Rigidbody rig = GetComponent<Rigidbody>();
-                rig.useGravity = false;
-                rig.constraints = RigidbodyConstraints.FreezeAll;
-                Collider[] colliders = GetComponentsInChildren<Collider>();
-                foreach (var c in colliders)
-                {
-                    c.enabled = false;
-                }
-
-            //}
+            Rigidbody rig = GetComponent<Rigidbody>();
+            rig.useGravity = false;
+            rig.constraints = RigidbodyConstraints.FreezeAll;
+            Collider[] colliders = GetComponentsInChildren<Collider>();
+            foreach (var c in colliders)
+            {
+                c.enabled = false;
+            }
         }
 
         protected override void CheckGlobalConditions()
@@ -73,17 +64,6 @@ namespace FSM
                 }
                 return;
             }
-
-            //if (m_isDead && CurrentState != globalTransitions[Npc.Died])
-            //{
-            //    StartCoroutine(PerformGlobalTransition(Npc.Died));
-            //    return;
-            //}
-            //if(m_isFreezed && CurrentState != globalTransitions[Npc.Freezed])
-            //{
-            //    StartCoroutine(PerformGlobalTransition(Npc.Freezed));
-            //    return;
-            //}
         }
     }
 

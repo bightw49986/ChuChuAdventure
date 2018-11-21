@@ -7,6 +7,8 @@ using PathFinding;
 
 namespace AISystem
 {
+    [RequireComponent(typeof(NpcFSM))]
+    [RequireComponent(typeof(AStarAgent))]
     public partial class AIData : MonoBehaviour
     {
         /// <summary>
@@ -159,10 +161,6 @@ namespace AISystem
         /// </summary>
         public Player player;
         /// <summary>
-        /// 玩家的transform
-        /// </summary>
-        Transform m_Player;
-        /// <summary>
         /// 玩家死了嗎
         /// </summary>
         public bool PlayerIsDead;
@@ -186,7 +184,10 @@ namespace AISystem
         /// 與玩家的距離平方
         /// </summary>
         public float fSqrPlayerDis;
-
+        /// <summary>
+        /// 到玩家的方向
+        /// </summary>
+        public Vector3 vDirectionToPlayer;
 
         [Header("Patrol Setting")]
         /// <summary>
@@ -276,33 +277,45 @@ namespace AISystem
 
         void Awake()
         {
-
+            InitAIData(); //初始化AIData
         }
 
         void Start()
         {
-            InitAIData();
+
         }
 
+        /// <summary>
+        /// 初始化AI Data
+        /// </summary>
         void InitAIData()
         {
-            m_FSM = GetComponent<NpcFSM>();
-            InitStats();
+            m_FSM = GetComponent<NpcFSM>(); if (!m_FSM) Debug.LogError("沒有FSM");
+            aStarAgent = GetComponent<AStarAgent>(); if (!aStarAgent) Debug.LogError("沒有a star agent");
+            InitAIStats();
             InitPlayerData();
             OnAIDataInitialized();
         }
 
+        /// <summary>
+        /// 初始化玩家的資料
+        /// </summary>
         void InitPlayerData()
         {
             player = GameObject.FindWithTag("Player").GetComponent<Player>();
             player.Died += () => { PlayerIsDead = true; };
-            m_Player = player.transform;
             UpdatePlayerInfo();
             UpdateProbe();
         }
 
+        /// <summary>
+        /// 當AI Data初始完觸發的事件
+        /// </summary>
         public event Action AIDataInitialized;
 
+        /// <summary>
+        /// 當AI Data初始完觸發事件
+        /// </summary>
         protected virtual void OnAIDataInitialized()
         {
             if (AIDataInitialized != null) AIDataInitialized();
@@ -310,43 +323,56 @@ namespace AISystem
 
         void Update()
         {
-            UpdatePlayerInfo();
-            UpdateProbe();
+            UpdatePlayerInfo(); //更新玩家的資料
+            UpdateProbe(); //更新自己的探針資訊
         }
 
         void LateUpdate()
         {
-            m_vDestLastFrame = m_vDestination;
+            m_vDestLastFrame = m_vDestination; //把這一幀的目標位置紀錄起來
         }
 
+        /// <summary>
+        /// 更新玩家資訊
+        /// </summary>
         void UpdatePlayerInfo()
         {
-            m_vPlayerPos = m_Player.position;
-            fSqrPlayerDis = Vector3.SqrMagnitude(vDirectionToDest);
-            fPlayerDis = Mathf.Sqrt(fSqrPlayerDis);
+            m_vPlayerPos = player.Position; //找玩家位置
+            vDirectionToPlayer = m_vPlayerPos - aStarAgent.Position; //算玩家的方向
+            fSqrPlayerDis = Vector3.SqrMagnitude(vDirectionToPlayer); //算玩家的距離平方
+            fPlayerDis = Mathf.Sqrt(fSqrPlayerDis); //算玩家的距離
         }
 
+        /// <summary>
+        /// 更新目的地資訊
+        /// </summary>
         void UpdateDestinationInfo()
         {
-            vDirectionToDest = m_vDestination - transform.position;
-            m_fSqrDistToDest = Vector3.SqrMagnitude(vDirectionToDest);
-            m_fDistToDest = Mathf.Sqrt(m_fSqrDistToDest);
-            m_fDestDot =Mathf.Clamp01(Vector3.Dot(transform.forward, vDirectionToDest.normalized));
-            m_fAbsDestDot = Mathf.Abs(m_fDestDot);
-            fTurnWeight = 1 - m_fAbsDestDot;
-            fSqrTurnWeight = Mathf.Clamp01(fTurnWeight * fTurnWeight);
-            m_FSM.m_Animator.SetFloat("fTurn", fSqrTurnWeight);
+            vDirectionToDest = m_vDestination - aStarAgent.Position; //算目的地方向
+            m_fSqrDistToDest = Vector3.SqrMagnitude(vDirectionToDest); //算目的距離平方
+            m_fDistToDest = Mathf.Sqrt(m_fSqrDistToDest); //算目的地的距離
+            m_fDestDot = Mathf.Clamp01(Vector3.Dot(transform.forward, vDirectionToDest.normalized)); //算目的地方向相對於角色的偏離方向
+            m_fAbsDestDot = Mathf.Abs(m_fDestDot); //算偏離程度
+            fTurnWeight = 1 - m_fAbsDestDot; //根據偏離程度決定轉向動畫權重
+            fSqrTurnWeight = Mathf.Clamp01(fTurnWeight * fTurnWeight); //把權重平滑化
+            m_FSM.m_Animator.SetFloat("fTurn", fSqrTurnWeight); //Set給animator
         }
 
+        /// <summary>
+        /// 更新探針資訊
+        /// </summary>
         void UpdateProbe()
         {
-            m_vCenter = new Vector3(0, fHeight * 0.5f, 0);
-            m_vCenter += transform.position;
-            m_vProbeEnd = new Vector3(0, fHeight * 0.5f, fPorbe);
+            m_vCenter = new Vector3(0, fHeight * 0.5f, 0); //算角色的中心點位置
+            m_vCenter += transform.position; 
+            m_vProbeEnd = new Vector3(0, fHeight * 0.5f, fPorbe); //算探針的最遠位置
             m_vProbeEnd += transform.position;
         }
 
-        void InitStats()
+        /// <summary>
+        /// 初始化數值
+        /// </summary>
+        void InitAIStats()
         {
             InitRangeStats();
             InitMoveStats();
@@ -403,37 +429,31 @@ namespace AISystem
             }
         }
 
-
+        /// <summary>
+        /// 朝玩家移動
+        /// </summary>
         public void MoveToPlayer()
         {
-            SetDestination(m_vPlayerPos);
+            SteerToTarget();
             UpdateDestinationInfo();
-            SteerToDestination();
         }
 
-        void SetDestination(Vector3 vTargetPos)
-        {
-            m_vDestination = vTargetPos;
-        }
 
-        void SteerToDestination()
+
+        /// <summary>
+        /// 轉向至目標
+        /// </summary>
+        void SteerToTarget()
         {
+
+            if (m_fDestDot > fWidth)
+            {
+
+            }
+
+
+
             Quaternion qDesireRotation = Quaternion.identity;
-            //Vector3 steering = Vector3.zero;
-            //if (transform.position != m_vDestination)
-            //{
-            //    steering = AIMethod.Seek(transform.position, m_vDestination, m_FSM.m_Animator.velocity, fMaxSteerSpeed);
-            //    if(Physics.CapsuleCast(m_vCenter, m_vProbeEnd, fWidth, m_vDestination, CollisionLayer))
-            //    {
-            //        if (fSteerLastFrame * m_fDestDot > 0 && !AIMethod.Random(20))
-            //        {
-            //            steering += AvoidObstacles(m_vDestination, m_FSM.m_Animator.velocity);
-            //        }
-            //    }
-            //    steering = Vector3.Min(steering, steering.normalized * fMaxSteerSpeed);
-            //}
-
-            //Vector3 vel = Vector3.ClampMagnitude(m_FSM.m_Animator.velocity + steering, fMaxSpeed);
             if (transform.forward != vDirectionToDest)
             {
                 qDesireRotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(vDirectionToDest), fMaxTurnDegree * Time.deltaTime);
@@ -442,6 +462,12 @@ namespace AISystem
             transform.rotation = qDesireRotation;
         }
 
+        /// <summary>
+        /// 迴避障礙物(不優)
+        /// </summary>
+        /// <returns>The obstacles.</returns>
+        /// <param name="vDest">V destination.</param>
+        /// <param name="velocity">Velocity.</param>
         Vector3 AvoidObstacles(Vector3 vDest, Vector3 velocity)
         {
             RaycastHit[] hits = Physics.CapsuleCastAll(m_vCenter, m_vProbeEnd, fWidth, vDest,CollisionLayer);
@@ -514,6 +540,7 @@ namespace AISystem
         public void JumpAttack()
         {
             StartCoroutine(JumpAtkCD(fJumpAttackFrequency));
+            StartCoroutine(AtkCD(fAttackFrequency));
         }
 
         IEnumerator JumpAtkCD(float fCD)

@@ -47,6 +47,11 @@ namespace FSM
 
                         if (m_FSM.m_AIData.PlayerInJumpAtkRange() == false) //超過跳躍攻擊的距離的話，追上去
                         {
+                            if (SubState != 0) //如果不在標準動作(表示仍在移動)
+                            {
+                                m_FSM.StartCoroutine(TransferToSubState(0)); //先站好
+                                return;
+                            }
                             StartTransition(Npc.Chase);
                             return;
                         }
