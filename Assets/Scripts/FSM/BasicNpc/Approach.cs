@@ -29,7 +29,7 @@ namespace FSM
                     if (!m_FSM.m_AIData.IsInBattle) //戰鬥外Approach代表第一次發現敵人，緩緩靠近確認
                     {
                         //敵人第一次進追擊範圍 進入戰鬥
-                        if (m_FSM.m_AIData.PlayerInChaseRange())
+                        if (m_FSM.m_AIData.PlayerInChaseRange)
                         {
                             m_FSM.m_AIData.EnterBattle();
                             StartTransition(Npc.Chase);
@@ -38,9 +38,9 @@ namespace FSM
                     }
                     if (m_FSM.m_AIData.IsInBattle) //戰鬥中
                     {
-                        if (m_FSM.m_AIData.PlayerInJumpAtkRange()) //如果敵人在撲擊範圍內
+                        if (m_FSM.m_AIData.PlayerInJumpAtkRange) //如果敵人在撲擊範圍內
                         {
-                            if (m_FSM.m_AIData.AtkReady && m_FSM.m_AIData.PlayerInAtkRange()) //攻擊準備好且可以攻擊的話攻擊
+                            if (m_FSM.m_AIData.AtkReady && m_FSM.m_AIData.PlayerInAtkRange) //攻擊準備好且可以攻擊的話攻擊
                             {
                                 StartTransition(Npc.Attack, 0);
                                 return;

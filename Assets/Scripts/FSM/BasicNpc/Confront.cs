@@ -45,7 +45,7 @@ namespace FSM
                             m_FSM.m_AIData.AtkReady = true;
                         }
 
-                        if (m_FSM.m_AIData.PlayerInJumpAtkRange() == false) //超過跳躍攻擊的距離的話，追上去
+                        if (m_FSM.m_AIData.PlayerInJumpAtkRange == false) //超過跳躍攻擊的距離的話，追上去
                         {
                             if (SubState != 0) //如果不在標準動作(表示仍在移動)
                             {
@@ -64,7 +64,7 @@ namespace FSM
                                     m_FSM.StartCoroutine(TransferToSubState(0)); //先站好
                                     return;
                                 }
-                                if (m_FSM.m_AIData.PlayerInAtkRange()) //若敵人已經在攻擊範圍內，進攻擊
+                                if (m_FSM.m_AIData.PlayerInAtkRange) //若敵人已經在攻擊範圍內，進攻擊
                                 {
                                     StartTransition(Npc.Attack);
                                     return;
@@ -96,12 +96,12 @@ namespace FSM
                                 {
                                     if (!bConfrontOnce) //如果還沒前後拉個距離，就先前後走一次
                                     {
-                                        if (m_FSM.m_AIData.PlayerInAtkRange()) //比較近，就退後
+                                        if (m_FSM.m_AIData.PlayerInAtkRange) //比較近，就退後
                                         {
                                             m_FSM.StartCoroutine(TransferToSubState(2));
                                             return;
                                         }
-                                        if (m_FSM.m_AIData.PlayerInJumpAtkRange())//比較遠，就前進
+                                        if (m_FSM.m_AIData.PlayerInJumpAtkRange)//比較遠，就前進
                                         {
                                             m_FSM.StartCoroutine(TransferToSubState(1));
                                             return;
@@ -109,7 +109,7 @@ namespace FSM
                                     }
                                     if (!bStrafeOnce) //如果還沒左右繞一次的話，繞一次
                                     {
-                                        if (m_FSM.m_AIData.PlayerOnRightSide()) //在右邊，向左轉
+                                        if (m_FSM.m_AIData.PlayerOnRightSide) //在右邊，向左轉
                                         {
                                             m_FSM.StartCoroutine(TransferToSubState(3));
                                             return;
@@ -120,19 +120,19 @@ namespace FSM
                                             return;
                                         }
                                     }
-                                    if (m_FSM.m_AIData.PlayerInChaseRange()) //都做過的話，根據行為決定要靠近還是再繞一次
+                                    if (m_FSM.m_AIData.PlayerInChaseRange) //都做過的話，根據行為決定要靠近還是再繞一次
                                     {
                                         switch (m_FSM.BehaviorStyle)
                                         {
                                             case NpcFSM.Style.Normal: //一般的情況前後左右四選一
                                                 if (pick % 2 == 0)
                                                 {
-                                                    if (m_FSM.m_AIData.PlayerInAtkRange()) //比較近，就退後
+                                                    if (m_FSM.m_AIData.PlayerInAtkRange) //比較近，就退後
                                                     {
                                                         m_FSM.StartCoroutine(TransferToSubState(2));
                                                         return;
                                                     }
-                                                    if (m_FSM.m_AIData.PlayerInJumpAtkRange())//比較遠，就前進
+                                                    if (m_FSM.m_AIData.PlayerInJumpAtkRange)//比較遠，就前進
                                                     {
                                                         m_FSM.StartCoroutine(TransferToSubState(1));
                                                         return;
@@ -140,7 +140,7 @@ namespace FSM
                                                 }
                                                 else
                                                 {
-                                                    if (m_FSM.m_AIData.PlayerOnRightSide()) //在右邊，向左轉
+                                                    if (m_FSM.m_AIData.PlayerOnRightSide) //在右邊，向左轉
                                                     {
                                                         m_FSM.StartCoroutine(TransferToSubState(3));
                                                         return;

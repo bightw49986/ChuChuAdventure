@@ -92,16 +92,10 @@ namespace AISystem
         /// 角色的寬度
         /// </summary>
         [SerializeField] float fWidth;
-
-        /// <summary>
-        /// 角色的中心點位置(高度的一半)
-        /// </summary>
-        Vector3 m_vCenter;
-
-        /// <summary>
-        /// 探針的遠點位置
-        /// </summary>
-        Vector3 m_vProbeEnd;
+        Vector3 vCenter;
+        Vector3 vCPoint1 =Vector3.zero;
+        Vector3 vCPoint2 = Vector3.zero;
+        RaycastHit nearestHit;
 
         /// <summary>
         /// 要當作障礙物的Layer
@@ -164,10 +158,6 @@ namespace AISystem
         /// 玩家死了嗎
         /// </summary>
         public bool PlayerIsDead;
-        /// <summary>
-        /// 與玩家之間是否有被障礙物遮蔽
-        /// </summary>
-        public bool PlayerInSight;
         /// <summary>
         /// 是否與玩家進入戰鬥
         /// </summary>
@@ -293,14 +283,14 @@ namespace AISystem
             m_FSM = GetComponent<NpcFSM>(); if (!m_FSM) Debug.LogError("沒有FSM");
             aStarAgent = GetComponent<AStarAgent>(); if (!aStarAgent) Debug.LogError("沒有a star agent");
             InitAIStats();
-            InitPlayerData();
+            FetchPlayerData();
             OnAIDataInitialized();
         }
 
         /// <summary>
         /// 初始化玩家的資料
         /// </summary>
-        void InitPlayerData()
+        void FetchPlayerData()
         {
             player = GameObject.FindWithTag("Player").GetComponent<Player>();
             player.Died += () => { PlayerIsDead = true; };
@@ -359,14 +349,13 @@ namespace AISystem
         }
 
         /// <summary>
-        /// 更新探針資訊
+        /// 更新膠囊探針資訊
         /// </summary>
         void UpdateProbe()
         {
-            m_vCenter = new Vector3(0, fHeight * 0.5f, 0); //算角色的中心點位置
-            m_vCenter += transform.position; 
-            m_vProbeEnd = new Vector3(0, fHeight * 0.5f, fPorbe); //算探針的最遠位置
-            m_vProbeEnd += transform.position;
+            vCenter = transform.position + Vector3.up * fHeight * 0.5f;
+            vCPoint1 = vCenter + Vector3.up * 0.4f;
+            vCPoint2 = vCenter + Vector3.down * 0.4f;
         }
 
         /// <summary>
@@ -434,25 +423,70 @@ namespace AISystem
         /// </summary>
         public void MoveToPlayer()
         {
-            SteerToTarget();
+            if (CheckIfBlocked(player.transform.position)==false)//檢查與玩家之間有無障礙物
+            {
+                m_vDestination = player.transform.position;
+            }
+            else
+            {
+                Vector3 vTemp = Vector3.zero;
+                List<Vector3> path = aStarAgent.GetPath(aStarAgent, player);
+                print(path.Count);
+                for (int i =path.Count -1 ; i > 0; i--)
+                {
+                    if(CheckIfBlocked(path[i])==true)
+                    {
+                        vTemp = path[i];
+                        break;
+                    }
+                }
+                if (vTemp != Vector3.zero)
+                {
+                    m_vDestination = vTemp;
+                }
+                else
+                {
+                    m_vDestination = path[0];
+                }
+            }
             UpdateDestinationInfo();
+            SteerToDestination();
+            //無的話，把Destination設成玩家的位置
+            //有的話，用Astar算出Destination
+            //檢查新的Destination路上有無障礙物
+            //有的話，算出最短沒有障礙物的點，把Destination設成那個點
+            //轉向Desination
         }
 
+
+        bool CheckIfBlocked(Vector3 vTargetPos)
+        {
+            vTargetPos.y = 0f;
+            Vector3 vStart = transform.position;
+            vStart.y = 0f;
+            Vector3 vDir = vTargetPos - vStart;
+            float fDis = Vector3.Magnitude(vDir);
+            RaycastHit[] hits;
+            hits = Physics.CapsuleCastAll(vCPoint1, vCPoint2, fWidth, vDir, fDis);
+            if (hits == null) return false;
+            float fMin =100f;
+            foreach (var hit in hits)
+            {
+                if(hit.distance < fMin)
+                {
+                    fMin = hit.distance;
+                    nearestHit = hit;
+                }
+            }
+            return true;
+        }
 
 
         /// <summary>
         /// 轉向至目標
         /// </summary>
-        void SteerToTarget()
+        void SteerToDestination()
         {
-
-            if (m_fDestDot > fWidth)
-            {
-
-            }
-
-
-
             Quaternion qDesireRotation = Quaternion.identity;
             if (transform.forward != vDirectionToDest)
             {
@@ -463,73 +497,54 @@ namespace AISystem
         }
 
         /// <summary>
-        /// 迴避障礙物(不優)
+        /// 不許播腳步旋轉動畫
         /// </summary>
-        /// <returns>The obstacles.</returns>
-        /// <param name="vDest">V destination.</param>
-        /// <param name="velocity">Velocity.</param>
-        Vector3 AvoidObstacles(Vector3 vDest, Vector3 velocity)
-        {
-            RaycastHit[] hits = Physics.CapsuleCastAll(m_vCenter, m_vProbeEnd, fWidth, vDest,CollisionLayer);
-            if (hits != null)
-            {
-                float fMinSqrDist=10000f;
-                float fSqrDist;
-                float fDot;
-                Vector3 direction = Vector3.zero;
-                Vector3 probeToObstacle = Vector3.zero;
-                RaycastHit nearestHit = new RaycastHit();
-                for (int i = 0; i < hits.Length; i++)
-                {
-                    direction = hits[i].point - transform.position;
-                    direction.y = 0;
-                    fSqrDist = Vector3.SqrMagnitude(direction);
-                    fDot = Mathf.Clamp(Vector3.Dot(transform.forward, direction.normalized), -1, 1);
-                    if (fSqrDist < fMinSqrDist)
-                    {
-                       fMinSqrDist= fSqrDist;
-                        nearestHit = hits[i];
-                    }
-                }
-                if (fMinSqrDist != 10000f)
-                {
-                    m_LastHit = nearestHit;
-                    return AIMethod.Flee(transform.position, m_LastHit.point, velocity, fMaxSteerSpeed);
-                }
-            }
-            return Vector3.zero;
-        }
-
         public void StopTurnning()
         {
             m_FSM.m_Animator.SetLayerWeight(1, 0);
         }
 
+        /// <summary>
+        /// 允許播腳部旋轉動畫
+        /// </summary>
         public void StartTurnning()
         {
             m_FSM.m_Animator.SetLayerWeight(1, 1);
         }
 
-        public void LookAtTargetDirectly()
+        /// <summary>
+        /// 瞬間轉向player的位置，角度受到m_fMaxTurnDegree限制
+        /// </summary>
+        public void LookAtPlayerDirectly()
         {
-            float fAngle = AIMethod.FindAngle(transform.position, m_vDestination, transform.up);
+            float fAngle = AIMethod.FindAngle(aStarAgent.Position, m_vPlayerPos, transform.up);
             fAngle = Mathf.Clamp(fAngle, -fMaxTurnDegree, fMaxTurnDegree);
             Quaternion qDesireRotation = Quaternion.AngleAxis(fAngle, transform.up) * transform.rotation;
             transform.rotation = qDesireRotation;
         }
 
-
+        /// <summary>
+        /// 進入戰鬥，紀錄進入戰鬥前最後的位置
+        /// </summary>
         public void EnterBattle()
         {
             IsInBattle = true;
-            vLastPosBeforeBattle = transform.position;
+            vLastPosBeforeBattle = aStarAgent.Position;
         }
 
+        /// <summary>
+        /// 攻擊，攻擊進入冷卻時間
+        /// </summary>
         public void Attack()
         {
             StartCoroutine(AtkCD(fAttackFrequency));
         }
 
+        /// <summary>
+        /// 計算攻擊冷卻時間
+        /// </summary>
+        /// <returns>The cd.</returns>
+        /// <param name="fCD">F cd.</param>
         IEnumerator AtkCD(float fCD)
         {
             AtkReady = false;
@@ -537,12 +552,20 @@ namespace AISystem
             AtkReady = true;
         }
 
+        /// <summary>
+        /// 跳躍攻擊，攻擊跟跳躍攻擊進冷卻時間
+        /// </summary>
         public void JumpAttack()
         {
             StartCoroutine(JumpAtkCD(fJumpAttackFrequency));
             StartCoroutine(AtkCD(fAttackFrequency));
         }
 
+        /// <summary>
+        /// 計算跳躍攻擊冷卻時間
+        /// </summary>
+        /// <returns>The atk cd.</returns>
+        /// <param name="fCD">F cd.</param>
         IEnumerator JumpAtkCD(float fCD)
         {
             JumpAtkReady = false;

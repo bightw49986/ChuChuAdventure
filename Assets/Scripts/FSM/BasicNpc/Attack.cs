@@ -41,7 +41,7 @@ namespace FSM
                             StartTransition(Npc.Approach);
                             return;
                         }
-                        if (m_FSM.m_AIData.PlayerStillInAtkRange()) //如果敵人還在攻擊範圍內就繼續攻擊
+                        if (m_FSM.m_AIData.PlayerStillInAtkRange) //如果敵人還在攻擊範圍內就繼續攻擊
                         {
 
                             if (stage == 0)
@@ -61,7 +61,7 @@ namespace FSM
 
                 internal override void OnStateEnter()
                 {
-                    m_FSM.m_AIData.LookAtTargetDirectly();
+                    m_FSM.m_AIData.LookAtPlayerDirectly();
                 }
 
                 internal override void OnStateExit()
@@ -81,7 +81,7 @@ namespace FSM
                 {
                     if(m_FSM.m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime % 1 ==0)
                     {
-                        m_FSM.m_AIData.LookAtTargetDirectly();
+                        m_FSM.m_AIData.LookAtPlayerDirectly();
                     }
                 }
 

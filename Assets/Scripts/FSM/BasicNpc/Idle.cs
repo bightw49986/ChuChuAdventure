@@ -36,21 +36,21 @@ namespace FSM
                         if (stage == 0 || stage == 1 || stage == 2) //發呆
                         {
                             //如果敵人進入視線 Caution
-                            if (m_FSM.m_AIData.PlayerShowedUp())
+                            if (m_FSM.m_AIData.PlayerShowedUp)
                             {
 
                                 m_FSM.StartCoroutine(TransferToSubState(3));
                                 return;
                             }
                             //如果敵人突然進入追擊範圍 Chase
-                            if (m_FSM.m_AIData.PlayerInChaseRange())
+                            if (m_FSM.m_AIData.PlayerInChaseRange)
                             {
                                 m_FSM.m_AIData.EnterBattle();
                                 StartTransition(Npc.Chase);
                                 return;
                             }
                             //如果敵人突然超近 Confront
-                            if (m_FSM.m_AIData.PlayerInJumpAtkRange())
+                            if (m_FSM.m_AIData.PlayerInJumpAtkRange)
                             {
                                 m_FSM.m_AIData.EnterBattle();
                                 StartTransition(Npc.Confront);
@@ -65,7 +65,7 @@ namespace FSM
                         }
                         if (stage == 4) //蹲著
                         {
-                            if (m_FSM.m_AIData.PlayerInJumpAtkRange()) //如果敵人進入跳躍攻擊範圍，嚕下去
+                            if (m_FSM.m_AIData.PlayerInJumpAtkRange) //如果敵人進入跳躍攻擊範圍，嚕下去
                             {
                                 m_FSM.StartCoroutine(TransferToSubState(5));
                                 return;

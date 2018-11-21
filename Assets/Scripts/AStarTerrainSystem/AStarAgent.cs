@@ -92,7 +92,8 @@ namespace PathFinding
         /// <summary>
         /// 這個物件目前的區域ID
         /// </summary>
-        public int AreaID { get; set; }
+        public int AreaID { get { return _areaID; } set { _areaID = value; } }
+        [SerializeField] int _areaID;
         /// <summary>
         /// 這個物件在地形上的位置
         /// </summary>
@@ -205,7 +206,7 @@ namespace PathFinding
         /// </summary>
         internal void ClearAStarData()
         {
-            for (int i = 0; i < m_nodes.Count - 1 ; i++)
+            for (int i = 1; i < m_nodes.Count ; i++)
             {
                 foreach (var node in m_nodes[i])
                 {
@@ -275,6 +276,11 @@ namespace PathFinding
             else
             {
                 nearestNode = FindNearestNodeInArea(location.Position);
+            }
+            print(nearestNode.gameObject.name);
+            foreach(var n in nearestNode.Neighbours)
+            {
+                print(nearestNode.gameObject.name + "有鄰居：" + n.gameObject.name);
             }
             return nearestNode;
         }

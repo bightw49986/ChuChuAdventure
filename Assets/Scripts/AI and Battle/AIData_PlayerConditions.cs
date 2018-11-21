@@ -5,44 +5,44 @@ namespace AISystem
 {
     public partial class AIData : MonoBehaviour
     {
-        public bool PlayerShowedUp()
+        public bool PlayerShowedUp
         {
-            return AIMethod.CheckPointInFan(transform, m_vPlayerPos, fFaceCautionRange, FOV) || PlayerInCautionRange();
+            get { return AIMethod.CheckPointInFan(transform, m_vPlayerPos, fFaceCautionRange, FOV) || PlayerInCautionRange; }
         }
 
-        public bool PlayerInBattleRange()
+        public bool PlayerInBattleRange
         {
-            return fSqrPlayerDis <= fSqrFaceCautionRange;
+            get { return fSqrPlayerDis <= fSqrFaceCautionRange; }
         }
 
-        public bool PlayerInCautionRange()
+        public bool PlayerInCautionRange
         {
-            return fSqrPlayerDis <= fSqrBackCautionRange;
+            get { return fSqrPlayerDis <= fSqrBackCautionRange; }
         }
 
-        public bool PlayerInChaseRange()
+        public bool PlayerInChaseRange
         {
-            return fSqrPlayerDis <= fSqrChaseRange;
+            get { return fSqrPlayerDis <= fSqrChaseRange; }
         }
 
-        public bool PlayerInJumpAtkRange()
+        public bool PlayerInJumpAtkRange
         {
-            return fSqrPlayerDis <= fSqrJumpAtkRange;
+            get { return fSqrPlayerDis <= fSqrJumpAtkRange; }
         }
 
-        public bool PlayerInAtkRange()
+        public bool PlayerInAtkRange
         {
-            return fSqrPlayerDis <= fSqrAtkRange;
+            get { return fSqrPlayerDis <= fSqrAtkRange; }
         }
 
-        public bool PlayerStillInAtkRange()
+        public bool PlayerStillInAtkRange
         {
-            return AIMethod.CheckPointInFan(transform, m_vPlayerPos, fAtkRange + fAtkOffset, 180f);
+            get { return AIMethod.CheckPointInFan(transform, m_vPlayerPos, fAtkRange + fAtkOffset, 180f); }
         }
 
-        public bool PlayerOnRightSide()
+        public bool PlayerOnRightSide
         {
-            return AIMethod.FindAngle(transform.position, m_vPlayerPos, transform.up) > 0;
+            get { return AIMethod.FindAngle(transform.position, m_vPlayerPos, transform.up) > 0; }
         }
     }
 }

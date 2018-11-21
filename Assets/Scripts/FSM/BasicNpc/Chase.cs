@@ -33,14 +33,14 @@ namespace FSM
                     }
                     if (m_FSM.m_AIData.IsInBattle)//戰鬥中
                     {
-                        if (m_FSM.m_AIData.PlayerInBattleRange()==false) //如果敵人超過最大距離，發呆看著敵人離去的方向
+                        if (m_FSM.m_AIData.PlayerInBattleRange==false) //如果敵人超過最大距離，發呆看著敵人離去的方向
                         {
                             StartTransition(Npc.Idle);
                             return;
                         }
                         else
                         {
-                            if (m_FSM.m_AIData.PlayerInJumpAtkRange()) //如果進到撲擊的範圍內
+                            if (m_FSM.m_AIData.PlayerInJumpAtkRange) //如果進到撲擊的範圍內
                             {
                                 if (m_FSM.m_AIData.JumpAtkReady == false && m_FSM.m_AIData.AtkReady == false) //攻擊跟撲擊的冷卻都沒到就改成靠近
                                 {
@@ -53,7 +53,7 @@ namespace FSM
                                     StartTransition(Npc.Attack, 3);
                                     return;
                                 }
-                                if (m_FSM.m_AIData.PlayerInAtkRange()) //如果進到攻擊範圍內了
+                                if (m_FSM.m_AIData.PlayerInAtkRange) //如果進到攻擊範圍內了
                                 {
                                     if (m_FSM.m_AIData.AtkReady) //且攻擊準備好 undone：檢查有沒有面向玩家
                                     {

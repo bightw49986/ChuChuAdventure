@@ -52,6 +52,7 @@ public class Player : BattleData , PathFinding.ILocationData
     {
         base.Awake();
         Power = 0f;
+        AreaID = 1;
     }
 
     protected override void OnStatsChanged()

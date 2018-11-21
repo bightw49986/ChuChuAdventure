@@ -1,10 +1,14 @@
 ﻿<Properties StartupConfiguration="{8BDCE74E-FD35-6103-357F-1A0A314EA38A}|">
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/FSM/BasicNpc/Confront.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/FSM/FSMSystem.cs">
     <Files>
-      <File FileName="Assets/Scripts/AStarTerrainSystem/AStarAgent.cs" Line="130" Column="9" />
-      <File FileName="Assets/Scripts/AI and Battle/AIData.cs" Line="544" Column="53" />
-      <File FileName="Assets/Scripts/FSM/BasicNpc/Confront.cs" Line="34" Column="43" />
+      <File FileName="Assets/Scripts/AStarTerrainSystem/AStarAgent.cs" Line="95" Column="76" />
+      <File FileName="Assets/Scripts/AI and Battle/AIData.cs" Line="434" Column="35" />
+      <File FileName="Assets/Scripts/AI and Battle/AIData_PlayerConditions.cs" Line="7" Column="6" />
+      <File FileName="Assets/Scripts/FSM/BasicNpc/Freezed.cs" Line="29" Column="1" />
+      <File FileName="Assets/Scripts/Character/Player.cs" Line="55" Column="20" />
+      <File FileName="Assets/Goblin.cs" Line="66" Column="14" />
+      <File FileName="Assets/Scripts/FSM/FSMSystem.cs" Line="345" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
