@@ -6,12 +6,14 @@ using PathFinding;
 
 public class CustomMenu : Editor
 {
-    [MenuItem("Waypoint/RefreshNeighbours")]
+    //[MenuItem("Waypoint/RefreshNeighbours")]
     public static void RefreshNeighbours()
     {
         WaypointManager[] managers = FindObjectsOfType<WaypointManager>();
         foreach (var ma in managers)
         {
+            if (ma.ManualMode == true) return; 
+
             ma.m_waypoints.Clear();
             Waypoint[] waypoints = ma.GetComponentsInChildren<Waypoint>();
             foreach (var p in waypoints)

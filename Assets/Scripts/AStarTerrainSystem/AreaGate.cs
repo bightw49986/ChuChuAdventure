@@ -3,7 +3,7 @@
 namespace PathFinding
 {
     [RequireComponent(typeof(Collider))]
-    public class AreaIndicater : MonoBehaviour
+    public class AreaGate : MonoBehaviour
     {
         public int[] Edge = new int[2];
 

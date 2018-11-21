@@ -87,27 +87,57 @@ namespace PathFinding
     public class AStarAgent : MonoBehaviour, ILocationData
     {
         #region Properties
+        /// <summary>
+        /// 這個場景的所有節點
+        /// </summary>
         Dictionary<int, List<AStarNode>> m_nodes;
+        /// <summary>
+        /// 這個場景的所有連接點
+        /// </summary>
         Dictionary<int, AStarNode[]> m_links;
+        /// <summary>
+        /// 這個物件目前的區域ID
+        /// </summary>
         public int AreaID { get; set; }
+        /// <summary>
+        /// 這個物件在地形上的位置
+        /// </summary>
+        /// <value>The position.</value>
         public Vector3 Position { get { return GetPosOnPlane(); } set { transform.position = value; } }
+        /// <summary>
+        /// 地板的Layer
+        /// </summary>
         public LayerMask GroundLayers;
+        /// <summary>
+        /// 物件的高度
+        /// </summary>
+        public float Height = 2f;
+        /// <summary>
+        /// 地板容許的誤差值，應該差不多等於跳躍高度
+        /// </summary>
+        public float GroundOffset = 3f;
+        /// <summary>
+        /// 每個區域的WaypointManager
+        /// </summary>
         WaypointManager[] waypointManagers;
 
-
+        /// <summary>
+        ///  算出所在的地板位置
+        /// </summary>
+        /// <returns>The position on plane.</returns>
         public Vector3 GetPosOnPlane()
         {
-            Ray ray = new Ray(gameObject.transform.position + Vector3.up * 2, Vector3.down);
+            Ray ray = new Ray(gameObject.transform.position + Vector3.up * Height, Vector3.down); //往上拉兩單位
             RaycastHit hit;
-            Physics.Raycast(ray, out hit, 10f, GroundLayers);
-            return hit.point == Vector3.zero ? transform.position : hit.point;
+            Physics.Raycast(ray, out hit, GroundOffset, GroundLayers);//往下打5單位
+            return hit.point == Vector3.zero ? transform.position : hit.point; //回傳有打到：地板位置，沒打到：transform位置
         }
         #endregion
 
         void Awake()
         {
-            m_nodes = new Dictionary<int, List<AStarNode>>();
-            LoadWP();
+            m_nodes = new Dictionary<int, List<AStarNode>>(); //把節點的dictionary初始化
+            LoadWP(); //讀取節點
         }
 
         void Start()
