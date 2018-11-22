@@ -191,9 +191,9 @@ namespace FSM
 
                 internal override void OnStateExit()
                 {
+                    base.OnStateExit();
                     fTired = 0f;
                     bConfrontOnce = bStrafeOnce = false;
-                    m_FSM.ResetTriggers();
                 }
 
                 internal override void OnStateRunning(int stage)

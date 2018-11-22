@@ -125,17 +125,7 @@ namespace AISystem
             float fDis = Vector3.Magnitude(vDir);
             RaycastHit[] hits;
             hits = Physics.CapsuleCastAll(vCPoint1, vCPoint2, fWidth, vDir, fDis, CollisionLayer);
-            if (hits.Length == 0) return false;
-            float fMin = 100f;
-            foreach (var hit in hits)
-            {
-                if (hit.distance < fMin)
-                {
-                    fMin = hit.distance;
-                    nearestHit = hit;
-                }
-            }
-            return true;
+            return hits.Length != 0;
         }
 
         /// <summary>
@@ -145,7 +135,6 @@ namespace AISystem
         {
             Quaternion qDesireRotation = Quaternion.identity;
             Vector3 forwardOnPlane = Vector3.ProjectOnPlane(transform.forward, Vector3.up);
-            float angle = Mathf.Clamp(AIMethod.FindAngle(forwardOnPlane, vDirectionToDest, Vector3.up),-fMaxTurnDegree,fMaxTurnDegree) ;
             if (vDirectionToDest != Vector3.zero && forwardOnPlane != vDirectionToDest)
             {
                 qDesireRotation = Quaternion.LookRotation(vDirectionToDest, Vector3.up);
@@ -185,9 +174,9 @@ namespace AISystem
             transform.rotation = qDesireRotation;
         }
 
+
         Coroutine ASTAR;
         List<Vector3> path = new List<Vector3>();
-        float fBlockedTime = 0f;
         bool bAstaring;
     }
 }

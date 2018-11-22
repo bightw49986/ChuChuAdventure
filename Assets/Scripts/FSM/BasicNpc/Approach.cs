@@ -71,15 +71,14 @@ namespace FSM
 
                 internal override void OnStateExit()
                 {
+                    base.OnStateExit();
                     fTired = 0f;
-                    m_FSM.ResetTriggers();
                 }
 
                 internal override void OnStateRunning()
                 {
                     base.OnStateRunning();
                     fTired += Time.deltaTime;
-                    //如果與玩家之間有障礙物，算出沒有障礙物的點，把目標位置改成那個點
                 }
             }
         }

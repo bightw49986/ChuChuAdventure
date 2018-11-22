@@ -74,6 +74,7 @@ namespace FSM
 
                 internal override void OnStateExit()
                 {
+                    base.OnStateExit();
                     if (SubState == 0 || SubState==1 || SubState == 2)
                     {
                         m_FSM.m_AIData.Attack();
@@ -82,7 +83,6 @@ namespace FSM
                     {
                         m_FSM.m_AIData.JumpAttack();
                     }
-                    m_FSM.ResetTriggers();
                 }
 
                 internal override void OnStateRunning(int stage)

@@ -135,17 +135,17 @@ namespace FSM
         IEnumerator TransferTo(CharacterFSMState targetState)
         {
             Debug.LogError("進到父類別的了！");
-
             bTranfering = true;
             if (m_Animator.IsInTransition(0) == true)
                 yield return new WaitUntil(() => (m_Animator.IsInTransition(0)) == false);
-            OriginState = CurrentState;
+
             CurrentState.OnStateExit();
             if (targetState.IsSubMachine == false)
             {
                 if (String.IsNullOrEmpty(targetState.Trigger) == false)
                 {
                     m_Animator.SetTrigger(targetState.Trigger);
+                    yield return new WaitUntil(() => (m_Animator.GetCurrentAnimatorStateInfo(0).IsName(targetState.Trigger) && m_Animator.IsInTransition(0)) == false);
                 }
             }
             else if (targetState.GetType() == typeof(FSMSubMachine))
@@ -154,6 +154,7 @@ namespace FSM
                 if (String.IsNullOrEmpty(nextState.SubStatesTriggers[0]) == false)
                 {
                     m_Animator.SetTrigger(nextState.SubStatesTriggers[0]);
+                    yield return new WaitUntil(() => (m_Animator.GetCurrentAnimatorStateInfo(0).IsName(nextState.SubStatesTriggers[0]) && m_Animator.IsInTransition(0)) == false);
                 }
             }
             else
@@ -161,10 +162,8 @@ namespace FSM
                 Debug.LogError("輸入了一個不正確的目標狀態");
                 yield break;
             }
-            yield return new WaitUntil(() => (m_Animator.IsInTransition(0)) == true);
             CurrentState = targetState;
             CurrentState.OnStateEnter();
-            yield return new WaitUntil(() => (m_Animator.IsInTransition(0)) == false);
             bTranfering = false;
         }
 
@@ -177,9 +176,6 @@ namespace FSM
         {
             Debug.LogError("進到父類別的了！");
             bTranfering = true;
-            if (m_Animator.IsInTransition(0) == true)
-                yield return new WaitUntil(() => (m_Animator.IsInTransition(0)) == false);
-            OriginState = CurrentState;
             CurrentState.OnStateExit();
             if (String.IsNullOrEmpty(targetState.SubStatesTriggers[subStateID]) == false)
             {
@@ -190,10 +186,10 @@ namespace FSM
                 Debug.LogError("輸入了一個不正確的目標狀態");
                 yield break;
             }
-            yield return new WaitUntil(() => (m_Animator.IsInTransition(0)) == true);
+            yield return new WaitUntil(() => (m_Animator.GetCurrentAnimatorStateInfo(0).IsName(targetState.SubStatesTriggers[subStateID]) && m_Animator.IsInTransition(0)) == false);
+            targetState.SubState = subStateID;
             CurrentState = targetState;
             CurrentState.OnStateEnter();
-            yield return new WaitUntil(() => (m_Animator.IsInTransition(0)) == false);
             bTranfering = false;
         }
 

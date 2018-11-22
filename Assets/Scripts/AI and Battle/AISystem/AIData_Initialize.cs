@@ -65,6 +65,7 @@ namespace AISystem
             fSqrChaseRange = fChaseRange * fChaseRange;
             fSqrJumpAtkRange = fJumpAtkRange * fJumpAtkRange;
             fSqrAtkRange = fAtkRange * fAtkRange;
+            fSqrLimitRange = fLimitRange * fLimitRange;
         }
 
         /// <summary>

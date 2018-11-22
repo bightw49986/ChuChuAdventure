@@ -27,21 +27,21 @@ namespace FSM
         {
             ResetTriggers();
             m_Animator.SetTrigger("Freezed");
-            ResetTriggers();
+            m_AIData.Destination = AISystem.AIData.DestinationState.None;
         }
 
         protected override void OnCharacterKOed()
         {
             ResetTriggers();
             m_Animator.SetTrigger("Freezed");
-            ResetTriggers();
+            m_AIData.Destination = AISystem.AIData.DestinationState.None;
         }
 
         protected override void OnCharacterDied()
         {
             ResetTriggers();
             m_Animator.SetTrigger("Died");
-            ResetTriggers();
+            m_AIData.Destination = AISystem.AIData.DestinationState.None;
             Rigidbody rig = GetComponent<Rigidbody>();
             rig.useGravity = false;
             rig.constraints = RigidbodyConstraints.FreezeAll;
@@ -58,6 +58,7 @@ namespace FSM
             {
                 if(CurrentState.StateID != (Enum)Npc.Died && !bTranfering)
                 {
+                    ResetTriggers();
                     CurrentState = globalTransitions[Npc.Died];
                 }
                 return;
@@ -66,22 +67,10 @@ namespace FSM
             {
                 if(CurrentState.StateID != (Enum)Npc.Freezed && !bTranfering)
                 {
-                    PerformTransition(Npc.Confront);
+                    ResetTriggers();
+
                 }
                 return;
-            }
-            if (m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 4)
-            {
-                if (m_AIData.IsInBattle && CurrentState.StateID != (Enum)Npc.Chase)
-                {
-                    ResetTriggers();
-                    PerformTransition(Npc.Confront);
-                }
-                else
-                {
-                    ResetTriggers();
-                    PerformTransition(Npc.Idle);
-                }
             }
         }
 

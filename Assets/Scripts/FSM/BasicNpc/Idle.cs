@@ -74,7 +74,7 @@ namespace FSM
                         }
                         if (stage == 5) //站起
                         {
-                            if (m_FSM.m_Animator.IsInTransition(0) == false)
+                            if (m_FSM.m_Animator.GetCurrentAnimatorStateInfo(0).IsName("StandUp") &&  m_FSM.m_Animator.IsInTransition(0) == false)
                             {
                                 m_FSM.m_AIData.EnterBattle();
                                 m_FSM.m_AIData.JumpAttack();
@@ -117,7 +117,7 @@ namespace FSM
 
                 internal override void OnStateExit()
                 {
-                    m_FSM.ResetTriggers();
+                    base.OnStateExit();
                 }
 
                 internal override void OnStateRunning(int stage)

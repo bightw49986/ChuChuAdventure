@@ -60,7 +60,7 @@ namespace AISystem
         /// <summary>
         /// 撲擊範圍
         /// </summary>
-        public float fJumpAtkRange = 4f;
+        public float fJumpAtkRange = 3.8f;
         /// <summary>
         /// 撲擊範圍的平方
         /// </summary>
@@ -72,11 +72,21 @@ namespace AISystem
         /// <summary>
         /// 攻擊範圍
         /// </summary>
-        public float fAtkRange = 1.5f;
+        public float fAtkRange = 2f;
         /// <summary>
         /// 攻擊範圍的平方
         /// </summary>
         [HideInInspector] public float fSqrAtkRange;
+        /// <summary>
+        /// 是否畫出限制範圍
+        /// </summary>
+        public bool DrawLimitRange;
+        /// <summary>
+        /// 限制範圍，當與玩家距離小於這個值時，不再前進
+        /// </summary>
+        public float fLimitRange = 1f;
+        [HideInInspector] public float fSqrLimitRange;
+
 
 
         [Header("Moving Info")]
@@ -92,17 +102,12 @@ namespace AISystem
         /// </summary>
         [SerializeField] float fHeight;
         /// <summary>
-        /// 角色的探針長度
-        /// </summary>
-        [SerializeField] float fPorbe = 3f;
-        /// <summary>
         /// 角色的寬度
         /// </summary>
         [SerializeField] float fWidth;
         Vector3 vCenter;
         Vector3 vCPoint1 =Vector3.zero;
         Vector3 vCPoint2 = Vector3.zero;
-        RaycastHit nearestHit;
 
         /// <summary>
         /// 要當作障礙物的Layer
@@ -304,6 +309,7 @@ namespace AISystem
             {
                 Gizmos.color = Color.yellow;
                 Gizmos.DrawSphere(vCenter, 0.2f);
+                if (aStarAgent != null)
                 Gizmos.DrawLine(aStarAgent.Position, m_vDestination);
 
                 if (DrawPath &&  path != null)
@@ -316,8 +322,6 @@ namespace AISystem
                         }
                     }
                 }
-
-
                 Gizmos.color = Color.black;
                 Gizmos.DrawSphere(m_vDestination, 0.3f);
                 Gizmos.DrawLine(vCenter, m_vDestination);
@@ -340,8 +344,13 @@ namespace AISystem
             }
             if(DrawAtkRange)
             {
-                Gizmos.color = Color.red;
+                Gizmos.color = Color.magenta;
                 Gizmos.DrawWireSphere(transform.position, fAtkRange);
+            }
+            if(DrawLimitRange)
+            {
+                Gizmos.color = Color.red;
+                Gizmos.DrawWireSphere(transform.position, fLimitRange);
             }
         }
     }

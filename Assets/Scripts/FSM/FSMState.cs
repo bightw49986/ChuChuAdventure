@@ -157,7 +157,7 @@ namespace FSM
         /// The stage this submachine is currently at.
         /// </summary>
         /// <value>Repersents the different animator states in Unity animator.</value>
-        public int SubState { get; protected set; }
+        public int SubState { get;  set; }
 
         /// <summary>
         /// Triggers for each stage.
@@ -237,6 +237,11 @@ namespace FSM
                 AddTransition(m_FSM.validStates[s]);
             }
         }
+
+        internal override void OnStateExit()
+        {
+            m_FSM.ResetTriggers();
+        }
     }
 
     public abstract class NpcSubMachine : NpcFSMState
@@ -285,15 +290,9 @@ namespace FSM
             m_FSM.bTranfering = true;
             if (m_FSM.bLogTransition)
                 Debug.Log(m_FSM.CurrentStateID +  " -> " + iSubStateID);
-            //if (m_FSM.m_Animator.IsInTransition(0) == true)
-            //{
-            //    yield return new WaitUntil(() => (m_FSM.m_Animator.IsInTransition(0)) == false);
-            //    //ResetTriggers();
-            //}
             m_FSM.m_Animator.SetTrigger(SubStatesTriggers[iSubStateID]);
-            yield return new WaitUntil(() => (m_FSM.m_Animator.IsInTransition(0)) == true);
+            yield return new WaitUntil(() => (m_FSM.m_Animator.GetCurrentAnimatorStateInfo(0).IsName(SubStatesTriggers[iSubStateID]) && m_FSM.m_Animator.IsInTransition(0)) == false);
             SubState = iSubStateID;
-            yield return new WaitUntil(() => (m_FSM.m_Animator.IsInTransition(0)) == false);
             m_FSM.bTranfering = false;
             if (m_FSM.bLogTransition)
                 Debug.Log(m_FSM.CurrentStateID + " -> " + iSubStateID);
