@@ -1,17 +1,13 @@
 ﻿<Properties StartupConfiguration="{8BDCE74E-FD35-6103-357F-1A0A314EA38A}|">
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/FSM/FSMSystem.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/AI and Battle/BattleSystem/AttackBox/AttackBox.cs">
     <Files>
-      <File FileName="Assets/Scripts/AI and Battle/AISystem/AIData_Initialize.cs" Line="68" Column="56" />
-      <File FileName="Assets/Scripts/FSM/BasicNpc/Approach.cs" Line="71" Column="17" />
-      <File FileName="Assets/Scripts/FSM/BasicNpc/Attack.cs" Line="71" Column="18" />
-      <File FileName="Assets/Scripts/FSM/BasicNpc/Chase.cs" Line="75" Column="18" />
-      <File FileName="Assets/Scripts/FSM/BasicNpc/Confront.cs" Line="186" Column="18" />
-      <File FileName="Assets/Scripts/FSM/BasicNpc/Died.cs" Line="35" Column="79" />
-      <File FileName="Assets/Scripts/FSM/BasicNpc/Freezed.cs" Line="37" Column="18" />
-      <File FileName="Assets/Scripts/FSM/BasicNpc/Idle.cs" Line="43" Column="62" />
-      <File FileName="Assets/Goblin.cs" Line="52" Column="14" />
-      <File FileName="Assets/Scripts/FSM/FSMSystem.cs" Line="335" Column="1" />
+      <File FileName="Assets/Scripts/AI and Battle/BattleSystem/BattleDataMethods.cs" Line="21" Column="1" />
+      <File FileName="Assets/Goblin.cs" Line="42" Column="29" />
+      <File FileName="Assets/Scripts/FSM/FSMSystem.cs" Line="341" Column="29" />
+      <File FileName="Assets/Scripts/FSM/FSMState.cs" Line="278" Column="48" />
+      <File FileName="Assets/Scripts/AI and Battle/BattleSystem/AttackBox/AttackBox_Melee.cs" Line="92" Column="21" />
+      <File FileName="Assets/Scripts/AI and Battle/BattleSystem/AttackBox/AttackBox.cs" Line="118" Column="24" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

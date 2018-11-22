@@ -159,7 +159,7 @@ namespace FSM
             if (CurrentState == null) return;
             if (bTranfering == false)
             {
-                stateTime += 1;
+                stateTime += Time.deltaTime;
                 CheckGlobalConditions();
                 CurrentState.OnStateRunning();
             }
@@ -219,13 +219,14 @@ namespace FSM
         /// 開始切換到全域狀態
         /// </summary>
         /// <param name="anyStateID">全域狀態的ID</param>
-        protected internal IEnumerator PerformGlobalTransition(Enum anyStateID)
+        protected internal void PerformGlobalTransition(Enum anyStateID)
         {
+            Debug.Log("有perform");
             if (globalTransitions != null && globalTransitions.ContainsKey(anyStateID))
             {
                 if (bLogTransition)
                     Debug.Log("有進AnyState");
-                yield return StartCoroutine(TransitionHandler(globalTransitions[anyStateID]));
+                StartCoroutine(TransitionHandler(globalTransitions[anyStateID]));
             }
             else
             {
@@ -286,6 +287,7 @@ namespace FSM
                 if (String.IsNullOrEmpty(targetState.Trigger) == false)
                 {
                     m_Animator.SetTrigger(targetState.Trigger);
+                    yield return new WaitWhile(() => m_Animator.GetCurrentAnimatorStateInfo(0).IsName(targetState.Trigger) == false);
                     yield return new WaitUntil(() => (m_Animator.GetCurrentAnimatorStateInfo(0).IsName(targetState.Trigger) && m_Animator.IsInTransition(0)) == false);
                 }
             }
@@ -295,6 +297,7 @@ namespace FSM
                 if (String.IsNullOrEmpty(nextState.SubStatesTriggers[0]) == false)
                 {
                     m_Animator.SetTrigger(nextState.SubStatesTriggers[0]);
+                    yield return new WaitWhile(() => m_Animator.GetCurrentAnimatorStateInfo(0).IsName(nextState.SubStatesTriggers[0]) == false);
                     yield return new WaitUntil(() => (m_Animator.GetCurrentAnimatorStateInfo(0).IsName(nextState.SubStatesTriggers[0]) && m_Animator.IsInTransition(0)) == false);
                 }
             }
@@ -308,6 +311,7 @@ namespace FSM
             CurrentState.OnStateEnter();
             if (bLogTransition)
                 Debug.Log(CurrentState.StateID + " Enter");
+            yield return new WaitForEndOfFrame();
             bTranfering = false;
         }
 
@@ -320,6 +324,7 @@ namespace FSM
             if (String.IsNullOrEmpty(targetState.SubStatesTriggers[subStateID]) == false)
             {
                 m_Animator.SetTrigger(targetState.SubStatesTriggers[subStateID]);
+                yield return new WaitWhile(() => (m_Animator.GetCurrentAnimatorStateInfo(0).IsName(targetState.SubStatesTriggers[subStateID])) == false);
             }
             else
             {
@@ -336,6 +341,7 @@ namespace FSM
             targetState.SubState = subStateID;
             CurrentState = targetState;
             CurrentState.OnStateEnter();
+            yield return new WaitForEndOfFrame();
             bTranfering = false;
             if (bLogTransition)
                 Debug.Log(CurrentState.StateID + " 開始Update");

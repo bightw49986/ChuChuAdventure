@@ -26,21 +26,21 @@ namespace FSM
         protected override void OnCharacterFreezed(DefendBox damagedPart)
         {
             ResetTriggers();
-            m_Animator.SetTrigger("Freezed");
+            PerformGlobalTransition(Npc.Freezed);
             m_AIData.Destination = AISystem.AIData.DestinationState.None;
         }
 
         protected override void OnCharacterKOed()
         {
             ResetTriggers();
-            m_Animator.SetTrigger("Freezed");
+            PerformGlobalTransition(Npc.Freezed);
             m_AIData.Destination = AISystem.AIData.DestinationState.None;
         }
 
         protected override void OnCharacterDied()
         {
             ResetTriggers();
-            m_Animator.SetTrigger("Died");
+            PerformGlobalTransition(Npc.Died);
             m_AIData.Destination = AISystem.AIData.DestinationState.None;
             Rigidbody rig = GetComponent<Rigidbody>();
             rig.useGravity = false;
@@ -54,24 +54,6 @@ namespace FSM
 
         protected override void CheckGlobalConditions()
         {
-            if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Died"))
-            {
-                if(CurrentState.StateID != (Enum)Npc.Died && !bTranfering)
-                {
-                    ResetTriggers();
-                    CurrentState = globalTransitions[Npc.Died];
-                }
-                return;
-            }
-            if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Freezed"))
-            {
-                if(CurrentState.StateID != (Enum)Npc.Freezed && !bTranfering)
-                {
-                    ResetTriggers();
-
-                }
-                return;
-            }
         }
 
         public void Jump_On()

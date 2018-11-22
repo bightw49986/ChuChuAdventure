@@ -289,13 +289,17 @@ namespace FSM
         {
             m_FSM.bTranfering = true;
             if (m_FSM.bLogTransition)
-                Debug.Log(m_FSM.CurrentStateID +  " -> " + iSubStateID);
+                Debug.Log(m_FSM.CurrentStateID +  " 準備切換至 -> " + iSubStateID);
             m_FSM.m_Animator.SetTrigger(SubStatesTriggers[iSubStateID]);
+            yield return new WaitWhile(() => m_FSM.m_Animator.GetCurrentAnimatorStateInfo(0).IsName(SubStatesTriggers[iSubStateID]) == false);
             yield return new WaitUntil(() => (m_FSM.m_Animator.GetCurrentAnimatorStateInfo(0).IsName(SubStatesTriggers[iSubStateID]) && m_FSM.m_Animator.IsInTransition(0)) == false);
+            Debug.Log(m_FSM.CurrentStateID + " : "+ SubStatesTriggers[iSubStateID] + "的animator有等到");
+            yield return new WaitForEndOfFrame();
+            m_FSM.ResetTriggers();
             SubState = iSubStateID;
             m_FSM.bTranfering = false;
             if (m_FSM.bLogTransition)
-                Debug.Log(m_FSM.CurrentStateID + " -> " + iSubStateID);
+                Debug.Log(m_FSM.CurrentStateID + "成功切換至  -> " + iSubStateID);
         }
 
         internal abstract void OnStateRunning(int stage);

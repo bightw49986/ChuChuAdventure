@@ -37,7 +37,7 @@ namespace FSM
                     }
                     if (m_FSM.m_AIData.IsInBattle) //戰鬥中
                     {
-                        if (m_FSM.stateTime * Time.deltaTime >3)
+                        if (m_FSM.stateTime >3)
                         {
                             m_FSM.ResetTriggers();
                             StartTransition(Npc.Confront);
@@ -54,11 +54,13 @@ namespace FSM
 
                             if (stage == 0)
                             {
+                                m_FSM.ResetTriggers();
                                 m_FSM.StartCoroutine(TransferToSubState(1));
                                 return;
                             }
                             if (stage == 1)
                             {
+                                m_FSM.ResetTriggers();
                                 m_FSM.StartCoroutine(TransferToSubState(2));
                                 return;
                             }

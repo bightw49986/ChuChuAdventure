@@ -29,6 +29,11 @@ namespace BattleSystem
         public float BasicAtk = 1;
 
         /// <summary>
+        /// 攻擊盒擊中的推力
+        /// </summary>
+        public float PushForce = 0.5f;
+
+        /// <summary>
         /// 這一下攻擊會造成多少傷害，覆寫CalculateFinalDamage函式來更改計算傷害的邏輯
         /// </summary>
         /// <value>傷害值</value>
@@ -124,10 +129,15 @@ namespace BattleSystem
                 }
                 if (HitBoxes.Contains(hitTarget) == false) //檢查這個受擊盒不在這次攻擊已判定過的List裡面
                 {
-                    if (hitTarget.TakeDamageType.Contains(damageType) || hitTarget.Host.IsHarmless == false) //檢查這個受擊盒是否無敵，且會受到這個攻擊盒傷害類型的傷害
+                    if (hitTarget.TakeDamageType.Contains(damageType) && hitTarget.Host.IsHarmless == false) //檢查這個受擊盒是否無敵，且會受到這個攻擊盒傷害類型的傷害
                     {   //萬事俱備，傷害判定發生
                         hitTarget.OnDamageOccured(DamageThisHit); //把傷害傳給DefendBox
                         Host.OnAttackSuccess(hitTarget, this); //告訴宿主這次攻擊有打中這個目標，避免重複判定
+                        Rigidbody rig;
+                        if (rig =  other.GetComponentInParent<Rigidbody>())
+                        {
+                            rig.AddForce((other.transform.position - Host.transform.position) * PushForce, ForceMode.Impulse);
+                        }
                         if (PrintLog)
                             print("攻擊盒端: " + name + "與防禦盒: " + hitTarget.name + "發生碰撞，傳送 " + DamageThisHit + "點傷害過去計算(宿主: " + Host.name + ")");
                     }

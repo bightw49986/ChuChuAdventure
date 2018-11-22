@@ -88,8 +88,12 @@ namespace BattleSystem
         protected virtual void OnTriggerStay(Collider other)
         {
             if (enabled)
+            {
                 PassDamage(other.gameObject, Host.AttackerType);
+            }
         }
+
+
 
     }
 }
