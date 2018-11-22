@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using AISystem;
 
 namespace FSM
 {
@@ -93,6 +94,8 @@ namespace FSM
 
                 internal override void OnStateEnter()
                 {
+                    m_FSM.m_AIData.Destination = AIData.DestinationState.None;
+
                     switch (npcStartingPose)
                     {
                         case NpcFSM.StartPose.Stand:
@@ -120,18 +123,6 @@ namespace FSM
                 internal override void OnStateRunning(int stage)
                 {
 
-                }
-
-                protected internal override void OnAnimatorMove()
-                {
-                    if (!m_FSM.m_AIData.IsInBattle)
-                    {
-
-                    }
-                    if (m_FSM.m_AIData.IsInBattle)
-                    {
-
-                    }
                 }
             }
         }

@@ -1,4 +1,5 @@
 ﻿using System;
+using AISystem;
 
 namespace FSM
 {
@@ -35,6 +36,7 @@ namespace FSM
 
                 internal override void OnStateEnter()
                 {
+                    m_FSM.m_AIData.Destination = m_FSM.m_AIData.IsInBattle ? AIData.DestinationState.BackToIdle : AIData.DestinationState.Patrol;
                 }
 
                 internal override void OnStateExit()
@@ -45,18 +47,6 @@ namespace FSM
                 internal override void OnStateRunning()
                 {
                     base.OnStateRunning();
-                }
-
-                protected internal override void OnAnimatorMove()
-                {
-                    if (!m_FSM.m_AIData.IsInBattle)
-                    {
-
-                    }
-                    if (m_FSM.m_AIData.IsInBattle)
-                    {
-
-                    }
                 }
             }
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using AISystem;
 
 namespace FSM
 {
@@ -183,6 +184,8 @@ namespace FSM
 
                 internal override void OnStateEnter()
                 {
+                    m_FSM.m_AIData.Destination = AIData.DestinationState.Player;
+                    fTired = 0f;
                     bConfrontOnce = bStrafeOnce = false;
                 }
 
@@ -196,13 +199,6 @@ namespace FSM
                 internal override void OnStateRunning(int stage)
                 {
                     fTired += Time.deltaTime;
-                    Debug.Log("bConfrontOnce: " + bConfrontOnce);
-                    Debug.Log("bStrafeOnce" + bStrafeOnce);
-                }
-
-                protected internal override void OnAnimatorMove()
-                {
-                    m_FSM.m_AIData.MoveToPlayer();
                 }
             }
         }

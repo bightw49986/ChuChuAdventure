@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using AISystem;
 
 
 namespace FSM
@@ -26,18 +27,21 @@ namespace FSM
 
                 internal override void CheckConditions()
                 {
-
+                    if (m_FSM.m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Freezed")==false)
+                    {
+                        StartTransition(Npc.Confront);
+                    }
                 }
 
                 internal override void OnStateEnter()
                 {
+                    m_FSM.m_AIData.Destination = AIData.DestinationState.None;
                     m_FSM.m_isFreezed = m_FSM.m_isKOed = m_FSM.m_isDead = false;
-                    StartTransition(Npc.Confront);
                 }
 
                 internal override void OnStateExit()
                 {
-
+                    m_FSM.ResetTriggers();
                 }
 
                 internal override void OnStateRunning()

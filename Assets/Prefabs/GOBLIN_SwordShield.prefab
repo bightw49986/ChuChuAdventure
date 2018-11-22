@@ -899,6 +899,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4888662633501324}
+  - component: {fileID: 135431574555253862}
+  - component: {fileID: 114329315476251616}
   m_Layer: 0
   m_Name: GOBLIN_ Pelvis
   m_TagString: Untagged
@@ -2227,7 +2229,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1750539296544476}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e7b6332e98b045c1b94329fd0fb4ed5, type: 3}
+  m_Script: {fileID: 11500000, guid: e1d9449c653a6482c9be5b5be662ff25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Collider: {fileID: 0}
@@ -2235,6 +2237,24 @@ MonoBehaviour:
   ApplyHitFX: 0
   HitFXID: 0
   PrintLog: 0
+--- !u!114 &114329315476251616
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1886935445464784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59b93e38ed3b34641ab5469c9277d8ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PrintLog: 0
+  BasicAtk: 10
+  HitBoxes: []
+  Interval: 0
+  HitFXID: 0
+  HitEffect: {fileID: 0}
+  ApplyHitFX: 0
 --- !u!114 &114438515977113148
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2243,7 +2263,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1354538871121338}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e7b6332e98b045c1b94329fd0fb4ed5, type: 3}
+  m_Script: {fileID: 11500000, guid: e1d9449c653a6482c9be5b5be662ff25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Collider: {fileID: 0}
@@ -2262,6 +2282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f6509c7c9ae1454e871898215f319f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _areaID: 1
   GroundLayers:
     serializedVersion: 2
     m_Bits: 1536
@@ -2275,38 +2296,40 @@ MonoBehaviour:
   m_GameObject: {fileID: 1675390028527372}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 193e5fa8e7e09e74b8646adaf55a82c9, type: 3}
+  m_Script: {fileID: 11500000, guid: 7ee44437c42a844aebb65817a8505c83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_FSM: {fileID: 0}
-  DrawCautionRange: 1
+  DrawCautionRange: 0
   fFaceCautionRange: 15
   fSqrFaceCautionRange: 0
   fBackCautionRange: 7
   fSqrBackCautionRange: 0
   FOV: 60
-  DrawChaseRange: 1
+  DrawChaseRange: 0
   fChaseRange: 10
   fSqrChaseRange: 0
-  DrawJumpAtkRange: 1
+  DrawJumpAtkRange: 0
   fJumpAtkRange: 3.8
   fSqrJumpAtkRange: 0
-  DrawAtkRange: 1
+  DrawAtkRange: 0
   fAtkRange: 1.7
   fSqrAtkRange: 0
+  Destination: 0
+  DrawDestination: 1
+  DrawPath: 1
   fHeight: 2
   fPorbe: 3
   fWidth: 0.4
   CollisionLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1792
   fMoveSpeed: 1
   fMaxSpeed: 10
   fMaxSteerSpeed: 5
   fMaxTurnDegree: 180
   player: {fileID: 0}
   PlayerIsDead: 0
-  PlayerInSight: 0
   IsInBattle: 0
   m_vPlayerPos: {x: 0, y: 0, z: 0}
   fPlayerDis: 0
@@ -2332,7 +2355,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1806557107637776}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e7b6332e98b045c1b94329fd0fb4ed5, type: 3}
+  m_Script: {fileID: 11500000, guid: e1d9449c653a6482c9be5b5be662ff25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Collider: {fileID: 0}
@@ -2348,7 +2371,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1936038664492850}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e7b6332e98b045c1b94329fd0fb4ed5, type: 3}
+  m_Script: {fileID: 11500000, guid: e1d9449c653a6482c9be5b5be662ff25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Collider: {fileID: 0}
@@ -2364,7 +2387,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1675390028527372}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d77622c37c754ad1bac4a3c1c3d115e, type: 3}
+  m_Script: {fileID: 11500000, guid: 62b73ebfd8ac2464ba7d36bffb09a8cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   AttackerType: 1
@@ -2395,8 +2418,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b27927636e57841c49e8d5fdda114858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bLogCurrentState: 1
-  bLogTransition: 1
+  bLogCurrentState: 0
+  bLogTransition: 0
   CurrentStateID: 
   CanBeHit: 1
   CanBeKOed: 1
@@ -2406,6 +2429,18 @@ MonoBehaviour:
   _style: 0
   _species: 0
   _pose: 0
+--- !u!135 &135431574555253862
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1886935445464784}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: -0.29, y: 0.43, z: 0}
 --- !u!135 &135775699402142742
 SphereCollider:
   m_ObjectHideFlags: 1

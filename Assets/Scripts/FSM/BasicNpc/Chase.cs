@@ -1,4 +1,5 @@
 ﻿using System;
+using AISystem;
 
 namespace FSM
 {
@@ -35,8 +36,8 @@ namespace FSM
                     {
                         if (m_FSM.m_AIData.PlayerInBattleRange==false) //如果敵人超過最大距離，發呆看著敵人離去的方向
                         {
-                            StartTransition(Npc.Idle);
-                            return;
+                            //StartTransition(Npc.Idle);
+                            //return;
                         }
                         else
                         {
@@ -72,6 +73,7 @@ namespace FSM
 
                 internal override void OnStateEnter()
                 {
+                    m_FSM.m_AIData.Destination = AIData.DestinationState.Player;
                 }
 
                 internal override void OnStateExit()
@@ -83,11 +85,6 @@ namespace FSM
                 {
                     base.OnStateRunning();
                     //如果與玩家之間有障礙物，算出沒有障礙物的點，把目標位置改成那個點
-                }
-
-                protected internal override void OnAnimatorMove()
-                {
-                    m_FSM.m_AIData.MoveToPlayer();
                 }
             }
         }

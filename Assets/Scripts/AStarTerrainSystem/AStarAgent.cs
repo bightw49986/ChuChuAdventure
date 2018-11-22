@@ -154,6 +154,8 @@ namespace PathFinding
         {
             waypointManagers = FindObjectsOfType<WaypointManager>();
 
+            HashSet<AStarNode> links = new HashSet<AStarNode>();
+
             foreach (var area in waypointManagers)
             {
                 if (m_nodes.ContainsKey(area.AreaID) == false)
@@ -169,31 +171,48 @@ namespace PathFinding
                             AreaID = area.AreaID,
                             IsLink = area.m_waypoints[i].IsLink
                         };
+                        if (node.IsLink) links.Add(node);
                         node.m_Cost = area.m_waypoints[i].Cost;
                         nodesToAdd.Add(node);
                     }
                     m_nodes.Add(area.AreaID, nodesToAdd);
-                    SetNodeNeighbours(nodesToAdd);
+                    SetAreaNodeNeighbours(nodesToAdd);
                 }
             }
-
-
+            foreach (var linkNode in links)
+            {
+                foreach(var linkNeighbour in links)
+                {
+                    if (linkNode == linkNeighbour) continue;
+                    if (linkNode.WP.Neighbours.Contains(linkNeighbour.WP) && linkNode.Neighbours.Contains(linkNeighbour) ==false)
+                    {
+                        linkNode.Neighbours.Add(linkNeighbour);
+                        if (linkNeighbour.Neighbours.Contains(linkNode)==false)
+                        {
+                            linkNeighbour.Neighbours.Add(linkNode);
+                        }
+                    }
+                }
+            }
         }
         /// <summary>
         /// 設定清單中的節點鄰居關係
         /// </summary>
         /// <param name="nodes">Nodes.</param>
-        void SetNodeNeighbours(List<AStarNode> nodes)
+        void SetAreaNodeNeighbours(List<AStarNode> nodes)
         {
-            for (int i = 0; i < nodes.Count; i++)
+            for (int i = 0; i < nodes.Count; i++) //再傳入的節點圖裡的每一個節點
             {
-                foreach(var node in nodes)
+                foreach(var node in nodes) //每其餘的節點
                 {
-                    if (nodes[i] == node) continue;
-                    if (nodes[i].WP.Neighbours.Contains(node.WP) && nodes[i].Neighbours.Contains(node)==false)
+                    if (nodes[i] == node) continue; //如果該節點等於自己，return
+                    if (nodes[i].WP.Neighbours.Contains(node.WP) && nodes[i].Neighbours.Contains(node)==false) //如果原本的節點的WP有該節點的WP，且原本的節點鄰居內仍沒這個節點
                     {
                         nodes[i].Neighbours.Add(node);
+                        if(node.Neighbours.Contains(nodes[i])==false)
+                        node.Neighbours.Add(nodes[i]);
                     }
+                    
                 }
             }
         }
@@ -259,6 +278,7 @@ namespace PathFinding
             {
                 foreach (var node in m_nodes[location.AreaID])
                 {
+                    if (node.IsLink == false) continue;
                     Vector3 vNodeDir = location.Position - node.Position;
                     float fNodeSqrDist = Vector3.SqrMagnitude(vNodeDir);
                     if (fNodeSqrDist <= Mathf.Epsilon)
@@ -277,11 +297,11 @@ namespace PathFinding
             {
                 nearestNode = FindNearestNodeInArea(location.Position);
             }
-            print(nearestNode.gameObject.name);
-            foreach(var n in nearestNode.Neighbours)
-            {
-                print(nearestNode.gameObject.name + "有鄰居：" + n.gameObject.name);
-            }
+            //print(nearestNode.gameObject.name);
+            //foreach(var n in nearestNode.Neighbours)
+            //{
+            //    print(nearestNode.gameObject.name + "有鄰居：" + n.gameObject.name);
+            //}
             return nearestNode;
         }
 

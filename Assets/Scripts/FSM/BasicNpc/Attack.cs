@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System;
+using AISystem;
 
 namespace FSM
 {
@@ -36,6 +37,13 @@ namespace FSM
                     }
                     if (m_FSM.m_AIData.IsInBattle) //戰鬥中
                     {
+                        if (m_FSM.stateTime * Time.deltaTime >3)
+                        {
+                            m_FSM.ResetTriggers();
+                            StartTransition(Npc.Confront);
+                            return;
+                        }
+
                         if (stage == 3)
                         {
                             StartTransition(Npc.Approach);
@@ -61,7 +69,7 @@ namespace FSM
 
                 internal override void OnStateEnter()
                 {
-                    m_FSM.m_AIData.LookAtPlayerDirectly();
+                    m_FSM.m_AIData.Destination = AIData.DestinationState.None;
                 }
 
                 internal override void OnStateExit()
@@ -83,11 +91,6 @@ namespace FSM
                     {
                         m_FSM.m_AIData.LookAtPlayerDirectly();
                     }
-                }
-
-                protected internal override void OnAnimatorMove()
-                {
-                    m_FSM.m_Animator.ApplyBuiltinRootMotion();
                 }
             }
         }

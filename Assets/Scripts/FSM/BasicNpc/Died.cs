@@ -1,4 +1,5 @@
 ﻿using System;
+using AISystem;
 
 namespace FSM
 {
@@ -31,10 +32,12 @@ namespace FSM
 
                 internal override void OnStateEnter()
                 {
+                    m_FSM.m_AIData.Destination = AIData.DestinationState.None;
                 }
 
                 internal override void OnStateExit()
                 {
+                    m_FSM.ResetTriggers();
                 }
 
                 internal override void OnStateRunning()

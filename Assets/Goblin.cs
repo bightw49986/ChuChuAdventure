@@ -25,17 +25,23 @@ namespace FSM
 
         protected override void OnCharacterFreezed(DefendBox damagedPart)
         {
+            ResetTriggers();
             m_Animator.SetTrigger("Freezed");
+            ResetTriggers();
         }
 
         protected override void OnCharacterKOed()
         {
+            ResetTriggers();
             m_Animator.SetTrigger("Freezed");
+            ResetTriggers();
         }
 
         protected override void OnCharacterDied()
         {
+            ResetTriggers();
             m_Animator.SetTrigger("Died");
+            ResetTriggers();
             Rigidbody rig = GetComponent<Rigidbody>();
             rig.useGravity = false;
             rig.constraints = RigidbodyConstraints.FreezeAll;
@@ -64,6 +70,49 @@ namespace FSM
                 }
                 return;
             }
+            if (m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 4)
+            {
+                if (m_AIData.IsInBattle && CurrentState.StateID != (Enum)Npc.Chase)
+                {
+                    ResetTriggers();
+                    PerformTransition(Npc.Confront);
+                }
+                else
+                {
+                    ResetTriggers();
+                    PerformTransition(Npc.Idle);
+                }
+            }
+        }
+
+        public void Jump_On()
+        {
+            Rigidbody rig = GetComponent<Rigidbody>();
+            if (rig)
+            {
+                rig.useGravity = false;
+                rig.isKinematic = true;
+            }
+        }
+
+        public void Jump_Off()
+        {
+            Rigidbody rig = GetComponent<Rigidbody>();
+            if (rig)
+            {
+                rig.useGravity = true;
+                rig.isKinematic = false;
+            }
+        }
+
+        public void Atk_On(int index)
+        {
+            m_BattleData.EnableAttackBox(index);
+        }
+
+        public void Atk_Off(int index)
+        {
+            m_BattleData.DisableAttackBox(index);
         }
     }
 

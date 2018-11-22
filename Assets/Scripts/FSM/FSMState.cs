@@ -146,8 +146,6 @@ namespace FSM
         {
             CheckConditions();
         }
-
-        protected internal virtual void OnAnimatorMove(){}
     }
 
     /// <summary>

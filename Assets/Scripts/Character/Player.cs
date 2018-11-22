@@ -55,6 +55,11 @@ public class Player : BattleData , PathFinding.ILocationData
         AreaID = 1;
     }
 
+    void Start()
+    {
+        EneableDefendBox(0);
+    }
+
     protected override void OnStatsChanged()
     {
         if (m_Stats.ContainsKey("MaxAttackSpeedRate"))
