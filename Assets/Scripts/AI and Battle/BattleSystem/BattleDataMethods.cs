@@ -29,7 +29,6 @@ namespace BattleSystem
         /// </summary>
         void InitStats()
         {
-            m_Stats = new Dictionary<string, float>();
             Hp = MaxHp;
             Endurance = MaxEndurance;
         }
@@ -66,7 +65,7 @@ namespace BattleSystem
         /// 加入可以用的特效種類
         /// </summary>
         /// <param name="types">Types.</param>
-        void AddParticleAttackBoxes(params BossFX_Fire[] types)
+        public void AddParticleAttackBoxes(params Enum[] types)
         {
             if (InitMessage)
                 print(gameObject.name + " 開始初始化特效攻擊盒");
@@ -435,24 +434,8 @@ namespace BattleSystem
         /// </summary>
         protected virtual void OnStatsChanged()
         {
-            if (m_Stats.ContainsKey("MaxHp"))
-                m_Stats["MaxHp"] = MaxHp;
-            else
-                m_Stats.Add("MaxHp", MaxHp);
-            if (m_Stats.ContainsKey("Hp"))
-                m_Stats["Hp"] = Hp;
-            else
-                m_Stats.Add("Hp", Hp);
-            if (m_Stats.ContainsKey("MaxEndurance"))
-                m_Stats["MaxEndurance"] = MaxEndurance;
-            else
-                m_Stats.Add("MaxEndurance", MaxEndurance);
-            if (m_Stats.ContainsKey("Endurance"))
-                m_Stats["Endurance"] = Endurance;
-            else
-                m_Stats.Add("Endurance",Endurance);
             if (StatsChanged != null) //若有人註冊，則觸發事件
-                StatsChanged(m_Stats);
+                StatsChanged(this);
         }
     }
 }

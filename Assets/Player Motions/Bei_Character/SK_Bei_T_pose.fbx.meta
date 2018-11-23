@@ -474,15 +474,15 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.14218147
-        functionName: StartRecord
+      - time: 0.028806584
+        functionName: SwitchOnAdjustTurn
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.4619236
-        functionName: CloseRecord
+      - time: 0.14218147
+        functionName: StartRecord
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -495,8 +495,15 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.30866426
+      - time: 0.3521425
         functionName: SwitchOffAtkBox
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.61579806
+        functionName: CloseRecord
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -962,6 +969,13 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
+      - time: 0
+        functionName: SwitchOnAdjustTurn
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       - time: 0.12996389
         functionName: StartRecord
         data: 
@@ -969,21 +983,21 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.3025449
+      - time: 0.2542357
         functionName: SwitchOnAtkBox
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 1
         messageOptions: 0
-      - time: 0.4607664
+      - time: 0.5139065
         functionName: SwitchOffAtkBox
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 1
         messageOptions: 0
-      - time: 0.86823106
+      - time: 0.55192506
         functionName: CloseRecord
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -1205,7 +1219,42 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.01234568
+        functionName: SwitchOnAdjustTurn
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.16872427
+        functionName: StartRecord
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.4197531
+        functionName: SwitchOnAtkBox
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 1
+        messageOptions: 0
+      - time: 0.5596708
+        functionName: SwitchOffAtkBox
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 1
+        messageOptions: 0
+      - time: 0.94238687
+        functionName: CloseRecord
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1
@@ -1638,15 +1687,15 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.17590992
-        functionName: StartRecord
+      - time: 0.013452915
+        functionName: SwitchOnAdjustTurn
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.7572853
-        functionName: CloseRecord
+      - time: 0.17590992
+        functionName: StartRecord
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -1689,6 +1738,13 @@ ModelImporter:
         messageOptions: 0
       - time: 0.50541514
         functionName: SwitchOffAtkBox
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.7572853
+        functionName: CloseRecord
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

@@ -7,7 +7,6 @@ namespace BattleSystem
 {
     public partial class BattleData : MonoBehaviour, IAttacker, IDefender
     {
-        protected Dictionary<string, float> m_Stats = new Dictionary<string, float>();
         public ObjectPool objectPool { get; private set; }
         [Header("Attack Stats")]
         [Tooltip("這個角色的傷害類型")] public EAttackerType AttackerType = EAttackerType.MonsterGroup1;
@@ -61,7 +60,7 @@ namespace BattleSystem
         /// <summary>
         /// UI註冊這個事件
         /// </summary>
-        public event Action<Dictionary<string,float>> StatsChanged; 
+        public event Action<BattleData> StatsChanged; 
 
     }
 }

@@ -14,7 +14,7 @@ public abstract class StateSystem //所有狀態都來繼承它！ //FSM.SRecord
     //{
     //    FSM = fsm;
     //}
-    protected internal abstract void Transit();
+    protected internal abstract void AllowTransit();
     //從其他狀態轉換到這個狀態的期間的規範
     protected internal abstract void Do();
     //這裡寫執行狀態時該偵測的function或是改變的數值

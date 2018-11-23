@@ -4,16 +4,14 @@ using UnityEngine;
 
 namespace ResourcesManagement
 {
-    //給中榮：我enum目錄的部分打完，需要做的是到LoadRefereces那邊，把每一個都用Resources.Load讀一次，然後你外面的class要用，就找到objectpool(可以用tag找Main，然後Get Component)，然後在開始做事前用PreparePoolObject叫他預先生成，再用AccessGameObjectFromPool拿，用完再ReturnGameObjectToPool(可能要想一下怎麼知道用完的Callback)
-    //目前AccessGameObjectFromPool 沒有做設定parent跟position rotation的多載，所以外面的class拿出去之後要記得設定，不然他會噴在0,0,0
-    public enum PoolKey {None =-1,  Npc = 0, PlayerFX = 1, HitFX = 2, BossFX_Fire = 3, BossFX_Ice= 4, BossFX_Stone= 5, NpcFX = 6, Other = 7 }
+    public enum PoolKey { None = -1, Npc = 0, PlayerFX = 1, HitFX = 2, BossFX_Fire = 3, BossFX_Ice = 4, BossFX_Stone = 5, NpcFX = 6, Other = 7 }
 
     public enum Npc { None = -1, Goblin = 0 }
-    public enum PlayerFX { None = -1, HeavySpearEffect = 0, LightSpearEffect  = 1, Madness = 2 }
-    public enum HitFX { None = -1, Hit_Blue1 = 0, Hit_Blue2 = 1, Hit_Blue3 = 2, Hit_Red1 = 3, Hit_Red2 = 4, Hit_Red3 = 5, Hit_White1 = 6, Hit_White2 = 7, Hit_White3 = 8, Hit_White4 = 9,  }
-    public enum BossFX_Fire { None = -1, Fire2FireBall = 0, Fire2HitEffect = 1, Fire3Onfloor = 2, Fire3Onhand = 3, FireJumpDown = 4, FireJumpUp = 5 , FireTransformOver = 6, FireTransformStart = 7  }
-    public enum BossFX_Ice { None = -1, Ice1Fan = 0, Ice1OnHand = 1, Ice2IceLance = 2, Ice3FistsExplosion = 3, IceJumpDown = 4, IceJumpUp = 5, IceTransformOver = 6, IceTransformStart = 7,  }
-    public enum BossFX_Stone{ None = -1, Stone1Clap = 0, Stone2Throw = 1, Stone3Floor = 2, StoneTransformOver = 3, StoneTransformStart = 4 }
+    public enum PlayerFX { None = -1, HeavySpearEffect = 0, LightSpearEffect = 1, Madness = 2 }
+    public enum HitFX { None = -1, Hit_Blue1 = 0, Hit_Blue2 = 1, Hit_Blue3 = 2, Hit_Red1 = 3, Hit_Red2 = 4, Hit_Red3 = 5, Hit_White1 = 6, Hit_White2 = 7, Hit_White3 = 8, Hit_White4 = 9, }
+    public enum BossFX_Fire { None = -1, Fire2FireBall = 0, Fire2HitEffect = 1, Fire3Onfloor = 2, Fire3Onhand = 3, FireJumpDown = 4, FireJumpUp = 5, FireTransformOver = 6, FireTransformStart = 7, Fire1OnArm = 8 }
+    public enum BossFX_Ice { None = -1, Ice1Fan = 0, Ice1OnHand = 1, Ice2IceLance = 2, Ice3FistsExplosion = 3, IceJumpDown = 4, IceJumpUp = 5, IceTransformOver = 6, IceTransformStart = 7, }
+    public enum BossFX_Stone { None = -1, Stone1Clap = 0, Stone2Throw = 1, Stone3Floor = 2, StoneTransformOver = 3, StoneTransformStart = 4 }
     public enum NpcFX { None = -1, }
     public enum Other { None = -1, }
 
@@ -38,20 +36,52 @@ namespace ResourcesManagement
         {
             SingletonLized();
             m_pool = new Dictionary<PoolKey, Dictionary<Enum, List<PoolingObject>>>();
-            //LoadReferences();
+            LoadReferences();
 
         }
 
         /// <summary>undone
         /// 把所有會讀到的物件都先讀起來一份
         /// </summary>
-        void LoadReferences() 
+        void LoadReferences()
         {
             References = new Dictionary<PoolKey, Dictionary<Enum, UnityEngine.Object>>
             {
-                //把上面每一個enum都做一次Resources.Load，注意檔案路徑跟括號逗號，我先讀兩行提供參考
-                {PoolKey.PlayerFX, new Dictionary<Enum, UnityEngine.Object>{{PlayerFX.HeavySpearEffect, Resources.Load("PlayerFX/HeavySpearEffect") },{PlayerFX.LightSpearEffect, Resources.Load("PlayerFX/LightSpearEffect") },{PlayerFX.Madness, Resources.Load("PlayerFX/Madness") }}},
-                {PoolKey.HitFX, new Dictionary<Enum, UnityEngine.Object>{{HitFX.Hit_Blue1, Resources.Load("HitFX/Blue/Hit_Blue1") },{HitFX.Hit_Blue2,Resources.Load("HitFX/Blue/Hit_Blue2") }}} //剩下以此類推
+                { PoolKey.PlayerFX, new Dictionary<Enum, UnityEngine.Object>{{PlayerFX.HeavySpearEffect, Resources.Load("PlayerFX/HeavySpearEffect") },//待套入
+                                                                            { PlayerFX.LightSpearEffect, Resources.Load("PlayerFX/LightSpearEffect") },//待套入
+                                                                            { PlayerFX.Madness, Resources.Load("PlayerFX/Madness") }}},//待套入
+                { PoolKey.HitFX, new Dictionary<Enum, UnityEngine.Object>{{HitFX.Hit_Blue1,Resources.Load("HitFX/Blue/Hit_Blue1") },
+                                                                         {HitFX.Hit_Blue2,Resources.Load("HitFX/Blue/Hit_Blue2") },
+                                                                         {HitFX.Hit_Blue3,Resources.Load("HitFX/Blue/Hit_Blue3") },
+                                                                         {HitFX.Hit_Red1,Resources.Load("HitFX/Red/Hit_Red1") },
+                                                                         {HitFX.Hit_Red2,Resources.Load("HitFX/Red/Hit_Red2") },
+                                                                         {HitFX.Hit_Red3,Resources.Load("HitFX/Red/Hit_Red3") },
+                                                                         {HitFX.Hit_White1,Resources.Load("HitFX/White/Hit_White1") },
+                                                                         {HitFX.Hit_White2,Resources.Load("HitFX/White/Hit_White2") },
+                                                                         {HitFX.Hit_White3,Resources.Load("HitFX/White/Hit_White3") },
+                                                                         {HitFX.Hit_White4,Resources.Load("HitFX/White/Hit_White4") }} } ,
+                { PoolKey.BossFX_Fire,new Dictionary<Enum, UnityEngine.Object> { { BossFX_Fire.Fire2FireBall,Resources.Load("BossFX/Fire/Fire2FireBall") },
+                                                                                { BossFX_Fire.Fire2HitEffect,Resources.Load("BossFX/Fire/Fire2HitEffect") },
+                                                                                { BossFX_Fire.Fire3Onfloor,Resources.Load("BossFX/Fire/Fire3Onfloor") },
+                                                                                { BossFX_Fire.Fire3Onhand,Resources.Load("BossFX/Fire/Fire3Onhand") },
+                                                                                { BossFX_Fire.FireJumpDown,Resources.Load("BossFX/Fire/FireJumpDown") },
+                                                                                { BossFX_Fire.FireJumpUp,Resources.Load("BossFX/Fire/FireJumpUp") },
+                                                                                { BossFX_Fire.Fire1OnArm,Resources.Load("BossFX/Fire/Fire1OnArm") },
+                                                                                { BossFX_Fire.FireTransformOver,Resources.Load("BossFX/Fire/FireTransformOver") },
+                                                                                { BossFX_Fire.FireTransformStart,Resources.Load("BossFX/Fire/FireTransformStart") }} },
+                { PoolKey.BossFX_Ice,new Dictionary<Enum, UnityEngine.Object> {  {BossFX_Ice.Ice1Fan, Resources.Load("BossFX/Ice/Ice1Fan") },
+                                                                                {BossFX_Ice.Ice1OnHand, Resources.Load("BossFX/Ice/Ice1OnHand") },
+                                                                                {BossFX_Ice.Ice2IceLance, Resources.Load("BossFX/Ice/Ice2IceLance") },
+                                                                                {BossFX_Ice.Ice3FistsExplosion, Resources.Load("BossFX/Ice/Ice3FistsExplosion") },
+                                                                                {BossFX_Ice.IceJumpDown, Resources.Load("BossFX/Ice/IceJumpDown") },
+                                                                                {BossFX_Ice.IceJumpUp, Resources.Load("BossFX/Ice/IceJumpUp") },
+                                                                                {BossFX_Ice.IceTransformOver, Resources.Load("BossFX/Ice/IceTransformOver") },
+                                                                                {BossFX_Ice.IceTransformStart, Resources.Load("BossFX/Ice/IceTransformStart") },} },
+                { PoolKey.BossFX_Stone,new Dictionary<Enum, UnityEngine.Object> {{BossFX_Stone.Stone1Clap,Resources.Load("BossFX/Stone/Stone1Clap") },
+                                                                                {BossFX_Stone.Stone2Throw,Resources.Load("BossFX/Stone/Stone2Throw") },
+                                                                                {BossFX_Stone.Stone3Floor,Resources.Load("BossFX/Stone/Stone3Floor") },
+                                                                                {BossFX_Stone.StoneTransformOver,Resources.Load("BossFX/Stone/StoneTransformOver") },
+                                                                                {BossFX_Stone.StoneTransformStart,Resources.Load("BossFX/Stone/StoneTransformStart") },} },
             };
         }
 

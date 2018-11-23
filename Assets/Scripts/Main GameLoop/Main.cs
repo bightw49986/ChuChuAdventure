@@ -3,15 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using ResourcesManagement;
 
 [DisallowMultipleComponent]
 public class Main : MonoBehaviour ,ISingleton
 {
+    public ObjectPool ObjectPool { get; private set; }
+
     void Awake()
     {
         SingletonLized();
         SceneManager.sceneLoaded += OnSceneLoaded;
         SceneManager.sceneUnloaded += OnSceneUnloaded;
+        InitObjectPool();
     }
 
     void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
@@ -47,7 +51,7 @@ public class Main : MonoBehaviour ,ISingleton
 
     void InitObjectPool()
     {
-        gameObject.AddComponent<ResourcesManagement.ObjectPool>();
+        ObjectPool = gameObject.AddComponent<ObjectPool>();
     }
 
     void InitMusicPlayer()

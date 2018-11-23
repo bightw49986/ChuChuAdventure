@@ -1,34 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//input的部分怎麼擋?
 public class ChuChuIdleToRun : StateSystem
 {
     float fMoveDamp = 0;
     //時間由其他狀態回Idle各自給定
-    protected internal override void Transit()
+    protected internal override void AllowTransit()
     {
-        //player.bCanMove = true;
-        player.bCanAttack = false;
-        player.IsHarmless = false;
-        player.bCanJump = false;
-        player.bIgnoreGravity = false;
+        player.bInputMove = true;
+        player.bInputJump = true;
     }
     protected internal override void Enter()
     {
-        //離開Transit會改的bools再到這改
-        player.bCanMove = true;
-        player.bCanAttack = true;
-        player.bCanJump = true;
+        player.bInputMove = false;
+        player.bInputJump = false;
+        player.bInputDash = true;
+        player.bIgnoreGravity = false;
         fMoveDamp = 0;
     }
     protected internal override void Leave()
     {
-        player.bCanMove = false;
+
     }
     protected internal override void Do()
-    {//這樣到底有沒有init一份啊？
-        if (player.bCanMove == false)
+    {
+        if (player.bInputMove == false)
         {
             FSM.AnimPlayer.SetFloat("Move", 0);
         }
@@ -38,24 +35,22 @@ public class ChuChuIdleToRun : StateSystem
             {
                 fMoveDamp = Mathf.Lerp(fMoveDamp, inputMotionController.m_fMoveSpeed, 0.1f);
             }
-
             else { fMoveDamp = Mathf.Lerp(fMoveDamp, 0, 0.2f); }
-
             FSM.AnimPlayer.SetFloat("Move", fMoveDamp);
         }
-
     }
     protected internal override void Check()
     {
+
         if (inputMotionController.m_fJInput == 1)
         {
             FSM.SNextState = "JumpStart";
         }
-        else if (inputMotionController.m_fLAInput == 1)
+        else if (Input.GetMouseButtonDown(0))
         {
             FSM.SNextState = "R1";
         }
-        else if (inputMotionController.m_fHAInput == 1)
+        else if (Input.GetMouseButtonDown(1))
         {
             FSM.SNextState = "R2";
         }
@@ -63,18 +58,16 @@ public class ChuChuIdleToRun : StateSystem
 }
 public class ChuChuJumpStart : StateSystem
 {
-    protected internal override void Transit()
+    protected internal override void AllowTransit()
     {
-        player.bCanMove = true;
-        player.bCanAttack = false;
-        player.IsHarmless = true;
-        player.bCanJump = false;
-        player.bIgnoreGravity = false;
+
     }
     protected internal override void Enter()
     {
-        player.bCanAttack = true;
-        player.IsHarmless = false;//考慮給一下
+        player.bInputMove = true;
+        player.bInputJump = false;
+        player.bInputDash = false;
+        player.bIgnoreGravity = false;
     }
     protected internal override void Leave()
     {
@@ -86,16 +79,15 @@ public class ChuChuJumpStart : StateSystem
     }
     protected internal override void Check()
     {
-        if (inputMotionController.m_fLAInput == 1)
+        if (Input.GetMouseButtonDown(0))
         {
             FSM.SNextState = "R1";
         }
-        else if (inputMotionController.m_fHAInput == 1)
+        else if (Input.GetMouseButtonDown(1))
         {
             FSM.SNextState = "R2";
         }
-        else if (FSM.SNextState == null &&
-            FSM.AnimPlayer.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.4f)
+        else if (FSM.AnimPlayer.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.5f)
         {
             FSM.SNextState = "JumpLoop";
         }
@@ -103,17 +95,16 @@ public class ChuChuJumpStart : StateSystem
 }
 public class ChuChuJumpLoop : StateSystem
 {
-    protected internal override void Transit()
+    protected internal override void AllowTransit()
     {
-        player.bCanMove = true;
-        player.bCanAttack = true;
-        player.IsHarmless = false;
-        player.bCanJump = false;
-        player.bIgnoreGravity = false;
+        
     }
     protected internal override void Enter()
     {
-
+        player.bInputMove = true;
+        player.bInputJump = false;
+        player.bInputDash = false;
+        player.bIgnoreGravity = false;
     }
     protected internal override void Leave()
     {
@@ -125,16 +116,15 @@ public class ChuChuJumpLoop : StateSystem
     }
     protected internal override void Check()
     {
-        if (inputMotionController.m_fLAInput == 1)
+        if (Input.GetMouseButtonDown(0))
         {
             FSM.SNextState = "R1";
         }
-        else if (inputMotionController.m_fHAInput == 1)
+        else if (Input.GetMouseButtonDown(1))
         {
             FSM.SNextState = "R2";
         }
-        else if (FSM.SNextState == null &&
-            inputMotionController.m_bJumpEnd == true)
+        else if (inputMotionController.m_bJumpEnd == true)
         {
             FSM.SNextState = "JumpEnd";
         }
@@ -142,21 +132,20 @@ public class ChuChuJumpLoop : StateSystem
 }
 public class ChuChuJumpEnd : StateSystem
 {
-    protected internal override void Transit()
-    {
-        player.bCanMove = false;
-        player.bCanAttack = true;
-        player.IsHarmless = false;
-        player.bCanJump = false;
-        player.bIgnoreGravity = false;
-    }
-    protected internal override void Enter()
+    protected internal override void AllowTransit()
     {
 
     }
+    protected internal override void Enter()
+    {
+        player.bInputMove = false;
+        player.bInputJump = false;
+        player.bInputDash = false;
+        player.bIgnoreGravity = false;
+    }
     protected internal override void Leave()
     {
-        player.bCanMove = false;
+
     }
     protected internal override void Do()
     {
@@ -172,16 +161,15 @@ public class ChuChuJumpEnd : StateSystem
 }
 public class ChuChuLeftGetHit : StateSystem
 {
-    protected internal override void Transit()
+    protected internal override void AllowTransit()
     {
 
     }
     protected internal override void Enter()
     {
-        player.bCanMove = false;
-        player.bCanAttack = false;
-        player.IsHarmless = false;
-        player.bCanJump = false;
+        player.bInputMove = false;
+        player.bInputJump = false;
+        player.bInputDash = false;
         player.bIgnoreGravity = false;
     }
     protected internal override void Leave()
@@ -194,8 +182,8 @@ public class ChuChuLeftGetHit : StateSystem
     }
     protected internal override void Check()
     {
-        if (FSM.AnimPlayer.GetCurrentAnimatorStateInfo(0).IsName("LeftGetHit") &&
-            FSM.AnimPlayer.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+        if (FSM.AnimPlayer.GetCurrentAnimatorStateInfo(0).IsName(FSM.SCurrentState) &&
+            FSM.AnimPlayer.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
         {
             FSM.SNextState = "Idle";
         }
@@ -203,16 +191,15 @@ public class ChuChuLeftGetHit : StateSystem
 }
 public class ChuChuFrontGetHit : StateSystem
 {
-    protected internal override void Transit()
+    protected internal override void AllowTransit()
     {
 
     }
     protected internal override void Enter()
     {
-        player.bCanMove = false;
-        player.bCanAttack = false;
-        player.IsHarmless = false;
-        player.bCanJump = false;
+        player.bInputMove = false;
+        player.bInputJump = false;
+        player.bInputDash = false;
         player.bIgnoreGravity = false;
     }
     protected internal override void Leave()
@@ -225,8 +212,8 @@ public class ChuChuFrontGetHit : StateSystem
     }
     protected internal override void Check()
     {
-        if (FSM.AnimPlayer.GetCurrentAnimatorStateInfo(0).IsName("FrontGetHit") &&
-            FSM.AnimPlayer.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+        if (FSM.AnimPlayer.GetCurrentAnimatorStateInfo(0).IsName(FSM.SCurrentState) &&
+            FSM.AnimPlayer.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
         {
             FSM.SNextState = "Idle";
         }
@@ -234,16 +221,15 @@ public class ChuChuFrontGetHit : StateSystem
 }
 public class ChuChuRightGetHit : StateSystem
 {
-    protected internal override void Transit()
+    protected internal override void AllowTransit()
     {
 
     }
     protected internal override void Enter()
     {
-        player.bCanMove = false;
-        player.bCanAttack = false;
-        player.IsHarmless = false;
-        player.bCanJump = false;
+        player.bInputMove = false;
+        player.bInputJump = false;
+        player.bInputDash = false;
         player.bIgnoreGravity = false;
     }
     protected internal override void Leave()
@@ -256,8 +242,8 @@ public class ChuChuRightGetHit : StateSystem
     }
     protected internal override void Check()
     {
-        if (FSM.AnimPlayer.GetCurrentAnimatorStateInfo(0).IsName("RightGetHit") &&
-            FSM.AnimPlayer.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+        if (FSM.AnimPlayer.GetCurrentAnimatorStateInfo(0).IsName(FSM.SCurrentState) &&
+            FSM.AnimPlayer.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
         {
             FSM.SNextState = "Idle";
         }
@@ -265,17 +251,17 @@ public class ChuChuRightGetHit : StateSystem
 }
 public class ChuChuDead : StateSystem//若玩家處於無敵狀態，則npc不會進行攻擊
 {
-    protected internal override void Transit()
+    protected internal override void AllowTransit()
     {
 
     }
     protected internal override void Enter()
     {
-        player.bCanMove = false;
-        player.bCanAttack = false;
-        player.IsHarmless = true;
-        player.bCanJump = false;
+        player.bInputMove = false;
+        player.bInputJump = false;
+        player.bInputDash = false;
         player.bIgnoreGravity = false;
+        player.IsHarmless = true;
     }
     protected internal override void Leave()
     {
@@ -292,17 +278,17 @@ public class ChuChuDead : StateSystem//若玩家處於無敵狀態，則npc不�
 }
 public class ChuChuDown : StateSystem
 {
-    protected internal override void Transit()
+    protected internal override void AllowTransit()
     {
 
     }
     protected internal override void Enter()
     {
-        player.bCanMove = false;
-        player.bCanAttack = false;
-        player.IsHarmless = true;
-        player.bCanJump = false;
+        player.bInputMove = false;
+        player.bInputJump = false;
+        player.bInputDash = false;
         player.bIgnoreGravity = false;
+        player.IsHarmless = true;
     }
     protected internal override void Leave()
     {
@@ -314,8 +300,8 @@ public class ChuChuDown : StateSystem
     }
     protected internal override void Check()
     {
-        if (FSM.AnimPlayer.GetCurrentAnimatorStateInfo(0).IsName("Down") &&
-           FSM.AnimPlayer.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+        if (FSM.AnimPlayer.GetCurrentAnimatorStateInfo(0).IsName(FSM.SCurrentState) &&
+           FSM.AnimPlayer.GetCurrentAnimatorStateInfo(0).normalizedTime >=0.99f)
         {
             FSM.SNextState = "Up";
         }
@@ -323,21 +309,21 @@ public class ChuChuDown : StateSystem
 }
 public class ChuChuUp : StateSystem
 {
-    protected internal override void Transit()
+    protected internal override void AllowTransit()
     {
 
     }
     protected internal override void Enter()
     {
-        player.bCanMove = false;
-        player.bCanAttack = false;
-        player.IsHarmless = true;
-        player.bCanJump = false;
+        player.bInputMove = false;
+        player.bInputJump = false;
+        player.bInputDash = false;
         player.bIgnoreGravity = false;
+        player.IsHarmless = true;
     }
     protected internal override void Leave()
     {
-
+        player.IsHarmless = false;
     }
     protected internal override void Do()
     {
@@ -345,74 +331,63 @@ public class ChuChuUp : StateSystem
     }
     protected internal override void Check()
     {
-        if (FSM.AnimPlayer.GetCurrentAnimatorStateInfo(0).IsName("Up") &&
-         FSM.AnimPlayer.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+        if (FSM.AnimPlayer.GetCurrentAnimatorStateInfo(0).IsName(FSM.SCurrentState) &&
+         FSM.AnimPlayer.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
         {
             FSM.SNextState = "Idle";
         }
     }
 }
-public class ChuChuDash : StateSystem
-{
-    protected internal override void Transit()
-    {
-        player.bCanMove = false;
-        player.bCanAttack = false;
-        player.IsHarmless = true;
-        player.bCanJump = false;
-        player.bIgnoreGravity = true;
-    }
-    protected internal override void Enter()
-    {
+//public class ChuChuDash : StateSystem
+//{
+//    protected internal override void AllowTransit()
+//    {
 
-    }
-    protected internal override void Leave()
-    {
-        player.bIgnoreGravity = false;
-    }
-    protected internal override void Do()
-    {
+//    }
+//    protected internal override void Enter()
+//    {
+//        player.bInputMove = false;
+//        player.bInputJump = false;
+//        player.bInputDash = false;
+//        player.bIgnoreGravity = false;
+//        player.IsHarmless = true;
+//    }
+//    protected internal override void Leave()
+//    {
+//        player.IsHarmless = false;
+//    }
+//    protected internal override void Do()
+//    {
 
-    }
-    protected internal override void Check()
-    {
-        if (FSM.AnimPlayer.GetCurrentAnimatorStateInfo(0).IsName("Dash") &&
-         FSM.AnimPlayer.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
-        {
-            if (inputMotionController.m_bJumpEnd == true)
-            {
-                FSM.SNextState = "Idle";
-            }
-            else
-            {
-                FSM.SNextState = "JumpEnd";
-            }
-
-        }
-    }
-}
+//    }
+//    protected internal override void Check()
+//    {
+//        if (FSM.AnimPlayer.GetCurrentAnimatorStateInfo(0).IsName(FSM.SCurrentState) &&
+//         FSM.AnimPlayer.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+//        {
+//            FSM.SNextState = "Idle";
+//        }
+//    }
+//}
 public class ChuChuR1 : StateSystem
 {
 
-    protected internal override void Transit()
+    protected internal override void AllowTransit()
     {
-        //player.bCanMove = false;
-        //player.bCanAttack = true;
-        //player.IsHarmless = false;
-        //player.bCanJump = false;
-        //player.bFuckTheGravity = true;
+        player.bInputMove = true;
+        player.bInputJump = true;
+        player.bInputDash = true;
+        
     }
     protected internal override void Enter()
     {
-        player.bCanMove = false;
-        player.bCanAttack = true;
-        player.IsHarmless = false;
-        player.bCanJump = false;
+        player.bInputMove = false;
+        player.bInputJump = false;
+        player.bInputDash = false;
         player.bIgnoreGravity = true;
     }
     protected internal override void Leave()
     {
-        player.bPreEnter = false;
         player.bIgnoreGravity = false;
     }
     protected internal override void Do()
@@ -423,13 +398,13 @@ public class ChuChuR1 : StateSystem
     {
         if (FSM.AnimPlayer.GetCurrentAnimatorStateInfo(0).IsName(FSM.SCurrentState))
         {
-            if (FSM.AnimPlayer.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.99)
+            if (FSM.AnimPlayer.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.99f)
             {
-                if (inputMotionController.m_fLAInput == 1)
+                if (Input.GetMouseButtonDown(0))
                 {
                     FSM.SNextState = "R1R1";
                 }
-                else if (inputMotionController.m_fHAInput == 1)
+                else if (Input.GetMouseButtonDown(1))
                 {
                     FSM.SNextState = "R1R2";
                 }
@@ -437,10 +412,16 @@ public class ChuChuR1 : StateSystem
                 {
                     FSM.SNextState = "Idle";
                 }
+                else if (inputMotionController.m_fJInput > 0.9f)
+                {
+                    FSM.SNextState = "JumpStart";
+                }
             }
             else
             {
-                FSM.SNextState = "Idle";
+                if(inputMotionController.m_bJumpEnd)
+                    FSM.SNextState = "Idle";
+                else FSM.SNextState = "JumpLoop";
             }
         }
 
@@ -448,21 +429,22 @@ public class ChuChuR1 : StateSystem
 }
 public class ChuChuR1R1 : StateSystem
 {
-    protected internal override void Transit()
+    protected internal override void AllowTransit()
     {
-        player.bCanMove = false;
-        player.bCanAttack = false;
-        player.IsHarmless = false;
-        player.bCanJump = false;
-        player.bIgnoreGravity = true;
+        player.bInputMove = true;
+        player.bInputJump = true;
+        player.bInputDash = true;
+        
     }
     protected internal override void Enter()
     {
-        player.bCanAttack = true;
+        player.bInputMove = false;
+        player.bInputJump = false;
+        player.bInputDash = false;
+        player.bIgnoreGravity = true;
     }
     protected internal override void Leave()
     {
-        player.bPreEnter = false;
         player.bIgnoreGravity = false;
     }
     protected internal override void Do()
@@ -475,11 +457,11 @@ public class ChuChuR1R1 : StateSystem
         {
             if (FSM.AnimPlayer.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.99)
             {
-                if (inputMotionController.m_fLAInput == 1)
+                if (Input.GetMouseButtonDown(0))
                 {
                     FSM.SNextState = "R1R1R1";
                 }
-                else if (inputMotionController.m_fHAInput == 1)
+                else if (Input.GetMouseButtonDown(1))
                 {
                     FSM.SNextState = "R1R1R2";
                 }
@@ -487,10 +469,16 @@ public class ChuChuR1R1 : StateSystem
                 {
                     FSM.SNextState = "Idle";
                 }
+                else if (inputMotionController.m_fJInput > 0.9f)
+                {
+                    FSM.SNextState = "JumpStart";
+                }
             }
             else
             {
-                FSM.SNextState = "Idle";
+                if (inputMotionController.m_bJumpEnd)
+                    FSM.SNextState = "Idle";
+                else FSM.SNextState = "JumpLoop";
             }
         }
 
@@ -498,21 +486,22 @@ public class ChuChuR1R1 : StateSystem
 }
 public class ChuChuR1R1R1 : StateSystem
 {
-    protected internal override void Transit()
+    protected internal override void AllowTransit()
     {
-        player.bCanMove = false;
-        player.bCanAttack = false;
-        player.IsHarmless = false;
-        player.bCanJump = false;
-        player.bIgnoreGravity = true;
+        player.bInputMove = true;
+        player.bInputJump = true;
+        player.bInputDash = true;
+        
     }
     protected internal override void Enter()
     {
-        player.bCanAttack = true;
+        player.bInputMove = false;
+        player.bInputJump = false;
+        player.bInputDash = false;
+        player.bIgnoreGravity = true;
     }
     protected internal override void Leave()
     {
-        player.bPreEnter = false;
         player.bIgnoreGravity = false;
     }
     protected internal override void Do()
@@ -525,22 +514,28 @@ public class ChuChuR1R1R1 : StateSystem
         {
             if (FSM.AnimPlayer.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.99)
             {
-                if (inputMotionController.m_fLAInput == 1)
+                if (Input.GetMouseButtonDown(0))
                 {
                     FSM.SNextState = "R1R1R1R1";
                 }
-                else if (inputMotionController.m_fHAInput == 1)
+                else if (Input.GetMouseButtonDown(1))
                 {
-                    FSM.SNextState = "R1R1R1R2";
+                    FSM.SNextState = "R2R2R2R2";
                 }
                 else if (inputMotionController.m_fMoveInput > 0.7f)
                 {
                     FSM.SNextState = "Idle";
                 }
+                else if (inputMotionController.m_fJInput > 0.9f)
+                {
+                    FSM.SNextState = "JumpStart";
+                }
             }
             else
             {
-                FSM.SNextState = "Idle";
+                if (inputMotionController.m_bJumpEnd)
+                    FSM.SNextState = "Idle";
+                else FSM.SNextState = "JumpLoop";
             }
         }
 
@@ -548,21 +543,22 @@ public class ChuChuR1R1R1 : StateSystem
 }
 public class ChuChuR1R1R1R1 : StateSystem
 {
-    protected internal override void Transit()
+    protected internal override void AllowTransit()
     {
-        player.bCanMove = false;
-        player.bCanAttack = false;
-        player.IsHarmless = false;
-        player.bCanJump = false;
-        player.bIgnoreGravity = true;
+        player.bInputMove = true;
+        player.bInputJump = true;
+        player.bInputDash = true;
+        
     }
     protected internal override void Enter()
     {
-        player.bCanAttack = true;
+        player.bInputMove = false;
+        player.bInputJump = false;
+        player.bInputDash = false;
+        player.bIgnoreGravity = true;
     }
     protected internal override void Leave()
     {
-        player.bPreEnter = false;
         player.bIgnoreGravity = false;
     }
     protected internal override void Do()
@@ -575,7 +571,7 @@ public class ChuChuR1R1R1R1 : StateSystem
         {
             if (FSM.AnimPlayer.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.99)
             {
-                if (inputMotionController.m_fLAInput == 1 || inputMotionController.m_fHAInput == 1)
+                if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
                 {
                     FSM.SNextState = "R1R1R1R1R1";
                 }
@@ -583,10 +579,16 @@ public class ChuChuR1R1R1R1 : StateSystem
                 {
                     FSM.SNextState = "Idle";
                 }
+                else if (inputMotionController.m_fJInput > 0.9f)
+                {
+                    FSM.SNextState = "JumpStart";
+                }
             }
             else
             {
-                FSM.SNextState = "Idle";
+                if (inputMotionController.m_bJumpEnd)
+                    FSM.SNextState = "Idle";
+                else FSM.SNextState = "JumpLoop";
             }
         }
 
@@ -594,21 +596,22 @@ public class ChuChuR1R1R1R1 : StateSystem
 }
 public class ChuChuR1R1R1R1R1 : StateSystem
 {
-    protected internal override void Transit()
+    protected internal override void AllowTransit()
     {
-        player.bCanMove = false;
-        player.bCanAttack = false;
-        player.IsHarmless = false;
-        player.bCanJump = false;
-        player.bIgnoreGravity = true;
+        player.bInputMove = true;
+        player.bInputJump = true;
+        player.bInputDash = true;
+        
     }
     protected internal override void Enter()
     {
-
+        player.bInputMove = false;
+        player.bInputJump = false;
+        player.bInputDash = false;
+        player.bIgnoreGravity = true;
     }
     protected internal override void Leave()
     {
-        player.bPreEnter = false;
         player.bIgnoreGravity = false;
     }
     protected internal override void Do()
@@ -625,10 +628,16 @@ public class ChuChuR1R1R1R1R1 : StateSystem
                 {
                     FSM.SNextState = "Idle";
                 }
+                else if (inputMotionController.m_fJInput > 0.9f)
+                {
+                    FSM.SNextState = "JumpStart";
+                }
             }
             else
             {
-                FSM.SNextState = "Idle";
+                if (inputMotionController.m_bJumpEnd)
+                    FSM.SNextState = "Idle";
+                else FSM.SNextState = "JumpLoop";
             }
         }
 
@@ -636,21 +645,22 @@ public class ChuChuR1R1R1R1R1 : StateSystem
 }
 public class ChuChuR1R2 : StateSystem
 {
-    protected internal override void Transit()
+    protected internal override void AllowTransit()
     {
-        player.bCanMove = false;
-        player.bCanAttack = false;
-        player.IsHarmless = false;
-        player.bCanJump = false;
-        player.bIgnoreGravity = false;
+        player.bInputMove = true;
+        player.bInputJump = true;
+        player.bInputDash = true;
     }
     protected internal override void Enter()
     {
-        player.bCanAttack = true;
+        player.bInputMove = false;
+        player.bInputJump = false;
+        player.bInputDash = false;
+        player.bIgnoreGravity = false;
     }
     protected internal override void Leave()
     {
-        player.bPreEnter = false;
+
     }
     protected internal override void Do()
     {
@@ -662,13 +672,17 @@ public class ChuChuR1R2 : StateSystem
         {
             if (FSM.AnimPlayer.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.99)
             {
-                if (inputMotionController.m_fLAInput == 1 || inputMotionController.m_fHAInput == 1)
+                if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
                 {
                     FSM.SNextState = "R1R1R2";
                 }
                 else if (inputMotionController.m_fMoveInput > 0.7f)
                 {
                     FSM.SNextState = "Idle";
+                }
+                else if (inputMotionController.m_fJInput > 0.9f)
+                {
+                    FSM.SNextState = "JumpStart";
                 }
             }
             else
@@ -681,21 +695,22 @@ public class ChuChuR1R2 : StateSystem
 }
 public class ChuChuR1R1R2 : StateSystem
 {
-    protected internal override void Transit()
+    protected internal override void AllowTransit()
     {
-        player.bCanMove = false;
-        player.bCanAttack = false;
-        player.IsHarmless = false;
-        player.bCanJump = false;
-        player.bIgnoreGravity = false;
+        player.bInputMove = true;
+        player.bInputJump = true;
+        player.bInputDash = true;
     }
     protected internal override void Enter()
     {
-        player.bCanAttack = true;
+        player.bInputMove = false;
+        player.bInputJump = false;
+        player.bInputDash = false;
+        player.bIgnoreGravity = false;
     }
     protected internal override void Leave()
     {
-        player.bPreEnter = false;
+
     }
     protected internal override void Do()
     {
@@ -707,13 +722,17 @@ public class ChuChuR1R1R2 : StateSystem
         {
             if (FSM.AnimPlayer.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.99)
             {
-                if (inputMotionController.m_fLAInput == 1 || inputMotionController.m_fHAInput == 1)
+                if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
                 {
                     FSM.SNextState = "R2R2R2R2";
                 }
                 else if (inputMotionController.m_fMoveInput > 0.7f)
                 {
                     FSM.SNextState = "Idle";
+                }
+                else if (inputMotionController.m_fJInput > 0.9f)
+                {
+                    FSM.SNextState = "JumpStart";
                 }
             }
             else
@@ -726,21 +745,22 @@ public class ChuChuR1R1R2 : StateSystem
 }
 public class ChuChuR2R2R2R2 : StateSystem
 {
-    protected internal override void Transit()
+    protected internal override void AllowTransit()
     {
-        player.bCanMove = false;
-        player.bCanAttack = false;
-        player.IsHarmless = false;
-        player.bCanJump = false;
-        player.bIgnoreGravity = false;
+        player.bInputMove = true;
+        player.bInputJump = true;
+        player.bInputDash = true;
     }
     protected internal override void Enter()
     {
-
+        player.bInputMove = false;
+        player.bInputJump = false;
+        player.bInputDash = false;
+        player.bIgnoreGravity = false;
     }
     protected internal override void Leave()
     {
-        player.bPreEnter = false;
+
     }
     protected internal override void Do()
     {
@@ -756,6 +776,10 @@ public class ChuChuR2R2R2R2 : StateSystem
                 {
                     FSM.SNextState = "Idle";
                 }
+                else if (inputMotionController.m_fJInput > 0.9f)
+                {
+                    FSM.SNextState = "JumpStart";
+                }
             }
             else
             {
@@ -767,21 +791,22 @@ public class ChuChuR2R2R2R2 : StateSystem
 }
 public class ChuChuR2 : StateSystem
 {
-    protected internal override void Transit()
+    protected internal override void AllowTransit()
     {
-        player.bCanMove = false;
-        player.bCanAttack = false;
-        player.IsHarmless = false;
-        player.bCanJump = false;
-        player.bIgnoreGravity = false;
+        player.bInputMove = true;
+        player.bInputJump = true;
+        player.bInputDash = true;
     }
     protected internal override void Enter()
     {
-        player.bCanAttack = true;
+        player.bInputMove = false;
+        player.bInputJump = false;
+        player.bInputDash = false;
+        player.bIgnoreGravity = false;
     }
     protected internal override void Leave()
     {
-        player.bPreEnter = false;
+
     }
     protected internal override void Do()
     {
@@ -793,13 +818,17 @@ public class ChuChuR2 : StateSystem
         {
             if (FSM.AnimPlayer.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.99)
             {
-                if (inputMotionController.m_fLAInput == 1 || inputMotionController.m_fHAInput == 1)
+                if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
                 {
                     FSM.SNextState = "R2R2";
                 }
                 else if (inputMotionController.m_fMoveInput > 0.7f)
                 {
                     FSM.SNextState = "Idle";
+                }
+                else if (inputMotionController.m_fJInput > 0.9f)
+                {
+                    FSM.SNextState = "JumpStart";
                 }
             }
             else
@@ -812,21 +841,22 @@ public class ChuChuR2 : StateSystem
 }
 public class ChuChuR2R2 : StateSystem
 {
-    protected internal override void Transit()
+    protected internal override void AllowTransit()
     {
-        player.bCanMove = false;
-        player.bCanAttack = false;
-        player.IsHarmless = false;
-        player.bCanJump = false;
-        player.bIgnoreGravity = false;
+        player.bInputMove = true;
+        player.bInputJump = true;
+        player.bInputDash = true;
     }
     protected internal override void Enter()
     {
-        player.bCanAttack = true;
+        player.bInputMove = false;
+        player.bInputJump = false;
+        player.bInputDash = false;
+        player.bIgnoreGravity = false;
     }
     protected internal override void Leave()
     {
-        player.bPreEnter = false;
+
     }
     protected internal override void Do()
     {
@@ -838,13 +868,17 @@ public class ChuChuR2R2 : StateSystem
         {
             if (FSM.AnimPlayer.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.99)
             {
-                if (inputMotionController.m_fLAInput == 1 || inputMotionController.m_fHAInput == 1)
+                if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
                 {
                     FSM.SNextState = "R2R2R2";
                 }
                 else if (inputMotionController.m_fMoveInput > 0.7f)
                 {
                     FSM.SNextState = "Idle";
+                }
+                else if (inputMotionController.m_fJInput > 0.9f)
+                {
+                    FSM.SNextState = "JumpStart";
                 }
             }
             else
@@ -857,21 +891,22 @@ public class ChuChuR2R2 : StateSystem
 }
 public class ChuChuR2R2R2 : StateSystem
 {
-    protected internal override void Transit()
+    protected internal override void AllowTransit()
     {
-        player.bCanMove = false;
-        player.bCanAttack = false;
-        player.IsHarmless = false;
-        player.bCanJump = false;
-        player.bIgnoreGravity = false;
+        player.bInputMove = true;
+        player.bInputJump = true;
+        player.bInputDash = true;
     }
     protected internal override void Enter()
     {
-        player.bCanAttack = true;
+        player.bInputMove = false;
+        player.bInputJump = false;
+        player.bInputDash = false;
+        player.bIgnoreGravity = false;
     }
     protected internal override void Leave()
     {
-        player.bPreEnter = false;
+
     }
     protected internal override void Do()
     {
@@ -883,13 +918,17 @@ public class ChuChuR2R2R2 : StateSystem
         {
             if (FSM.AnimPlayer.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.99)
             {
-                if (inputMotionController.m_fLAInput == 1 || inputMotionController.m_fHAInput == 1)
+                if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
                 {
                     FSM.SNextState = "R2R2R2R2";
                 }
                 else if (inputMotionController.m_fMoveInput > 0.7f)
                 {
                     FSM.SNextState = "Idle";
+                }
+                else if (inputMotionController.m_fJInput > 0.9f)
+                {
+                    FSM.SNextState = "JumpStart";
                 }
             }
             else

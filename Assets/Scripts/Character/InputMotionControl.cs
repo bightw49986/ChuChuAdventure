@@ -8,6 +8,8 @@ public partial class InputMotionController : MonoBehaviour,IMoveable
         m_rig = GetComponent<Rigidbody>();
         m_cam = Camera.main;
         m_collider = GetComponent<CapsuleCollider>();
+        aboutVFXGhostTrail = player.GetComponentInChildren<AboutVFXGhostTrail>();
+        if (aboutVFXGhostTrail == null) print("Can not get ghost script");
     }
 
     void Start()
