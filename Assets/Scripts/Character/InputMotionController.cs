@@ -144,7 +144,7 @@ public partial class InputMotionController : MonoBehaviour,IMoveable
     /// </summary>
     void Jump()
     {
-        if (m_fJInput > 0 && bGrounded && player.bInputJump) //如果按下跳躍且在地上，增加y Velocity
+        if (m_fJInput > 0 && bGrounded) //如果按下跳躍且在地上，增加y Velocity
         {
             m_velocity.y = vJumpVel.y;
             StartCoroutine(OnPlayerJump());

@@ -4,13 +4,10 @@
     <Files>
       <File FileName="Assets/Scripts/Character/Player.cs" Line="47" Column="25" />
       <File FileName="Assets/Ignore/wiwiUI/UI Mat/PlayerBloodbarTest.cs" Line="109" Column="22" />
-      <File FileName="Assets/Scripts/Character/p90FSM/NPCFSMGenerater.cs" Line="108" Column="67" />
-      <File FileName="Assets/Scripts/Main Gameloop/Main.cs" Line="11" Column="28" />
-      <File FileName="Assets/Scripts/Character/p90FSM/PlayerFSMGenerater.cs" Line="28" Column="1" />
-      <File FileName="Assets/Scripts/Character/p90FSM/FSMGenerater.cs" Line="9" Column="33" />
-      <File FileName="Assets/Scripts/AI and Battle/BattleSystem/BattleDataMethods.cs" Line="31" Column="10" />
-      <File FileName="Assets/Scripts/Character/InputMotionController.cs" Line="312" Column="1" />
-      <File FileName="Assets/Scripts/Character/InputMotionControl.cs" Line="11" Column="9" />
+      <File FileName="Assets/Scripts/Character/InputMotionController.cs" Line="139" Column="10" />
+      <File FileName="Assets/Ignore/wiwiUI/UI Mat/UIManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Ignore/wiwiUI/UI Mat/UIStateX.cs" Line="5" Column="17" />
+      <File FileName="Assets/Scripts/Character/p90FSM/PlayerFSMGenerater.cs" Line="542" Column="19" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
